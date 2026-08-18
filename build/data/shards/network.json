@@ -1,0 +1,1834 @@
+{
+ "0trace.sh": {
+  "tool": "0trace.sh",
+  "title": "0trace.sh",
+  "description": "Traceroute tool that can run within an existing TCP connection The package is traceroute tool that can be run within an existing, open TCP connection, therefore bypassing some types of stateful packet filters with ease. root@kali:~# 0trace.sh -h Usage: /usr/bin/0trace.sh iface target_ip [ target_port ] sendprobe root@kali:~# sendprobe -h Usage: sendprobe src_ip dst_ip sport dport seq ack usleep Suspend execution for microsecond intervals",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "0trace",
+    "desc": "Traceroute tool that can run within an existing TCP connection The package is traceroute tool that can be run within an existing, open TCP connection, therefore bypassing some types of stateful packet filters with ease. root@kali:~# 0trace.sh -h Usage: /usr/bin/0trace.sh iface target_ip [ target_port ] sendprobe root@kali:~# sendprobe -h Usage: sendprobe src_ip dst_ip sport dport seq ack usleep Suspend execution for microsecond intervals",
+    "install": "0trace",
+    "size": "43 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "above": {
+  "tool": "above",
+  "title": "above",
+  "description": "Network security sniffer for finding vulnerabilities in the network This package contains a network security sniffer for finding vulnerabilities in the network, designed for pentesters and security professionals. It is based entirely on network traffic analysis, so it does not make any noise on the air. Above allows pentesters to automate the process of finding vulnerabilities in network hardware. Discovery protocols, dynamic routing, FHRP, STP, LLMNR/NBT-NS, etc.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "above",
+    "desc": "Network security sniffer for finding vulnerabilities in the network This package contains a network security sniffer for finding vulnerabilities in the network, designed for pentesters and security professionals. It is based entirely on network traffic analysis, so it does not make any noise on the air. Above allows pentesters to automate the process of finding vulnerabilities in network hardware. Discovery protocols, dynamic routing, FHRP, STP, LLMNR/NBT-NS, etc.",
+    "install": "above",
+    "size": "1.42 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "arping": {
+  "tool": "arping",
+  "title": "arping",
+  "description": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "arping",
+    "desc": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
+    "install": "arping",
+    "size": "90 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "arpspoof": {
+  "tool": "arpspoof",
+  "title": "arpspoof",
+  "description": "Various tools to sniff network traffic for cleartext insecurities This package contains several tools to listen to and create network traffic: Please do not abuse this software.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dsniff",
+    "desc": "Various tools to sniff network traffic for cleartext insecurities This package contains several tools to listen to and create network traffic: Please do not abuse this software.",
+    "install": "dsniff",
+    "size": "582 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "arpwatch": {
+  "tool": "arpwatch",
+  "title": "arpwatch",
+  "description": "Ethernet/FDDI station activity monitor Arpwatch maintains a database of Ethernet MAC addresses seen on the network, with their associated IP pairs. Alerts the system administrator via e-mail if any change happens, such as new station/activity, flip-flops, changed and re-used old addresses. If you want to maintain a list authorized MAC addresses manually, take a look at the arpalert package which may fit your needs better.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "arpwatch",
+    "desc": "Ethernet/FDDI station activity monitor Arpwatch maintains a database of Ethernet MAC addresses seen on the network, with their associated IP pairs. Alerts the system administrator via e-mail if any change happens, such as new station/activity, flip-flops, changed and re-used old addresses. If you want to maintain a list authorized MAC addresses manually, take a look at the arpalert package which may fit your needs better.",
+    "install": "arpwatch",
+    "size": "153 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "bettercap": {
+  "tool": "bettercap",
+  "title": "bettercap",
+  "description": "Complete, modular, portable and easily extensible MITM framework The Swiss Army knife for 802.11, BLE, IPv4 and IPv6 networks reconnaissance and MITM attacks. bettercap is a powerful, easily extensible and portable framework written in Go which aims to offer to security researchers, red teamers and reverse engineers an easy to use, all-in-one solution with all the features they might possibly need for performing reconnaissance and attacking WiFi networks, Bluetooth Low Energy devices, wireless HID devices and Ethernet networks.",
+  "usage": [
+   {
+    "binary": "bettercap",
+    "parts": [
+     [
+      "p",
+      "Scan the system in quiet mode ( -Q ) and output in cronjob format ( –cronjob ):"
+     ],
+     [
+      "code",
+      "root@kali:~# bettercap\nbettercap v2.11 (type 'help' for a list of commands)\n\n172.16.10.0/24 > 172.16.10.212  » [12:34:15] [endpoint.new] endpoint 172.16.10.254 detected as 00:50:56:01:33:70 (VMware, Inc.).\n172.16.10.0/24 > 172.16.10.212  » help\n\n           help MODULE : List available commands or show module specific help if no module name is provided.\n                active : Show information about active modules.\n                  quit : Close the session and exit.\n         sleep SECONDS : Sleep for the given amount of seconds.\n              get NAME : Get the value of variable NAME, use * alone for all, or NAME* as a wildcard.\n        set NAME VALUE : Set the VALUE of variable NAME.\n  read VARIABLE PROMPT : Show a PROMPT to ask the user for input that will be saved inside VARIABLE.\n                 clear : Clear the screen.\n        include CAPLET : Load and run this caplet in the current session.\n             ! COMMAND : Execute a shell command and print its output.\n        alias MAC NAME : Assign an alias to a given endpoint given its MAC address.\n\nModules\n\n      any.proxy > not running\n       api.rest > not running\n      arp.spoof > not running\n      ble.recon > not running\n        caplets > not running\n    dhcp6.spoof > not running\n      dns.spoof > not running\n  events.stream > running\n            gps > not running\n     http.proxy > not running\n    http.server > not running\n    https.proxy > not running\n    mac.changer > not running\n   mysql.server > not running\n      net.probe > not running\n      net.recon > running\n      net.sniff > not running\n   packet.proxy > not running\n       syn.scan > not running\n      tcp.proxy > not running\n         ticker > not running\n         update > not running\n           wifi > not running\n            wol > not running\n\n172.16.10.0/24 > 172.16.10.212  » net.show\n\n+-----------------+--------------------+----------+-------------------------+---------+---------+------------+\n|       IP        |        MAC         |  Name    |         Vendor          | Sent    | Recvd  | Last Seen  |\n+-----------------+--------------------+----------+-------------------------+---------+---------+------------+\n| 172.16.10.212   | 00:b0:52:af:4a:50  | eth0     | Atheros Communications  | 0 B     | 0 B     | 12:34:15   |\n| 172.16.10.2     | 00:50:56:13:37:0a  | gateway  | VMware, Inc.            | 49 kB   | 20 kB   | 12:34:15   |\n|                 |                    |          |                         |         |         |            |\n"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "bettercap",
+    "desc": "Complete, modular, portable and easily extensible MITM framework The Swiss Army knife for 802.11, BLE, IPv4 and IPv6 networks reconnaissance and MITM attacks. bettercap is a powerful, easily extensible and portable framework written in Go which aims to offer to security researchers, red teamers and reverse engineers an easy to use, all-in-one solution with all the features they might possibly need for performing reconnaissance and attacking WiFi networks, Bluetooth Low Energy devices, wireless HID devices and Ethernet networks.",
+    "install": "bettercap",
+    "size": "63.14 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "cge.pl": {
+  "tool": "cge.pl",
+  "title": "cge.pl",
+  "description": "Simple and fast Cisco exploitation tool Cisco Global Exploiter (CGE), is an advanced, simple and fast security testing tool. root@kali:~# cge.pl -h Usage : perl cge.pl <target> <vulnerability number> Vulnerabilities list : [1] - Cisco 677/678 Telnet Buffer Overflow Vulnerability [2] - Cisco IOS Router Denial of Service Vulnerability [3] - Cisco IOS HTTP Auth Vulnerability [4] - Cisco IOS HTTP Configuration Arbitrary Administrative Access Vulnerability [5] - Cisco Catalyst SSH Protocol Mismatch Denial of Service Vulnerability [6] - Cisco 675 Web Administration Denial of Service Vulnerability [7",
+  "usage": [
+   {
+    "binary": "cisco-global-exploiter",
+    "parts": [
+     [
+      "p",
+      "Attack the target host ( 192.168.99.230 ) using the Cisco IOS HTTP Auth Vulnerability ( 3 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# cge.pl 192.168.99.230 3\n\nVulnerability successful exploited with [http://192.168.99.230/level/17/exec/....] ..."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "cisco-global-exploiter",
+    "desc": "Simple and fast Cisco exploitation tool Cisco Global Exploiter (CGE), is an advanced, simple and fast security testing tool. root@kali:~# cge.pl -h Usage : perl cge.pl <target> <vulnerability number> Vulnerabilities list : [1] - Cisco 677/678 Telnet Buffer Overflow Vulnerability [2] - Cisco IOS Router Denial of Service Vulnerability [3] - Cisco IOS HTTP Auth Vulnerability [4] - Cisco IOS HTTP Configuration Arbitrary Administrative Access Vulnerability [5] - Cisco Catalyst SSH Protocol Mismatch Denial of Service Vulnerability [6] - Cisco 675 Web Administration Denial of Service Vulnerability [7",
+    "install": "cisco-global-exploiter",
+    "size": "37 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "cisco-ocs": {
+  "tool": "cisco-ocs",
+  "title": "cisco-ocs",
+  "description": "Mass Cisco scanner A mass Cisco scanning tool. root@kali:~# cisco-ocs -h ********************************* OCS v 0.2 ********************************** **** **** **** coded by OverIP **** **** [email protected] **** **** under GPL License **** **** **** **** usage: ./ocs xxx.xxx.xxx.xxx yyy.yyy.yyy.yyy **** **** **** **** xxx.xxx.xxx.xxx = range start IP **** **** yyy.yyy.yyy.yyy = range end IP **** **** **** ****************************************************************************** use: cisco-ocs IP IP Updated on: 2026-Mar-02",
+  "usage": [
+   {
+    "binary": "cisco-ocs",
+    "parts": [
+     [
+      "p",
+      "Attempt to exploit Cisco devices in the given IP range ( 192.168.99.200 192.168.99.202 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# cisco-ocs 192.168.99.200 192.168.99.202\n********************************* OCS v 0.2 **********************************\n****                                                                      ****\n****                           coded by OverIP                            ****\n****                           [email protected]                           ****\n****                           under GPL License                          ****\n****                                                                      ****\n****             usage: ./ocs xxx.xxx.xxx.xxx yyy.yyy.yyy.yyy             ****\n****                                                                      ****\n****                   xxx.xxx.xxx.xxx = range start IP                   ****\n****                    yyy.yyy.yyy.yyy = range end IP                    ****\n****                                                                      ****\n******************************************************************************\n\n\n-192.168.99.200\n  |Logging... 192.168.99.200\n  |Router not vulnerable.\n\n\n-192.168.99.201\n  |Logging... 192.168.99.201\n  |Router not vulnerable.\n\n\n-192.168.99.202\n  |Logging... 192.168.99.202\n  |Router not vulnerable."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "cisco-ocs",
+    "desc": "Mass Cisco scanner A mass Cisco scanning tool. root@kali:~# cisco-ocs -h ********************************* OCS v 0.2 ********************************** **** **** **** coded by OverIP **** **** [email protected] **** **** under GPL License **** **** **** **** usage: ./ocs xxx.xxx.xxx.xxx yyy.yyy.yyy.yyy **** **** **** **** xxx.xxx.xxx.xxx = range start IP **** **** yyy.yyy.yyy.yyy = range end IP **** **** **** ****************************************************************************** use: cisco-ocs IP IP Updated on: 2026-Mar-02",
+    "install": "cisco-ocs",
+    "size": "25 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "cisco-torch": {
+  "tool": "cisco-torch",
+  "title": "cisco-torch",
+  "description": "Cisco device scanner The main feature that makes cisco-torch different from similar tools is the extensive use of forking to launch multiple scanning processes on the background for maximum scanning efficiency. Also, it uses several methods of application layer fingerprinting simultaneoulsy, if needed. We wanted something fast to discover remote Cisco hosts running Telnet, SSH, Web, NTP, TFTP and SNMP services and launch dicitionary attacks against the services discovered, including SNMP community attack (you would like the community.txt list :-) and TFTP servers (configuration file name brute",
+  "usage": [
+   {
+    "binary": "cisco-torch",
+    "parts": [
+     [
+      "p",
+      "Run all available scan types ( -A ) against the target IP address ( 192.168.99.202 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# cisco-torch -A 192.168.99.202\nUsing config file torch.conf...\nLoading include and plugin ...\n\n###############################################################\n#   Cisco Torch Mass Scanner                   #\n#   Becase we need it...                                      #\n#   http://www.arhont.com/cisco-torch.pl                      #\n###############################################################\n\nList of targets contains 1 host(s)\n8853:   Checking 192.168.99.202 ...\nHUH db not found, it should be in fingerprint.db\nSkipping Telnet fingerprint\n* Cisco by SNMP found ***\n*System Description: Cisco Internetwork Operating System Software\nIOS (tm) 3600 Software (C3640-IK9O3S-M), Version 12.3(22), RELEASE SOFTWARE (fc2)\nTechnical Support: http://www.cisco.com/techsupport\nCopyright (c) 1986-2007 by cisco Systems, Inc.\nCompiled Wed 24-Jan-07 1\n\nCisco-IOS Webserver found\n HTTP/1.1 401 Unauthorized\nServer: cisco-IOS\nAccept-Ranges: none\nWWW-Authenticate: Basic realm=\"level_15_access\"\n\n401 Unauthorized\n\n\n Cisco WWW-Authenticate webserver found\n HTTP/1.1 401 Unauthorized\nServer: cisco-IOS\nAccept-Ranges: none\nWWW-Authenticate: Basic realm=\"level_15_access\"\n\n401 Unauthorized\n\n\n--->\n- All scans done. Cisco Torch Mass Scanner  -\n---> Exiting."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "cisco-torch",
+    "desc": "Cisco device scanner The main feature that makes cisco-torch different from similar tools is the extensive use of forking to launch multiple scanning processes on the background for maximum scanning efficiency. Also, it uses several methods of application layer fingerprinting simultaneoulsy, if needed. We wanted something fast to discover remote Cisco hosts running Telnet, SSH, Web, NTP, TFTP and SNMP services and launch dicitionary attacks against the services discovered, including SNMP community attack (you would like the community.txt list :-) and TFTP servers (configuration file name brute",
+    "install": "cisco-torch",
+    "size": "117 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "copy-router-config.pl": {
+  "tool": "copy-router-config.pl",
+  "title": "copy-router-config.pl",
+  "description": "Copies Cisco configs via SNMP This package copies configuration files from Cisco devices running SNMP. root@kali:~# copy-router-config.pl -h ###################################################### # Copy Cisco Router config - Using SNMP # Hacked up by muts - [email protected] ####################################################### Usage : ./copy-copy-config.pl <router-ip> <tftp-serverip> <community> Make sure a TFTP server is set up, prefferably running from /tmp ! merge-router-config.pl root@kali:~# merge-router-config.pl -h ###################################################### # Merge Cisco ",
+  "usage": [
+   {
+    "binary": "copy-router-config",
+    "parts": [
+     [
+      "p",
+      "Copy the config from the router ( 192.168.1.1 ) to the TFTP server ( 192.168.1.15 ), authenticating with the community string ( private ):"
+     ],
+     [
+      "code",
+      "root@kali:~# copy-router-config.pl 192.168.1.1 192.168.1.15 private"
+     ]
+    ]
+   },
+   {
+    "binary": "merge-router-config",
+    "parts": [
+     [
+      "p",
+      "Merge the config with the router ( 192.168.1.1 ), copying from the TFTP server ( 192.168.1.15 ), using the community string ( private ):"
+     ],
+     [
+      "code",
+      "root@kali:~# merge-router-config.pl 192.168.1.1 192.168.1.15 private"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "copy-router-config",
+    "desc": "Copies Cisco configs via SNMP This package copies configuration files from Cisco devices running SNMP. root@kali:~# copy-router-config.pl -h ###################################################### # Copy Cisco Router config - Using SNMP # Hacked up by muts - [email protected] ####################################################### Usage : ./copy-copy-config.pl <router-ip> <tftp-serverip> <community> Make sure a TFTP server is set up, prefferably running from /tmp ! merge-router-config.pl root@kali:~# merge-router-config.pl -h ###################################################### # Merge Cisco ",
+    "install": "copy-router-config",
+    "size": "12 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "darkstat": {
+  "tool": "darkstat",
+  "title": "darkstat",
+  "description": "Network traffic analyzer It is a packet sniffer which runs as a background process and serves its statistics to a web browser: It is known to be smaller (in terms of memory footprint) and stabler than ntop.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "darkstat",
+    "desc": "Network traffic analyzer It is a packet sniffer which runs as a background process and serves its statistics to a web browser: It is known to be smaller (in terms of memory footprint) and stabler than ntop.",
+    "install": "darkstat",
+    "size": "190 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "dhcpig": {
+  "tool": "dhcpig",
+  "title": "dhcpig",
+  "description": "DHCP exhaustion script using scapy network library DHCPig initiates an advanced DHCP exhaustion attack. It will consume all IPs on the LAN, stop new users from obtaining IPs, release any IPs in use, then for good measure send gratuitous ARP and knock all windows hosts offline. It is based on the scapy library and requests admin privileges to execute. It has been tested on multiple Linux distributions and multiple DHCP servers (ISC, Windows 2k3/2k8, …).",
+  "usage": [
+   {
+    "binary": "dhcpig",
+    "parts": [
+     [
+      "p",
+      "Exhaust all of the available DHCP addresses using the eth0 interface ( eth0 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# pig.py eth0\nWARNING: No route found for IPv6 destination :: (no default route?)\n\nSending DHCPDISCOVER on eth0\nwaiting for first DHCP Server response on eth0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dhcpig",
+    "desc": "DHCP exhaustion script using scapy network library DHCPig initiates an advanced DHCP exhaustion attack. It will consume all IPs on the LAN, stop new users from obtaining IPs, release any IPs in use, then for good measure send gratuitous ARP and knock all windows hosts offline. It is based on the scapy library and requests admin privileges to execute. It has been tested on multiple Linux distributions and multiple DHCP servers (ISC, Windows 2k3/2k8, …).",
+    "install": "dhcpig",
+    "size": "85 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "dnschef": {
+  "tool": "dnschef",
+  "title": "dnschef",
+  "description": "DNS proxy for penetration testers DNSChef is a highly configurable DNS proxy for Penetration Testers and Malware Analysts. A DNS proxy (aka “Fake DNS”) is a tool used for application network traffic analysis among other uses. For example, a DNS proxy can be used to fake requests for “badguy.com” to point to a local machine for termination or interception instead of a real host somewhere on the Internet. root@kali:~# dnschef -h usage: dnschef [options]: _ _ __ | | version 0.4 | | / _| __| |_ __ ___ ___| |__ ___| |_ / _` | '_ \\/ __|/ __| '_ \\ / _ \\ _| | (_| | | | \\__ \\ (__| | | | __/ | \\__,_|_| ",
+  "usage": [
+   {
+    "binary": "dnschef",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# dnschef\n          _                _          __\n         | | version 0.1  | |        / _|\n       __| |_ __  ___  ___| |__   ___| |_\n      / _` | '_ \\/ __|/ __| '_ \\ / _ \\  _|\n     | (_| | | | \\__ \\ (__| | | |  __/ |\n      \\__,_|_| |_|___/\\___|_| |_|\\___|_|\n                   [email protected]\n\n[*] DNS Chef started on interface: 127.0.0.1\n[*] Using the following nameservers: 8.8.8.8\n[*] No parameters were specified. Running in full proxy mode"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dnschef",
+    "desc": "DNS proxy for penetration testers DNSChef is a highly configurable DNS proxy for Penetration Testers and Malware Analysts. A DNS proxy (aka “Fake DNS”) is a tool used for application network traffic analysis among other uses. For example, a DNS proxy can be used to fake requests for “badguy.com” to point to a local machine for termination or interception instead of a real host somewhere on the Internet. root@kali:~# dnschef -h usage: dnschef [options]: _ _ __ | | version 0.4 | | / _| __| |_ __ ___ ___| |__ ___| |_ / _` | '_ \\/ __|/ __| '_ \\ / _ \\ _| | (_| | | | \\__ \\ (__| | | | __/ | \\__,_|_| ",
+    "install": "dnschef",
+    "size": "51 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "driftnet": {
+  "tool": "driftnet",
+  "title": "driftnet",
+  "description": "Picks out and displays images from network traffic Inspired by EtherPEG, Driftnet is a program which listens to network traffic and picks out images from TCP streams it observes. It is interesting to run it on a host which sees a lot of web traffic. (Obviously, this is an invasion of privacy of a fairly blatant sort. Also, if you are possessed of Victorian sensibilities, and share an unswitched network with others who are not, you should probably not use it.)",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "driftnet",
+    "desc": "Picks out and displays images from network traffic Inspired by EtherPEG, Driftnet is a program which listens to network traffic and picks out images from TCP streams it observes. It is interesting to run it on a host which sees a lot of web traffic. (Obviously, this is an invasion of privacy of a fairly blatant sort. Also, if you are possessed of Victorian sensibilities, and share an unswitched network with others who are not, you should probably not use it.)",
+    "install": "driftnet",
+    "size": "108 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "dsniff": {
+  "tool": "dsniff",
+  "title": "dsniff",
+  "description": "Various tools to sniff network traffic for cleartext insecurities This package contains several tools to listen to and create network traffic: Please do not abuse this software.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dsniff",
+    "desc": "Various tools to sniff network traffic for cleartext insecurities This package contains several tools to listen to and create network traffic: Please do not abuse this software.",
+    "install": "dsniff",
+    "size": "582 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "enumiax": {
+  "tool": "enumiax",
+  "title": "enumiax",
+  "description": "IAX protocol username enumerator enumIAX is an Inter Asterisk Exchange protocol username brute-force enumerator. enumIAX may operate in two distinct modes; Sequential Username Guessing or Dictionary Attack. root@kali:~# enumiax --help enumiax: invalid option -- '-' enumIAX 0.4a Dustin D. Trammell < [email protected] > Usage: enumiax [options] target options: -d <dict> Dictionary attack using <dict> file -i <count> Interval for auto-save (# of operations, default 1000) -m # Minimum username length (in characters) -M # Maximum username length (in characters) -r # Rate-limit calls (in microsecond",
+  "usage": [
+   {
+    "binary": "enumiax",
+    "parts": [
+     [
+      "p",
+      "Run a dictionary attack ( -d /usr/share/wordlists/metasploit/unix_users.txt ) against the target host ( 192.168.1.1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# enumiax -d /usr/share/wordlists/metasploit/unix_users.txt 192.168.1.1"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "enumiax",
+    "desc": "IAX protocol username enumerator enumIAX is an Inter Asterisk Exchange protocol username brute-force enumerator. enumIAX may operate in two distinct modes; Sequential Username Guessing or Dictionary Attack. root@kali:~# enumiax --help enumiax: invalid option -- '-' enumIAX 0.4a Dustin D. Trammell < [email protected] > Usage: enumiax [options] target options: -d <dict> Dictionary attack using <dict> file -i <count> Interval for auto-save (# of operations, default 1000) -m # Minimum username length (in characters) -M # Maximum username length (in characters) -r # Rate-limit calls (in microsecond",
+    "install": "enumiax",
+    "size": "35 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "ettercap-text-only": {
+  "tool": "ettercap-text-only",
+  "title": "ettercap-text-only",
+  "description": "Multipurpose sniffer/interceptor/logger for switched LAN Ettercap supports active and passive dissection of many protocols (even encrypted ones) and includes many feature for network and host analysis. Data injection in an established connection and filtering (substitute or drop a packet) on the fly is also possible, keeping the connection synchronized.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ettercap-common",
+    "desc": "Multipurpose sniffer/interceptor/logger for switched LAN Ettercap supports active and passive dissection of many protocols (even encrypted ones) and includes many feature for network and host analysis. Data injection in an established connection and filtering (substitute or drop a packet) on the fly is also possible, keeping the connection synchronized.",
+    "install": "ettercap-common",
+    "size": "12.01 MB"
+   },
+   {
+    "binary": "ettercap-graphical",
+    "desc": "Ettercap GUI-enabled executable Ettercap supports active and passive dissection of many protocols (even encrypted ones) and includes many feature for network and host analysis. Data injection in an established connection and filtering (substitute or drop a packet) on the fly is also possible, keeping the connection synchronized.",
+    "install": "ettercap-graphical",
+    "size": "594 KB"
+   },
+   {
+    "binary": "ettercap-text-only",
+    "desc": "Ettercap console-mode executable Ettercap supports active and passive dissection of many protocols (even encrypted ones) and includes many feature for network and host analysis. Data injection in an established connection and filtering (substitute or drop a packet) on the fly is also possible, keeping the connection synchronized.",
+    "install": "ettercap-text-only",
+    "size": "308 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "ettercap": {
+  "tool": "ettercap",
+  "title": "ettercap",
+  "description": "Multipurpose sniffer/interceptor/logger for switched LAN Ettercap supports active and passive dissection of many protocols (even encrypted ones) and includes many feature for network and host analysis. Data injection in an established connection and filtering (substitute or drop a packet) on the fly is also possible, keeping the connection synchronized.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ettercap-common",
+    "desc": "Multipurpose sniffer/interceptor/logger for switched LAN Ettercap supports active and passive dissection of many protocols (even encrypted ones) and includes many feature for network and host analysis. Data injection in an established connection and filtering (substitute or drop a packet) on the fly is also possible, keeping the connection synchronized.",
+    "install": "ettercap-common",
+    "size": "12.01 MB"
+   },
+   {
+    "binary": "ettercap-graphical",
+    "desc": "Ettercap GUI-enabled executable Ettercap supports active and passive dissection of many protocols (even encrypted ones) and includes many feature for network and host analysis. Data injection in an established connection and filtering (substitute or drop a packet) on the fly is also possible, keeping the connection synchronized.",
+    "install": "ettercap-graphical",
+    "size": "594 KB"
+   },
+   {
+    "binary": "ettercap-text-only",
+    "desc": "Ettercap console-mode executable Ettercap supports active and passive dissection of many protocols (even encrypted ones) and includes many feature for network and host analysis. Data injection in an established connection and filtering (substitute or drop a packet) on the fly is also possible, keeping the connection synchronized.",
+    "install": "ettercap-text-only",
+    "size": "308 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "evilginx2": {
+  "tool": "evilginx2",
+  "title": "evilginx2",
+  "description": "Man-in-the-middle attack framework This package contains a man-in-the-middle attack framework used for phishing login credentials along with session cookies, which in turn allows to bypass 2-factor authentication protection. This tool is a successor to Evilginx, released in 2017, which used a custom version of nginx HTTP server to provide man-in-the-middle functionality to act as a proxy between a browser and phished website. Present version is fully written in GO as a standalone application, which implements its own HTTP and DNS server, making it extremely easy to set up and use.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "evilginx2",
+    "desc": "Man-in-the-middle attack framework This package contains a man-in-the-middle attack framework used for phishing login credentials along with session cookies, which in turn allows to bypass 2-factor authentication protection. This tool is a successor to Evilginx, released in 2017, which used a custom version of nginx HTTP server to provide man-in-the-middle functionality to act as a proxy between a browser and phished website. Present version is fully written in GO as a standalone application, which implements its own HTTP and DNS server, making it extremely easy to set up and use.",
+    "install": "evilginx2",
+    "size": "10.13 MB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "ferret-sidejack": {
+  "tool": "ferret-sidejack",
+  "title": "ferret-sidejack",
+  "description": "Monitors data and extracts interesting data This tool extracts interesting bits from network traffic. One use is to feed the “hamster” tool. Another use is to dump the output intoa text file, then use indexers and grep programs to analyze it. root@kali:~# ferret-sidejack -h -- FERRET 3.0.1 - 2007-2012 (c) Errata Security -- build = Sep 29 2024 02:38:07 (64-bits) -- libpcap version 1.10.6 (64-bit time_t, with TPACKET_V3) options: -i <adapter> Sniffs the wire(less) attached to that network adapter. Must have libpcap or winpcap installed to work. -r <files> Read files in off-line mode. Can use wi",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ferret-sidejack",
+    "desc": "Monitors data and extracts interesting data This tool extracts interesting bits from network traffic. One use is to feed the “hamster” tool. Another use is to dump the output intoa text file, then use indexers and grep programs to analyze it. root@kali:~# ferret-sidejack -h -- FERRET 3.0.1 - 2007-2012 (c) Errata Security -- build = Sep 29 2024 02:38:07 (64-bits) -- libpcap version 1.10.6 (64-bit time_t, with TPACKET_V3) options: -i <adapter> Sniffs the wire(less) attached to that network adapter. Must have libpcap or winpcap installed to work. -r <files> Read files in off-line mode. Can use wi",
+    "install": "ferret-sidejack",
+    "size": "379 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "fiked": {
+  "tool": "fiked",
+  "title": "fiked",
+  "description": "Cisco VPN attack tool FakeIKEd, or fiked for short, is a fake IKE daemon supporting just enough of the standards and Cisco extensions to attack commonly found insecure Cisco VPN PSK+XAUTH based IPsec authentication setups in what could be described as a semi MitM attack. Fiked can impersonate a VPN gateway’s IKE responder in order to capture XAUTH login credentials; it doesn’t currently do the client part of full MitM. A fake IKE PSK+XAUTH daemon based on vpnc",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "fiked",
+    "desc": "Cisco VPN attack tool FakeIKEd, or fiked for short, is a fake IKE daemon supporting just enough of the standards and Cisco extensions to attack commonly found insecure Cisco VPN PSK+XAUTH based IPsec authentication setups in what could be described as a semi MitM attack. Fiked can impersonate a VPN gateway’s IKE responder in order to capture XAUTH login credentials; it doesn’t currently do the client part of full MitM. A fake IKE PSK+XAUTH daemon based on vpnc",
+    "install": "fiked",
+    "size": "173 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "firewalk": {
+  "tool": "firewalk",
+  "title": "firewalk",
+  "description": "Active reconnaissance network security tool Firewalk is an active reconnaissance network security tool that attempts to determine what layer 4 protocols a given IP forwarding device will pass. It works by sending out TCP or UDP packets with a TTL one hop greater than the targeted gateway. If the gateway allows the traffic, it will forward the packets to the next hop where they will expire and elicit an ICMP_TIME_EXCEEDED message. Otherwise, it will likely drop the packets and there will be no response. To get the correct IP TTL that will result in packets expiring one hop beyond the gateway, F",
+  "usage": [
+   {
+    "binary": "firewalk",
+    "parts": [
+     [
+      "p",
+      "Scan ports 8079-8081 ( -S8079-8081 ) through the eth0 interface ( -i eth0 ), do not resolve hostnames ( -n ), use TCP ( -pTCP ) via the gateway ( 192.168.1.1 ) against the target IP ( 192.168.0.1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# firewalk -S8079-8081  -i eth0 -n -pTCP 192.168.1.1 192.168.0.1\nFirewalk 5.0 [gateway ACL scanner]\nFirewalk state initialization completed successfully.\nTCP-based scan.\nRamping phase source port: 53, destination port: 33434\nHotfoot through 192.168.1.1 using 192.168.0.1 as a metric.\nRamping Phase:\n 1 (TTL  1): expired [192.168.1.1]\nBinding host reached.\nScan bound at 2 hops.\nScanning Phase:\nport 8079: *no response*\nport 8080: A! open (port not listen) [192.168.0.1]\nport 8081: *no response*\n\nScan completed successfully.\n\nTotal packets sent:                4\nTotal packet errors:               0\nTotal packets caught               2\nTotal packets caught of interest   2\nTotal ports scanned                3\nTotal ports open:                  1\nTotal ports unknown:               0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "firewalk",
+    "desc": "Active reconnaissance network security tool Firewalk is an active reconnaissance network security tool that attempts to determine what layer 4 protocols a given IP forwarding device will pass. It works by sending out TCP or UDP packets with a TTL one hop greater than the targeted gateway. If the gateway allows the traffic, it will forward the packets to the next hop where they will expire and elicit an ICMP_TIME_EXCEEDED message. Otherwise, it will likely drop the packets and there will be no response. To get the correct IP TTL that will result in packets expiring one hop beyond the gateway, F",
+    "install": "firewalk",
+    "size": "51 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "fluxion": {
+  "tool": "fluxion",
+  "title": "fluxion",
+  "description": "Security auditing and social-engineering research tool Fluxion is a security auditing and social-engineering research tool. It is a remake of linset by vk496 with (hopefully) fewer bugs and more functionality. The script attempts to retrieve the WPA/WPA2 key from a target access point by means of a social engineering (phishing) attack. It’s compatible with the latest release of Kali (rolling). Fluxion’s attacks’ setup is mostly manual, but experimental auto-mode handles some of the attacks’ setup parameters. Read the FAQ before requesting issues. Fluxion is a security auditing and social-engin",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "fluxion",
+    "desc": "Security auditing and social-engineering research tool Fluxion is a security auditing and social-engineering research tool. It is a remake of linset by vk496 with (hopefully) fewer bugs and more functionality. The script attempts to retrieve the WPA/WPA2 key from a target access point by means of a social engineering (phishing) attack. It’s compatible with the latest release of Kali (rolling). Fluxion’s attacks’ setup is mostly manual, but experimental auto-mode handles some of the attacks’ setup parameters. Read the FAQ before requesting issues. Fluxion is a security auditing and social-engin",
+    "install": "fluxion",
+    "size": "24.29 MB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "fping": {
+  "tool": "fping",
+  "title": "fping",
+  "description": "Sends ICMP ECHO_REQUEST packets to network hosts fping is a ping like program which uses the Internet Control Message Protocol (ICMP) echo request to determine if a target host is responding. fping differs from ping in that you can specify any number of targets on the command line, or specify a file containing the lists of targets to ping. Instead of sending to one target until it times out or replies, fping will send out a ping packet and move on to the next target in a round-robin fashion. Send ICMP ECHO_REQUEST packets to network hosts",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "fping",
+    "desc": "Sends ICMP ECHO_REQUEST packets to network hosts fping is a ping like program which uses the Internet Control Message Protocol (ICMP) echo request to determine if a target host is responding. fping differs from ping in that you can specify any number of targets on the command line, or specify a file containing the lists of targets to ping. Instead of sending to one target until it times out or replies, fping will send out a ping packet and move on to the next target in a round-robin fashion. Send ICMP ECHO_REQUEST packets to network hosts",
+    "install": "fping",
+    "size": "93 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "fragrouter": {
+  "tool": "fragrouter",
+  "title": "fragrouter",
+  "description": "IDS evasion toolkit Fragrouter is a network intrusion detection evasion toolkit. Network intrusion detection evasion toolkit",
+  "usage": [
+   {
+    "binary": "fragrouter",
+    "parts": [
+     [
+      "p",
+      "Using interface eth0 ( -i eth0 ), send ordered 8-byte IP fragments ( -F1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# fragrouter -i eth0 -F1\nfragrouter: frag-1: ordered 8-byte IP fragments"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "fragrouter",
+    "desc": "IDS evasion toolkit Fragrouter is a network intrusion detection evasion toolkit. Network intrusion detection evasion toolkit",
+    "install": "fragrouter",
+    "size": "72 KB"
+   }
+  ],
+  "attack_category": "Defense Evasion"
+ },
+ "goldeneye": {
+  "tool": "goldeneye",
+  "title": "goldeneye",
+  "description": "HTTP DoS test tool GoldenEye is a HTTP DoS Test Tool. This tool can be used to test if a site is susceptible to Deny of Service (DoS) attacks. Is possible to open several parallel connections against a URL to check if the web server can be compromised. The program tests the security in networks and uses ‘HTTP Keep Alive",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "goldeneye",
+    "desc": "HTTP DoS test tool GoldenEye is a HTTP DoS Test Tool. This tool can be used to test if a site is susceptible to Deny of Service (DoS) attacks. Is possible to open several parallel connections against a URL to check if the web server can be compromised. The program tests the security in networks and uses ‘HTTP Keep Alive",
+    "install": "goldeneye",
+    "size": "963 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "hamster-sidejack": {
+  "tool": "hamster-sidejack",
+  "title": "hamster-sidejack",
+  "description": "Sidejacking tool Hamster is tool or “sidejacking”. It acts as a proxy server that replaces your cookies with session cookies stolen from somebody else, allowing you to hijack their sessions. Cookies are sniffed using the Ferret program. You need a copy of that as well.",
+  "usage": [
+   {
+    "binary": "hamster",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# hamster\n--- HAMPSTER 2.0 side-jacking tool ---\nSet browser to use proxy http://127.0.0.1:1234\nDEBUG: set_ports_option(1234)\nDEBUG: mg_open_listening_port(1234)\nProxy: listening on 127.0.0.1:1234\nbegining thread"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "hamster-sidejack",
+    "desc": "Sidejacking tool Hamster is tool or “sidejacking”. It acts as a proxy server that replaces your cookies with session cookies stolen from somebody else, allowing you to hijack their sessions. Cookies are sniffed using the Ferret program. You need a copy of that as well.",
+    "install": "hamster-sidejack",
+    "size": "154 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "hexinject": {
+  "tool": "hexinject",
+  "title": "hexinject",
+  "description": "Versatile packet injector and sniffer HexInject is a very versatile packet injector and sniffer, that provide a command-line framework for raw network access. It’s designed to work together with others command-line utilities, and for this reason it facilitates the creation of powerful shell scripts capable of reading, intercepting and modifying network traffic in a transparent manner.",
+  "usage": [
+   {
+    "binary": "hexinject",
+    "parts": [
+     [
+      "p",
+      "Start in sniffing mode ( -s ) through the eth0 interface ( -i eth0 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# hexinject -s -i eth0\nFF FF FF FF FF FF 40 6C 8F 1B CB 90 08 00 45 00 00 31 E4 36 00 00 40 11 11 4E C0 A8 01 E8 C0 A8 01 FF D3 C6 7E 9C 00 1D B1 DA 4D 2D 53 45 41 52 43 48 20 2A 20 48 54 54 50 2F 31 2E 31 0D 0A\nFF FF FF FF FF FF 40 6C 8F 1B CB 90 08 00 45 00 00 31 A1 63 00 00 40 11 54 21 C0 A8 01 E8 C0 A8 01 FF FF 69 7E 9E 00 1D 86 35 4D 2D 53 45 41 52 43 48 20 2A 20 48 54 54 50 2F 31 2E 31 0D 0A\nFF FF FF FF FF FF 7C C3 A1 A4 B4 70 08 00 45 00 00 31 BF 94 00 00 40 11 35 FC C0 A8 01 DC C0 A8 01 FF E3 ED 7E 9C 00 1D A1 BF 4D 2D 53 45 41 52 43 48 20 2A 20 48 54 54 50 2F 31 2E 31 0D 0A\nFF FF FF FF FF FF 7C C3 A1 A4 B4 70 08 00 45 00 00 31 2F DE 00 00 40 11 C5 B2 C0 A8 01 DC C0 A8 01 FF C5 16 7E 9E 00 1D C0 94 4D 2D 53 45 41 52 43 48 20 2A 20 48 54 54 50 2F 31 2E 31 0D 0A"
+     ]
+    ]
+   },
+   {
+    "binary": "prettypacket",
+    "parts": [
+     [
+      "p",
+      "Print an example of a UDP packet ( -x udp ):"
+     ],
+     [
+      "code",
+      "root@kali:~# prettypacket -x udp\n\nEthernet Header:\n 1C AF F7 6B 0E 4D        Destination hardware address\n AA 00 04 00 0A 04        Source hardware address\n 08 00                    Lenght/Type\n\nIP Header:\n 45                       Version / Header length\n 00                       ToS / DFS\n 00 3C                    Total length\n 9B 23                    ID\n 00 00                    Flags / Fragment offset\n 40                       TTL\n 11                       Protocol\n 70 BC                    Checksum\n C0 A8 01 09              Source address\n D0 43 DC DC              Destination address\n\nUDP Header:\n 91 02                    Source port\n 00 35                    Destination port\n 00 28                    Length\n 6F 0B                    Checksum\n\nPayload or Trailer:\n AE 9C 01 00 00 01 00 00 00 00 00 00 03 77 77 77 06 67 6F 6F 67 6C 65 03 63 6F\n 6D 00 00 01 00 01"
+     ]
+    ]
+   },
+   {
+    "binary": "hex2raw",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# hex2raw\n FF 40 6C 8F 1B CB 90 08 00 45 00 00 31 E4 36 00 00 40 11 11 4E C0 A8 01 E8 C0 A8 01 FF D3 C6 7E 9C 00 1D B1 DA 4D 2D 53 45 41 52 43 48 20 2A 20 48 54 54 50 2F 31 2E 31 0D 0A\nFF FF FF FF FF FF 40 6C 8F 1B CB 90 08 00 45 00 00 31 A1 63 00 00 40 11 54 21 C0 A8 01 E8 C0 A8 01 FF FF 69 7E 9E 00 1D 86 35 4D 2D 53 45 41 52 43 48 20 2A 20 48 54 54 50 2F 31 2E 31 0D 0A\n������@l\u001bE1�c@\u0011T!��\u0001���\u0001��i~�\u001d�5M-SEARCH * HTTP/1.1"
+     ]
+    ]
+   },
+   {
+    "binary": "packets.tcl",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# packets.tcl 'ethernet(dst=ff:ff:ff:ff:ee:ee,src=aa:aa:ee:ff:ff:ff,type=0x0800)+ip(ihl=5,ver=4,tos=0xc0,totlen=58,id=62912,fragoff=0,mf=0,df=0,rf=0,ttl=64,proto=1,cksum=0xe500,saddr=192.168.1.7,daddr=192.168.1.6)+icmp(type=3,code=3,unused=0)+data(str=aaaa)+udp(sport=33169,dport=10,len=10,cksum=0x94d6)+data(str=aaaa)+arp(htype=ethernet,ptype=ip,hsize=6,psize=4,op=request,shard=00:11:22:33:44:55,sproto=192.168.1.1,thard=22:22:22:22:22:22,tproto=10.0.0.1)' > packet-out"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "hexinject",
+    "desc": "Versatile packet injector and sniffer HexInject is a very versatile packet injector and sniffer, that provide a command-line framework for raw network access. It’s designed to work together with others command-line utilities, and for this reason it facilitates the creation of powerful shell scripts capable of reading, intercepting and modifying network traffic in a transparent manner.",
+    "install": "hexinject",
+    "size": "100 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "hping3": {
+  "tool": "hping3",
+  "title": "hping3",
+  "description": "Active Network Smashing Tool hping3 is a network tool able to send custom ICMP/UDP/TCP packets and to display target replies like ping does with ICMP replies. It handles fragmentation and arbitrary packet body and size, and can be used to transfer files under supported protocols. Using hping3, you can test firewall rules, perform (spoofed) port scanning, test network performance using different protocols, do path MTU discovery, perform traceroute-like actions under different protocols, fingerprint remote operating systems, audit TCP/IP stacks, etc. hping3 is scriptable using the Tcl language. ",
+  "usage": [
+   {
+    "binary": "hping3",
+    "parts": [
+     [
+      "p",
+      "Use traceroute mode ( --traceroute ), be verbose ( -V ) in ICMP mode ( -1 ) against the target ( www.example.com ):"
+     ],
+     [
+      "code",
+      "root@kali:~# hping3 --traceroute -V -1 www.example.com\nusing eth0, addr: 192.168.1.15, MTU: 1500\nHPING www.example.com (eth0 93.184.216.119): icmp mode set, 28 headers + 0 data bytes\nhop=1 TTL 0 during transit from ip=192.168.1.1 name=UNKNOWN\nhop=1 hoprtt=0.3 ms\nhop=2 TTL 0 during transit from ip=192.168.0.1 name=UNKNOWN\nhop=2 hoprtt=3.3 ms"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "hping3",
+    "desc": "Active Network Smashing Tool hping3 is a network tool able to send custom ICMP/UDP/TCP packets and to display target replies like ping does with ICMP replies. It handles fragmentation and arbitrary packet body and size, and can be used to transfer files under supported protocols. Using hping3, you can test firewall rules, perform (spoofed) port scanning, test network performance using different protocols, do path MTU discovery, perform traceroute-like actions under different protocols, fingerprint remote operating systems, audit TCP/IP stacks, etc. hping3 is scriptable using the Tcl language. ",
+    "install": "hping3",
+    "size": "255 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "httrack": {
+  "tool": "httrack",
+  "title": "httrack",
+  "description": "Copy websites to your computer (Offline browser) HTTrack is an offline browser utility, allowing you to download a World Wide website from the Internet to a local directory, building recursively all directories, getting html, images, and other files from the server to your computer. HTTrack arranges the original site’s relative link-structure. Simply open a page of the “mirrored” website in your browser, and you can browse the site from link to link, as if you were viewing it online. HTTrack can also update an existing mirrored site, and resume interrupted downloads. HTTrack is fully configura",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "httrack",
+    "desc": "Copy websites to your computer (Offline browser) HTTrack is an offline browser utility, allowing you to download a World Wide website from the Internet to a local directory, building recursively all directories, getting html, images, and other files from the server to your computer. HTTrack arranges the original site’s relative link-structure. Simply open a page of the “mirrored” website in your browser, and you can browse the site from link to link, as if you were viewing it online. HTTrack can also update an existing mirrored site, and resume interrupted downloads. HTTrack is fully configura",
+    "install": "httrack",
+    "size": "66 KB"
+   },
+   {
+    "binary": "httrack-doc",
+    "desc": "Httrack website copier additional documentation This package adds supplemental documentation for httrack and webhttrack as a browsable html documentation",
+    "install": "httrack-doc",
+    "size": "974 KB"
+   },
+   {
+    "binary": "libhttrack-dev",
+    "desc": "Httrack website copier includes and development files This package adds supplemental files for using the httrack website copier library",
+    "install": "libhttrack-dev",
+    "size": "374 KB"
+   },
+   {
+    "binary": "libhttrack2",
+    "desc": "Httrack website copier library This package is the library part of httrack, website copier and mirroring utility",
+    "install": "libhttrack2",
+    "size": "725 KB"
+   },
+   {
+    "binary": "proxytrack",
+    "desc": "Build HTTP Caches using archived websites copied by HTTrack ProxyTrack is a simple proxy server aimed to deliver content archived by HTTrack sessions. It can aggregate multiple download caches, for direct use (through any browser) or as an upstream cache slave server. This proxy can handle HTTP/1.1 proxy connections, and is able to reply to ICPv2 requests for an efficient integration within other cache servers, such as Squid. It can also handle transparent HTTP requests to allow cached live connections inside an offline network. Proxy to serve content archived by httrack website copier",
+    "install": "proxytrack",
+    "size": "160 KB"
+   },
+   {
+    "binary": "webhttrack",
+    "desc": "Copy websites to your computer, httrack with a Web interface WebHTTrack is an offline browser utility, allowing you to download a World Wide website from the Internet to a local directory, building recursively all directories, getting html, images, and other files from the server to your computer, using a step-by-step web interface. WebHTTrack arranges the original site’s relative link-structure. Simply open a page of the “mirrored” website in your browser, and you can browse the site from link to link, as if you were viewing it online. HTTrack can also update an existing mirrored site, and re",
+    "install": "webhttrack",
+    "size": "129 KB"
+   },
+   {
+    "binary": "webhttrack-common",
+    "desc": "Webhttrack common files This package is the common files of webhttrack, website copier and mirroring utility Updated on: 2026-Jun-17",
+    "install": "webhttrack-common",
+    "size": "1.27 MB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "iaxflood": {
+  "tool": "iaxflood",
+  "title": "iaxflood",
+  "description": "VoIP flooder tool A UDP Inter-Asterisk_eXchange (i.e. IAX) packet was captured from an IAX channel between two Asterisk IP PBX’s. The content of that packet is the source of the payload for the attack embodied by this tool. While the IAX protocol header might not match the Asterisk PBX you’ll attack with this tool, it may require more processing on the part of the PBX than a simple udpflood without any payload that even resembles an IAX payload. root@kali:~# iaxflood -h usage: iaxflood sourcename destinationname numpackets Updated on: 2026-Mar-02",
+  "usage": [
+   {
+    "binary": "iaxflood",
+    "parts": [
+     [
+      "p",
+      "Flood the VoIP server from the source ( 192.168.1.202 ) to the destination ( 192.168.1.1 ) by sending 500 packets ( 500 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# iaxflood 192.168.1.202 192.168.1.1 500\nWill flood port 4569 from port 4569 500 times\nWe have IP_HDRINCL"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "iaxflood",
+    "desc": "VoIP flooder tool A UDP Inter-Asterisk_eXchange (i.e. IAX) packet was captured from an IAX channel between two Asterisk IP PBX’s. The content of that packet is the source of the payload for the attack embodied by this tool. While the IAX protocol header might not match the Asterisk PBX you’ll attack with this tool, it may require more processing on the part of the PBX than a simple udpflood without any payload that even resembles an IAX payload. root@kali:~# iaxflood -h usage: iaxflood sourcename destinationname numpackets Updated on: 2026-Mar-02",
+    "install": "iaxflood",
+    "size": "25 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "intrace": {
+  "tool": "intrace",
+  "title": "intrace",
+  "description": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/06/17 10:57:19.601877 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Jun-17",
+  "usage": [
+   {
+    "binary": "intrace",
+    "parts": [
+     [
+      "p",
+      "Run a trace to the target host ( -h www.example.com ) using port 80 ( -p 80 ) with a packet size of 4 bytes ( -s 4 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# intrace -h www.example.com -p 80 -s 4\nInTrace 1.5 -- R: 93.184.216.119/80 (80) L: 192.168.1.130/51654\nPayload Size: 4 bytes, Seq: 0x0d6dbb02, Ack: 0x8605bff0\nStatus: Packets sent #8\n\n  #  [src addr]         [icmp src addr]    [pkt type]\n 1.  [192.168.1.1    ]  [93.184.216.119 ]  [ICMP_TIMXCEED]\n 2.  [192.168.0.1    ]  [93.184.216.119 ]  [ICMP_TIMXCEED]\n 3.  [  ---          ]  [  ---          ]  [NO REPLY]\n 4.  [64.59.184.185  ]  [93.184.216.119 ]  [ICMP_TIMXCEED]\n 5.  [66.163.70.25   ]  [93.184.216.119 ]  [ICMP_TIMXCEED]\n 6.  [66.163.64.150  ]  [93.184.216.119 ]  [ICMP_TIMXCEED]\n 7.  [66.163.75.117  ]  [93.184.216.119 ]  [ICMP_TIMXCEED]\n 8.  [206.223.119.59 ]  [93.184.216.119 ]  [ICMP_TIMXCEED]"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "intrace",
+    "desc": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/06/17 10:57:19.601877 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Jun-17",
+    "install": "intrace",
+    "size": "52 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "inviteflood": {
+  "tool": "inviteflood",
+  "title": "inviteflood",
+  "description": "SIP/SDP INVITE message flooding over UDP/IP A tool to perform SIP/SDP INVITE message flooding over UDP/IP. It was tested on a Linux Red Hat Fedora Core 4 platform (Pentium IV, 2.5 GHz), but it is expected this tool will successfully build and execute on a variety of Linux distributions. root@kali:~# inviteflood -h inviteflood - Version 2.0 June 09, 2006 Usage: Mandatory - interface (e.g. eth0) target user (e.g. \"\" or john.doe or 5000 or \"1+210-555-1212\") target domain (e.g. enterprise.com or an IPv4 address) IPv4 addr of flood target (ddd.ddd.ddd.ddd) flood stage (i.e. number of packets) Optio",
+  "usage": [
+   {
+    "binary": "inviteflood",
+    "parts": [
+     [
+      "p",
+      "Using the eth0 interface ( eth0 ) and the provided user ( 5000 ), flood the target domain ( example.local ) and flood target ( 192.168.1.5 ) using 100 packets ( 100 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# inviteflood eth0 5000 example.local 192.168.1.5 100\n\ninviteflood - Version 2.0\n              June 09, 2006\n\nsource IPv4 addr:port   = 192.168.1.202:9\ndest   IPv4 addr:port   = 192.168.1.5:5060\ntargeted UA             = [email protected]\n\nFlooding destination with 100 packets\nsent: 100"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "inviteflood",
+    "desc": "SIP/SDP INVITE message flooding over UDP/IP A tool to perform SIP/SDP INVITE message flooding over UDP/IP. It was tested on a Linux Red Hat Fedora Core 4 platform (Pentium IV, 2.5 GHz), but it is expected this tool will successfully build and execute on a variety of Linux distributions. root@kali:~# inviteflood -h inviteflood - Version 2.0 June 09, 2006 Usage: Mandatory - interface (e.g. eth0) target user (e.g. \"\" or john.doe or 5000 or \"1+210-555-1212\") target domain (e.g. enterprise.com or an IPv4 address) IPv4 addr of flood target (ddd.ddd.ddd.ddd) flood stage (i.e. number of packets) Optio",
+    "install": "inviteflood",
+    "size": "33 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "iputils-arping": {
+  "tool": "iputils-arping",
+  "title": "iputils-arping",
+  "description": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "arping",
+    "desc": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
+    "install": "arping",
+    "size": "90 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "macchanger": {
+  "tool": "macchanger",
+  "title": "macchanger",
+  "description": "Utility for manipulating the MAC address of network interfaces GNU MAC Changer is an utility that makes the maniputation of MAC addresses of network interfaces easier. MAC addresses are unique identifiers on networks, they only need to be unique, they can be changed on most network hardware. MAC addresses have started to be abused by unscrupulous marketing firms, government agencies, and others to provide an easy way to track a computer across multiple networks. By changing the MAC address regularly, this kind of tracking can be thwarted, or at least made a lot more difficult. Features:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "macchanger",
+    "desc": "Utility for manipulating the MAC address of network interfaces GNU MAC Changer is an utility that makes the maniputation of MAC addresses of network interfaces easier. MAC addresses are unique identifiers on networks, they only need to be unique, they can be changed on most network hardware. MAC addresses have started to be abused by unscrupulous marketing firms, government agencies, and others to provide an easy way to track a computer across multiple networks. By changing the MAC address regularly, this kind of tracking can be thwarted, or at least made a lot more difficult. Features:",
+    "install": "macchanger",
+    "size": "641 KB"
+   }
+  ],
+  "attack_category": "Defense Evasion"
+ },
+ "mdk3": {
+  "tool": "mdk3",
+  "title": "mdk3",
+  "description": "Wireless attack tool for IEEE 802.11 networks MDK is a proof-of-concept tool to exploit common IEEE 802.11 (Wi-Fi) protocol weaknesses. Features: Wireless attack tool for IEEE 802.11 networks",
+  "usage": [
+   {
+    "binary": "mdk3",
+    "parts": [
+     [
+      "p",
+      "Use the wireless interface ( wlan0 ) to run the Authentication DoS mode test ( a ):"
+     ],
+     [
+      "code",
+      "root@kali:~# mdk3 wlan0 a\n\nTrying to get a new target AP...\nAP 9C:D3:6D:B8:FF:56 is responding!\nConnecting Client: 00:00:00:00:00:00 to target AP: 9C:D3:6D:B8:FF:56\nConnecting Client: 00:00:00:00:00:00 to target AP: 9C:D3:6D:B8:FF:56\nAP 9C:D3:6D:B8:FF:56 seems to be INVULNERABLE!\nDevice is still responding with   500 clients connected!\nTrying to get a new target AP...\nAP E0:3F:49:6A:57:78 is responding!\nConnecting Client: 00:00:00:00:00:00 to target AP: E0:3F:49:6A:57:78\nAP E0:3F:49:6A:57:78 seems to be INVULNERABLE!"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "mdk3",
+    "desc": "Wireless attack tool for IEEE 802.11 networks MDK is a proof-of-concept tool to exploit common IEEE 802.11 (Wi-Fi) protocol weaknesses. Features: Wireless attack tool for IEEE 802.11 networks",
+    "install": "mdk3",
+    "size": "174 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "merge-router-config.pl": {
+  "tool": "merge-router-config.pl",
+  "title": "merge-router-config.pl",
+  "description": "Copies Cisco configs via SNMP This package copies configuration files from Cisco devices running SNMP. root@kali:~# copy-router-config.pl -h ###################################################### # Copy Cisco Router config - Using SNMP # Hacked up by muts - [email protected] ####################################################### Usage : ./copy-copy-config.pl <router-ip> <tftp-serverip> <community> Make sure a TFTP server is set up, prefferably running from /tmp ! merge-router-config.pl root@kali:~# merge-router-config.pl -h ###################################################### # Merge Cisco ",
+  "usage": [
+   {
+    "binary": "copy-router-config",
+    "parts": [
+     [
+      "p",
+      "Copy the config from the router ( 192.168.1.1 ) to the TFTP server ( 192.168.1.15 ), authenticating with the community string ( private ):"
+     ],
+     [
+      "code",
+      "root@kali:~# copy-router-config.pl 192.168.1.1 192.168.1.15 private"
+     ]
+    ]
+   },
+   {
+    "binary": "merge-router-config",
+    "parts": [
+     [
+      "p",
+      "Merge the config with the router ( 192.168.1.1 ), copying from the TFTP server ( 192.168.1.15 ), using the community string ( private ):"
+     ],
+     [
+      "code",
+      "root@kali:~# merge-router-config.pl 192.168.1.1 192.168.1.15 private"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "copy-router-config",
+    "desc": "Copies Cisco configs via SNMP This package copies configuration files from Cisco devices running SNMP. root@kali:~# copy-router-config.pl -h ###################################################### # Copy Cisco Router config - Using SNMP # Hacked up by muts - [email protected] ####################################################### Usage : ./copy-copy-config.pl <router-ip> <tftp-serverip> <community> Make sure a TFTP server is set up, prefferably running from /tmp ! merge-router-config.pl root@kali:~# merge-router-config.pl -h ###################################################### # Merge Cisco ",
+    "install": "copy-router-config",
+    "size": "12 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "mitm6": {
+  "tool": "mitm6",
+  "title": "mitm6",
+  "description": "Pwning IPv4 via IPv6 mitm6 is a pentesting tool that exploits the default configuration of Windows to take over the default DNS server. It does this by replying to DHCPv6 messages, providing victims with a link-local IPv6 address and setting the attackers host as default DNS server. root@kali:~# mitm6 -h usage: mitm6 [-h] [-i INTERFACE] [-l LOCALDOMAIN] [-4 ADDRESS] [-6 ADDRESS] [-m ADDRESS] [-a] [-r TARGET] [-v] [--debug] [-d DOMAIN] [-b DOMAIN] [-hw DOMAIN] [-hb DOMAIN] [--ignore-nofqdn] mitm6 - pwning IPv4 via IPv6 For help or reporting issues, visit https://github.com/dirkjanm/mitm6 option",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "mitm6",
+    "desc": "Pwning IPv4 via IPv6 mitm6 is a pentesting tool that exploits the default configuration of Windows to take over the default DNS server. It does this by replying to DHCPv6 messages, providing victims with a link-local IPv6 address and setting the attackers host as default DNS server. root@kali:~# mitm6 -h usage: mitm6 [-h] [-i INTERFACE] [-l LOCALDOMAIN] [-4 ADDRESS] [-6 ADDRESS] [-m ADDRESS] [-a] [-r TARGET] [-v] [--debug] [-d DOMAIN] [-b DOMAIN] [-hw DOMAIN] [-hb DOMAIN] [--ignore-nofqdn] mitm6 - pwning IPv4 via IPv6 For help or reporting issues, visit https://github.com/dirkjanm/mitm6 option",
+    "install": "mitm6",
+    "size": "40 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "mitmproxy": {
+  "tool": "mitmproxy",
+  "title": "mitmproxy",
+  "description": "SSL-capable man-in-the-middle HTTP proxy mitmproxy is an interactive man-in-the-middle proxy for HTTP and HTTPS. It provides a console interface that allows traffic flows to be inspected and edited on the fly. Also shipped is mitmdump, the command-line version of mitmproxy, with the same functionality but without the frills. Think tcpdump for HTTP.",
+  "usage": [
+   {
+    "binary": "mitmproxy",
+    "parts": [
+     [
+      "p",
+      "Run mitmproxy listening (p) on port2139."
+     ],
+     [
+      "code",
+      "root@kali:~# mitmproxy -p 2139"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "mitmproxy",
+    "desc": "SSL-capable man-in-the-middle HTTP proxy mitmproxy is an interactive man-in-the-middle proxy for HTTP and HTTPS. It provides a console interface that allows traffic flows to be inspected and edited on the fly. Also shipped is mitmdump, the command-line version of mitmproxy, with the same functionality but without the frills. Think tcpdump for HTTP.",
+    "install": "mitmproxy",
+    "size": "4.96 MB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "netdiscover": {
+  "tool": "netdiscover",
+  "title": "netdiscover",
+  "description": "Active/passive network address scanner using ARP requests Netdiscover is an active/passive address reconnaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks. Built on top of libnet and libpcap, it can passively detect online hosts, or search for them, by actively sending ARP requests.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "netdiscover",
+    "desc": "Active/passive network address scanner using ARP requests Netdiscover is an active/passive address reconnaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks. Built on top of libnet and libpcap, it can passively detect online hosts, or search for them, by actively sending ARP requests.",
+    "install": "netdiscover",
+    "size": "3.08 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "netmask": {
+  "tool": "netmask",
+  "title": "netmask",
+  "description": "Helps determine network masks This is a tiny program handy if you work with firewalls or routers occasionally (possibly using this as a helper for shell scripts). It can determine the smallest set of network masks to specify a range of hosts. It can also convert between common IP netmask and address formats. A netmask generation and conversion program",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "netmask",
+    "desc": "Helps determine network masks This is a tiny program handy if you work with firewalls or routers occasionally (possibly using this as a helper for shell scripts). It can determine the smallest set of network masks to specify a range of hosts. It can also convert between common IP netmask and address formats. A netmask generation and conversion program",
+    "install": "netmask",
+    "size": "74 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "netsniff-ng": {
+  "tool": "netsniff-ng",
+  "title": "netsniff-ng",
+  "description": "Linux network packet sniffer toolkit netsniff-ng is a high performance Linux network sniffer for packet inspection. It can be used for protocol analysis, reverse engineering or network debugging. The gain of performance is reached by ‘zero-copy’ mechanisms, so that the kernel does not need to copy packets from kernelspace to userspace. netsniff-ng toolkit currently consists of the following utilities:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "netsniff-ng",
+    "desc": "Linux network packet sniffer toolkit netsniff-ng is a high performance Linux network sniffer for packet inspection. It can be used for protocol analysis, reverse engineering or network debugging. The gain of performance is reached by ‘zero-copy’ mechanisms, so that the kernel does not need to copy packets from kernelspace to userspace. netsniff-ng toolkit currently consists of the following utilities:",
+    "install": "netsniff-ng",
+    "size": "2.08 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "ohrwurm": {
+  "tool": "ohrwurm",
+  "title": "ohrwurm",
+  "description": "RTP fuzzer ohrwurm is a small and simple RTP fuzzer that has been successfully tested on a small number of SIP phones. Features: - reads SIP messages to get information of the RTP port numbers - reading SIP can be omitted by providing the RTP port numbers, sothat any RTP traffic can be fuzzed - RTCP traffic can be suppressed to avoid that codecs - learn about the \"noisy line\" - special care is taken to break RTP handling itself - the RTP payload is fuzzed with a constant BER - the BER is configurable - requires arpspoof from dsniff to do the MITM attack - requires both phones to be in a switch",
+  "usage": [
+   {
+    "binary": "ohrwurm",
+    "parts": [
+     [
+      "p",
+      "Fuzz two hosts ( -a 192.168.1.123 -b 192.168.1.15 ), both on port 6970 ( -A 6970 -B 6970 ), through interface eth0 ( -i eth0 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# ohrwurm -a 192.168.1.123 -b 192.168.1.15 -A 6970 -B 6970 -i eth0\nohrwurm-0.1\nusing random seed 2978455466"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "ohrwurm",
+    "desc": "RTP fuzzer ohrwurm is a small and simple RTP fuzzer that has been successfully tested on a small number of SIP phones. Features: - reads SIP messages to get information of the RTP port numbers - reading SIP can be omitted by providing the RTP port numbers, sothat any RTP traffic can be fuzzed - RTCP traffic can be suppressed to avoid that codecs - learn about the \"noisy line\" - special care is taken to break RTP handling itself - the RTP payload is fuzzed with a constant BER - the BER is configurable - requires arpspoof from dsniff to do the MITM attack - requires both phones to be in a switch",
+    "install": "ohrwurm",
+    "size": "33 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "p0f": {
+  "tool": "p0f",
+  "title": "p0f",
+  "description": "Passive OS fingerprinting tool p0f performs passive OS detection based on SYN packets. Unlike nmap and queso, p0f does recognition without sending any data. Additionally, it is able to determine the distance to the remote host, and can be used to determine the structure of a foreign or local network. When running on the gateway of a network it is able to gather huge amounts of data and provide useful statistics. On a user-end computer it could be used as powerful IDS add-on. p0f supports full tcpdump-style filtering expressions, and has an extensible and detailed fingerprinting database. Ident",
+  "usage": [
+   {
+    "binary": "p0f",
+    "parts": [
+     [
+      "p",
+      "Use interface eth0 ( -i eth0 ) in promiscuous mode ( -p ), saving the results to a file ( -o /tmp/p0f.log ):"
+     ],
+     [
+      "code",
+      "root@kali:~# p0f -i eth0 -p -o /tmp/p0f.log\n-- p0f 3.09b by Michal Zalewski <[email protected]> ---\n\n[+] Closed 1 file descriptor.\n[+] Loaded 322 signatures from '/etc/p0f/p0f.fp'.\n[+] Intercepting traffic on interface 'eth0'.\n[+] Default packet filtering configured [+VLAN].\n[+] Log file '/tmp/p0f.log' opened for writing.\n[+] Entered main event loop.\n\n.-[ 192.168.1.15/35834 -> 173.246.39.185/873 (syn) ]-\n|\n| client   = 192.168.1.15/35834\n| os       = Linux 3.11 and newer\n| dist     = 0\n| params   = none\n| raw_sig  = 4:64+0:0:1460:mss*20,7:mss,sok,ts,nop,ws:df,id+:0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "p0f",
+    "desc": "Passive OS fingerprinting tool p0f performs passive OS detection based on SYN packets. Unlike nmap and queso, p0f does recognition without sending any data. Additionally, it is able to determine the distance to the remote host, and can be used to determine the structure of a foreign or local network. When running on the gateway of a network it is able to gather huge amounts of data and provide useful statistics. On a user-end computer it could be used as powerful IDS add-on. p0f supports full tcpdump-style filtering expressions, and has an extensible and detailed fingerprinting database. Ident",
+    "install": "p0f",
+    "size": "218 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "protos-sip": {
+  "tool": "protos-sip",
+  "title": "protos-sip",
+  "description": "SIP test suite The purpose of this test-suite is to evaluate implementation level security and robustness of Session Initiation Protocol (SIP) implementations. root@kali:~# protos-sip -h Usage java -jar <jarfile>.jar [ [OPTIONS] | -touri <SIP-URI> ] -touri <addr> Recipient of the request Example: <addr> : [email protected] -fromuri <addr> Initiator of the request Default: user@kali -sendto <domain> Send packets to <domain> instead of domainname of -touri -callid <callid> Call id to start test-case call ids from Default: 0 -dport <port> Portnumber to send packets on host. Default: 5060 -lport <",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "protos-sip",
+    "desc": "SIP test suite The purpose of this test-suite is to evaluate implementation level security and robustness of Session Initiation Protocol (SIP) implementations. root@kali:~# protos-sip -h Usage java -jar <jarfile>.jar [ [OPTIONS] | -touri <SIP-URI> ] -touri <addr> Recipient of the request Example: <addr> : [email protected] -fromuri <addr> Initiator of the request Default: user@kali -sendto <domain> Send packets to <domain> instead of domainname of -touri -callid <callid> Call id to start test-case call ids from Default: 0 -dport <port> Portnumber to send packets on host. Default: 5060 -lport <",
+    "install": "protos-sip",
+    "size": "2.15 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "rtpbreak": {
+  "tool": "rtpbreak",
+  "title": "rtpbreak",
+  "description": "Detects, reconstructs, and analyzes RTP sessions With rtpbreak you can detect, reconstruct and analyze any RTP session. It doesn’t require the presence of RTCP packets and works independently form the used signaling protocol (SIP, H.323, SCCP, …). The input is a sequence of packets, the output is a set of files you can use as input for other tools (wireshark/tshark, sox, grep/awk/cut/ cat/sed, …). It supports also wireless (AP_DLT_IEEE802_11) networks. root@kali:~# rtpbreak -h Copyright (c) 2007-2008 Dallachiesa Michele <micheleDOTdallachiesaATposteDOTit> rtpbreak v1.3a is free software, cover",
+  "usage": [
+   {
+    "binary": "rtpbreak",
+    "parts": [
+     [
+      "p",
+      "Analyze RTP traffic using interface eth0 ( -i eth0 ), fill in gaps ( -g ), sniff in promiscuous mode ( -m ), and save to the given directory ( -d rtplog ):"
+     ],
+     [
+      "code",
+      "root@kali:~# rtpbreak -i eth0 -g -m -d rtplog\n + rtpbreak v1.3a running here!\n + pid: 10951, date/time: 17/05/2014#13:40:02\n + Configuration\n   + INPUT\n     Packet source: iface 'eth0'\n     Force datalink header length: disabled\n   + OUTPUT\n     Output directory: 'rtplog'\n     RTP raw dumps: enabled\n     RTP pcap dumps: enabled\n     Fill gaps: enabled\n     Dump noise: disabled\n     Logfile: 'rtplog/rtp.0.txt'\n     Logging to stdout: enabled\n     Logging to syslog: disabled\n     Be verbose: disabled\n   + SELECT\n     Sniff packets in promisc mode: enabled\n     Add pcap filter: disabled\n     Expecting even destination UDP port: disabled\n     Expecting unprivileged source/destination UDP ports: disabled\n     Expecting RTP payload type: any\n     Expecting RTP payload length: any\n     Packet timeout: 10.00 seconds\n     Pattern timeout: 0.25 seconds\n     Pattern packets: 5\n   + EXECUTION\n     Running as user/group: root/root\n     Running daemonized: disabled\n * You can dump stats sending me a SIGUSR2 signal\n * Reading packets..."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "rtpbreak",
+    "desc": "Detects, reconstructs, and analyzes RTP sessions With rtpbreak you can detect, reconstruct and analyze any RTP session. It doesn’t require the presence of RTCP packets and works independently form the used signaling protocol (SIP, H.323, SCCP, …). The input is a sequence of packets, the output is a set of files you can use as input for other tools (wireshark/tshark, sox, grep/awk/cut/ cat/sed, …). It supports also wireless (AP_DLT_IEEE802_11) networks. root@kali:~# rtpbreak -h Copyright (c) 2007-2008 Dallachiesa Michele <micheleDOTdallachiesaATposteDOTit> rtpbreak v1.3a is free software, cover",
+    "install": "rtpbreak",
+    "size": "92 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "rtpflood": {
+  "tool": "rtpflood",
+  "title": "rtpflood",
+  "description": "Tool to flood any RTP device A command line tool used to flood any device that is processing RTP. root@kali:~# rtpflood -h usage: rtpflood sourcename destinationname srcport destport numpackets seqno timestamp SSID Updated on: 2026-Mar-02",
+  "usage": [
+   {
+    "binary": "rtpflood",
+    "parts": [
+     [
+      "p",
+      "Flood from the source IP ( 192.168.1.202 ) to the target IP ( 192.168.1.1 ) with source port 5060 ( 5060 ) and destination port 5061 ( 5061 ) using 1000 packets ( 1000 ) with the specified sequence number ( 3 ), timestamp ( 123456789 ), and SSID ( kali ):"
+     ],
+     [
+      "code",
+      "root@kali:~# rtpflood 192.168.1.202 192.168.1.1 5060 5061 1000 3 123456789 kali\n\nWill flood port 5061 from port 5060 1000 times\nUsing sequence_number 3 timestamp 123456789 SSID 0\n\nWe have IP_HDRINCL\n\nNumber of Packets sent:\n\nSent 289 160 286"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "rtpflood",
+    "desc": "Tool to flood any RTP device A command line tool used to flood any device that is processing RTP. root@kali:~# rtpflood -h usage: rtpflood sourcename destinationname srcport destport numpackets seqno timestamp SSID Updated on: 2026-Mar-02",
+    "install": "rtpflood",
+    "size": "25 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "rtpinsertsound": {
+  "tool": "rtpinsertsound",
+  "title": "rtpinsertsound",
+  "description": "Inserts audio into a specified stream A tool to insert audio into a specified audio (i.e. RTP) stream was created in the August - September 2006 timeframe. The tool is named rtpinsertsound. It was tested on a Linux Red Hat Fedora Core 4 platform (Pentium IV, 2.5 GHz), but it is expected this tool will successfully build and execute on a variety of Linux distributions. root@kali:~# rtpinsertsound -h rtpinsertsound - Version 2.0 October 10, 2006 Usage: Mandatory - pathname of file whose audio is to be mixed into the targeted live audio stream. If the file extension is .wav, then the file must be",
+  "usage": [
+   {
+    "binary": "rtpinsertsound",
+    "parts": [
+     [
+      "p",
+      "Insert an audio file ( /usr/share/rtpinsertsound/stapler.wav ) through the network and use verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# rtpinsertsound /usr/share/rtpinsertsound/stapler.wav -v\nTargeting interface eth0\nlibfindrtp_find_rtp(): using pcap filter \"ip\"."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "rtpinsertsound",
+    "desc": "Inserts audio into a specified stream A tool to insert audio into a specified audio (i.e. RTP) stream was created in the August - September 2006 timeframe. The tool is named rtpinsertsound. It was tested on a Linux Red Hat Fedora Core 4 platform (Pentium IV, 2.5 GHz), but it is expected this tool will successfully build and execute on a variety of Linux distributions. root@kali:~# rtpinsertsound -h rtpinsertsound - Version 2.0 October 10, 2006 Usage: Mandatory - pathname of file whose audio is to be mixed into the targeted live audio stream. If the file extension is .wav, then the file must be",
+    "install": "rtpinsertsound",
+    "size": "239 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "rtpmixsound": {
+  "tool": "rtpmixsound",
+  "title": "rtpmixsound",
+  "description": "Mixes pre-recorded audio in real-time A tool to mix pre-recorded audio in real-time with the audio (i.e. RTP) in the specified target audio stream. root@kali:~# rtpmixsound -h rtpmixsound - Version 3.0 January 03, 2007 Usage: Mandatory - pathname of file whose audio is to be mixed into the targeted live audio stream. If the file extension is .wav, then the file must be a standard Microsoft RIFF formatted WAVE file meeting these constraints: 1) header 'chunks' must be in one of two sequences: RIFF, fmt, fact, data or RIFF, fmt, data 2) Compression Code = 1 (PCM/Uncompressed) 3) Number of Channe",
+  "usage": [
+   {
+    "binary": "rtpmixsound",
+    "parts": [
+     [
+      "p",
+      "Mix the given audio file ( /usr/share/rtpmixsound/stapler.wav ) through the network displaying verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# rtpmixsound /usr/share/rtpmixsound/stapler.wav -v\nTargeting interface eth0\nlibfindrtp_find_rtp(): using pcap filter \"ip\".\nState: ip_a ==  | port_a == 0 | ip_b ==  | port_b == 0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "rtpmixsound",
+    "desc": "Mixes pre-recorded audio in real-time A tool to mix pre-recorded audio in real-time with the audio (i.e. RTP) in the specified target audio stream. root@kali:~# rtpmixsound -h rtpmixsound - Version 3.0 January 03, 2007 Usage: Mandatory - pathname of file whose audio is to be mixed into the targeted live audio stream. If the file extension is .wav, then the file must be a standard Microsoft RIFF formatted WAVE file meeting these constraints: 1) header 'chunks' must be in one of two sequences: RIFF, fmt, fact, data or RIFF, fmt, data 2) Compression Code = 1 (PCM/Uncompressed) 3) Number of Channe",
+    "install": "rtpmixsound",
+    "size": "231 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "sara": {
+  "tool": "sara",
+  "title": "sara",
+  "description": "RouterOS Security Inspector This package contains an autonomous RouterOS configuration analyzer for finding security issues on MikroTik hardware. root@kali:~# sara -h _____ / ___/____ __________ _ \\__ \\/ __ `/ ___/ __ `/ ___/ / /_/ / / / /_/ / /____/\\__,_/_/ \\__,_/ Sara: MikroTik RouterOS Security Inspector Developer: Magama Bazarov (Caster) Contact: [email protected] Version: 1.3.0 Documentation & Usage: https://github.com/caster0x00/Sara usage: sara [-h] {audit,cve} ... positional arguments: {audit,cve} audit Run RouterOS security configuration audit cve Run RouterOS CVE audit (live or by ve",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sara",
+    "desc": "RouterOS Security Inspector This package contains an autonomous RouterOS configuration analyzer for finding security issues on MikroTik hardware. root@kali:~# sara -h _____ / ___/____ __________ _ \\__ \\/ __ `/ ___/ __ `/ ___/ / /_/ / / / /_/ / /____/\\__,_/_/ \\__,_/ Sara: MikroTik RouterOS Security Inspector Developer: Magama Bazarov (Caster) Contact: [email protected] Version: 1.3.0 Documentation & Usage: https://github.com/caster0x00/Sara usage: sara [-h] {audit,cve} ... positional arguments: {audit,cve} audit Run RouterOS security configuration audit cve Run RouterOS CVE audit (live or by ve",
+    "install": "sara",
+    "size": "74 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "scapy": {
+  "tool": "scapy",
+  "title": "scapy",
+  "description": "Packet generator/sniffer and network scanner/discovery (Python 3) Scapy is a powerful interactive packet manipulation tool, packet generator, network scanner, network discovery, packet sniffer, etc. It can for the moment replace hping, 85% of nmap, arpspoof, arp-sk, arping, tcpdump, tethereal, p0f, …. In scapy you define a set of packets, then it sends them, receives answers, matches requests with answers and returns a list of packet couples (request, answer) and a list of unmatched packets. This has the big advantage over tools like nmap or hping that an answer is not reduced to (open/closed/",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "python3-scapy",
+    "desc": "Packet generator/sniffer and network scanner/discovery (Python 3) Scapy is a powerful interactive packet manipulation tool, packet generator, network scanner, network discovery, packet sniffer, etc. It can for the moment replace hping, 85% of nmap, arpspoof, arp-sk, arping, tcpdump, tethereal, p0f, …. In scapy you define a set of packets, then it sends them, receives answers, matches requests with answers and returns a list of packet couples (request, answer) and a list of unmatched packets. This has the big advantage over tools like nmap or hping that an answer is not reduced to (open/closed/",
+    "install": "python3-scapy",
+    "size": "9.11 MB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "siege": {
+  "tool": "siege",
+  "title": "siege",
+  "description": "HTTP regression testing and benchmarking utility Siege is an regression test and benchmark utility. It can stress test a single URL with a user defined number of simulated users, or it can read many URLs into memory and stress them simultaneously. The program reports the total number of hits recorded, bytes transferred, response time, concurrency, and return status. Siege supports HTTP/1.0 and 1.1 protocols, the GET and POST directives, cookies, transaction logging, and basic authentication. Its features are configurable on a per user basis. Note: this package contains siege with HTTPS support",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "siege",
+    "desc": "HTTP regression testing and benchmarking utility Siege is an regression test and benchmark utility. It can stress test a single URL with a user defined number of simulated users, or it can read many URLs into memory and stress them simultaneously. The program reports the total number of hits recorded, bytes transferred, response time, concurrency, and return status. Siege supports HTTP/1.0 and 1.1 protocols, the GET and POST directives, cookies, transaction logging, and basic authentication. Its features are configurable on a per user basis. Note: this package contains siege with HTTPS support",
+    "install": "siege",
+    "size": "284 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "siparmyknife": {
+  "tool": "siparmyknife",
+  "title": "siparmyknife",
+  "description": "SIP fuzzing tool SIP Army Knife is a fuzzer that searches for cross site scripting, SQL injection, log injection, format strings, buffer overflows, and more. root@kali:~# siparmyknife --help THIS IS THERE TO PUT THE HELP REFERENCE Updated on: 2026-Mar-02",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "siparmyknife",
+    "desc": "SIP fuzzing tool SIP Army Knife is a fuzzer that searches for cross site scripting, SQL injection, log injection, format strings, buffer overflows, and more. root@kali:~# siparmyknife --help THIS IS THERE TO PUT THE HELP REFERENCE Updated on: 2026-Mar-02",
+    "install": "siparmyknife",
+    "size": "31 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "sipp": {
+  "tool": "sipp",
+  "title": "sipp",
+  "description": "Traffic generator for the SIP protocol SIPp is a free Open Source test tool / traffic generator for the SIP protocol. It includes a few basic SipStone user agent scenarios (UAC and UAS) and establishes and releases multiple calls with the INVITE and BYE methods. It can also reads custom XML scenario files describing from very simple to complex call flows. It features the dynamic display of statistics about running tests (call rate, round trip delay, and message statistics), periodic CSV statistics dumps, TCP and UDP over multiple sockets or multiplexed with retransmission management and dynami",
+  "usage": [
+   {
+    "binary": "sipp",
+    "parts": [
+     [
+      "p",
+      "Run sipp using the embedded server ( -sn uas ) scenario:"
+     ],
+     [
+      "code",
+      "root@kali:~# sipp -sn uas\nWarning: open file limit > FD_SETSIZE; limiting max. # of open files to FD_SETSIZE = 1024\n------------------------------ Scenario Screen -------- [1-9]: Change Screen --\n  Port   Total-time  Total-calls  Transport\n  5060      11.94 s            0  UDP\n\n  0 new calls during 0.926 s period      1 ms scheduler resolution\n  0 calls                                Peak was 0 calls, after 0 s\n  0 Running, 2 Paused, 2 Woken up\n  0 dead call msg (discarded)\n  3 open sockets\n\n                                 Messages  Retrans   Timeout   Unexpected-Msg\n  ----------> INVITE             0         0         0         0\n\n  <---------- 180                0         0\n  <---------- 200                0         0         0\n  ----------> ACK         E-RTD1 0         0         0         0\n\n  ----------> BYE                0         0         0         0\n  <---------- 200                0         0\n  [   4000ms] Pause              0                             0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sipp",
+    "desc": "Traffic generator for the SIP protocol SIPp is a free Open Source test tool / traffic generator for the SIP protocol. It includes a few basic SipStone user agent scenarios (UAC and UAS) and establishes and releases multiple calls with the INVITE and BYE methods. It can also reads custom XML scenario files describing from very simple to complex call flows. It features the dynamic display of statistics about running tests (call rate, round trip delay, and message statistics), periodic CSV statistics dumps, TCP and UDP over multiple sockets or multiplexed with retransmission management and dynami",
+    "install": "sipp",
+    "size": "735 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "sippts": {
+  "tool": "sippts",
+  "title": "sippts",
+  "description": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts --help usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⠤⠶⠒⠛⠉⠉⠉⠉⠀⠀⢀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣬⣍⣙⣳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠴⠒⠋⠉⠀⠀⠀",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sippts",
+    "desc": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts --help usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⠤⠶⠒⠛⠉⠉⠉⠉⠀⠀⢀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣬⣍⣙⣳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠴⠒⠋⠉⠀⠀⠀",
+    "install": "sippts",
+    "size": "762 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "sipsak": {
+  "tool": "sipsak",
+  "title": "sipsak",
+  "description": "SIP Swiss army knife sipsak is a small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications. It can be used for some simple tests on SIP applications and devices. A utility for various tests on sip servers and user agents",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sipsak",
+    "desc": "SIP Swiss army knife sipsak is a small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications. It can be used for some simple tests on SIP applications and devices. A utility for various tests on sip servers and user agents",
+    "install": "sipsak",
+    "size": "133 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "slowhttptest": {
+  "tool": "slowhttptest",
+  "title": "slowhttptest",
+  "description": "Application layer Denial of Service attacks simulation tool SlowHTTPTest is a highly configurable tool that simulates some application layer Denial of Service attacks. It implements most common low-bandwidth application layer Denial of Service attacks, such as",
+  "usage": [
+   {
+    "binary": "slowhttptest",
+    "parts": [
+     [
+      "p",
+      "Use 1000 connections ( -c 1000 ) with the Slowloris mode ( -H ), and generate statistics ( -g> with the output file name (- o slowhttp ). Use 10 seconds to wait for data ( -i 10 ), 200 connections ( -r 200 ) with GET requests ( -t GET ) against the target URL ( -u http://192.168.1.202/index.php ) with a maximum of length of 24 bytes ( -x 24) and a 3 second time out ( -p 3 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# slowhttptest -c 1000 -H -g -o slowhttp -i 10 -r 200 -t GET -u http://192.168.1.202/index.php -x 24 -p 3\nSat May 17 10:45:26 2014:\nSat May 17 10:45:26 2014:\n    slowhttptest version 1.6\n - https://code.google.com/p/slowhttptest/ -\ntest type:                        SLOW HEADERS\nnumber of connections:            1000\nURL:                              http://192.168.1.202/index.php\nverb:                             GET\nContent-Length header value:      4096\nfollow up data max size:          52\ninterval between follow up data:  10 seconds\nconnections per seconds:          200\nprobe connection timeout:         3 seconds\ntest duration:                    240 seconds\nusing proxy:                      no proxy\n\nSat May 17 10:45:26 2014:\nslow HTTP test status on 0th second:\n\ninitializing:        0\npending:             1\nconnected:           0\nerror:               0\nclosed:              0\nservice available:   YES"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "slowhttptest",
+    "desc": "Application layer Denial of Service attacks simulation tool SlowHTTPTest is a highly configurable tool that simulates some application layer Denial of Service attacks. It implements most common low-bandwidth application layer Denial of Service attacks, such as",
+    "install": "slowhttptest",
+    "size": "89 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "sniffjoke": {
+  "tool": "sniffjoke",
+  "title": "sniffjoke",
+  "description": "Transparent TCP connection scrambler SniffJoke is an application for Linux that handle transparently your TCP connection, delaying, modifyng and inject fake packets inside your transmission, make them almost impossible to be correctly readed by a passive wiretapping technology (IDS or sniffer). root@kali:~# sj-commit-results -h usage: /usr/bin/sj-commit-results options This script is part of SniffJoke autotest USUALLY - an user has not any needings in use this script OPTIONS: -l target location to send remotely -u URL which commit to (both required) sj-iptcpopt-probe root@kali:~# sj-iptcpopt-p",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sniffjoke",
+    "desc": "Transparent TCP connection scrambler SniffJoke is an application for Linux that handle transparently your TCP connection, delaying, modifyng and inject fake packets inside your transmission, make them almost impossible to be correctly readed by a passive wiretapping technology (IDS or sniffer). root@kali:~# sj-commit-results -h usage: /usr/bin/sj-commit-results options This script is part of SniffJoke autotest USUALLY - an user has not any needings in use this script OPTIONS: -l target location to send remotely -u URL which commit to (both required) sj-iptcpopt-probe root@kali:~# sj-iptcpopt-p",
+    "install": "sniffjoke",
+    "size": "518 KB"
+   }
+  ],
+  "attack_category": "Defense Evasion"
+ },
+ "ssldump": {
+  "tool": "ssldump",
+  "title": "ssldump",
+  "description": "SSLv3/TLS network protocol analyzer This program will dump the traffic on a network and analyze it for SSLv3/TLS network traffic, typically used to secure TCP connections. When it identifies this traffic, it decodes the results. When provided with the appropriate keying material, it will also decrypt the connections and display the application data traffic. ssldump is based on tcpdump, a network monitoring and data acquisition tool.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ssldump",
+    "desc": "SSLv3/TLS network protocol analyzer This program will dump the traffic on a network and analyze it for SSLv3/TLS network traffic, typically used to secure TCP connections. When it identifies this traffic, it decodes the results. When provided with the appropriate keying material, it will also decrypt the connections and display the application data traffic. ssldump is based on tcpdump, a network monitoring and data acquisition tool.",
+    "install": "ssldump",
+    "size": "193 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "sslsniff": {
+  "tool": "sslsniff",
+  "title": "sslsniff",
+  "description": "SSL/TLS man-in-the-middle attack tool sslsniff is designed to create man-in-the-middle (MITM) attacks for SSL/TLS connections, and dynamically generates certs for the domains that are being accessed on the fly. The new certificates are constructed in a certificate chain that is signed by any certificate that is provided. sslsniff also supports other attacks like null-prefix or OCSP attacks to achieve silent interceptions of connections when possible. SSL/TLS man-in-the-middle attack tool",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sslsniff",
+    "desc": "SSL/TLS man-in-the-middle attack tool sslsniff is designed to create man-in-the-middle (MITM) attacks for SSL/TLS connections, and dynamically generates certs for the domains that are being accessed on the fly. The new certificates are constructed in a certificate chain that is signed by any certificate that is provided. sslsniff also supports other attacks like null-prefix or OCSP attacks to achieve silent interceptions of connections when possible. SSL/TLS man-in-the-middle attack tool",
+    "install": "sslsniff",
+    "size": "452 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "sslsplit": {
+  "tool": "sslsplit",
+  "title": "sslsplit",
+  "description": "Transparent and scalable SSL/TLS interception SSLsplit is a tool for man-in-the-middle attacks against SSL/TLS encrypted network connections. Connections are transparently intercepted through a network address translation engine and redirected to SSLsplit. SSLsplit terminates SSL/TLS and initiates a new SSL/TLS connection to the original destination address, while logging all data transmitted. SSLsplit is intended to be useful for network forensics and penetration testing. root@kali:~# sslsplit -h Usage: sslsplit [-D] [-f conffile] [-o opt=val] [options...] [proxyspecs...] -f conffile use conf",
+  "usage": [
+   {
+    "binary": "sslsplit",
+    "parts": [
+     [
+      "p",
+      "Run in debug mode ( -D ), log the connections ( -l connections.log ), set the chroot jail ( -j /tmp/sslsplit/ ), save files to disk ( -S /tmp/ ), specify the key ( -k ca.key ), specify the cert ( -c ca.crt ), specify ssl ( ssl ), and configure the proxy ( 0.0.0.0 8443 tcp 0.0.0.0 8080 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sslsplit -D -l connections.log -j /tmp/sslsplit/ -S /tmp/ -k ca.key -c ca.crt ssl 0.0.0.0 8443 tcp 0.0.0.0 8080\nGenerated RSA key for leaf certs.\nSSLsplit 0.4.6 (built 2013-06-06)\nCopyright (c) 2009-2013, Daniel Roethlisberger <[email protected]>\nhttp://www.roe.ch/SSLsplit\nFeatures: -DDISABLE_SSLV2_SESSION_CACHE -DHAVE_NETFILTER\nNAT engines: netfilter* tproxy\nnetfilter:  IP_TRANSPARENT SOL_IPV6 !IPV6_ORIGINAL_DST\ncompiled against OpenSSL 1.0.1e 11 Feb 2013 (1000105f)\nrtlinked against OpenSSL 1.0.1e 11 Feb 2013 (1000105f)\nTLS Server Name Indication (SNI) supported\nOpenSSL is thread-safe with THREADID"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sslsplit",
+    "desc": "Transparent and scalable SSL/TLS interception SSLsplit is a tool for man-in-the-middle attacks against SSL/TLS encrypted network connections. Connections are transparently intercepted through a network address translation engine and redirected to SSLsplit. SSLsplit terminates SSL/TLS and initiates a new SSL/TLS connection to the original destination address, while logging all data transmitted. SSLsplit is intended to be useful for network forensics and penetration testing. root@kali:~# sslsplit -h Usage: sslsplit [-D] [-f conffile] [-o opt=val] [options...] [proxyspecs...] -f conffile use conf",
+    "install": "sslsplit",
+    "size": "254 KB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "svcrack": {
+  "tool": "svcrack",
+  "title": "svcrack",
+  "description": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+  "usage": [
+   {
+    "binary": "svmap",
+    "parts": [
+     [
+      "p",
+      "Scan the given network range ( 192.168.1.0/24 ) and display verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# svmap 192.168.1.0/24 -v\nINFO:DrinkOrSip:trying to get self ip .. might take a while\nINFO:root:start your engines\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sipvicious",
+    "desc": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+    "install": "sipvicious",
+    "size": "197 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "svcrash": {
+  "tool": "svcrash",
+  "title": "svcrash",
+  "description": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+  "usage": [
+   {
+    "binary": "svmap",
+    "parts": [
+     [
+      "p",
+      "Scan the given network range ( 192.168.1.0/24 ) and display verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# svmap 192.168.1.0/24 -v\nINFO:DrinkOrSip:trying to get self ip .. might take a while\nINFO:root:start your engines\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sipvicious",
+    "desc": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+    "install": "sipvicious",
+    "size": "197 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "svmap": {
+  "tool": "svmap",
+  "title": "svmap",
+  "description": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+  "usage": [
+   {
+    "binary": "svmap",
+    "parts": [
+     [
+      "p",
+      "Scan the given network range ( 192.168.1.0/24 ) and display verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# svmap 192.168.1.0/24 -v\nINFO:DrinkOrSip:trying to get self ip .. might take a while\nINFO:root:start your engines\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sipvicious",
+    "desc": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+    "install": "sipvicious",
+    "size": "197 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "svreport": {
+  "tool": "svreport",
+  "title": "svreport",
+  "description": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+  "usage": [
+   {
+    "binary": "svmap",
+    "parts": [
+     [
+      "p",
+      "Scan the given network range ( 192.168.1.0/24 ) and display verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# svmap 192.168.1.0/24 -v\nINFO:DrinkOrSip:trying to get self ip .. might take a while\nINFO:root:start your engines\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sipvicious",
+    "desc": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+    "install": "sipvicious",
+    "size": "197 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "svwar": {
+  "tool": "svwar",
+  "title": "svwar",
+  "description": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+  "usage": [
+   {
+    "binary": "svmap",
+    "parts": [
+     [
+      "p",
+      "Scan the given network range ( 192.168.1.0/24 ) and display verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# svmap 192.168.1.0/24 -v\nINFO:DrinkOrSip:trying to get self ip .. might take a while\nINFO:root:start your engines\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060\nINFO:DrinkOrSip:Looks like we received a SIP request from 192.168.1.202:5060"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sipvicious",
+    "desc": "Tools to audit SIP based VoIP systems SIPVicious suite is a set of tools that can be used to audit SIP based VoIP systems. This suite has five tools: svmap, svwar, svcrack, svreport, svcrash. svmap is a sip scanner. When launched against ranges of ip address space, it will identify any SIP servers which it finds on the way.",
+    "install": "sipvicious",
+    "size": "197 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "t50": {
+  "tool": "t50",
+  "title": "t50",
+  "description": "Multi-protocol packet injector tool Multi-protocol packet injector tool for *nix systems, actually supporting 15 protocols. Features:",
+  "usage": [
+   {
+    "binary": "t50",
+    "parts": [
+     [
+      "p",
+      "Run a default flood test ( –flood ) against the destination IP ( 192.168.1.1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# t50 --flood 192.168.1.1\nentering in flood mode...\nhit CTRL+C to break.\nT50 5.4.1-rc1 successfully launched on May 17th 2014 10:48:51"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "t50",
+    "desc": "Multi-protocol packet injector tool Multi-protocol packet injector tool for *nix systems, actually supporting 15 protocols. Features:",
+    "install": "t50",
+    "size": "115 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "tcpdump": {
+  "tool": "tcpdump",
+  "title": "tcpdump",
+  "description": "Command-line network traffic analyzer This program allows you to dump the traffic on a network. tcpdump is able to examine IPv4, ICMPv4, IPv6, ICMPv6, UDP, TCP, SNMP, AFS BGP, RIP, PIM, DVMRP, IGMP, SMB, OSPF, NFS and many other packet types. It can be used to print out the headers of packets on a network interface, filter packets that match a certain expression. You can use this tool to track down network problems, to detect attacks or to monitor network activities.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "tcpdump",
+    "desc": "Command-line network traffic analyzer This program allows you to dump the traffic on a network. tcpdump is able to examine IPv4, ICMPv4, IPv6, ICMPv6, UDP, TCP, SNMP, AFS BGP, RIP, PIM, DVMRP, IGMP, SMB, OSPF, NFS and many other packet types. It can be used to print out the headers of packets on a network interface, filter packets that match a certain expression. You can use this tool to track down network problems, to detect attacks or to monitor network activities.",
+    "install": "tcpdump",
+    "size": "1.31 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "tcpflow": {
+  "tool": "tcpflow",
+  "title": "tcpflow",
+  "description": "TCP flow recorder tcpflow is a program that captures data transmitted as part of TCP connections (flows), and stores the data in a way that is convenient for protocol analysis or debugging. A program like ’tcpdump’ shows a summary of packets seen on the wire, but usually doesn’t store the data that’s actually being transmitted. In contrast, tcpflow reconstructs the actual data streams and stores each flow in a separate file for later analysis. tcpflow understands sequence numbers and will correctly reconstruct data streams regardless of retransmissions or out-of-order delivery. However, it cur",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "tcpflow",
+    "desc": "TCP flow recorder tcpflow is a program that captures data transmitted as part of TCP connections (flows), and stores the data in a way that is convenient for protocol analysis or debugging. A program like ’tcpdump’ shows a summary of packets seen on the wire, but usually doesn’t store the data that’s actually being transmitted. In contrast, tcpflow reconstructs the actual data streams and stores each flow in a separate file for later analysis. tcpflow understands sequence numbers and will correctly reconstruct data streams regardless of retransmissions or out-of-order delivery. However, it cur",
+    "install": "tcpflow",
+    "size": "819 KB"
+   },
+   {
+    "binary": "tcpflow-nox",
+    "desc": "TCP flow recorder - version without X11 dependencies tcpflow is a program that captures data transmitted as part of TCP connections (flows), and stores the data in a way that is convenient for protocol analysis or debugging. A program like ’tcpdump’ shows a summary of packets seen on the wire, but usually doesn’t store the data that’s actually being transmitted. In contrast, tcpflow reconstructs the actual data streams and stores each flow in a separate file for later analysis. tcpflow understands sequence numbers and will correctly reconstruct data streams regardless of retransmissions or out",
+    "install": "tcpflow-nox",
+    "size": "658 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "tcpreplay": {
+  "tool": "tcpreplay",
+  "title": "tcpreplay",
+  "description": "Tool to replay saved tcpdump files at arbitrary speeds Tcpreplay is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces. Unlike programmatically-generated artificial traffic which doesn’t exercise the application/protocol inspection that a NIDS performs, and doesn’t reproduce the real-world anomalies that appear on production networks (asymmetric routes, traffic bursts/lulls, fragmentation, retransmissions, etc.), tcpr",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "tcpreplay",
+    "desc": "Tool to replay saved tcpdump files at arbitrary speeds Tcpreplay is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces. Unlike programmatically-generated artificial traffic which doesn’t exercise the application/protocol inspection that a NIDS performs, and doesn’t reproduce the real-world anomalies that appear on production networks (asymmetric routes, traffic bursts/lulls, fragmentation, retransmissions, etc.), tcpr",
+    "install": "tcpreplay",
+    "size": "2.13 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "termineter": {
+  "tool": "termineter",
+  "title": "termineter",
+  "description": "Smart meter testing framework This package contains a Python framework which provides a platform for the security testing of smart meters. It implements the C1218 and C1219 protocols for communication over an optical interface. Currently supported are Meters using C1219-2007 with 7-bit character sets. This is the most common configuration found in North America. Termineter communicates with Smart Meters via a connection using an ANSI type-2 optical probe with a serial interface. root@kali:~# termineter -h usage: termineter [-h] [-v] [-L {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [-r RESOURCE_FILE] T",
+  "usage": [
+   {
+    "binary": "termineter",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# termineter\n\n   ______              _          __\n  /_  __/__ ______ _  (_)__  ___ / /____ ____\n   / / / -_) __/  ' \\/ / _ \\/ -_) __/ -_) __/\n  /_/  \\__/_/ /_/_/_/_/_//_/\\__/\\__/\\__/_/\n\n  <[ termineter                     v1.0.4\n  <[ model:                         T-1000\n  <[ loaded modules:                    17\n\ntermineter > show modules\n\nModules\n=======\n\n  Name                    Description\n  ----------------------  ------------------------------------------------\n  brute_force_login       Brute Force Credentials\n  diff_tables             Check C12.19 Tables For Differences\n  dump_tables             Write Readable C12.19 Tables To A CSV File\n  enum_tables             Enumerate Readable C12.19 Tables From The Device\n  enum_user_ids           Enumerate Valid User IDs From The Device\n  get_identification      Read And Parse The Identification Information\n  get_info                Get Basic Meter Information By Reading Tables\n  get_local_display_info  Get Information From The Local Display Tables\n  get_log_info            Get Information About The Meter's Logs\n  get_modem_info          Get Information About The Integrated Modem\n  get_security_info       Get Information About The Meter's Access Control\n  read_table              Read Data From A C12.19 Table\n  remote_reset            Initiate A Reset Procedure\n  run_procedure           Initiate A Custom Procedure\n  set_meter_id            Set The Meter's I.D.\n  set_meter_mode          Change the Meter's Operating Mode\n  write_table             Write Data To A C12.19 Table\n\ntermineter >"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "termineter",
+    "desc": "Smart meter testing framework This package contains a Python framework which provides a platform for the security testing of smart meters. It implements the C1218 and C1219 protocols for communication over an optical interface. Currently supported are Meters using C1219-2007 with 7-bit character sets. This is the most common configuration found in North America. Termineter communicates with Smart Meters via a connection using an ANSI type-2 optical probe with a serial interface. root@kali:~# termineter -h usage: termineter [-h] [-v] [-L {DEBUG,INFO,WARNING,ERROR,CRITICAL}] [-r RESOURCE_FILE] T",
+    "install": "termineter",
+    "size": "343 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "thc-ssl-dos": {
+  "tool": "thc-ssl-dos",
+  "title": "thc-ssl-dos",
+  "description": "Stress tester for the SSL handshake THC-SSL-DOS is a tool to verify the performance of SSL. Establishing a secure SSL connection requires 15x more processing power on the server than on the client.",
+  "usage": [
+   {
+    "binary": "thc-ssl-dos",
+    "parts": [
+     [
+      "p",
+      "Using 100 connections ( -l 100 ), flood the target IP ( 192.168.1.208 ) and port ( 443 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# thc-ssl-dos -l 100 192.168.1.208 443 --accept\n     ______________ ___  _________\n     \\__    ___/   |   \\ \\_   ___ \\\n       |    | /    ~    \\/    \\  \\/\n       |    | \\    Y    /\\     \\____\n       |____|  \\___|_  /  \\______  /\n                     \\/          \\/\n            http://www.thc.org\n\n          Twitter @hackerschoice\n\nGreetingz: the french underground\n\nWaiting for script kiddies to piss off................\nThe force is with those who read the source...\nHandshakes 0 [0.00 h/s], 1 Conn, 0 Err\nHandshakes 2 [2.90 h/s], 6 Conn, 0 Err\nHandshakes 25 [22.42 h/s], 13 Conn, 0 Err\nHandshakes 70 [43.97 h/s], 20 Conn, 0 Err\nHandshakes 125 [56.51 h/s], 27 Conn, 0 Err\nHandshakes 185 [62.09 h/s], 33 Conn, 0 Err\nHandshakes 262 [74.56 h/s], 41 Conn, 0 Err\nHandshakes 365 [104.93 h/s], 47 Conn, 0 Err\nHandshakes 496 [131.23 h/s], 54 Conn, 0 Err"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "thc-ssl-dos",
+    "desc": "Stress tester for the SSL handshake THC-SSL-DOS is a tool to verify the performance of SSL. Establishing a secure SSL connection requires 15x more processing power on the server than on the client.",
+    "install": "thc-ssl-dos",
+    "size": "35 KB"
+   }
+  ],
+  "attack_category": "Impact"
+ },
+ "voiphopper": {
+  "tool": "voiphopper",
+  "title": "voiphopper",
+  "description": "Runs a VLAN hop security test VoIP Hopper is a GPLv3 licensed security tool, written in C that rapidly runs a VLAN Hop security test. VoIP Hopper is a VoIP infrastructure security testing tool but also a tool that can be used to test the (in)security of VLANs. root@kali:~# voiphopper -h VoIP Hopper Extended Usage: Miscellaneous Options: -l (list available interfaces for CDP sniffing, then exit) Example: voiphopper -l -m (Spoof the MAC Address, then exit) Example: voiphopper -i eth0 -m 00:07:0E:EA:50:86 -d (Delete the VLAN Interface, then exit) Example: voiphopper -d eth0.200 -V (Print the VoIP",
+  "usage": [
+   {
+    "binary": "voiphopper",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# voiphopper -i eth0 -z\nVoIP Hopper assessment mode ~ Select 'q' to quit and 'h' for help menu.\nMain Sniffer:  capturing packets on eth0\na\nAnalyzing ARP packets on default interface: eth0\nNew host #1 learned on eth0: (MAC): 78:ca:39:fe:0b:4c   (IP): 192.168.1.229\nNew host #2 learned on eth0: (MAC): 60:6b:bd:5a:b6:6c   (IP): 192.168.1.213\nNew host #3 learned on eth0: (MAC): 40:6c:8f:1b:cb:90   (IP): 192.168.1.232\na\nDisabling analysis of ARP packets on default interface:  eth0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "voiphopper",
+    "desc": "Runs a VLAN hop security test VoIP Hopper is a GPLv3 licensed security tool, written in C that rapidly runs a VLAN Hop security test. VoIP Hopper is a VoIP infrastructure security testing tool but also a tool that can be used to test the (in)security of VLANs. root@kali:~# voiphopper -h VoIP Hopper Extended Usage: Miscellaneous Options: -l (list available interfaces for CDP sniffing, then exit) Example: voiphopper -l -m (Spoof the MAC Address, then exit) Example: voiphopper -i eth0 -m 00:07:0E:EA:50:86 -d (Delete the VLAN Interface, then exit) Example: voiphopper -d eth0.200 -V (Print the VoIP",
+    "install": "voiphopper",
+    "size": "130 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "wireshark": {
+  "tool": "wireshark",
+  "title": "wireshark",
+  "description": "Network packet dissection library – data files The libwireshark library provides the network packet dissection services developed by the Wireshark project. This package contains the platform independent files.",
+  "usage": [
+   {
+    "binary": "tshark",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# tshark -f \"tcp port 80\" -i eth0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "libwireshark-data",
+    "desc": "Network packet dissection library – data files The libwireshark library provides the network packet dissection services developed by the Wireshark project. This package contains the platform independent files.",
+    "install": "libwireshark-data",
+    "size": "3.62 MB"
+   },
+   {
+    "binary": "libwireshark-dev",
+    "desc": "Network packet dissection library – development files The “libwireshark” library provides the network packet dissection services developed by the Wireshark project. This package contains the static library and the C header files that are needed for applications to use libwireshark services.",
+    "install": "libwireshark-dev",
+    "size": "5.08 MB"
+   },
+   {
+    "binary": "libwireshark19",
+    "desc": "Network packet dissection library – shared library The libwireshark library provides the network packet dissection services developed by the Wireshark project.",
+    "install": "libwireshark19",
+    "size": "131.68 MB"
+   },
+   {
+    "binary": "libwiretap-dev",
+    "desc": "Network packet capture library – development files Wiretap, part of the Wireshark project, is a library that allows one to read and write several packet capture file formats. Supported formats are:",
+    "install": "libwiretap-dev",
+    "size": "251 KB"
+   },
+   {
+    "binary": "libwiretap16",
+    "desc": "Network packet capture library – shared library Wiretap, part of the Wireshark project, is a library that allows one to read and write several packet capture file formats. Supported formats are:",
+    "install": "libwiretap16",
+    "size": "834 KB"
+   },
+   {
+    "binary": "libwsutil-dev",
+    "desc": "Network packet dissection utilities library – development files The libwsutil library provides utility functions for Wireshark and related binaries and shared libraries. This package contains the static library and the C header files that are needed for applications to use the libwsutil library.",
+    "install": "libwsutil-dev",
+    "size": "522 KB"
+   },
+   {
+    "binary": "libwsutil17",
+    "desc": "Network packet dissection utilities library – shared library The libwsutil library provides utility functions for Wireshark and related binaries and shared libraries.",
+    "install": "libwsutil17",
+    "size": "389 KB"
+   },
+   {
+    "binary": "stratoshark",
+    "desc": "System call and log analyzer - graphical and console interfaces Stratoshark is a system call and log analyzer. It can capture and analyze system calls on Linux and capture and analyze log data from other sources. The package provides stratoshark as the graphical interface and strato as the console interface.",
+    "install": "stratoshark",
+    "size": "14.38 MB"
+   },
+   {
+    "binary": "tshark",
+    "desc": "Network traffic analyzer - console version Wireshark is a network “sniffer” - a tool that captures and analyzes packets off the wire. Wireshark can decode too many protocols to list here. This package provides the console version of wireshark, named “tshark”.",
+    "install": "tshark",
+    "size": "433 KB"
+   },
+   {
+    "binary": "wireshark",
+    "desc": "Network traffic analyzer - graphical interface Wireshark is a network “sniffer” - a tool that captures and analyzes packets off the wire. Wireshark can decode too many protocols to list here. Interactively dump and analyze network traffic",
+    "install": "wireshark",
+    "size": "16.66 MB"
+   },
+   {
+    "binary": "wireshark-common",
+    "desc": "Network traffic analyzer - common files Wireshark is a network “sniffer” - a tool that captures and analyzes packets off the wire. Wireshark can decode too many protocols to list here. This package provides files common to both wireshark and tshark (the console version).",
+    "install": "wireshark-common",
+    "size": "1.87 MB"
+   },
+   {
+    "binary": "wireshark-dev",
+    "desc": "Network traffic analyzer - development tools Wireshark is a network “sniffer” - a tool that captures and analyzes packets off the wire. Wireshark can decode too many protocols to list here. This package provides idl2wrs and other files necessary for developing new packet dissectors.",
+    "install": "wireshark-dev",
+    "size": "621 KB"
+   },
+   {
+    "binary": "wireshark-doc",
+    "desc": "Network traffic analyzer - documentation Wireshark is a network “sniffer” - a tool that captures and analyzes packets off the wire. Wireshark can decode too many protocols to list here. This package contains Wireshark User’s guide, Wireshark Developer’s Guide and the Lua Reference.",
+    "install": "wireshark-doc",
+    "size": "13.92 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "yersinia": {
+  "tool": "yersinia",
+  "title": "yersinia",
+  "description": "Network vulnerabilities check software Yersinia is a framework for performing layer 2 attacks. It is designed to take advantage of some weakeness in different network protocols. It pretends to be a solid framework for analyzing and testing the deployed networks and systems. Attacks for the following network protocols are implemented in this particular release:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "yersinia",
+    "desc": "Network vulnerabilities check software Yersinia is a framework for performing layer 2 attacks. It is designed to take advantage of some weakeness in different network protocols. It pretends to be a solid framework for analyzing and testing the deployed networks and systems. Attacks for the following network protocols are implemented in this particular release:",
+    "install": "yersinia",
+    "size": "417 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ }
+}

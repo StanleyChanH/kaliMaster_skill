@@ -1,0 +1,13 @@
+# OMC plugin state (local, never commit)
+.omc/
+
+# Python
+__pycache__/
+*.pyc
+
+# Fetched raw pages (regenerable via build/fetch_pages.py)
+build/data/pages/
+
+# OS / editor
+.DS_Store
+Thumbs.db

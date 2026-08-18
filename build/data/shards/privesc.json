@@ -1,0 +1,131 @@
+{
+ "linpeas": {
+  "tool": "linpeas",
+  "title": "linpeas",
+  "description": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "peass",
+    "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
+    "install": "peass",
+    "size": "88.07 MB"
+   }
+  ],
+  "attack_category": "Privilege Escalation"
+ },
+ "lynis": {
+  "tool": "lynis",
+  "title": "lynis",
+  "description": "Security auditing tool for Unix based systems Lynis is an auditing tool for hardening GNU/Linux and Unix based systems. It scans the system configuration and creates an overview of system information and security issues usable by professional auditors. It can assist in automated audits. Lynis can be used in addition to other software, like security scanners, system benchmarking and fine-tuning tools.",
+  "usage": [
+   {
+    "binary": "lynis",
+    "parts": [
+     [
+      "p",
+      "Scan the system in quiet mode ( -Q ) and output in cronjob format ( –cronjob ):"
+     ],
+     [
+      "code",
+      "root@kali:~# lynis -Q --cronjob\n\n[ Lynis 2.6.2 ]\n\n################################################################################\n  Lynis comes with ABSOLUTELY NO WARRANTY. This is free software, and you are\n  welcome to redistribute it under the terms of the GNU General Public License.\n  See the LICENSE file for details about using this software.\n\n  2007-2018, CISOfy - https://cisofy.com/lynis/\n  Enterprise support available (compliance, plugins, interface and tools)\n################################################################################\n\n\n[+] Initializing program\n------------------------------------\n- Detecting OS...  [ DONE ]\n- Checking profiles... [ DONE ]\n\n  ---------------------------------------------------\n  Program version:           2.6.2\n  Operating system:          Linux\n  Operating system name:     Debian\n  Operating system version:  kali-rolling\n  Kernel version:            4.18.0\n  Hardware platform:         x86_64\n  Hostname:                  kali\n  ---------------------------------------------------\n  Profiles:                  /etc/lynis/default.prf\n  Log file:                  /var/log/lynis.log\n  Report file:               /var/log/lynis-report.dat\n  Report version:            1.0\n  Plugin directory:          /etc/lynis/plugins\n  ---------------------------------------------------\n  Auditor:                   [Not Specified]\n  Language:                  en\n  Test category:             all\n  Test group:                all\n  ---------------------------------------------------\n[...]"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "lynis",
+    "desc": "Security auditing tool for Unix based systems Lynis is an auditing tool for hardening GNU/Linux and Unix based systems. It scans the system configuration and creates an overview of system information and security issues usable by professional auditors. It can assist in automated audits. Lynis can be used in addition to other software, like security scanners, system benchmarking and fine-tuning tools.",
+    "install": "lynis",
+    "size": "1.68 MB"
+   }
+  ],
+  "attack_category": "Privilege Escalation"
+ },
+ "peass": {
+  "tool": "peass",
+  "title": "peass",
+  "description": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "peass",
+    "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
+    "install": "peass",
+    "size": "88.07 MB"
+   }
+  ],
+  "attack_category": "Privilege Escalation"
+ },
+ "pspy-binaries": {
+  "tool": "pspy-binaries",
+  "title": "pspy-binaries",
+  "description": "Monitor Linux processes without root permissions pspy is a command line tool designed to snoop on processes without need for root permissions. It allows you to see commands run by other users, cron jobs, etc. as they execute. Great for enumeration of Linux systems in CTFs. Also great to demonstrate your colleagues why passing secrets as arguments on the command line is a bad idea.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "pspy",
+    "desc": "Monitor Linux processes without root permissions pspy is a command line tool designed to snoop on processes without need for root permissions. It allows you to see commands run by other users, cron jobs, etc. as they execute. Great for enumeration of Linux systems in CTFs. Also great to demonstrate your colleagues why passing secrets as arguments on the command line is a bad idea.",
+    "install": "pspy",
+    "size": "9.21 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "pspy": {
+  "tool": "pspy",
+  "title": "pspy",
+  "description": "Monitor Linux processes without root permissions pspy is a command line tool designed to snoop on processes without need for root permissions. It allows you to see commands run by other users, cron jobs, etc. as they execute. Great for enumeration of Linux systems in CTFs. Also great to demonstrate your colleagues why passing secrets as arguments on the command line is a bad idea.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "pspy",
+    "desc": "Monitor Linux processes without root permissions pspy is a command line tool designed to snoop on processes without need for root permissions. It allows you to see commands run by other users, cron jobs, etc. as they execute. Great for enumeration of Linux systems in CTFs. Also great to demonstrate your colleagues why passing secrets as arguments on the command line is a bad idea.",
+    "install": "pspy",
+    "size": "9.21 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "unix-privesc-check": {
+  "tool": "unix-privesc-check",
+  "title": "unix-privesc-check",
+  "description": "Script to check for simple privilege escalation vectors Unix-privesc-checker is a script that runs on Unix systems (tested on Solaris 9, HPUX 11, Various Linuxes, FreeBSD 6.2). It tries to find misconfigurations that could allow local unprivileged users to escalate privileges to other users or to access local apps (e.g. databases). It is written as a single shell script so it can be easily uploaded and run (as opposed to un-tarred, compiled and installed). It can run either as a normal user or as root (obviously it does a better job when running as root because it can read more files).",
+  "usage": [
+   {
+    "binary": "unix-privesc-check",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# unix-privesc-check standard\nAssuming the OS is: linux\nStarting unix-privesc-check v1.4 ( http://pentestmonkey.net/tools/unix-privesc-check )\n\nThis script checks file permissions and other settings that could allow\nlocal users to escalate privileges.\n\nUse of this script is only permitted on systems which you have been granted\nlegal permission to perform a security assessment of.  Apart from this\ncondition the GPL v2 applies.\n\nSearch the output below for the word 'WARNING'.  If you don't see it then\nthis script didn't find any problems.\n\n\n############################################\nRecording hostname\n############################################\nkali\n\n############################################\nRecording uname\n############################################\nLinux kali 3.12-kali1-amd64 #1 SMP Debian 3.12.9-1kali1 (2014-05-13) x86_64 GNU/Linux\n\n############################################\nRecording Interface IP addresses"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "unix-privesc-check",
+    "desc": "Script to check for simple privilege escalation vectors Unix-privesc-checker is a script that runs on Unix systems (tested on Solaris 9, HPUX 11, Various Linuxes, FreeBSD 6.2). It tries to find misconfigurations that could allow local unprivileged users to escalate privileges to other users or to access local apps (e.g. databases). It is written as a single shell script so it can be easily uploaded and run (as opposed to un-tarred, compiled and installed). It can run either as a normal user or as root (obviously it does a better job when running as root because it can read more files).",
+    "install": "unix-privesc-check",
+    "size": "85 KB"
+   }
+  ],
+  "attack_category": "Privilege Escalation"
+ },
+ "winpeas": {
+  "tool": "winpeas",
+  "title": "winpeas",
+  "description": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "peass",
+    "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
+    "install": "peass",
+    "size": "88.07 MB"
+   }
+  ],
+  "attack_category": "Privilege Escalation"
+ }
+}

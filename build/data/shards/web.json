@@ -1,0 +1,663 @@
+{
+ "arjun": {
+  "tool": "arjun",
+  "title": "arjun",
+  "description": "HTTP parameter discovery suite This package can find query parameters for URL endpoints. Web applications use parameters (or queries) to accept user input, take the following example into consideration.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "arjun",
+    "desc": "HTTP parameter discovery suite This package can find query parameters for URL endpoints. Web applications use parameters (or queries) to accept user input, take the following example into consideration.",
+    "install": "arjun",
+    "size": "348 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "beef-xss-start": {
+  "tool": "beef-xss-start",
+  "title": "beef-xss-start",
+  "description": "Browser Exploitation Framework (BeEF) BeEF is short for The Browser Exploitation Framework. It is a penetration testing tool that focuses on the web browser. Amid growing concerns about web-born attacks against clients, including mobile clients, BeEF allows the professional penetration tester to assess the actual security posture of a target environment by using client-side attack vectors. Unlike other security frameworks, BeEF looks past the hardened network perimeter and client system, and examines exploitability within the context of the one open door: the web browser. BeEF will hook one or",
+  "usage": [
+   {
+    "binary": "beef",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# beef-xss\n[*] Please wait for the BeEF service to start.\n[*]\n[*] You might need to refresh your browser once it opens.\n[*]\n[*]  Web UI: http://127.0.0.1:3000/ui/panel\n[*]    Hook: <script src=\"http://<IP>:3000/hook.js\"></script>\n[*] Example: <script src=\"http://127.0.0.1:3000/hook.js\"></script>\n\n● beef-xss.service - LSB: BeEF\n   Loaded: loaded (/etc/init.d/beef-xss; generated)\n   Active: active (running) since Sat 2018-11-24 18:44:53 EST; 5s ago\n     Docs: man:systemd-sysv-generator(8)\n  Process: 3457 ExecStart=/etc/init.d/beef-xss start (code=exited, status=0/SUCCESS)\n    Tasks: 5 (limit: 4665)\n   Memory: 151.9M\n   CGroup: /system.slice/beef-xss.service\n           └─3463 ruby /usr/share/beef-xss/beef\n\nNov 24 18:44:53 kali systemd[1]: Starting LSB: BeEF...\nNov 24 18:44:53 kali systemd[1]: Started LSB: BeEF.\n\n[*] Opening Web UI (http://127.0.0.1:3000/ui/panel) in: 5... 4... 3... 2... 1..."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "beef-xss",
+    "desc": "Browser Exploitation Framework (BeEF) BeEF is short for The Browser Exploitation Framework. It is a penetration testing tool that focuses on the web browser. Amid growing concerns about web-born attacks against clients, including mobile clients, BeEF allows the professional penetration tester to assess the actual security posture of a target environment by using client-side attack vectors. Unlike other security frameworks, BeEF looks past the hardened network perimeter and client system, and examines exploitability within the context of the one open door: the web browser. BeEF will hook one or",
+    "install": "beef-xss",
+    "size": "82.72 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "beef-xss-stop": {
+  "tool": "beef-xss-stop",
+  "title": "beef-xss-stop",
+  "description": "Browser Exploitation Framework (BeEF) BeEF is short for The Browser Exploitation Framework. It is a penetration testing tool that focuses on the web browser. Amid growing concerns about web-born attacks against clients, including mobile clients, BeEF allows the professional penetration tester to assess the actual security posture of a target environment by using client-side attack vectors. Unlike other security frameworks, BeEF looks past the hardened network perimeter and client system, and examines exploitability within the context of the one open door: the web browser. BeEF will hook one or",
+  "usage": [
+   {
+    "binary": "beef",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# beef-xss\n[*] Please wait for the BeEF service to start.\n[*]\n[*] You might need to refresh your browser once it opens.\n[*]\n[*]  Web UI: http://127.0.0.1:3000/ui/panel\n[*]    Hook: <script src=\"http://<IP>:3000/hook.js\"></script>\n[*] Example: <script src=\"http://127.0.0.1:3000/hook.js\"></script>\n\n● beef-xss.service - LSB: BeEF\n   Loaded: loaded (/etc/init.d/beef-xss; generated)\n   Active: active (running) since Sat 2018-11-24 18:44:53 EST; 5s ago\n     Docs: man:systemd-sysv-generator(8)\n  Process: 3457 ExecStart=/etc/init.d/beef-xss start (code=exited, status=0/SUCCESS)\n    Tasks: 5 (limit: 4665)\n   Memory: 151.9M\n   CGroup: /system.slice/beef-xss.service\n           └─3463 ruby /usr/share/beef-xss/beef\n\nNov 24 18:44:53 kali systemd[1]: Starting LSB: BeEF...\nNov 24 18:44:53 kali systemd[1]: Started LSB: BeEF.\n\n[*] Opening Web UI (http://127.0.0.1:3000/ui/panel) in: 5... 4... 3... 2... 1..."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "beef-xss",
+    "desc": "Browser Exploitation Framework (BeEF) BeEF is short for The Browser Exploitation Framework. It is a penetration testing tool that focuses on the web browser. Amid growing concerns about web-born attacks against clients, including mobile clients, BeEF allows the professional penetration tester to assess the actual security posture of a target environment by using client-side attack vectors. Unlike other security frameworks, BeEF looks past the hardened network perimeter and client system, and examines exploitability within the context of the one open door: the web browser. BeEF will hook one or",
+    "install": "beef-xss",
+    "size": "82.72 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "burpsuite": {
+  "tool": "burpsuite",
+  "title": "burpsuite",
+  "description": "Platform for security testing of web applications Burp Suite is an integrated platform for performing security testing of web applications. Its various tools work seamlessly together to support the entire testing process, from initial mapping and analysis of an application’s attack surface, through to finding and exploiting security vulnerabilities. Burp gives you full control, letting you combine advanced manual techniques with state-of-the-art automation, to make your work faster, more effective, and more fun.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "burpsuite",
+    "desc": "Platform for security testing of web applications Burp Suite is an integrated platform for performing security testing of web applications. Its various tools work seamlessly together to support the entire testing process, from initial mapping and analysis of an application’s attack surface, through to finding and exploiting security vulnerabilities. Burp gives you full control, letting you combine advanced manual techniques with state-of-the-art automation, to make your work faster, more effective, and more fun.",
+    "install": "burpsuite",
+    "size": "319.85 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "commix": {
+  "tool": "commix",
+  "title": "commix",
+  "description": "Automated All-in-One OS Command Injection and Exploitation Tool This package contains Commix (short for [comm]and [i]njection e[x]ploiter). It has a simple environment and it can be used, from web developers, penetration testers or even security researchers to test web applications with the view to find bugs, errors or vulnerabilities related to command injection attacks. By using this tool, it is very easy to find and exploit a command injection vulnerability in a certain vulnerable parameter or string. Commix is written in Python programming language. root@kali:~# commix -h Usage: commix [op",
+  "usage": [
+   {
+    "binary": "Commix",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# commix --url=\"http://192.168.0.23/commix-testbed/scenarios/referer/referer(classic).php\" --level=3\n                                       __\n   ___    ___     ___ ___     ___ ___ /\\_\\   __  _\n  /'___\\ / __`\\ /' __` __`\\ /' __` __`\\/\\ \\ /\\ \\/'\\  v1.7-stable\n /\\ \\__//\\ \\L\\ \\/\\ \\/\\ \\/\\ \\/\\ \\/\\ \\/\\ \\ \\ \\\\/>  </\n \\ \\____\\ \\____/\\ \\_\\ \\_\\ \\_\\ \\_\\ \\_\\ \\_\\ \\_\\/\\_/\\_\\ http://commixproject.com\n  \\/____/\\/___/  \\/_/\\/_/\\/_/\\/_/\\/_/\\/_/\\/_/\\//\\/_/ (@commixproject)\n\n+--\nAutomated All-in-One OS Command Injection and Exploitation Tool\nCopyright (c) 2014-2017 Anastasios Stasinopoulos (@ancst)\n+--\n\n[*] Checking connection to the target URL... [ SUCCEED ]\n[*] Setting the HTTP header User-Agent for tests.\n[*] Testing the (results-based) classic command injection technique... [ FAILED ]\n[*] Testing the (results-based) dynamic code evaluation technique... [ FAILED ]\n[*] Testing the (blind) time-based command injection technique... [ FAILED ]\n[*] Trying to create a file in '/var/www/html/commix-testbed/scenarios/referer/'...\n[!] Warning: It seems that you don't have permissions to read and/or write files in '/var/www/html/commix-testbed/scenarios/referer/'.\n[?] Do you want to try the temporary directory (/tmp/) [Y/n] > Y\n[*] Trying to create a file, in temporary directory (/tmp/)...\n[*] Testing the (semi-blind) tempfile-based injection technique... [ FAILED ]\n[!] Warning: The tested HTTP header User-Agent seems to be not injectable.\n[*] Setting the HTTP header Referer for tests.\n[*] Testing the (results-based) classic command injection technique... [ SUCCEED ]\n[+] The HTTP header Referer seems injectable via (results-based) classic command injection technique.\n    [~] Payload: ';echo KSXTLU$((18+64))$(echo KSXTLU)KSXTLU'\n\n[?] Do you want a Pseudo-Terminal shell? [Y/n] > Y\n\nPseudo-Terminal (type '?' for available options)\ncommix(os_shell) > ?\n\n  ---[ Available options ]---\n  Type '?' to get all the available options.\n  Type 'back' to move back from the current context.\n  Type 'quit' (or use <Ctrl-C>) to quit commix.\n  Type 'reverse_tcp' to get a reverse TCP connection.\n  Type 'bind_tcp' to set a bind TCP connection.\n\ncommix(os_shell) > id\n\nuid=33(www-data) gid=33(www-data) groups=33(www-data)\n\ncommix(os_shell) > ls\n\nindex.html referer(blind).php referer(classic).php referer(eval).php\n\ncommix(os_shell) > quit\n\nroot@kali:~#"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "commix",
+    "desc": "Automated All-in-One OS Command Injection and Exploitation Tool This package contains Commix (short for [comm]and [i]njection e[x]ploiter). It has a simple environment and it can be used, from web developers, penetration testers or even security researchers to test web applications with the view to find bugs, errors or vulnerabilities related to command injection attacks. By using this tool, it is very easy to find and exploit a command injection vulnerability in a certain vulnerable parameter or string. Commix is written in Python programming language. root@kali:~# commix -h Usage: commix [op",
+    "install": "commix",
+    "size": "1.10 MB"
+   }
+  ],
+  "attack_category": "Initial Access"
+ },
+ "crlfuzz": {
+  "tool": "crlfuzz",
+  "title": "crlfuzz",
+  "description": "Fast tool to scan CRLF vulnerability written in Go CRLFuzz is a tool to scan for CRLF vulnerabilities in a fast way using Go root@kali:~# crlfuzz -h _____ _____ __ _____ | | __ | | | __|_ _ ___ ___ | --| -| |__| __| | |- _|- _| |_____|__|__|_____|__| |___|___|___| v1.4.0 - @dwisiswant0 [WRN] Use with caution. You are responsible for your actions [WRN] Developers assume no liability and are not responsible for any misuse or damage. Usage: [buffers] | crlfuzz [options] crlfuzz [options] Options: -u, --url <URL> Define single URL to fuzz -l, --list <FILE> Fuzz URLs within file -X, --method <METHO",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "crlfuzz",
+    "desc": "Fast tool to scan CRLF vulnerability written in Go CRLFuzz is a tool to scan for CRLF vulnerabilities in a fast way using Go root@kali:~# crlfuzz -h _____ _____ __ _____ | | __ | | | __|_ _ ___ ___ | --| -| |__| __| | |- _|- _| |_____|__|__|_____|__| |___|___|___| v1.4.0 - @dwisiswant0 [WRN] Use with caution. You are responsible for your actions [WRN] Developers assume no liability and are not responsible for any misuse or damage. Usage: [buffers] | crlfuzz [options] crlfuzz [options] Options: -u, --url <URL> Define single URL to fuzz -l, --list <FILE> Fuzz URLs within file -X, --method <METHO",
+    "install": "crlfuzz",
+    "size": "5.48 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "davtest": {
+  "tool": "davtest",
+  "title": "davtest",
+  "description": "Testing tool for WebDAV servers DAVTest tests WebDAV enabled servers by uploading test executable files, and then (optionally) uploading files which allow for command execution or other actions directly on the target. It is meant for penetration testers to quickly and easily determine if enabled DAV services are exploitable. root@kali:~# davtest -h ^^^^^^^^^^^^^^ ERROR ^^^^^^^^^^^^^^ /usr/bin/davtest -url <url> [options] -auth+ Authorization (user:password) -realm+ Auth Realm -cleanup delete everything uploaded when done -directory+ postfix portion of directory to create -debug+ DAV debug leve",
+  "usage": [
+   {
+    "binary": "davtest",
+    "parts": [
+     [
+      "p",
+      "Scan the given WebDAV server ( -url http://192.168.1.209 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# davtest -url http://192.168.1.209\n********************************************************\n Testing DAV connection\nOPEN        SUCCEED:        http://192.168.1.209\n********************************************************\nNOTE    Random string for this session: B0yG9nhdFS8gox\n********************************************************\n Creating directory\nMKCOL       SUCCEED:        Created http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox\n********************************************************\n Sending test files\nPUT asp FAIL\nPUT cgi FAIL\nPUT txt SUCCEED:    http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.txt\nPUT pl  SUCCEED:    http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.pl\nPUT jsp SUCCEED:    http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.jsp\nPUT cfm SUCCEED:    http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.cfm\nPUT aspx    FAIL\nPUT jhtml   SUCCEED:    http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.jhtml\nPUT php SUCCEED:    http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.php\nPUT html    SUCCEED:    http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.html\nPUT shtml   FAIL\n********************************************************\n Checking for test file execution\nEXEC    txt SUCCEED:    http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.txt\nEXEC    pl  FAIL\nEXEC    jsp FAIL\nEXEC    cfm FAIL\nEXEC    jhtml   FAIL\nEXEC    php FAIL\nEXEC    html    SUCCEED:    http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.html\n\n********************************************************\n/usr/bin/davtest Summary:\nCreated: http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox\nPUT File: http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.txt\nPUT File: http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.pl\nPUT File: http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.jsp\nPUT File: http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.cfm\nPUT File: http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.jhtml\nPUT File: http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.php\nPUT File: http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.html\nExecutes: http://192.168.1.209/DavTestDir_B0yG9nhdFS8gox/davtest_B0yG9nhdFS8gox.txt\nExecutes: http://192.168.1.209/DavTestDir_B0yG9nhdF"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "davtest",
+    "desc": "Testing tool for WebDAV servers DAVTest tests WebDAV enabled servers by uploading test executable files, and then (optionally) uploading files which allow for command execution or other actions directly on the target. It is meant for penetration testers to quickly and easily determine if enabled DAV services are exploitable. root@kali:~# davtest -h ^^^^^^^^^^^^^^ ERROR ^^^^^^^^^^^^^^ /usr/bin/davtest -url <url> [options] -auth+ Authorization (user:password) -realm+ Auth Realm -cleanup delete everything uploaded when done -directory+ postfix portion of directory to create -debug+ DAV debug leve",
+    "install": "davtest",
+    "size": "69 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "dirb": {
+  "tool": "dirb",
+  "title": "dirb",
+  "description": "URL bruteforcing tool DIRB is a Web Content Scanner. It looks for existing (and/or hidden) Web Objects. It basically works by launching a dictionary based attack against a web server and analyzing the responses. DIRB comes with a set of preconfigured attack wordlists for easy usage but you can use your custom wordlists. Also DIRB sometimes can be used as a classic CGI scanner, but remember that it is a content scanner not a vulnerability scanner.",
+  "usage": [
+   {
+    "binary": "dirb",
+    "parts": [
+     [
+      "p",
+      "Scan the web server ( http://192.168.1.224/ ) for directories using a dictionary file ( /usr/share/wordlists/dirb/common.txt ):"
+     ],
+     [
+      "code",
+      "root@kali:~# dirb http://192.168.1.224/ /usr/share/wordlists/dirb/common.txt\n\n-----------------\nDIRB v2.21\nBy The Dark Raver\n-----------------\n\nSTART_TIME: Fri May 16 13:41:45 2014\nURL_BASE: http://192.168.1.224/\nWORDLIST_FILES: /usr/share/wordlists/dirb/common.txt\n\n-----------------\n\nGENERATED WORDS: 4592\n\n---- Scanning URL: http://192.168.1.224/ ----\n==> DIRECTORY: http://192.168.1.224/.svn/\n+ http://192.168.1.224/.svn/entries (CODE:200|SIZE:2726)\n+ http://192.168.1.224/cgi-bin/ (CODE:403|SIZE:1122)\n==> DIRECTORY: http://192.168.1.224/config/\n==> DIRECTORY: http://192.168.1.224/docs/\n==> DIRECTORY: http://192.168.1.224/external/"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dirb",
+    "desc": "URL bruteforcing tool DIRB is a Web Content Scanner. It looks for existing (and/or hidden) Web Objects. It basically works by launching a dictionary based attack against a web server and analyzing the responses. DIRB comes with a set of preconfigured attack wordlists for easy usage but you can use your custom wordlists. Also DIRB sometimes can be used as a classic CGI scanner, but remember that it is a content scanner not a vulnerability scanner.",
+    "install": "dirb",
+    "size": "1.44 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "dirbuster": {
+  "tool": "dirbuster",
+  "title": "dirbuster",
+  "description": "Web server directory brute-forcer DirBuster is a multi threaded java application designed to brute force directories and files names on web/application servers. Often is the case now of what looks like a web server in a state of default installation is actually not, and has pages and applications hidden within. DirBuster attempts to find these. However tools of this nature are often as only good as the directory and file list they come with. A different approach was taken to generating this. The list was generated from scratch, by crawling the Internet and collecting the directory and files th",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dirbuster",
+    "desc": "Web server directory brute-forcer DirBuster is a multi threaded java application designed to brute force directories and files names on web/application servers. Often is the case now of what looks like a web server in a state of default installation is actually not, and has pages and applications hidden within. DirBuster attempts to find these. However tools of this nature are often as only good as the directory and file list they come with. A different approach was taken to generating this. The list was generated from scratch, by crawling the Internet and collecting the directory and files th",
+    "install": "dirbuster",
+    "size": "10.75 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "dirsearch": {
+  "tool": "dirsearch",
+  "title": "dirsearch",
+  "description": "Web path scanner This package contains is a command-line tool designed to brute force directories and files in webservers. As a feature-rich tool, dirsearch gives users the opportunity to perform a complex web content discovering, with many vectors for the wordlist, high accuracy, impressive performance, advanced connection/request settings, modern brute-force techniques and nice output.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dirsearch",
+    "desc": "Web path scanner This package contains is a command-line tool designed to brute force directories and files in webservers. As a feature-rich tool, dirsearch gives users the opportunity to perform a complex web content discovering, with many vectors for the wordlist, high accuracy, impressive performance, advanced connection/request settings, modern brute-force techniques and nice output.",
+    "install": "dirsearch",
+    "size": "447 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "feroxbuster": {
+  "tool": "feroxbuster",
+  "title": "feroxbuster",
+  "description": "Fast, simple, recursive content discovery tool written in Rust feroxbuster is a tool designed to perform Forced Browsing. Forced browsing is an attack where the aim is to enumerate and access resources that are not referenced by the web application, but are still accessible by an attacker. feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories. These resources may store sensitive information about web applications and operational systems, such as source code, credentials, internal network addressing, etc… This attack is also known as Predicta",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "feroxbuster",
+    "desc": "Fast, simple, recursive content discovery tool written in Rust feroxbuster is a tool designed to perform Forced Browsing. Forced browsing is an attack where the aim is to enumerate and access resources that are not referenced by the web application, but are still accessible by an attacker. feroxbuster uses brute force combined with a wordlist to search for unlinked content in target directories. These resources may store sensitive information about web applications and operational systems, such as source code, credentials, internal network addressing, etc… This attack is also known as Predicta",
+    "install": "feroxbuster",
+    "size": "12.27 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "ffuf": {
+  "tool": "ffuf",
+  "title": "ffuf",
+  "description": "Fast web fuzzer written in Go (program) ffuf is a fast web fuzzer written in Go that allows typical directory discovery, virtual host discovery (without DNS records) and GET and POST parameter fuzzing. This program is useful for pentesters, ethical hackers and forensics experts. It also can be used for security tests.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ffuf",
+    "desc": "Fast web fuzzer written in Go (program) ffuf is a fast web fuzzer written in Go that allows typical directory discovery, virtual host discovery (without DNS records) and GET and POST parameter fuzzing. This program is useful for pentesters, ethical hackers and forensics experts. It also can be used for security tests.",
+    "install": "ffuf",
+    "size": "9.42 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "gobuster": {
+  "tool": "gobuster",
+  "title": "gobuster",
+  "description": "High-performance discovery tool for directories, DNS and cloud storage Gobuster is a high-performance tool used to brute-force and discover: Gobuster is designed for penetration testers, security professionals, and forensics experts to perform security assessments and reconnaissance.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "gobuster",
+    "desc": "High-performance discovery tool for directories, DNS and cloud storage Gobuster is a high-performance tool used to brute-force and discover: Gobuster is designed for penetration testers, security professionals, and forensics experts to perform security assessments and reconnaissance.",
+    "install": "gobuster",
+    "size": "9.17 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "joomscan": {
+  "tool": "joomscan",
+  "title": "joomscan",
+  "description": "OWASP Joomla Vulnerability Scanner Project This package contains JoomScan, short for [Joom]la Vulnerability [Scan]ner. It’s a project in perl programming language to detect Joomla CMS vulnerabilities and analysis them.",
+  "usage": [
+   {
+    "binary": "joomscan",
+    "parts": [
+     [
+      "p",
+      "Scan the Joomla installation at the given URL ( -u http://192.168.1.202/joomla ) for vulnerabilities:"
+     ],
+     [
+      "code",
+      "root@kali:~# joomscan -u http://localhost/\n    ____  _____  _____  __  __  ___   ___    __    _  _\n   (_  _)(  _  )(  _  )(  \\/  )/ __) / __)  /__\\  ( \\( )\n  .-_)(   )(_)(  )(_)(  )    ( \\__ \\( (__  /(__)\\  )  (\n  \\____) (_____)(_____)(_/\\/\\_)(___/ \\___)(__)(__)(_)\\_)\n      (1337.today)\n\n    --=[OWASP JoomScan\n    +---++---==[Version : 0.0.5\n    +---++---==[Update Date : [2018/03/13]\n    +---++---==[Authors : Mohammad Reza Espargham , Ali Razmjoo\n    --=[Code name : KLOT\n    @OWASP_JoomScan , @rezesp , @Ali_Razmjo0 , @OWASP\n\nProcessing http://localhost/ ...\n\n\n\n[+] Detecting Joomla Version\n[++] Joomla 3.8.6\n\n[+] Core Joomla Vulnerability\n[++] Target Joomla core is not vulnerable\n\n[+] Checking Directory Listing\n[++] directory has directory listing :\nhttp://localhost/administrator/components\nhttp://localhost/administrator/modules\nhttp://localhost/administrator/templates\nhttp://localhost/images/banners\n\n\n[+] Checking apache info/status files\n[++] Interesting file is found\nhttp://localhost/server-status\n\n[+] admin finder\n[++] Admin page : http://localhost/administrator/\n\n[+] Checking robots.txt existing\n[++] robots.txt is found\npath : http://localhost/robots.txt\n\nInteresting path found from robots.txt\nhttp://localhost/joomla/administrator/\nhttp://localhost/administrator/\nhttp://localhost/bin/\nhttp://localhost/cache/\nhttp://localhost/cli/\nhttp://localhost/components/\nhttp://localhost/includes/\nhttp://localhost/installation/\nhttp://localhost/language/\nhttp://localhost/layouts/\nhttp://localhost/libraries/\nhttp://localhost/logs/\nhttp://localhost/modules/\nhttp://localhost/plugins/\nhttp://localhost/tmp/\n\n\n[+] Finding common backup files name\n[++] Backup files are not found\n\n[+] Finding common log files name\n[++] error log is not found\n\n[+] Checking sensitive config.php.x file\n[++] Readable config files are not found\n\n\nYour Report : reports/localhost/\nroot@kali:~#\nroot@kali:~# ls /usr/share/joomscan/reports/localhost/\nlocalhost_report_2018-3-19_at_8.37.58.html  localhost_report_2018-3-19_at_8.37.58.txt\nroot@kali:~#"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "joomscan",
+    "desc": "OWASP Joomla Vulnerability Scanner Project This package contains JoomScan, short for [Joom]la Vulnerability [Scan]ner. It’s a project in perl programming language to detect Joomla CMS vulnerabilities and analysis them.",
+    "install": "joomscan",
+    "size": "274 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "jsql": {
+  "tool": "jsql",
+  "title": "jsql",
+  "description": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-06-17 11:01:59,599 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-06-17 11:02:00,298 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Jun-17",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "jsql-injection",
+    "desc": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-06-17 11:01:59,599 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-06-17 11:02:00,298 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Jun-17",
+    "install": "jsql-injection",
+    "size": "12.48 MB"
+   }
+  ],
+  "attack_category": "Initial Access"
+ },
+ "nikto": {
+  "tool": "nikto",
+  "title": "nikto",
+  "description": "Web server security scanner Nikto is a pluggable web server and CGI scanner written in Perl, using rfp’s LibWhisker to perform fast security or informational checks. Features:",
+  "usage": [
+   {
+    "binary": "Nikto",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# nikto -Display 1234EP -o report.html -Format htm -Tuning 123bde -host 192.168.0.102\n- Nikto v2.1.6\n---------------------------------------------------------------------------\n+ Target IP:          192.168.0.102\n+ Target Hostname:    192.168.0.102\n+ Target Port:        80\n+ Start Time:         2018-03-23 10:49:04 (GMT0)\n---------------------------------------------------------------------------\n+ Server: Apache/2.2.22 (Ubuntu)\n+ Server leaks inodes via ETags, header found with file /, inode: 287, size: 11832, mtime: Fri Feb  2 15:27:56 2018\n+ The anti-clickjacking X-Frame-Options header is not present.\n+ The X-XSS-Protection header is not defined. This header can hint to the user agent to protect against some forms of XSS\n+ The X-Content-Type-Options header is not set. This could allow the user agent to render the content of the site in a different fashion to the MIME type\n+ No CGI Directories found (use '-C all' to force check all possible dirs)\n+ \"robots.txt\" contains 1 entry which should be manually viewed.\n+ Uncommon header 'tcn' found, with contents: list\n+ Apache mod_negotiation is enabled with MultiViews, which allows attackers to easily brute force file names. See http://www.wisec.it/sectou.php?id=4698ebdc59d15. The following alternatives for 'index' were found: index.html\n+ Apache/2.2.22 appears to be outdated (current is at least Apache/2.4.12). Apache 2.0.65 (final release) and 2.2.29 are also current.\n+ Allowed HTTP Methods: GET, HEAD, POST, OPTIONS\n+ 371 requests: 0 error(s) and 9 item(s) reported on remote host\n+ End Time:           2018-03-23 10:50:44 (GMT0) (100 seconds)\n---------------------------------------------------------------------------\n+ 1 host(s) tested\nroot@kali:~#\nroot@kali:~# firefox report.html"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "nikto",
+    "desc": "Web server security scanner Nikto is a pluggable web server and CGI scanner written in Perl, using rfp’s LibWhisker to perform fast security or informational checks. Features:",
+    "install": "nikto",
+    "size": "2.12 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "nuclei": {
+  "tool": "nuclei",
+  "title": "nuclei",
+  "description": "Fast and customizable vulnerability scanner based on simple YAML based DSL This package contains a fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use. Nuclei is used to send requests across targets based on a template leading to zero false positives and providing fast scanning on large number of hosts. Nuclei offers scanning for a variety of protocols including TCP, DNS, HTTP, File, etc. With powerful and flexible templating, all kinds of security checks can be modelled with Nuclei.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "nuclei",
+    "desc": "Fast and customizable vulnerability scanner based on simple YAML based DSL This package contains a fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use. Nuclei is used to send requests across targets based on a template leading to zero false positives and providing fast scanning on large number of hosts. Nuclei offers scanning for a variety of protocols including TCP, DNS, HTTP, File, etc. With powerful and flexible templating, all kinds of security checks can be modelled with Nuclei.",
+    "install": "nuclei",
+    "size": "119.32 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "paros": {
+  "tool": "paros",
+  "title": "paros",
+  "description": "Web application proxy Lightweight web application testing proxy root@kali:~# paros -h file:/usr/share/paros/paros.jar file:/usr/share/paros/paros.jar GUI usage: javaw paros.jar java -jar paros.jar see java -jar paros.jar {-h|-help} for detail. Command line usage: java -jar paros.jar {-h|-help} {-newsession session_file_path} {options} options: -spider : run spider. See other parameters -seed {URL1} {URL2} ... : Add seeds to the spider for crawling. -scan : Run vulnerability scan depending on previously saved policy. -last_scan_report [file_path]: Generate 'Last Scan Report' into the file_path ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "paros",
+    "desc": "Web application proxy Lightweight web application testing proxy root@kali:~# paros -h file:/usr/share/paros/paros.jar file:/usr/share/paros/paros.jar GUI usage: javaw paros.jar java -jar paros.jar see java -jar paros.jar {-h|-help} for detail. Command line usage: java -jar paros.jar {-h|-help} {-newsession session_file_path} {options} options: -spider : run spider. See other parameters -seed {URL1} {URL2} ... : Add seeds to the spider for crawling. -scan : Run vulnerability scan depending on previously saved policy. -last_scan_report [file_path]: Generate 'Last Scan Report' into the file_path ",
+    "install": "paros",
+    "size": "7.99 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "skipfish": {
+  "tool": "skipfish",
+  "title": "skipfish",
+  "description": "Fully automated, active web application security reconnaissance tool Skipfish is an active web application security reconnaissance tool. It prepares an interactive sitemap for the targeted site by carrying out a recursive crawl and dictionary-based probes. The resulting map is then annotated with the output from a number of active (but hopefully non-disruptive) security checks. The final report generated by the tool is meant to serve as a foundation for professional web application security assessments. Web application security scanner",
+  "usage": [
+   {
+    "binary": "skipfish",
+    "parts": [
+     [
+      "p",
+      "Using the given directory for output ( -o 202 ), scan the web application URL ( http://192.168.1.202/wordpress ):"
+     ],
+     [
+      "code",
+      "root@kali:~# skipfish -o 202 http://192.168.1.202/wordpress\n\nskipfish version 2.10b by [email protected]\n\n  - 192.168.1.202 -\n\nScan statistics:\n\n      Scan time : 0:00:05.849\n  HTTP requests : 2841 (485.6/s), 1601 kB in, 563 kB out (370.2 kB/s)\n    Compression : 802 kB in, 1255 kB out (22.0% gain)\n    HTTP faults : 0 net errors, 0 proto errors, 0 retried, 0 drops\n TCP handshakes : 46 total (61.8 req/conn)\n     TCP faults : 0 failures, 0 timeouts, 16 purged\n External links : 512 skipped\n   Reqs pending : 0\n\nDatabase statistics:\n\n         Pivots : 13 total, 12 done (92.31%)\n    In progress : 0 pending, 0 init, 0 attacks, 1 dict\n  Missing nodes : 0 spotted\n     Node types : 1 serv, 4 dir, 6 file, 0 pinfo, 0 unkn, 2 par, 0 val\n   Issues found : 10 info, 0 warn, 0 low, 8 medium, 0 high impact\n      Dict size : 20 words (20 new), 1 extensions, 202 candidates\n     Signatures : 77 total\n\n[+] Copying static resources...\n[+] Sorting and annotating crawl nodes: 13\n[+] Looking for duplicate entries: 13\n[+] Counting unique nodes: 11\n[+] Saving pivot data for third-party tools...\n[+] Writing scan description...\n[+] Writing crawl tree: 13\n[+] Generating summary views...\n[+] Report saved to '202/index.html' [0x7054c49d].\n[+] This was a great day for science!"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "skipfish",
+    "desc": "Fully automated, active web application security reconnaissance tool Skipfish is an active web application security reconnaissance tool. It prepares an interactive sitemap for the targeted site by carrying out a recursive crawl and dictionary-based probes. The resulting map is then annotated with the output from a number of active (but hopefully non-disruptive) security checks. The final report generated by the tool is meant to serve as a foundation for professional web application security assessments. Web application security scanner",
+    "install": "skipfish",
+    "size": "563 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "sqlmap": {
+  "tool": "sqlmap",
+  "title": "sqlmap",
+  "description": "Automatic SQL injection tool sqlmap goal is to detect and take advantage of SQL injection vulnerabilities in web applications. Once it detects one or more SQL injections on the target host, the user can choose among a variety of options to perform an extensive back-end database management system fingerprint, retrieve DBMS session user and database, enumerate users, password hashes, privileges, databases, dump entire or user’s specific DBMS tables/columns, run his own SQL statement, read specific files on the file system and more. Automatic SQL injection tool",
+  "usage": [
+   {
+    "binary": "sqlmap",
+    "parts": [
+     [
+      "p",
+      "Attack the given URL ( -u “http://192.168.1.250/?p=1&forumaction=search” ) and extract the database names ( –dbs ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sqlmap -u \"http://192.168.1.250/?p=1&forumaction=search\" --dbs\n        ___\n       __H__\n ___ ___[)]_____ ___ ___  {1.2.11#stable}\n|_ -| . [\"]     | .'| . |\n|___|_  [\"]_|_|_|__,|  _|\n      |_|V          |_|   http://sqlmap.org\n\n[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program\n\n[*] starting at 13:37:00\n\n[13:37:00] [INFO] testing connection to the target URL"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sqlmap",
+    "desc": "Automatic SQL injection tool sqlmap goal is to detect and take advantage of SQL injection vulnerabilities in web applications. Once it detects one or more SQL injections on the target host, the user can choose among a variety of options to perform an extensive back-end database management system fingerprint, retrieve DBMS session user and database, enumerate users, password hashes, privileges, databases, dump entire or user’s specific DBMS tables/columns, run his own SQL statement, read specific files on the file system and more. Automatic SQL injection tool",
+    "install": "sqlmap",
+    "size": "10.36 MB"
+   }
+  ],
+  "attack_category": "Initial Access"
+ },
+ "sqlninja": {
+  "tool": "sqlninja",
+  "title": "sqlninja",
+  "description": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.40.1. Usage: s",
+  "usage": [
+   {
+    "binary": "sqlninja",
+    "parts": [
+     [
+      "p",
+      "Connect to the target in test mode ( -m t ) with the specified config file ( -f /root/sqlninja.conf ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sqlninja -m t -f /root/sqlninja.conf\nSqlninja rel. 0.2.6-r1\nCopyright (C) 2006-2011 icesurfer <[email protected]>\n[+] Parsing /root/sqlninja.conf...\n[+] Target is: 192.168.1.51:80\n[+] Trying to inject a 'waitfor delay'...."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sqlninja",
+    "desc": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.40.1. Usage: s",
+    "install": "sqlninja",
+    "size": "1.00 MB"
+   }
+  ],
+  "attack_category": "Initial Access"
+ },
+ "sqlsus": {
+  "tool": "sqlsus",
+  "title": "sqlsus",
+  "description": "MySQL injection tool sqlsus is an open source MySQL injection and takeover tool, written in perl. Via a command line interface, you can retrieve the database(s) structure, inject your own SQL queries (even complex ones), download files from the web server, crawl the website for writable directories, upload and control a backdoor, clone the database(s), and much more… Whenever relevant, sqlsus will mimic a MySQL console output. Updated on: 2025-Dec-09",
+  "usage": [
+   {
+    "binary": "sqlsus",
+    "parts": [
+     [
+      "p",
+      "Generate a configuration file for the scan ( -g sqlsus.cfg ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sqlsus -g sqlsus.cfg\n\n              sqlsus version 0.7.2\n\n  Copyright (c) 2008-2011 Jérémy Ruffet (sativouf)\n\n[+] Configuration successfully saved to sqlsus.cfg\nroot@kali:~# nano sqlsus.cfg"
+     ],
+     [
+      "code",
+      "root@kali:~# sqlsus sqlsus.cfg\n\n              sqlsus version 0.7.2\n\n  Copyright (c) 2008-2011 Jérémy Ruffet (sativouf)\n\n[+] Session \"192.168.1.25\" created\nsqlsus> start"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sqlsus",
+    "desc": "MySQL injection tool sqlsus is an open source MySQL injection and takeover tool, written in perl. Via a command line interface, you can retrieve the database(s) structure, inject your own SQL queries (even complex ones), download files from the web server, crawl the website for writable directories, upload and control a backdoor, clone the database(s), and much more… Whenever relevant, sqlsus will mimic a MySQL console output. Updated on: 2025-Dec-09",
+    "install": "sqlsus",
+    "size": "156 KB"
+   }
+  ],
+  "attack_category": "Initial Access"
+ },
+ "sstimap": {
+  "tool": "sstimap",
+  "title": "sstimap",
+  "description": "Automatic SSTI detection tool with interactive interface SSTImap is a penetration testing software that can check websites for Code Injection and Server-Side Template Injection vulnerabilities and exploit them, giving access to the operating system itself. root@kali:~# sstimap -h usage: sstimap.py [-h] [-V] [--module MODULE] [--config CONFIG] [--no-color] [-u URL] [-i] [--load-urls LOAD_URLS] [--load-forms LOAD_FORMS] [-M MARKER] [-P INJECTION_POINTS] [-d DATA] [--data-type DATA_TYPE] [--data-params KEY=VALUE] [-H HEADER] [-C COOKIE] [-m METHOD] [-a USER_AGENT] [-A] [--delay DELAY] [-p PROXY] ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sstimap",
+    "desc": "Automatic SSTI detection tool with interactive interface SSTImap is a penetration testing software that can check websites for Code Injection and Server-Side Template Injection vulnerabilities and exploit them, giving access to the operating system itself. root@kali:~# sstimap -h usage: sstimap.py [-h] [-V] [--module MODULE] [--config CONFIG] [--no-color] [-u URL] [-i] [--load-urls LOAD_URLS] [--load-forms LOAD_FORMS] [-M MARKER] [-P INJECTION_POINTS] [-d DATA] [--data-type DATA_TYPE] [--data-params KEY=VALUE] [-H HEADER] [-C COOKIE] [-m METHOD] [-a USER_AGENT] [-A] [--delay DELAY] [-p PROXY] ",
+    "install": "sstimap",
+    "size": "426 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "subjack": {
+  "tool": "subjack",
+  "title": "subjack",
+  "description": "Subdomain Takeover tool This package contains a Subdomain Takeover tool written in Go designed to scan a list of subdomains concurrently and identify ones that are able to be hijacked. With Go’s speed and efficiency, this tool really stands out when it comes to mass-testing. Always double check the results manually to rule out false positives. Subjack will also check for subdomains attached to domains that don’t exist (NXDOMAIN) and are available to be registered.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "subjack",
+    "desc": "Subdomain Takeover tool This package contains a Subdomain Takeover tool written in Go designed to scan a list of subdomains concurrently and identify ones that are able to be hijacked. With Go’s speed and efficiency, this tool really stands out when it comes to mass-testing. Always double check the results manually to rule out false positives. Subjack will also check for subdomains attached to domains that don’t exist (NXDOMAIN) and are available to be registered.",
+    "install": "subjack",
+    "size": "10.73 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "tinja": {
+  "tool": "tinja",
+  "title": "tinja",
+  "description": "CLI tool for testing web pages for template injection TInjA is a CLI tool for testing web pages for template injection vulnerabilities and supports 44 of the most relevant template engines for eight different programming languages. root@kali:~# tinja -h __/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\__/\\\\\\\\\\\\\\\\\\\\\\______________________________/\\\\\\\\\\\\\\\\\\____ _\\///////\\\\\\/////__\\/////\\\\\\///______________________/\\\\\\___/\\\\\\\\\\\\\\\\\\\\\\\\\\__ _______\\/\\\\\\___________\\/\\\\\\________________________\\///___/\\\\\\/////////\\\\\\_ _______\\/\\\\\\___________\\/\\\\\\______/\\\\/\\\\\\\\\\\\_________/\\\\\\_\\/\\\\\\_______\\/\\\\\\_ _______\\/\\\\\\___________\\/\\\\\\_____\\/\\\\\\",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "tinja",
+    "desc": "CLI tool for testing web pages for template injection TInjA is a CLI tool for testing web pages for template injection vulnerabilities and supports 44 of the most relevant template engines for eight different programming languages. root@kali:~# tinja -h __/\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\__/\\\\\\\\\\\\\\\\\\\\\\______________________________/\\\\\\\\\\\\\\\\\\____ _\\///////\\\\\\/////__\\/////\\\\\\///______________________/\\\\\\___/\\\\\\\\\\\\\\\\\\\\\\\\\\__ _______\\/\\\\\\___________\\/\\\\\\________________________\\///___/\\\\\\/////////\\\\\\_ _______\\/\\\\\\___________\\/\\\\\\______/\\\\/\\\\\\\\\\\\_________/\\\\\\_\\/\\\\\\_______\\/\\\\\\_ _______\\/\\\\\\___________\\/\\\\\\_____\\/\\\\\\",
+    "install": "tinja",
+    "size": "12.62 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "wapiti": {
+  "tool": "wapiti",
+  "title": "wapiti",
+  "description": "Web application vulnerability scanner Wapiti allows you to audit the security of your web applications. It performs “black-box” scans, i.e. it does not study the source code of the application but will scan the web pages of the deployed web applications, looking for scripts and forms where it can inject data. Once it gets this list, Wapiti acts like a fuzzer, injecting payloads to see if a script is vulnerable. Wapiti can detect the following vulnerabilities:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "wapiti",
+    "desc": "Web application vulnerability scanner Wapiti allows you to audit the security of your web applications. It performs “black-box” scans, i.e. it does not study the source code of the application but will scan the web pages of the deployed web applications, looking for scripts and forms where it can inject data. Once it gets this list, Wapiti acts like a fuzzer, injecting payloads to see if a script is vulnerable. Wapiti can detect the following vulnerabilities:",
+    "install": "wapiti",
+    "size": "3.26 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "watobo": {
+  "tool": "watobo",
+  "title": "watobo",
+  "description": "Semi-automated web application scanner WATOBO is intended to enable security professionals to perform highly efficient (semi-automated) web application security audits. It works like a local web proxy. root@kali:~# watobo -h ############################################################# W A T O B O - THE Web Application Toolbox brought to you by siberas http://www.siberas.de ############################################################# + looking for DEV_ENV environment variable ...[N/A] /usr/share/watobo/config/datastore.yml /usr/share/watobo/config/forwarding_proxy.yml /usr/share/watobo/config",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "watobo",
+    "desc": "Semi-automated web application scanner WATOBO is intended to enable security professionals to perform highly efficient (semi-automated) web application security audits. It works like a local web proxy. root@kali:~# watobo -h ############################################################# W A T O B O - THE Web Application Toolbox brought to you by siberas http://www.siberas.de ############################################################# + looking for DEV_ENV environment variable ...[N/A] /usr/share/watobo/config/datastore.yml /usr/share/watobo/config/forwarding_proxy.yml /usr/share/watobo/config",
+    "install": "watobo",
+    "size": "3.28 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "webscarab": {
+  "tool": "webscarab",
+  "title": "webscarab",
+  "description": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2025-Dec-09",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "webscarab",
+    "desc": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2025-Dec-09",
+    "install": "webscarab",
+    "size": "11.27 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "wfuzz": {
+  "tool": "wfuzz",
+  "title": "wfuzz",
+  "description": "Web application bruteforcer Wfuzz is a tool designed for bruteforcing Web Applications, it can be used for finding resources not linked directories, servlets, scripts, etc, bruteforce GET and POST parameters for checking different kind of injections (SQL, XSS, LDAP,etc), bruteforce Forms parameters (User/Password), Fuzzing, etc. A web application bruteforcer",
+  "usage": [
+   {
+    "binary": "wfuzz",
+    "parts": [
+     [
+      "p",
+      "Use colour output ( -c ), a wordlist as a payload ( -z file,/usr/share/wfuzz/wordlist/general/common.txt ), and hide 404 messages ( –hc 404 ) to fuzz the given URL ( http://192.168.1.202/FUZZ ):"
+     ],
+     [
+      "code",
+      "root@kali:~# wfuzz -c -z file,/usr/share/wfuzz/wordlist/general/common.txt --hc 404 http://192.168.1.202/FUZZ\n\n********************************************************\n* Wfuzz 2.2.11 - The Web Fuzzer                        *\n********************************************************\n\nTarget: http://192.168.1.202/FUZZ\nPayload type: file,/usr/share/wfuzz/wordlist/general/common.txt\n\nTotal requests: 950\n==================================================================\nID  Response   Lines      Word         Chars          Request\n==================================================================\n\n00429:  C=200      4 L        25 W      177 Ch    \" - index\"\n00466:  C=301      9 L        28 W      319 Ch    \" - javascript\""
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "wfuzz",
+    "desc": "Web application bruteforcer Wfuzz is a tool designed for bruteforcing Web Applications, it can be used for finding resources not linked directories, servlets, scripts, etc, bruteforce GET and POST parameters for checking different kind of injections (SQL, XSS, LDAP,etc), bruteforce Forms parameters (User/Password), Fuzzing, etc. A web application bruteforcer",
+    "install": "wfuzz",
+    "size": "1.54 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "whatweb": {
+  "tool": "whatweb",
+  "title": "whatweb",
+  "description": "Next generation web scanner WhatWeb identifies websites. It recognises web technologies including content management systems (CMS), blogging platforms, statistic/analytics packages, JavaScript libraries, web servers, and embedded devices. WhatWeb has over 900 plugins, each to recognise something different. It also identifies version numbers, email addresses, account IDs, web framework modules, SQL errors, and more.",
+  "usage": [
+   {
+    "binary": "WhatWeb",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# whatweb -v -a 3 192.168.0.102\nWhatWeb report for http://192.168.0.102\nStatus    : 200 OK\nTitle     : Toolz TestBed\nIP        : 192.168.0.102\nCountry   : RESERVED, ZZ\n\nSummary   : JQuery, Script, X-UA-Compatible[IE=edge], HTML5, Apache[2.2,2.2.22], HTTPServer[Ubuntu Linux][Apache/2.2.22 (Ubuntu)]\n\nDetected Plugins:\n[ Apache ]\n  The Apache HTTP Server Project is an effort to develop and\n  maintain an open-source HTTP server for modern operating\n  systems including UNIX and Windows NT. The goal of this\n  project is to provide a secure, efficient and extensible\n  server that provides HTTP services in sync with the current\n  HTTP standards.\n\n  Version      : 2.2.22 (from HTTP Server Header)\n  Version      : 2.2\n  Version      : 2.2\n  Google Dorks: (3)\n  Website     : http://httpd.apache.org/\n\n[ HTML5 ]\n  HTML version 5, detected by the doctype declaration\n\n\n[ HTTPServer ]\n  HTTP server header string. This plugin also attempts to\n  identify the operating system from the server header.\n\n  OS           : Ubuntu Linux\n  String       : Apache/2.2.22 (Ubuntu) (from server string)\n\n[ JQuery ]\n  A fast, concise, JavaScript that simplifies how to traverse\n  HTML documents, handle events, perform animations, and add\n  AJAX.\n\n  Website     : http://jquery.com/\n\n[ Script ]\n  This plugin detects instances of script HTML elements and\n  returns the script language/type.\n\n\n[ X-UA-Compatible ]\n  This plugin retrieves the X-UA-Compatible value from the\n  HTTP header and meta http-equiv tag. - More Info:\n  http://msdn.microsoft.com/en-us/library/cc817574.aspx\n\n  String       : IE=edge\n\nHTTP Headers:\n  HTTP/1.1 200 OK\n  Server: Apache/2.2.22 (Ubuntu)\n  Last-Modified: Fri, 02 Feb 2018 15:27:56 GMT\n  ETag: \"11f-2e38-5643c5b56a8d3\"\n  Accept-Ranges: bytes\n  Vary: Accept-Encoding\n  Content-Encoding: gzip\n  Content-Length: 3541\n  Connection: close\n  Content-Type: text/html\n\nroot@kali:~#"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "whatweb",
+    "desc": "Next generation web scanner WhatWeb identifies websites. It recognises web technologies including content management systems (CMS), blogging platforms, statistic/analytics packages, JavaScript libraries, web servers, and embedded devices. WhatWeb has over 900 plugins, each to recognise something different. It also identifies version numbers, email addresses, account IDs, web framework modules, SQL errors, and more.",
+    "install": "whatweb",
+    "size": "18.76 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "wpscan": {
+  "tool": "wpscan",
+  "title": "wpscan",
+  "description": "Black box WordPress vulnerability scanner WPScan scans remote WordPress installations to find security issues. WordPress Security Scanner",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "wpscan",
+    "desc": "Black box WordPress vulnerability scanner WPScan scans remote WordPress installations to find security issues. WordPress Security Scanner",
+    "install": "wpscan",
+    "size": "397 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "xsser": {
+  "tool": "xsser",
+  "title": "xsser",
+  "description": "XSS testing framework Cross Site “Scripter” (aka XSSer) is an automatic -framework- to detect, exploit and report XSS vulnerabilities in web-based applications. It contains several options to try to bypass certain filters, and various special techniques of code injection.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "xsser",
+    "desc": "XSS testing framework Cross Site “Scripter” (aka XSSer) is an automatic -framework- to detect, exploit and report XSS vulnerabilities in web-based applications. It contains several options to try to bypass certain filters, and various special techniques of code injection.",
+    "install": "xsser",
+    "size": "23.98 MB"
+   }
+  ],
+  "attack_category": "Execution"
+ },
+ "zaproxy": {
+  "tool": "zaproxy",
+  "title": "zaproxy",
+  "description": "Testing tool for finding vulnerabilities in web applications The OWASP Zed Attack Proxy (ZAP) is an easy to use integrated penetration testing tool for finding vulnerabilities in web applications. It is designed to be used by people with a wide range of security experience and as such is ideal for developers and functional testers who are new to penetration testing as well as being a useful addition to an experienced pen testers toolbox.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "zaproxy",
+    "desc": "Testing tool for finding vulnerabilities in web applications The OWASP Zed Attack Proxy (ZAP) is an easy to use integrated penetration testing tool for finding vulnerabilities in web applications. It is designed to be used by people with a wide range of security experience and as such is ideal for developers and functional testers who are new to penetration testing as well as being a useful addition to an experienced pen testers toolbox.",
+    "install": "zaproxy",
+    "size": "266.90 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ }
+}

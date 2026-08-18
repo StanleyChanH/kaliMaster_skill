@@ -1,0 +1,825 @@
+{
+ "apache-users": {
+  "tool": "apache-users",
+  "title": "apache-users",
+  "description": "Enumerate usernames on systems with Apache UserDir module This Perl script will enumerate the usernames on any system that uses Apache with the UserDir module. root@kali:~# apache-users -h USAGE: apache-users [-h 1.2.3.4] [-l names] [-p 80] [-s (SSL Support 1=true 0=false)] [-e 403 (http code)] [-t threads] Updated on: 2025-Dec-09",
+  "usage": [
+   {
+    "binary": "apache-users",
+    "parts": [
+     [
+      "p",
+      "Run against the remote host ( -h 192.168.1.202 ), passing a dictionary of usernames ( -l /usr/share/wordlists/metasploit/unix_users.txt ), the port to use ( -p 80 ), disable SSL ( -s 0 ), specify the HTTP error code ( -e 403 ), using 10 threads ( -t 10 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# apache-users -h 192.168.1.202 -l /usr/share/wordlists/metasploit/unix_users.txt -p 80 -s 0 -e 403 -t 10"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "apache-users",
+    "desc": "Enumerate usernames on systems with Apache UserDir module This Perl script will enumerate the usernames on any system that uses Apache with the UserDir module. root@kali:~# apache-users -h USAGE: apache-users [-h 1.2.3.4] [-l names] [-p 80] [-s (SSL Support 1=true 0=false)] [-e 403 (http code)] [-t threads] Updated on: 2025-Dec-09",
+    "install": "apache-users",
+    "size": "13 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "atk6-thcping6": {
+  "tool": "atk6-thcping6",
+  "title": "atk6-thcping6",
+  "description": "The Hacker Choice’s IPv6 Attack Toolkit Attack toolkit for testing IPv6 and ICMPv6 protocol weaknesses. Some of the tools included:",
+  "usage": [
+   {
+    "binary": "address6",
+    "parts": [
+     [
+      "p",
+      "Convert an IPv6 address to a MAC address and vice-versa:"
+     ],
+     [
+      "code",
+      "root@kali:~# address6 fe80::76d4:35ff:fe4e:39c8\n74:d4:35:4e:39:c8\nroot@kali:~# address6 74:d4:35:4e:39:c8\nfe80::76d4:35ff:fe4e:39c8"
+     ]
+    ]
+   },
+   {
+    "binary": "alive6",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# alive6 eth0\nAlive: fd77:7c68:420a:1:426c:8fff:fe1b:cb90 [ICMP parameter problem]\nAlive: fd77:7c68:420a:1:20c:29ff:fee5:5bf4 [ICMP echo-reply]\nAlive: fd77:7c68:420a:1:75d9:4f39:a46a:6f83 [ICMP echo-reply]\nAlive: fd77:7c68:420a:1:6912:8e80:e02f:1969 [ICMP echo-reply]\nAlive: fd77:7c68:420a:1:201:6cff:fe6f:ddd1 [ICMP echo-reply]"
+     ]
+    ]
+   },
+   {
+    "binary": "detect-new-ip6",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# detect-new-ip6 eth0\nStarted ICMP6 DAD detection (Press Control-C to end) ...\nDetected new ip6 address: fe80::85d:9879:9251:853a"
+     ]
+    ]
+   },
+   {
+    "binary": "dnsdict6",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# dnsdict6 example.com\nStarting DNS enumeration work on example.com. ...\nStarting enumerating example.com. - creating 8 threads for 798 words...\nEstimated time to completion: 1 to 2 minutes\nwww.example.com. => 2606:2800:220:6d:26bf:1447:1097:aa7"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "thc-ipv6",
+    "desc": "The Hacker Choice’s IPv6 Attack Toolkit Attack toolkit for testing IPv6 and ICMPv6 protocol weaknesses. Some of the tools included:",
+    "install": "thc-ipv6",
+    "size": "3.68 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "autorecon": {
+  "tool": "autorecon",
+  "title": "autorecon",
+  "description": "Multi-threaded network reconnaissance tool AutoRecon is a multi-threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments (e.g. OSCP). It may also be useful in real-world engagements. root@kali:~# autorecon -h usage: autorecon [-t TARGET_FILE] [-p PORTS] [-m MAX_SCANS] [-mp MAX_PORT_SCANS] [-c CONFIG_FILE] [-g GLOBAL_FILE] [--tags TAGS] [--exclude-tags TAGS] [--port-scans PLUGINS] [--service-scans PLUGINS] [--reports PLUGINS] [--plugins-dir PLUGINS_DIR] [--add-plugins-di",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "autorecon",
+    "desc": "Multi-threaded network reconnaissance tool AutoRecon is a multi-threaded network reconnaissance tool which performs automated enumeration of services. It is intended as a time-saving tool for use in CTFs and other penetration testing environments (e.g. OSCP). It may also be useful in real-world engagements. root@kali:~# autorecon -h usage: autorecon [-t TARGET_FILE] [-p PORTS] [-m MAX_SCANS] [-mp MAX_PORT_SCANS] [-c CONFIG_FILE] [-g GLOBAL_FILE] [--tags TAGS] [--exclude-tags TAGS] [--port-scans PLUGINS] [--service-scans PLUGINS] [--reports PLUGINS] [--plugins-dir PLUGINS_DIR] [--add-plugins-di",
+    "install": "autorecon",
+    "size": "1.24 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "braa": {
+  "tool": "braa",
+  "title": "braa",
+  "description": "Mass SNMP scanner Braa is a mass snmp scanner. The intended usage of such a tool is of course making SNMP queries - but unlike snmpget or snmpwalk from net-snmp, it is able to query dozens or hundreds of hosts simultaneously, and in a single process. Thus, it consumes very few system resources and does the scanning VERY fast. Braa implements its OWN snmp stack, so it does NOT need any SNMP libraries like net-snmp. The implementation is very dirty, supports only several data types, and in any case cannot be stated ‘standard-conforming’! It was designed to be fast, and it is fast. For this reaso",
+  "usage": [
+   {
+    "binary": "braa",
+    "parts": [
+     [
+      "p",
+      "Walk the SNMP tree on 192.168.1.215 using the community string of public , querying all OIDs under .1.3.6 :"
+     ],
+     [
+      "code",
+      "root@kali:~# braa [email protected]:.1.3.6.*\n192.168.1.215:122ms:.1.3.6.1.2.1.1.1.0:Linux redhat.biz.local 2.4.20-8 #1 Thu Mar 13 17:54:28 EST 2003 i686\n192.168.1.215:143ms:.1.3.6.1.2.1.1.2.0:.1.3.6.1.4.1.8072.3.2.10\n192.168.1.215:122ms:.1.3.6.1.2.1.1.3.0:4051218219\n192.168.1.215:122ms:.1.3.6.1.2.1.1.4.0:Root <root@localhost> (configure /etc/snmp/snmp.local.conf)\n192.168.1.215:143ms:.1.3.6.1.2.1.1.5.0:redhat.biz.local"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "braa",
+    "desc": "Mass SNMP scanner Braa is a mass snmp scanner. The intended usage of such a tool is of course making SNMP queries - but unlike snmpget or snmpwalk from net-snmp, it is able to query dozens or hundreds of hosts simultaneously, and in a single process. Thus, it consumes very few system resources and does the scanning VERY fast. Braa implements its OWN snmp stack, so it does NOT need any SNMP libraries like net-snmp. The implementation is very dirty, supports only several data types, and in any case cannot be stated ‘standard-conforming’! It was designed to be fast, and it is fast. For this reaso",
+    "install": "braa",
+    "size": "62 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "enum4linux-ng": {
+  "tool": "enum4linux-ng",
+  "title": "enum4linux-ng",
+  "description": "Next generation version of enum4linux Next generation version of enum4linux (a Windows/Samba enumeration tool) with additional features like JSON/YAML export. Aimed for security professionals and CTF players. root@kali:~# enum4linux-ng -h ENUM4LINUX - next generation (v1.3.10) usage: enum4linux-ng [-h] [-A] [-As] [-U] [-G] [-Gm] [-S] [-C] [-P] [-O] [-L] [-I] [-R [BULK_SIZE]] [-N] [-w DOMAIN] [-u USER] [-p PW | -K TICKET_FILE | -H NTHASH] [--local-auth] [-d] [-k USERS] [-r RANGES] [-s SHARES_FILE] [-t TIMEOUT] [-v] [--keep] [-oJ OUT_JSON_FILE | -oY OUT_YAML_FILE | -oA OUT_FILE] host This tool i",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "enum4linux-ng",
+    "desc": "Next generation version of enum4linux Next generation version of enum4linux (a Windows/Samba enumeration tool) with additional features like JSON/YAML export. Aimed for security professionals and CTF players. root@kali:~# enum4linux-ng -h ENUM4LINUX - next generation (v1.3.10) usage: enum4linux-ng [-h] [-A] [-As] [-U] [-G] [-Gm] [-S] [-C] [-P] [-O] [-L] [-I] [-R [BULK_SIZE]] [-N] [-w DOMAIN] [-u USER] [-p PW | -K TICKET_FILE | -H NTHASH] [--local-auth] [-d] [-k USERS] [-r RANGES] [-s SHARES_FILE] [-t TIMEOUT] [-v] [--keep] [-oJ OUT_JSON_FILE | -oY OUT_YAML_FILE | -oA OUT_FILE] host This tool i",
+    "install": "enum4linux-ng",
+    "size": "193 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "enum4linux": {
+  "tool": "enum4linux",
+  "title": "enum4linux",
+  "description": "Enumerates info from Windows and Samba systems Enum4linux is a tool for enumerating information from Windows and Samba systems. It attempts to offer similar functionality to enum.exe formerly available from www.bindview.com . It is written in PERL and is basically a wrapper around the Samba tools smbclient, rpclient, net and nmblookup. The samba package is therefore a dependency.",
+  "usage": [
+   {
+    "binary": "enum4linux",
+    "parts": [
+     [
+      "p",
+      "Attempt to get the userlist ( -U ) and OS information ( -o ) from the target ( 192.168.1.200 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# enum4linux -U -o 192.168.1.200\nStarting enum4linux v0.8.9 ( http://labs.portcullis.co.uk/application/enum4linux/ ) on Sun Aug 17 12:17:32 2014\n\n ==========================\n|    Target Information    |\n ==========================\nTarget ........... 192.168.1.200\nRID Range ........ 500-550,1000-1050\nUsername ......... ''\nPassword ......... ''\nKnown Usernames .. administrator, guest, krbtgt, domain admins, root, bin, none\n\n\n ======================================================\n|    Enumerating Workgroup/Domain on 192.168.1.200   |\n ======================================================\n[+] Got domain/workgroup name: KALI"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "enum4linux",
+    "desc": "Enumerates info from Windows and Samba systems Enum4linux is a tool for enumerating information from Windows and Samba systems. It attempts to offer similar functionality to enum.exe formerly available from www.bindview.com . It is written in PERL and is basically a wrapper around the Samba tools smbclient, rpclient, net and nmblookup. The samba package is therefore a dependency.",
+    "install": "enum4linux",
+    "size": "58 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "ike-scan": {
+  "tool": "ike-scan",
+  "title": "ike-scan",
+  "description": "Discover and fingerprint IKE hosts (IPsec VPN Servers) ike-scan discovers IKE hosts and can also fingerprint them using the retransmission backoff pattern. ike-scan does two things:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ike-scan",
+    "desc": "Discover and fingerprint IKE hosts (IPsec VPN Servers) ike-scan discovers IKE hosts and can also fingerprint them using the retransmission backoff pattern. ike-scan does two things:",
+    "install": "ike-scan",
+    "size": "4.17 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "legion": {
+  "tool": "legion",
+  "title": "legion",
+  "description": "Semi-automated network penetration testing tool This package contains an open source, easy-to-use, super-extensible and semi-automated network penetration testing tool that aids in discovery, reconnaissance and exploitation of information systems. Legion is a fork of SECFORCE’s Sparta.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "legion",
+    "desc": "Semi-automated network penetration testing tool This package contains an open source, easy-to-use, super-extensible and semi-automated network penetration testing tool that aids in discovery, reconnaissance and exploitation of information systems. Legion is a fork of SECFORCE’s Sparta.",
+    "install": "legion",
+    "size": "7.51 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "masscan": {
+  "tool": "masscan",
+  "title": "masscan",
+  "description": "TCP port scanner MASSCAN is TCP port scanner which transmits SYN packets asynchronously and produces results similar to nmap, the most famous port scanner. Internally, it operates more like scanrand, unicornscan, and ZMap, using asynchronous transmission. It’s a flexible utility that allows arbitrary address and port ranges. Fast scan of the Internet",
+  "usage": [
+   {
+    "binary": "masscan",
+    "parts": [
+     [
+      "p",
+      "Scan for a selection of ports ( -p22,80,445 ) across a given subnet ( 192.168.1.0/24 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# masscan -p22,80,445 192.168.1.0/24\n\nStarting masscan 1.0.3 (http://bit.ly/14GZzcT) at 2014-05-13 21:35:12 GMT\n -- forced options: -sS -Pn -n --randomize-hosts -v --send-eth\nInitiating SYN Stealth Scan\nScanning 256 hosts [3 ports/host]\nDiscovered open port 22/tcp on 192.168.1.217\nDiscovered open port 445/tcp on 192.168.1.220\nDiscovered open port 80/tcp on 192.168.1.230"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "masscan",
+    "desc": "TCP port scanner MASSCAN is TCP port scanner which transmits SYN packets asynchronously and produces results similar to nmap, the most famous port scanner. Internally, it operates more like scanrand, unicornscan, and ZMap, using asynchronous transmission. It’s a flexible utility that allows arbitrary address and port ranges. Fast scan of the Internet",
+    "install": "masscan",
+    "size": "516 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "mdb-sql": {
+  "tool": "mdb-sql",
+  "title": "mdb-sql",
+  "description": "Core library for accessing JET / MS Access (MDB) files Core library for accessing JET / MS Access database (MDB) files programmatically. Allows one to use MDB files with PHP for example.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libmdb3t64",
+    "desc": "Core library for accessing JET / MS Access (MDB) files Core library for accessing JET / MS Access database (MDB) files programmatically. Allows one to use MDB files with PHP for example.",
+    "install": "libmdb3t64",
+    "size": "155 KB"
+   },
+   {
+    "binary": "libmdbsql3t64",
+    "desc": "Mdbtools SQL library Libraries built on libmdb to provide a SQL engine for reading JET / MS Access database (MDB) files. See mdb-sql util in mdbtools package.",
+    "install": "libmdbsql3t64",
+    "size": "71 KB"
+   },
+   {
+    "binary": "mdbtools",
+    "desc": "JET / MS Access database (MDB) tools These are various tools for manipulating JET / MS Access database (MDB) files: Export data in an MDB database table to a C array.",
+    "install": "mdbtools",
+    "size": "268 KB"
+   },
+   {
+    "binary": "mdbtools-dev",
+    "desc": "Mdbtools development files Utilities for reading MS Access database (MDB) files These are development files for mdbtools, needed to build applications with it.",
+    "install": "mdbtools-dev",
+    "size": "290 KB"
+   },
+   {
+    "binary": "mdbtools-doc",
+    "desc": "Dummy package This is a transitional package. It can safely be removed. See package libmdb3t64 documentation.",
+    "install": "mdbtools-doc",
+    "size": "21 KB"
+   },
+   {
+    "binary": "odbc-mdbtools",
+    "desc": "MDB tools ODBC driver This is the software driver to access JET / MS Access database (MDB) files through ODBC. This also contains the installation interface for unixodbc. Updated on: 2026-May-25",
+    "install": "odbc-mdbtools",
+    "size": "103 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "mxcheck": {
+  "tool": "mxcheck",
+  "title": "mxcheck",
+  "description": "Info and security scanner for e-mail servers mxcheck is an info scanner for e-mail servers, checking: - DNS records: A, MX, PTR, SPF, MTA-STS, DKIM, DMARC - AS Number and AS Country - The support of StartTLS and the certificate - Open ports: 25, 465, 587 - If the service is listed by blacklists - If it leaks information by server string and VRFY command - If the server is an open relay Installed size: 6.79 MB How to install: sudo apt install mxcheck",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "mxcheck",
+    "desc": "Info and security scanner for e-mail servers mxcheck is an info scanner for e-mail servers, checking: - DNS records: A, MX, PTR, SPF, MTA-STS, DKIM, DMARC - AS Number and AS Country - The support of StartTLS and the certificate - Open ports: 25, 465, 587 - If the service is listed by blacklists - If it leaks information by server string and VRFY command - If the server is an open relay Installed size: 6.79 MB How to install: sudo apt install mxcheck",
+    "install": "mxcheck",
+    "size": "6.79 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "nbtscan": {
+  "tool": "nbtscan",
+  "title": "nbtscan",
+  "description": "Scan networks searching for NetBIOS information NBTscan is a program for scanning IP networks for NetBIOS name information. It sends NetBIOS status query to each address in supplied range and lists received information in human readable form. For each responded host it lists IP address, NetBIOS computer name, logged-in user name and MAC address (such as Ethernet). This program is useful for security checks, network discovery and forensics investigations.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "nbtscan",
+    "desc": "Scan networks searching for NetBIOS information NBTscan is a program for scanning IP networks for NetBIOS name information. It sends NetBIOS status query to each address in supplied range and lists received information in human readable form. For each responded host it lists IP address, NetBIOS computer name, logged-in user name and MAC address (such as Ethernet). This program is useful for security checks, network discovery and forensics investigations.",
+    "install": "nbtscan",
+    "size": "57 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "nmap": {
+  "tool": "nmap",
+  "title": "nmap",
+  "description": "NMAP netcat reimplementation ncat is a reimplementation of Netcat by the NMAP project, providing most of the features present in the original implementations, along with some new features such as IPv6 and SSL support. Port scanning support has been removed. Concatenate and redirect sockets",
+  "usage": [
+   {
+    "binary": "nmap",
+    "parts": [
+     [
+      "p",
+      "Scan in verbose mode ( -v ), enable OS detection, version detection, script scanning, and traceroute ( -A ), with version detection ( -sV ) against the target IP ( 192.168.1.1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# nmap -v -A -sV 192.168.1.1\n\nStarting Nmap 6.45 ( http://nmap.org ) at 2014-05-13 18:40 MDT\nNSE: Loaded 118 scripts for scanning.\nNSE: Script Pre-scanning.\nInitiating ARP Ping Scan at 18:40\nScanning 192.168.1.1 [1 port]\nCompleted ARP Ping Scan at 18:40, 0.06s elapsed (1 total hosts)\nInitiating Parallel DNS resolution of 1 host. at 18:40\nCompleted Parallel DNS resolution of 1 host. at 18:40, 0.00s elapsed\nInitiating SYN Stealth Scan at 18:40\nScanning router.localdomain (192.168.1.1) [1000 ports]\nDiscovered open port 53/tcp on 192.168.1.1\nDiscovered open port 22/tcp on 192.168.1.1\nDiscovered open port 80/tcp on 192.168.1.1\nDiscovered open port 3001/tcp on 192.168.1.1"
+     ]
+    ]
+   },
+   {
+    "binary": "nping",
+    "parts": [
+     [
+      "p",
+      "Using TCP mode ( –tcp ) to probe port 22 ( -p 22 ) using the SYN flag ( –flags syn ) with a TTL of 2 ( –ttl 2 ) on the remote host ( 192.168.1.1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# nping --tcp -p 22 --flags syn --ttl 2 192.168.1.1\n\nStarting Nping 0.6.45 ( http://nmap.org/nping ) at 2014-05-13 18:43 MDT\nSENT (0.0673s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (0.0677s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3377886789 win=5840 <mss 1460>\nSENT (1.0678s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (1.0682s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3393519366 win=5840 <mss 1460>\nSENT (2.0693s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (2.0696s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3409166569 win=5840 <mss 1460>\nSENT (3.0707s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (3.0710s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3424813300 win=5840 <mss 1460>\nSENT (4.0721s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (4.0724s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3440460772 win=5840 <mss 1460>\n\nMax rtt: 0.337ms | Min rtt: 0.282ms | Avg rtt: 0.296ms\nRaw packets sent: 5 (200B) | Rcvd: 5 (230B) | Lost: 0 (0.00%)\nNping done: 1 IP address pinged in 4.13 seconds"
+     ]
+    ]
+   },
+   {
+    "binary": "ndiff",
+    "parts": [
+     [
+      "p",
+      "Compare yesterday’s port scan ( yesterday.xml ) with the scan from today ( today.xml ):"
+     ],
+     [
+      "code",
+      "root@kali:~# ndiff yesterday.xml today.xml\n-Nmap 6.45 scan initiated Tue May 13 18:46:43 2014 as: nmap -v -F -oX yesterday.xml 192.168.1.1\n+Nmap 6.45 scan initiated Tue May 13 18:47:58 2014 as: nmap -v -F -oX today.xml 192.168.1.1\n\n endian.localdomain (192.168.1.1, 00:01:6C:6F:DD:D1):\n-Not shown: 96 filtered ports\n+Not shown: 97 filtered ports\n PORT   STATE SERVICE VERSION\n-22/tcp open  ssh"
+     ]
+    ]
+   },
+   {
+    "binary": "ncat",
+    "parts": [
+     [
+      "p",
+      "Be verbose ( -v ), running /bin/bash on connect ( –exec “/bin/bash” ), only allowing 1 IP address ( –allow 192.168.1.123 ), listen on TCP port 4444 ( -l 4444 ), and keep the listener open on disconnect ( –keep-open ):"
+     ],
+     [
+      "code",
+      "root@kali:~# ncat -v --exec \"/bin/bash\" --allow 192.168.1.123 -l 4444 --keep-open\nNcat: Version 6.45 ( http://nmap.org/ncat )\nNcat: Listening on :::4444\nNcat: Listening on 0.0.0.0:4444\nNcat: Connection from 192.168.1.123.\nNcat: Connection from 192.168.1.123:39501.\nNcat: Connection from 192.168.1.15.\nNcat: Connection from 192.168.1.15:60393.\nNcat: New connection denied: not allowed"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "ncat",
+    "desc": "NMAP netcat reimplementation ncat is a reimplementation of Netcat by the NMAP project, providing most of the features present in the original implementations, along with some new features such as IPv6 and SSL support. Port scanning support has been removed. Concatenate and redirect sockets",
+    "install": "ncat",
+    "size": "807 KB"
+   },
+   {
+    "binary": "ndiff",
+    "desc": "The Network Mapper - result compare utility Ndiff is a tool to aid in the comparison of Nmap scans. It takes two Nmap XML output files and prints the differences between them them: hosts coming up and down, ports becoming open or closed, and things like that. It can produce output in human-readable text or machine-readable XML formats.",
+    "install": "ndiff",
+    "size": "432 KB"
+   },
+   {
+    "binary": "nmap",
+    "desc": "The Network Mapper Nmap is a utility for network exploration or security auditing. It supports ping scanning (determine which hosts are up), many port scanning techniques, version detection (determine service protocols and application versions listening behind ports), and TCP/IP fingerprinting (remote host OS or device identification). Nmap also offers flexible target and port specification, decoy/stealth scanning, sunRPC scanning, and more. Most Unix and Windows platforms are supported in both GUI and commandline modes. Several popular handheld devices are also supported, including the Sharp ",
+    "install": "nmap",
+    "size": "4.70 MB"
+   },
+   {
+    "binary": "nmap-common",
+    "desc": "Architecture independent files for nmap Nmap is a utility for network exploration or security auditing. It supports ping scanning (determine which hosts are up), many port scanning techniques, version detection (determine service protocols and application versions listening behind ports), and TCP/IP fingerprinting (remote host OS or device identification). Nmap also offers flexible target and port specification, decoy/stealth scanning, sunRPC scanning, and more. Most Unix and Windows platforms are supported in both GUI and commandline modes. Several popular handheld devices are also supported,",
+    "install": "nmap-common",
+    "size": "22.74 MB"
+   },
+   {
+    "binary": "zenmap",
+    "desc": "The Network Mapper Front End Zenmap is an Nmap frontend. It is meant to be useful for advanced users and to make Nmap easy to use by beginners. It was originally derived from Umit, an Nmap GUI created as part of the Google Summer of Code. Graphical Nmap frontend and results viewer",
+    "install": "zenmap",
+    "size": "1.76 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "onesixtyone": {
+  "tool": "onesixtyone",
+  "title": "onesixtyone",
+  "description": "Fast and simple SNMP scanner onesixtyone is a simple SNMP scanner which sends SNMP requests for the sysDescr value asynchronously with user-adjustable sending times and then logs the responses which gives the description of the software running on the device. Running onesixtyone on a class B network (switched 100Mbs with 1Gbs backbone) with -w 10 gives a performance of 3 seconds per class C, with no dropped packets, and all 65536 IP addresses were scanned in less than 13 minutes.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "onesixtyone",
+    "desc": "Fast and simple SNMP scanner onesixtyone is a simple SNMP scanner which sends SNMP requests for the sysDescr value asynchronously with user-adjustable sending times and then logs the responses which gives the description of the software running on the device. Running onesixtyone on a class B network (switched 100Mbs with 1Gbs backbone) with -w 10 gives a performance of 3 seconds per class C, with no dropped packets, and all 65536 IP addresses were scanned in less than 13 minutes.",
+    "install": "onesixtyone",
+    "size": "177 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "oscanner": {
+  "tool": "oscanner",
+  "title": "oscanner",
+  "description": "Oracle assessment framework Oscanner is an Oracle assessment framework developed in Java. It has a plugin-based architecture and comes with a couple of plugins that currently do: The results are given in a graphical java tree.",
+  "usage": [
+   {
+    "binary": "oscanner",
+    "parts": [
+     [
+      "p",
+      "Scan the target server ( -s 192.168.1.15 ) on port 1040 ( -P 1040 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# oscanner -s 192.168.1.15 -P 1040\nOracle Scanner 1.0.6 by [email protected]\n--------------------------------------------------\n[-] Checking host 192.168.1.15\n[x] Failed to enumerate sids from host\n[-] Loading services/sids from service file"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "oscanner",
+    "desc": "Oracle assessment framework Oscanner is an Oracle assessment framework developed in Java. It has a plugin-based architecture and comes with a couple of plugins that currently do: The results are given in a graphical java tree.",
+    "install": "oscanner",
+    "size": "1.46 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "sctpscan": {
+  "tool": "sctpscan",
+  "title": "sctpscan",
+  "description": "SCTP network scanner for discovery and security SCTP network scanner for discovery and security root@kali:~# sctpscan -h SCTPscan - Copyright (C) 2002 - 2009 Philippe Langlois. SCTPscan - Copyright (C) 2002 - 2009 Philippe Langlois. SCTPscan comes with ABSOLUTELY NO WARRANTY; for details read the LICENSE or COPYING file. Usage: sctpscan [options] Options: -p, --port <port> (default: 10000) port specifies the remote port number -P, --loc_port <port> (default: 10000) port specifies the local port number -l, --loc_host <loc_host> (default: 127.0.0.1) loc_host specifies the local (bind) host for t",
+  "usage": [
+   {
+    "binary": "sctpscan",
+    "parts": [
+     [
+      "p",
+      "Scan ( -s ) for frequently used ports ( -F ) on the remote network ( -r 192.168.1.* ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sctpscan -s -F -r 192.168.1.*\nSCTPscan - Copyright (C) 2002 - 2009 Philippe Langlois.\nNetscanning with Crc32 checksumed packet\nPortscanning Frequent Ports on 192.168.1.*."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sctpscan",
+    "desc": "SCTP network scanner for discovery and security SCTP network scanner for discovery and security root@kali:~# sctpscan -h SCTPscan - Copyright (C) 2002 - 2009 Philippe Langlois. SCTPscan - Copyright (C) 2002 - 2009 Philippe Langlois. SCTPscan comes with ABSOLUTELY NO WARRANTY; for details read the LICENSE or COPYING file. Usage: sctpscan [options] Options: -p, --port <port> (default: 10000) port specifies the remote port number -P, --loc_port <port> (default: 10000) port specifies the local port number -l, --loc_host <loc_host> (default: 127.0.0.1) loc_host specifies the local (bind) host for t",
+    "install": "sctpscan",
+    "size": "78 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "sidguess": {
+  "tool": "sidguess",
+  "title": "sidguess",
+  "description": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) Updated on: 2026-Mar-02",
+  "usage": [
+   {
+    "binary": "sidguess",
+    "parts": [
+     [
+      "p",
+      "Attack the server ( -i 192.168.1.205 ) using a dictionary file ( -d /usr/share/wordlists/metasploit/unix_users.txt ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sidguess -i 192.168.1.205 -d /usr/share/wordlists/metasploit/unix_users.txt\n\nSIDGuesser v1.0.5 by [email protected]\n-------------------------------------\n\nStarting Dictionary Attack (<space> for stats, Q for quit) ..."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sidguesser",
+    "desc": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) Updated on: 2026-Mar-02",
+    "install": "sidguesser",
+    "size": "25 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "smtp-user-enum": {
+  "tool": "smtp-user-enum",
+  "title": "smtp-user-enum",
+  "description": "Username guessing tool for the SMTP service Username guessing tool primarily for use against the default Solaris SMTP service. Can use either EXPN, VRFY or RCPT TO. root@kali:~# smtp-user-enum -h smtp-user-enum v1.2 ( http://pentestmonkey.net/tools/smtp-user-enum ) Usage: smtp-user-enum [options] ( -u username | -U file-of-usernames ) ( -t host | -T file-of-targets ) options are: -m n Maximum number of processes (default: 5) -M mode Method to use for username guessing EXPN, VRFY or RCPT (default: VRFY) -u user Check if user exists on remote system -f addr MAIL FROM email address. Used only in ",
+  "usage": [
+   {
+    "binary": "smtp-user-enum",
+    "parts": [
+     [
+      "p",
+      "Use the VRFY method ( -M VRFY ) to search for the specified user ( -u root ) on the target server ( -t 192.168.1.25 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# smtp-user-enum -M VRFY -u root -t 192.168.1.25\nStarting smtp-user-enum v1.2 ( http://pentestmonkey.net/tools/smtp-user-enum )\n\n ----------------------------------------------------------\n|                   Scan Information                       |\n ----------------------------------------------------------\n\nMode ..................... VRFY\nWorker Processes ......... 5\nTarget count ............. 1\nUsername count ........... 1\nTarget TCP port .......... 25\nQuery timeout ............ 5 secs\nTarget domain ............\n\n######## Scan started at Tue May 13 16:06:28 2014 #########\n192.168.1.25: root exists\n######## Scan completed at Tue May 13 16:06:29 2014 #########\n1 results.\n\n1 queries in 1 seconds (1.0 queries / sec)"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "smtp-user-enum",
+    "desc": "Username guessing tool for the SMTP service Username guessing tool primarily for use against the default Solaris SMTP service. Can use either EXPN, VRFY or RCPT TO. root@kali:~# smtp-user-enum -h smtp-user-enum v1.2 ( http://pentestmonkey.net/tools/smtp-user-enum ) Usage: smtp-user-enum [options] ( -u username | -U file-of-usernames ) ( -t host | -T file-of-targets ) options are: -m n Maximum number of processes (default: 5) -M mode Method to use for username guessing EXPN, VRFY or RCPT (default: VRFY) -u user Check if user exists on remote system -f addr MAIL FROM email address. Used only in ",
+    "install": "smtp-user-enum",
+    "size": "98 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "snmp-check": {
+  "tool": "snmp-check",
+  "title": "snmp-check",
+  "description": "SNMP service enumeration tool Like to snmpwalk, snmpcheck allows you to enumerate the SNMP devices and places the output in a very human readable friendly format. It could be useful for penetration testing or systems monitoring. SNMP device enumerator",
+  "usage": [
+   {
+    "binary": "snmp-check",
+    "parts": [
+     [
+      "p",
+      "Scan the target host ( 192.168.1.2 ) using the public SNMP community string ( -c public ):"
+     ],
+     [
+      "code",
+      "root@kali:~# snmp-check 192.168.1.2 -c public\nsnmp-check v1.9 - SNMP enumerator\nCopyright (c) 2005-2015 by Matteo Cantoni (www.nothink.org)\n\n[+] Try to connect to 192.168.1.2:161 using SNMPv1 and community 'public'\n\n[*] System information:\n\n  Host IP address               : 192.168.1.2\n  Hostname                      : ...retracted...\n  Description                   : ...retracted...\n  Contact                       : ...retracted...\n  Location                      : ...retracted...\n  Uptime snmp                   : -\n  Uptime system                 : 3 days, 00:13:51.05\n  System date                   : -\n\n[*] Network information:\n\n[...]\n\n[*] Network interfaces:\n\n[...]\n\n[*] Network IP:\n\n[...]\n\n[*] Routing information:\n\n[...]\n\n[*] TCP connections and listening ports:\n\n[...]\n\n[*] Listening UDP ports:\n\n[...]\n\nroot@kali:~#"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "snmpcheck",
+    "desc": "SNMP service enumeration tool Like to snmpwalk, snmpcheck allows you to enumerate the SNMP devices and places the output in a very human readable friendly format. It could be useful for penetration testing or systems monitoring. SNMP device enumerator",
+    "install": "snmpcheck",
+    "size": "46 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "sqlitebrowser": {
+  "tool": "sqlitebrowser",
+  "title": "sqlitebrowser",
+  "description": "GUI editor for SQLite databases SQLite Database Browser is a visual tool used to create, design and edit database files compatible with SQLite. Its interface is based on QT, and is meant to be used for users and developers that want to create databases, edit and search data using a familiar spreadsheet-like interface, without the need to learn complicated SQL commands. Controls and wizards are available for users to: SQLite Database Browser is not a visual shell for the sqlite command line tool. It does not require familiarity with SQL commands.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sqlitebrowser",
+    "desc": "GUI editor for SQLite databases SQLite Database Browser is a visual tool used to create, design and edit database files compatible with SQLite. Its interface is based on QT, and is meant to be used for users and developers that want to create databases, edit and search data using a familiar spreadsheet-like interface, without the need to learn complicated SQL commands. Controls and wizards are available for users to: SQLite Database Browser is not a visual shell for the sqlite command line tool. It does not require familiarity with SQL commands.",
+    "install": "sqlitebrowser",
+    "size": "5.55 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "sslscan": {
+  "tool": "sslscan",
+  "title": "sslscan",
+  "description": "Tests SSL/TLS enabled services to discover supported cipher suites This tool allow queries SSL/TLS services (such as HTTPS) and reports the protocol versions, cipher suites, key exchanges, signature algorithms, and certificates in use. This helps the user understand which parameters are weak from a security standpoint. sslscan can also output results into an XML file for easy consumption by external programs.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sslscan",
+    "desc": "Tests SSL/TLS enabled services to discover supported cipher suites This tool allow queries SSL/TLS services (such as HTTPS) and reports the protocol versions, cipher suites, key exchanges, signature algorithms, and certificates in use. This helps the user understand which parameters are weak from a security standpoint. sslscan can also output results into an XML file for easy consumption by external programs.",
+    "install": "sslscan",
+    "size": "178 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "sslyze": {
+  "tool": "sslyze",
+  "title": "sslyze",
+  "description": "Fast and full-featured SSL scanner SSLyze is a Python tool that can analyze the SSL configuration of a server by connecting to it. It is designed to be fast and comprehensive, and should help organizations and testers identify misconfigurations affecting their SSL servers. root@kali:~# sslyze -h usage: sslyze [-h] [--update_trust_stores] [--cert CERTIFICATE_FILE] [--key KEY_FILE] [--keyform KEY_FORMAT] [--pass PASSPHRASE] [--json_out JSON_FILE] [--targets_in TARGET_FILE] [--quiet] [--slow_connection] [--https_tunnel PROXY_SETTINGS] [--starttls PROTOCOL] [--xmpp_to HOSTNAME] [--sni SERVER_NAME_",
+  "usage": [
+   {
+    "binary": "sslyze",
+    "parts": [
+     [
+      "p",
+      "Launch a regular scan type ( –regular ) against the target host ( www.example.com ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sslyze --regular www.example.com\n\n REGISTERING AVAILABLE PLUGINS\n -----------------------------\n\n  PluginCompression\n  PluginCertInfo\n  PluginSessionResumption\n  PluginSessionRenegotiation\n  PluginOpenSSLCipherSuites\n\n\n\n CHECKING HOST(S) AVAILABILITY\n -----------------------------\n\n   www.example.com:443                 => 93.184.216.119:443\n\n\n\n SCAN RESULTS FOR WWW.EXAMPLE.COM:443 - 93.184.216.119:443\n ---------------------------------------------------------\n\n  * Compression :\n        Compression Support:      Disabled\n\n  * Certificate :\n      Validation w/ Mozilla's CA Store:  Certificate is Trusted"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sslyze",
+    "desc": "Fast and full-featured SSL scanner SSLyze is a Python tool that can analyze the SSL configuration of a server by connecting to it. It is designed to be fast and comprehensive, and should help organizations and testers identify misconfigurations affecting their SSL servers. root@kali:~# sslyze -h usage: sslyze [-h] [--update_trust_stores] [--cert CERTIFICATE_FILE] [--key KEY_FILE] [--keyform KEY_FORMAT] [--pass PASSPHRASE] [--json_out JSON_FILE] [--targets_in TARGET_FILE] [--quiet] [--slow_connection] [--https_tunnel PROXY_SETTINGS] [--starttls PROTOCOL] [--xmpp_to HOSTNAME] [--sni SERVER_NAME_",
+    "install": "sslyze",
+    "size": "2.19 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "swaks": {
+  "tool": "swaks",
+  "title": "swaks",
+  "description": "SMTP command-line test tool swaks (Swiss Army Knife SMTP) is a command-line tool written in Perl for testing SMTP setups; it supports STARTTLS and SMTP AUTH (PLAIN, LOGIN, CRAM-MD5, SPA, and DIGEST-MD5). swaks allows one to stop the SMTP dialog at any stage, e.g to check RCPT TO: without actually sending a mail. If you are spending too much time iterating “telnet foo.example 25” swaks is for you.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "swaks",
+    "desc": "SMTP command-line test tool swaks (Swiss Army Knife SMTP) is a command-line tool written in Perl for testing SMTP setups; it supports STARTTLS and SMTP AUTH (PLAIN, LOGIN, CRAM-MD5, SPA, and DIGEST-MD5). swaks allows one to stop the SMTP dialog at any stage, e.g to check RCPT TO: without actually sending a mail. If you are spending too much time iterating “telnet foo.example 25” swaks is for you.",
+    "install": "swaks",
+    "size": "312 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "tlssled": {
+  "tool": "tlssled",
+  "title": "tlssled",
+  "description": "Evaluates the security of a target SSL/TLS (HTTPS) server TLSSLed is a Linux shell script whose purpose is to evaluate the security of a target SSL/TLS (HTTPS) web server implementation. It is based on sslscan, a thorough SSL/TLS scanner that is based on the openssl library, and on the “openssl s_client” command line tool. The current tests include checking if the target supports the SSLv2 protocol, the NULL cipher, weak ciphers based on their key length (40 or 56 bits), the availability of strong ciphers (like AES), if the digital certificate is MD5 signed, and the current SSL/TLS renegotiati",
+  "usage": [
+   {
+    "binary": "TLSSLed",
+    "parts": [
+     [
+      "p",
+      "Check SSL/TLS on the host ( 192.168.1.1 ) and port ( 443 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# tlssled 192.168.1.1 443\n------------------------------------------------------\n TLSSLed - (1.3) based on sslscan and openssl\n                 by Raul Siles (www.taddong.com)\n------------------------------------------------------\n    openssl version: OpenSSL 1.0.1e 11 Feb 2013\n    sslscan version 1.8.2\n------------------------------------------------------\n------------------------------------------------------\n\n[*] Analyzing SSL/TLS on 192.168.1.1:443 ...\n    [.] Output directory: TLSSLed_1.3_192.168.1.1_443_20140513-165131 ...\n\n[*] Checking if the target service speaks SSL/TLS...\n    [.] The target service 192.168.1.1:443 seems to speak SSL/TLS...\n\n    [.] Using SSL/TLS protocol version:\n        (empty means I'm using the default openssl protocol version(s))\n\n[*] Running sslscan on 192.168.1.1:443 ...\n\n    [-] Testing for SSLv2 ...\n\n    [-] Testing for the NULL cipher ..."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "tlssled",
+    "desc": "Evaluates the security of a target SSL/TLS (HTTPS) server TLSSLed is a Linux shell script whose purpose is to evaluate the security of a target SSL/TLS (HTTPS) web server implementation. It is based on sslscan, a thorough SSL/TLS scanner that is based on the openssl library, and on the “openssl s_client” command line tool. The current tests include checking if the target supports the SSLv2 protocol, the NULL cipher, weak ciphers based on their key length (40 or 56 bits), the availability of strong ciphers (like AES), if the digital certificate is MD5 signed, and the current SSL/TLS renegotiati",
+    "install": "tlssled",
+    "size": "38 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "tnscmd10g": {
+  "tool": "tnscmd10g",
+  "title": "tnscmd10g",
+  "description": "Tool to prod the oracle tnslsnr process A tool to prod the oracle tnslsnr process on port 1521/tcp. root@kali:~# tnscmd10g -h usage: /usr/bin/tnscmd10g [command] -h hostname where 'command' is something like ping, version, status, etc. (default is ping) [-p port] - alternate TCP port to use (default is 1521) [--logfile logfile] - write raw packets to specified logfile [--indent] - indent & outdent on parens [--10G] - make it work against 10G [--rawcmd command] - build your own CONNECT_DATA string [--cmdsize bytes] - fake TNS command size (reveals packet leakage) Updated on: 2026-Mar-02",
+  "usage": [
+   {
+    "binary": "tnscmd10g",
+    "parts": [
+     [
+      "p",
+      "Retrieve the version ( version ) from the target server ( -h 192.168.1.205 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# tnscmd10g version -h 192.168.1.205\nsending (CONNECT_DATA=(COMMAND=version)) to 192.168.1.205:1521\nwriting 90 bytes\nreading\n.M.......6.........-. ..........(DESCRIPTION=(TMP=)(VSNNUM=153092352)(ERR=0)).7........TNSLSNR for 32-bit Windows: Version 9.2.0.1.0 - Production..TNS for 32-bit Windows: Version 9.2.0.1.0 - Production..Windows NT Named Pipes NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production..Windows NT TCP/IP NT Protocol Adapter for 32-bit Windows: Version 9.2.0.1.0 - Production,,.........@"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "tnscmd10g",
+    "desc": "Tool to prod the oracle tnslsnr process A tool to prod the oracle tnslsnr process on port 1521/tcp. root@kali:~# tnscmd10g -h usage: /usr/bin/tnscmd10g [command] -h hostname where 'command' is something like ping, version, status, etc. (default is ping) [-p port] - alternate TCP port to use (default is 1521) [--logfile logfile] - write raw packets to specified logfile [--indent] - indent & outdent on parens [--10G] - make it work against 10G [--rawcmd command] - build your own CONNECT_DATA string [--cmdsize bytes] - fake TNS command size (reveals packet leakage) Updated on: 2026-Mar-02",
+    "install": "tnscmd10g",
+    "size": "18 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "unicornscan": {
+  "tool": "unicornscan",
+  "title": "unicornscan",
+  "description": "Userland distributed TCP/IP stack Unicornscan is a new information gathering and correlation engine built for and by members of the security research and testing communities. It was designed to provide an engine that is Scalable, Accurate, Flexible, and Efficient. It is released for the community to use under the terms of the GPL license. Benefits: Unicornscan is an attempt at a User-land Distributed TCP/IP stack. It is intended to provide a researcher a superior interface for introducing a stimulus into and measuring a response from a TCP/IP enabled device or network. Although it currently ha",
+  "usage": [
+   {
+    "binary": "Unicornscan",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# unicornscan -mTsf -Iv -r 1000 192.168.0.102:a\nadding 192.168.0.102/32 mode `TCPscan' ports `a' pps 1000\nusing interface(s) eth0\nscaning 1.00e+00 total hosts with 6.55e+04 total packets, should take a little longer than 1 Minutes, 12 Seconds\nconnected 192.168.103.227:23221 -> 192.168.0.102:445\nTCP open 192.168.0.102:445  ttl 128\nconnected 192.168.103.227:50006 -> 192.168.0.102:443\nTCP open 192.168.0.102:443  ttl 128\nconnected 192.168.103.227:54487 -> 192.168.0.102:161\nTCP open 192.168.0.102:161  ttl 128\nconnected 192.168.103.227:47765 -> 192.168.0.102:80\nTCP open 192.168.0.102:80  ttl 128\nconnected 192.168.103.227:4267 -> 192.168.0.102:1884\nTCP open 192.168.0.102:139  ttl 128\nsender statistics 963.9 pps with 65536 packets sent total\nlistener statistics 131180 packets recieved 0 packets droped and 0 interface drops\nTCP open                http[   80]     from 192.168.0.102  ttl 128\nTCP open         netbios-ssn[  139]     from 192.168.0.102  ttl 128\nTCP open                snmp[  161]     from 192.168.0.102  ttl 128\nTCP open               https[  443]     from 192.168.0.102  ttl 128\nTCP open        microsoft-ds[  445]     from 192.168.0.102  ttl 128\nroot@kali:~#"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "unicornscan",
+    "desc": "Userland distributed TCP/IP stack Unicornscan is a new information gathering and correlation engine built for and by members of the security research and testing communities. It was designed to provide an engine that is Scalable, Accurate, Flexible, and Efficient. It is released for the community to use under the terms of the GPL license. Benefits: Unicornscan is an attempt at a User-land Distributed TCP/IP stack. It is intended to provide a researcher a superior interface for introducing a stimulus into and measuring a response from a TCP/IP enabled device or network. Although it currently ha",
+    "install": "unicornscan",
+    "size": "3.61 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "wafw00f": {
+  "tool": "wafw00f",
+  "title": "wafw00f",
+  "description": "Identify and fingerprint Web Application Firewall products This package identifies and fingerprints Web Application Firewall (WAF) products using the following logic: Identify and fingerprint Web Application Firewall products",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "wafw00f",
+    "desc": "Identify and fingerprint Web Application Firewall products This package identifies and fingerprints Web Application Firewall (WAF) products using the following logic: Identify and fingerprint Web Application Firewall products",
+    "install": "wafw00f",
+    "size": "265 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "zenmap": {
+  "tool": "zenmap",
+  "title": "zenmap",
+  "description": "NMAP netcat reimplementation ncat is a reimplementation of Netcat by the NMAP project, providing most of the features present in the original implementations, along with some new features such as IPv6 and SSL support. Port scanning support has been removed. Concatenate and redirect sockets",
+  "usage": [
+   {
+    "binary": "nmap",
+    "parts": [
+     [
+      "p",
+      "Scan in verbose mode ( -v ), enable OS detection, version detection, script scanning, and traceroute ( -A ), with version detection ( -sV ) against the target IP ( 192.168.1.1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# nmap -v -A -sV 192.168.1.1\n\nStarting Nmap 6.45 ( http://nmap.org ) at 2014-05-13 18:40 MDT\nNSE: Loaded 118 scripts for scanning.\nNSE: Script Pre-scanning.\nInitiating ARP Ping Scan at 18:40\nScanning 192.168.1.1 [1 port]\nCompleted ARP Ping Scan at 18:40, 0.06s elapsed (1 total hosts)\nInitiating Parallel DNS resolution of 1 host. at 18:40\nCompleted Parallel DNS resolution of 1 host. at 18:40, 0.00s elapsed\nInitiating SYN Stealth Scan at 18:40\nScanning router.localdomain (192.168.1.1) [1000 ports]\nDiscovered open port 53/tcp on 192.168.1.1\nDiscovered open port 22/tcp on 192.168.1.1\nDiscovered open port 80/tcp on 192.168.1.1\nDiscovered open port 3001/tcp on 192.168.1.1"
+     ]
+    ]
+   },
+   {
+    "binary": "nping",
+    "parts": [
+     [
+      "p",
+      "Using TCP mode ( –tcp ) to probe port 22 ( -p 22 ) using the SYN flag ( –flags syn ) with a TTL of 2 ( –ttl 2 ) on the remote host ( 192.168.1.1 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# nping --tcp -p 22 --flags syn --ttl 2 192.168.1.1\n\nStarting Nping 0.6.45 ( http://nmap.org/nping ) at 2014-05-13 18:43 MDT\nSENT (0.0673s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (0.0677s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3377886789 win=5840 <mss 1460>\nSENT (1.0678s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (1.0682s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3393519366 win=5840 <mss 1460>\nSENT (2.0693s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (2.0696s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3409166569 win=5840 <mss 1460>\nSENT (3.0707s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (3.0710s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3424813300 win=5840 <mss 1460>\nSENT (4.0721s) TCP 192.168.1.15:60125 > 192.168.1.1:22 S ttl=2 id=54240 iplen=40  seq=1720523417 win=1480\nRCVD (4.0724s) TCP 192.168.1.1:22 > 192.168.1.15:60125 SA ttl=64 id=0 iplen=44  seq=3440460772 win=5840 <mss 1460>\n\nMax rtt: 0.337ms | Min rtt: 0.282ms | Avg rtt: 0.296ms\nRaw packets sent: 5 (200B) | Rcvd: 5 (230B) | Lost: 0 (0.00%)\nNping done: 1 IP address pinged in 4.13 seconds"
+     ]
+    ]
+   },
+   {
+    "binary": "ndiff",
+    "parts": [
+     [
+      "p",
+      "Compare yesterday’s port scan ( yesterday.xml ) with the scan from today ( today.xml ):"
+     ],
+     [
+      "code",
+      "root@kali:~# ndiff yesterday.xml today.xml\n-Nmap 6.45 scan initiated Tue May 13 18:46:43 2014 as: nmap -v -F -oX yesterday.xml 192.168.1.1\n+Nmap 6.45 scan initiated Tue May 13 18:47:58 2014 as: nmap -v -F -oX today.xml 192.168.1.1\n\n endian.localdomain (192.168.1.1, 00:01:6C:6F:DD:D1):\n-Not shown: 96 filtered ports\n+Not shown: 97 filtered ports\n PORT   STATE SERVICE VERSION\n-22/tcp open  ssh"
+     ]
+    ]
+   },
+   {
+    "binary": "ncat",
+    "parts": [
+     [
+      "p",
+      "Be verbose ( -v ), running /bin/bash on connect ( –exec “/bin/bash” ), only allowing 1 IP address ( –allow 192.168.1.123 ), listen on TCP port 4444 ( -l 4444 ), and keep the listener open on disconnect ( –keep-open ):"
+     ],
+     [
+      "code",
+      "root@kali:~# ncat -v --exec \"/bin/bash\" --allow 192.168.1.123 -l 4444 --keep-open\nNcat: Version 6.45 ( http://nmap.org/ncat )\nNcat: Listening on :::4444\nNcat: Listening on 0.0.0.0:4444\nNcat: Connection from 192.168.1.123.\nNcat: Connection from 192.168.1.123:39501.\nNcat: Connection from 192.168.1.15.\nNcat: Connection from 192.168.1.15:60393.\nNcat: New connection denied: not allowed"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "ncat",
+    "desc": "NMAP netcat reimplementation ncat is a reimplementation of Netcat by the NMAP project, providing most of the features present in the original implementations, along with some new features such as IPv6 and SSL support. Port scanning support has been removed. Concatenate and redirect sockets",
+    "install": "ncat",
+    "size": "807 KB"
+   },
+   {
+    "binary": "ndiff",
+    "desc": "The Network Mapper - result compare utility Ndiff is a tool to aid in the comparison of Nmap scans. It takes two Nmap XML output files and prints the differences between them them: hosts coming up and down, ports becoming open or closed, and things like that. It can produce output in human-readable text or machine-readable XML formats.",
+    "install": "ndiff",
+    "size": "432 KB"
+   },
+   {
+    "binary": "nmap",
+    "desc": "The Network Mapper Nmap is a utility for network exploration or security auditing. It supports ping scanning (determine which hosts are up), many port scanning techniques, version detection (determine service protocols and application versions listening behind ports), and TCP/IP fingerprinting (remote host OS or device identification). Nmap also offers flexible target and port specification, decoy/stealth scanning, sunRPC scanning, and more. Most Unix and Windows platforms are supported in both GUI and commandline modes. Several popular handheld devices are also supported, including the Sharp ",
+    "install": "nmap",
+    "size": "4.70 MB"
+   },
+   {
+    "binary": "nmap-common",
+    "desc": "Architecture independent files for nmap Nmap is a utility for network exploration or security auditing. It supports ping scanning (determine which hosts are up), many port scanning techniques, version detection (determine service protocols and application versions listening behind ports), and TCP/IP fingerprinting (remote host OS or device identification). Nmap also offers flexible target and port specification, decoy/stealth scanning, sunRPC scanning, and more. Most Unix and Windows platforms are supported in both GUI and commandline modes. Several popular handheld devices are also supported,",
+    "install": "nmap-common",
+    "size": "22.74 MB"
+   },
+   {
+    "binary": "zenmap",
+    "desc": "The Network Mapper Front End Zenmap is an Nmap frontend. It is meant to be useful for advanced users and to make Nmap easy to use by beginners. It was originally derived from Umit, an Nmap GUI created as part of the Google Summer of Code. Graphical Nmap frontend and results viewer",
+    "install": "zenmap",
+    "size": "1.76 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ }
+}

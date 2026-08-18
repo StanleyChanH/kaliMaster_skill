@@ -1,0 +1,570 @@
+{
+ "azurehound": {
+  "tool": "azurehound",
+  "title": "azurehound",
+  "description": "BloodHound data collector for Microsoft Azure (program) This package contains the BloodHound data collector for Microsoft Azure. root@kali:~# azurehound -h The official tool for collecting Azure data for BloodHound and BloodHound Enterprise Usage: azurehound [command] Available Commands: completion Generate the autocompletion script for the specified shell configure Configure AzureHound help Help about any command list Lists Azure Objects start Start Azure data collection service for BloodHound Enterprise Flags: -c, --config string AzureHound configuration file (default: /root/.config/azurehou",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "azurehound",
+    "desc": "BloodHound data collector for Microsoft Azure (program) This package contains the BloodHound data collector for Microsoft Azure. root@kali:~# azurehound -h The official tool for collecting Azure data for BloodHound and BloodHound Enterprise Usage: azurehound [command] Available Commands: completion Generate the autocompletion script for the specified shell configure Configure AzureHound help Help about any command list Lists Azure Objects start Start Azure data collection service for BloodHound Enterprise Flags: -c, --config string AzureHound configuration file (default: /root/.config/azurehou",
+    "install": "azurehound",
+    "size": "12.94 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "bloodhound-ce-python": {
+  "tool": "bloodhound-ce-python",
+  "title": "bloodhound-ce-python",
+  "description": "Python based ingestor for BloodHound CE This package contains a Python based ingestor for BloodHound CE, based on Impacket. This tool is only compatible with BloodHound CE. For legacy Bloodhound (<= 4.3.1) use bloodhound-python package.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "bloodhound-ce-python",
+    "desc": "Python based ingestor for BloodHound CE This package contains a Python based ingestor for BloodHound CE, based on Impacket. This tool is only compatible with BloodHound CE. For legacy Bloodhound (<= 4.3.1) use bloodhound-python package.",
+    "install": "bloodhound-ce-python",
+    "size": "357 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "bloodhound-python": {
+  "tool": "bloodhound-python",
+  "title": "bloodhound-python",
+  "description": "Python based ingestor for BloodHound CE This package contains a Python based ingestor for BloodHound CE, based on Impacket. This tool is only compatible with BloodHound CE. For legacy Bloodhound (<= 4.3.1) use bloodhound-python package.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "bloodhound-ce-python",
+    "desc": "Python based ingestor for BloodHound CE This package contains a Python based ingestor for BloodHound CE, based on Impacket. This tool is only compatible with BloodHound CE. For legacy Bloodhound (<= 4.3.1) use bloodhound-python package.",
+    "install": "bloodhound-ce-python",
+    "size": "357 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "bloodhound": {
+  "tool": "bloodhound",
+  "title": "bloodhound",
+  "description": "Six Degrees of Domain Admin, BloodHound CE This package contains BloodHound Community Edition, a single page Javascript web application. BloodHound uses graph theory to reveal the hidden and often unintended relationships within an Active Directory environment. Attackers can use BloodHound to easily identify highly complex attack paths that would otherwise be impossible to quickly identify. Defenders can use BloodHound to identify and eliminate those same attack paths. Both blue and red teams can use BloodHound to easily gain a deeper understanding of privilege relationships in an Active Direc",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "bloodhound",
+    "desc": "Six Degrees of Domain Admin, BloodHound CE This package contains BloodHound Community Edition, a single page Javascript web application. BloodHound uses graph theory to reveal the hidden and often unintended relationships within an Active Directory environment. Attackers can use BloodHound to easily identify highly complex attack paths that would otherwise be impossible to quickly identify. Defenders can use BloodHound to identify and eliminate those same attack paths. Both blue and red teams can use BloodHound to easily gain a deeper understanding of privilege relationships in an Active Direc",
+    "install": "bloodhound",
+    "size": "281.25 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "bloodyad": {
+  "tool": "bloodyad",
+  "title": "bloodyad",
+  "description": "Active Directory privilege escalation framework bloodyAD can perform specific LDAP calls to a domain controller in order to perform AD privesc. It supports authentication using cleartext passwords, pass-the-hash, pass-the-ticket or certificates and binds to LDAP services of a domain controller to perform AD privesc. Exchange of sensitive information without LDAPS is supported. It is also designed to be used transparently with a SOCKS proxy.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "bloodyad",
+    "desc": "Active Directory privilege escalation framework bloodyAD can perform specific LDAP calls to a domain controller in order to perform AD privesc. It supports authentication using cleartext passwords, pass-the-hash, pass-the-ticket or certificates and binds to LDAP services of a domain controller to perform AD privesc. Exchange of sensitive information without LDAPS is supported. It is also designed to be used transparently with a SOCKS proxy.",
+    "install": "bloodyad",
+    "size": "49.50 MB"
+   }
+  ],
+  "attack_category": "Privilege Escalation"
+ },
+ "crackmapexec": {
+  "tool": "crackmapexec",
+  "title": "crackmapexec",
+  "description": "Swiss army knife for pentesting networks This package is a swiss army knife for pentesting Windows/Active Directory environments. From enumerating logged on users and spidering SMB shares to executing psexec style attacks, auto-injecting Mimikatz/Shellcode/DLL’s into memory using Powershell, dumping the NTDS.dit and more.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "crackmapexec",
+    "desc": "Swiss army knife for pentesting networks This package is a swiss army knife for pentesting Windows/Active Directory environments. From enumerating logged on users and spidering SMB shares to executing psexec style attacks, auto-injecting Mimikatz/Shellcode/DLL’s into memory using Powershell, dumping the NTDS.dit and more.",
+    "install": "crackmapexec",
+    "size": "2.29 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "evil-winrm-py": {
+  "tool": "evil-winrm-py",
+  "title": "evil-winrm-py",
+  "description": "Execute commands on remote Windows machines using WinRM Python-based tool for executing commands on remote Windows machines using the WinRM (Windows Remote Management) protocol. It provides an interactive shell with enhanced features like file upload/download, command history, and colorized output. It supports various authentication methods including NTLM, Pass-the-Hash, Certificate, and Kerberos. root@kali:~# evil-winrm-py -h _ _ _ _____ _(_| |_____ __ _(_)_ _ _ _ _ __ ___ _ __ _ _ / -_\\ V | | |___\\ V V | | ' \\| '_| ' |___| '_ | || | \\___|\\_/|_|_| \\_/\\_/|_|_||_|_| |_|_|_| | .__/\\_, | |_| |__/",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "evil-winrm-py",
+    "desc": "Execute commands on remote Windows machines using WinRM Python-based tool for executing commands on remote Windows machines using the WinRM (Windows Remote Management) protocol. It provides an interactive shell with enhanced features like file upload/download, command history, and colorized output. It supports various authentication methods including NTLM, Pass-the-Hash, Certificate, and Kerberos. root@kali:~# evil-winrm-py -h _ _ _ _____ _(_| |_____ __ _(_)_ _ _ _ _ __ ___ _ __ _ _ / -_\\ V | | |___\\ V V | | ' \\| '_| ' |___| '_ | || | \\___|\\_/|_|_| \\_/\\_/|_|_||_|_| |_|_|_| | .__/\\_, | |_| |__/",
+    "install": "evil-winrm-py",
+    "size": "133 KB"
+   }
+  ],
+  "attack_category": "Lateral Movement"
+ },
+ "evil-winrm": {
+  "tool": "evil-winrm",
+  "title": "evil-winrm",
+  "description": "Ultimate WinRM shell for hacking/pentesting This package contains the ultimate WinRM shell for hacking/pentesting. WinRM (Windows Remote Management) is the Microsoft implementation of WS-Management Protocol. A standard SOAP based protocol that allows hardware and operating systems from different vendors to interoperate. Microsoft included it in their Operating Systems in order to make life easier to system administrators.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "evil-winrm",
+    "desc": "Ultimate WinRM shell for hacking/pentesting This package contains the ultimate WinRM shell for hacking/pentesting. WinRM (Windows Remote Management) is the Microsoft implementation of WS-Management Protocol. A standard SOAP based protocol that allows hardware and operating systems from different vendors to interoperate. Microsoft included it in their Operating Systems in order to make life easier to system administrators.",
+    "install": "evil-winrm",
+    "size": "172 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "impacket-mssqlclient": {
+  "tool": "impacket-mssqlclient",
+  "title": "impacket-mssqlclient",
+  "description": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "impacket-scripts",
+    "desc": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+    "install": "impacket-scripts",
+    "size": "65 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "impacket-psexec": {
+  "tool": "impacket-psexec",
+  "title": "impacket-psexec",
+  "description": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "impacket-scripts",
+    "desc": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+    "install": "impacket-scripts",
+    "size": "65 KB"
+   }
+  ],
+  "attack_category": "Lateral Movement"
+ },
+ "impacket-scripts": {
+  "tool": "impacket-scripts",
+  "title": "impacket-scripts",
+  "description": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "impacket-scripts",
+    "desc": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+    "install": "impacket-scripts",
+    "size": "65 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "impacket-smbexec": {
+  "tool": "impacket-smbexec",
+  "title": "impacket-smbexec",
+  "description": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "impacket-scripts",
+    "desc": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+    "install": "impacket-scripts",
+    "size": "65 KB"
+   }
+  ],
+  "attack_category": "Lateral Movement"
+ },
+ "impacket-smbserver": {
+  "tool": "impacket-smbserver",
+  "title": "impacket-smbserver",
+  "description": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "impacket-scripts",
+    "desc": "Links to useful impacket scripts examples This package contains links to useful impacket scripts. It’s a separate package to keep impacket package from Debian and have the useful scripts in the path for Kali.",
+    "install": "impacket-scripts",
+    "size": "65 KB"
+   }
+  ],
+  "attack_category": "Exfiltration"
+ },
+ "kerberoast": {
+  "tool": "kerberoast",
+  "title": "kerberoast",
+  "description": "Tools for attacking MS Kerberos implementations This package contains a series of tools for attacking MS Kerberos implementations: root@kali:~# kerberoast -h > kerberoast ~ tools for attacking MS Kerberos implementations /usr/share/kerberoast |-- GetUserSPNs.ps1 |-- GetUserSPNs.vbs |-- extracttgsrepfrompcap.py |-- kerberoast.py |-- kerberos.py |-- kirbi2john.py |-- krbroast-pcap2hashcat.py |-- pac.py `-- tgsrepcrack.py Updated on: 2026-Jun-17",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "kerberoast",
+    "desc": "Tools for attacking MS Kerberos implementations This package contains a series of tools for attacking MS Kerberos implementations: root@kali:~# kerberoast -h > kerberoast ~ tools for attacking MS Kerberos implementations /usr/share/kerberoast |-- GetUserSPNs.ps1 |-- GetUserSPNs.vbs |-- extracttgsrepfrompcap.py |-- kerberoast.py |-- kerberos.py |-- kirbi2john.py |-- krbroast-pcap2hashcat.py |-- pac.py `-- tgsrepcrack.py Updated on: 2026-Jun-17",
+    "install": "kerberoast",
+    "size": "81 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "krbrelayx": {
+  "tool": "krbrelayx",
+  "title": "krbrelayx",
+  "description": "Kerberos relaying and unconstrained delegation abuse toolkit Kerberos relaying and unconstrained delegation abuse toolkit. This tool can add/remove/modify Service Principal Names on accounts in AD over LDAP. root@kali:~# addspn -h usage: addspn.py [-h] [-u USERNAME] [-p PASSWORD] [-t TARGET] [-T TARGETTYPE] [-s SPN] [-r] [-c] [-q] [-a] [-k] [-dc-ip ip address] [-aesKey hex key] HOSTNAME Add an SPN to a user/computer account Required options: HOSTNAME Hostname/ip or ldap://host:port connection string to connect to Main options: -h, --help show this help message and exit -u, --user USERNAME DOMA",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "krbrelayx",
+    "desc": "Kerberos relaying and unconstrained delegation abuse toolkit Kerberos relaying and unconstrained delegation abuse toolkit. This tool can add/remove/modify Service Principal Names on accounts in AD over LDAP. root@kali:~# addspn -h usage: addspn.py [-h] [-u USERNAME] [-p PASSWORD] [-t TARGET] [-T TARGETTYPE] [-s SPN] [-r] [-c] [-q] [-a] [-k] [-dc-ip ip address] [-aesKey hex key] HOSTNAME Add an SPN to a user/computer account Required options: HOSTNAME Hostname/ip or ldap://host:port connection string to connect to Main options: -h, --help show this help message and exit -u, --user USERNAME DOMA",
+    "install": "krbrelayx",
+    "size": "172 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "ldeep": {
+  "tool": "ldeep",
+  "title": "ldeep",
+  "description": "In-depth ldap enumeration utility ldeep is an in-depth ldap enumeration utility that can either run against an Active Directory LDAP server or locally on saved files. root@kali:~# ldeep -h usage: ldeep - 2.0.3 [-h] [-o OUTFILE] [--security_desc] {ldap,cache,protections} ... options: -h, --help show this help message and exit -o, --outfile OUTFILE Store the results in a file --security_desc Enable the retrieval of security descriptors in ldeep results Mode: Available modes {ldap,cache,protections} Backend engine to retrieve data Updated on: 2026-Jun-17",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ldeep",
+    "desc": "In-depth ldap enumeration utility ldeep is an in-depth ldap enumeration utility that can either run against an Active Directory LDAP server or locally on saved files. root@kali:~# ldeep -h usage: ldeep - 2.0.3 [-h] [-o OUTFILE] [--security_desc] {ldap,cache,protections} ... options: -h, --help show this help message and exit -o, --outfile OUTFILE Store the results in a file --security_desc Enable the retrieval of security descriptors in ldeep results Mode: Available modes {ldap,cache,protections} Backend engine to retrieve data Updated on: 2026-Jun-17",
+    "install": "ldeep",
+    "size": "254 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "netexec": {
+  "tool": "netexec",
+  "title": "netexec",
+  "description": "Network Execution Tool NetExec (AKA nxc) is a network service exploitation tool that helps automate assessing the security of large networks. NetExec is the continuation of CrackMapExec, which was maintained by mpgn over the years, but discontinued upon mpgn’s retirement.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "netexec",
+    "desc": "Network Execution Tool NetExec (AKA nxc) is a network service exploitation tool that helps automate assessing the security of large networks. NetExec is the continuation of CrackMapExec, which was maintained by mpgn over the years, but discontinued upon mpgn’s retirement.",
+    "install": "netexec",
+    "size": "3.60 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "nishang": {
+  "tool": "nishang",
+  "title": "nishang",
+  "description": "Collection of PowerShell scripts and payloads Nishang is a framework and collection of scripts and payloads which enables usage of PowerShell for offensive security and post exploitation during Penetration Tests. The scripts are written on the basis of requirement by the author during real Penetration Tests. root@kali:~# nishang -h > nishang ~ Collection of PowerShell scripts and payloads /usr/share/nishang |-- ActiveDirectory |-- Antak-WebShell |-- Backdoors |-- Bypass |-- Client |-- Escalation |-- Execution |-- Gather |-- MITM |-- Misc |-- Pivot |-- Prasadhak |-- Scan |-- Shells |-- Utility ",
+  "usage": [
+   {
+    "binary": "nishang",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# ls -l /usr/share/nishang/\ntotal 48\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Antak-WebShell\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Backdoors\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Escalation\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Execution\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Gather\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Misc\n-rw-r--r-- 1 root root  495 Jun  4 11:14 nishang.psm1\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Pivot\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 powerpreter\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Prasadhak\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Scan\ndrwxr-xr-x 2 root root 4096 Jun  4 11:15 Utility"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "nishang",
+    "desc": "Collection of PowerShell scripts and payloads Nishang is a framework and collection of scripts and payloads which enables usage of PowerShell for offensive security and post exploitation during Penetration Tests. The scripts are written on the basis of requirement by the author during real Penetration Tests. root@kali:~# nishang -h > nishang ~ Collection of PowerShell scripts and payloads /usr/share/nishang |-- ActiveDirectory |-- Antak-WebShell |-- Backdoors |-- Bypass |-- Client |-- Escalation |-- Execution |-- Gather |-- MITM |-- Misc |-- Pivot |-- Prasadhak |-- Scan |-- Shells |-- Utility ",
+    "install": "nishang",
+    "size": "6.41 MB"
+   }
+  ],
+  "attack_category": "Execution"
+ },
+ "passing-the-hash": {
+  "tool": "passing-the-hash",
+  "title": "passing-the-hash",
+  "description": "Patched tools to use password hashes as authentication input This package contains modified versions of Curl, Iceweasel, FreeTDS, Samba 4, WinEXE and WMI. They are installed as executables starting with the “pth-” string. root@kali:~# pth-curl -h Usage: curl [options...] <url> -d, --data <data> HTTP POST data -f, --fail Fail fast with no output on HTTP errors -h, --help <subject> Get help for commands -o, --output <file> Write to file instead of stdout -O, --remote-name Write output to file named as remote file -i, --show-headers Show response headers in output -s, --silent Silent mode -T, --u",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "passing-the-hash",
+    "desc": "Patched tools to use password hashes as authentication input This package contains modified versions of Curl, Iceweasel, FreeTDS, Samba 4, WinEXE and WMI. They are installed as executables starting with the “pth-” string. root@kali:~# pth-curl -h Usage: curl [options...] <url> -d, --data <data> HTTP POST data -f, --fail Fail fast with no output on HTTP errors -h, --help <subject> Get help for commands -o, --output <file> Write to file instead of stdout -O, --remote-name Write output to file named as remote file -i, --show-headers Show response headers in output -s, --silent Silent mode -T, --u",
+    "install": "passing-the-hash",
+    "size": "13.98 MB"
+   }
+  ],
+  "attack_category": "Lateral Movement"
+ },
+ "powershell-empire": {
+  "tool": "powershell-empire",
+  "title": "powershell-empire",
+  "description": "PowerShell and Python post-exploitation agent This package contains a post-exploitation framework that includes a pure-PowerShell2.0 Windows agent, and a pure Python Linux/OS X agent. It is the merge of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and a flexible architecture. On the PowerShell side, Empire implements the ability to run PowerShell agents without needing powershell.exe, rapidly deployable post-exploitation modules ranging from key loggers to Mimikatz, and adaptable communications to evade network detection,",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "powershell-empire",
+    "desc": "PowerShell and Python post-exploitation agent This package contains a post-exploitation framework that includes a pure-PowerShell2.0 Windows agent, and a pure Python Linux/OS X agent. It is the merge of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and a flexible architecture. On the PowerShell side, Empire implements the ability to run PowerShell agents without needing powershell.exe, rapidly deployable post-exploitation modules ranging from key loggers to Mimikatz, and adaptable communications to evade network detection,",
+    "install": "powershell-empire",
+    "size": "49.87 MB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ },
+ "powersploit": {
+  "tool": "powersploit",
+  "title": "powersploit",
+  "description": "PowerShell Post-Exploitation Framework PowerSploit is a series of Microsoft PowerShell scripts that can be used in post-exploitation scenarios during authorized penetration tests.",
+  "usage": [
+   {
+    "binary": "PowerSploit",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# ls -l /usr/share/powersploit/\ntotal 52\ndrwxr-xr-x 2 root root 4096 Feb 11 15:10 AntivirusBypass\ndrwxr-xr-x 3 root root 4096 Feb 11 15:10 CodeExecution\ndrwxr-xr-x 2 root root 4096 Feb 11 15:10 Exfiltration\ndrwxr-xr-x 2 root root 4096 Feb 11 15:10 Persistence\ndrwxr-xr-x 2 root root 4096 Feb 11 15:10 PETools\n-rw-r--r-- 1 root root 3542 Jun 11  2013 PowerSploit.psd1\n-rw-r--r-- 1 root root   89 Jun 11  2013 PowerSploit.psm1\n-rw-r--r-- 1 root root 8900 Jun 11  2013 README.md\ndrwxr-xr-x 3 root root 4096 Feb 11 15:10 Recon\ndrwxr-xr-x 2 root root 4096 Feb 11 15:10 ReverseEngineering\ndrwxr-xr-x 2 root root 4096 Feb 11 15:10 ScriptModification"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "powersploit",
+    "desc": "PowerShell Post-Exploitation Framework PowerSploit is a series of Microsoft PowerShell scripts that can be used in post-exploitation scenarios during authorized penetration tests.",
+    "install": "powersploit",
+    "size": "5.46 MB"
+   }
+  ],
+  "attack_category": "Execution"
+ },
+ "pwsh": {
+  "tool": "pwsh",
+  "title": "pwsh",
+  "description": "PowerShell is an automation and configuration management platform. It consists of a cross-platform command-line shell and associated scripting language. PowerShell command-line shell and .NET REPL",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "powershell",
+    "desc": "PowerShell is an automation and configuration management platform. It consists of a cross-platform command-line shell and associated scripting language. PowerShell command-line shell and .NET REPL",
+    "install": "powershell",
+    "size": "188.65 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "rdesktop": {
+  "tool": "rdesktop",
+  "title": "rdesktop",
+  "description": "RDP client for Windows NT/2000 Terminal Server and Windows Servers rdesktop is an open source client for Windows NT/2000 Terminal Server and Windows Server 2003/2008. Capable of natively speaking its Remote Desktop Protocol (RDP) in order to present the user’s Windows desktop. Unlike Citrix ICA, no server extensions are required. Rdesktop is in need of a new upstream maintainter. Please see the home page for more details.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "rdesktop",
+    "desc": "RDP client for Windows NT/2000 Terminal Server and Windows Servers rdesktop is an open source client for Windows NT/2000 Terminal Server and Windows Server 2003/2008. Capable of natively speaking its Remote Desktop Protocol (RDP) in order to present the user’s Windows desktop. Unlike Citrix ICA, no server extensions are required. Rdesktop is in need of a new upstream maintainter. Please see the home page for more details.",
+    "install": "rdesktop",
+    "size": "692 KB"
+   }
+  ],
+  "attack_category": "Lateral Movement"
+ },
+ "responder": {
+  "tool": "responder",
+  "title": "responder",
+  "description": "LLMNR/NBT-NS/mDNS Poisoner This package contains Responder/MultiRelay, an LLMNR, NBT-NS and MDNS poisoner. It will answer to specific NBT-NS (NetBIOS Name Service) queries based on their name suffix (see: http://support.microsoft.com/kb/163409) . By default, the tool will only answer to File Server Service request, which is for SMB. The concept behind this is to target your answers, and be stealthier on the network. This also helps to ensure that you don’t break legitimate NBT-NS behavior. You can set the -r option via command line if you want to answer to the Workstation Service request name ",
+  "usage": [
+   {
+    "binary": "responder",
+    "parts": [
+     [
+      "p",
+      "Specify the IP address to redirect to ( -i 192.168.1.202 ), enabling the WPAD rogue proxy ( -w On ), answers for netbios wredir ( -r On ), and fingerprinting ( -f On ):"
+     ],
+     [
+      "code",
+      "root@kali:~# responder -i 192.168.1.202 -w On -r On -f On\nNBT Name Service/LLMNR Responder 2.0.\nPlease send bugs/comments to: [email protected]\nTo kill this script hit CRTL-C\n\n[+]NBT-NS &amp; LLMNR responder started\n[+]Loading Responder.conf File..\nGlobal Parameters set:\nResponder is bound to this interface:ALL\nChallenge set is:1122334455667788\nWPAD Proxy Server is:ON\nWPAD script loaded:function FindProxyForURL(url, host){if ((host == \"localhost\") || shExpMatch(host, \"localhost.*\") ||(host == \"127.0.0.1\") || isPlainHostName(host)) return \"DIRECT\"; if (dnsDomainIs(host, \"RespProxySrv\")||shExpMatch(host, \"(*.RespProxySrv|RespProxySrv)\")) return \"DIRECT\"; return 'PROXY ISAProxySrv:3141; DIRECT';}\nHTTP Server is:ON\nHTTPS Server is:ON\nSMB Server is:ON\nSMB LM support is set to:OFF\nSQL Server is:ON\nFTP Server is:ON\nIMAP Server is:ON\nPOP3 Server is:ON\nSMTP Server is:ON\nDNS Server is:ON\nLDAP Server is:ON\nFingerPrint Module is:ON\nServing Executable via HTTP&amp;WPAD is:OFF\nAlways Serving a Specific File via HTTP&amp;WPAD is:OFF"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "responder",
+    "desc": "LLMNR/NBT-NS/mDNS Poisoner This package contains Responder/MultiRelay, an LLMNR, NBT-NS and MDNS poisoner. It will answer to specific NBT-NS (NetBIOS Name Service) queries based on their name suffix (see: http://support.microsoft.com/kb/163409) . By default, the tool will only answer to File Server Service request, which is for SMB. The concept behind this is to target your answers, and be stealthier on the network. This also helps to ensure that you don’t break legitimate NBT-NS behavior. You can set the -r option via command line if you want to answer to the Workstation Service request name ",
+    "install": "responder",
+    "size": "4.25 MB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "rubeus": {
+  "tool": "rubeus",
+  "title": "rubeus",
+  "description": "Raw Kerberos interaction and abuses Rubeus is a C# toolset for raw Kerberos interaction and abuses. It is heavily adapted from Benjamin Delpy’s Kekeo project and Vincent LE TOUX’s MakeMeEnterpriseAdmin project.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "rubeus",
+    "desc": "Raw Kerberos interaction and abuses Rubeus is a C# toolset for raw Kerberos interaction and abuses. It is heavily adapted from Benjamin Delpy’s Kekeo project and Vincent LE TOUX’s MakeMeEnterpriseAdmin project.",
+    "install": "rubeus",
+    "size": "290 KB"
+   }
+  ],
+  "attack_category": "Lateral Movement"
+ },
+ "sharphound": {
+  "tool": "sharphound",
+  "title": "sharphound",
+  "description": "C# Data Collector for BloodHound This package contains the pre-built SharpHound.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sharphound",
+    "desc": "C# Data Collector for BloodHound This package contains the pre-built SharpHound.",
+    "install": "sharphound",
+    "size": "3.10 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "smbmap": {
+  "tool": "smbmap",
+  "title": "smbmap",
+  "description": "Handy SMB enumeration tool SMBMap allows users to enumerate samba share drives across an entire domain. List share drives, drive permissions, share contents, upload/download functionality, file name auto-download pattern matching, and even execute remote commands. This tool was designed with pen testing in mind, and is intended to simplify searching for potentially sensitive data across large networks. Features: Pass-the-Hash Support File upload/download/delete Permission enumeration (writable share, meet Metasploit) Remote Command Execution Distrubted file content searching (beta!) File name ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "smbmap",
+    "desc": "Handy SMB enumeration tool SMBMap allows users to enumerate samba share drives across an entire domain. List share drives, drive permissions, share contents, upload/download functionality, file name auto-download pattern matching, and even execute remote commands. This tool was designed with pen testing in mind, and is intended to simplify searching for potentially sensitive data across large networks. Features: Pass-the-Hash Support File upload/download/delete Permission enumeration (writable share, meet Metasploit) Remote Command Execution Distrubted file content searching (beta!) File name ",
+    "install": "smbmap",
+    "size": "134 KB"
+   }
+  ],
+  "attack_category": "Lateral Movement"
+ },
+ "xfreerdp3": {
+  "tool": "xfreerdp3",
+  "title": "xfreerdp3",
+  "description": "FreeRDP proxy server FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the proxy server that can be used as man in the middle proxy for RDP connections.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "freerdp-proxy",
+    "desc": "FreeRDP proxy server FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the proxy server that can be used as man in the middle proxy for RDP connections.",
+    "install": "freerdp-proxy",
+    "size": "30 KB"
+   },
+   {
+    "binary": "freerdp-proxy-modules",
+    "desc": "FreeRDP Remote Desktop Protocol proxy module libraries FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the modules for the proxy.",
+    "install": "freerdp-proxy-modules",
+    "size": "208 KB"
+   },
+   {
+    "binary": "freerdp-sdl",
+    "desc": "RDP client for Windows Terminal Services (SDL client) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the SDL based client.",
+    "install": "freerdp-sdl",
+    "size": "864 KB"
+   },
+   {
+    "binary": "freerdp-shadow-x11",
+    "desc": "FreeRDP x11 shadowing server FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains a “shadowing” server that can be used to share an already started X11 DISPLAY.",
+    "install": "freerdp-shadow-x11",
+    "size": "36 KB"
+   },
+   {
+    "binary": "freerdp-wayland",
+    "desc": "RDP client for Windows Terminal Services (wayland client) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the wayland based client.",
+    "install": "freerdp-wayland",
+    "size": "109 KB"
+   },
+   {
+    "binary": "freerdp-x11",
+    "desc": "RDP client for Windows Terminal Services (X11 client) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the X11 based client.",
+    "install": "freerdp-x11",
+    "size": "784 KB"
+   },
+   {
+    "binary": "freerdp3-dev",
+    "desc": "Free Remote Desktop Protocol library (development files) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the FreeRDP development files.",
+    "install": "freerdp3-dev",
+    "size": "1.18 MB"
+   },
+   {
+    "binary": "freerdp3-proxy",
+    "desc": "FreeRDP proxy server (transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-proxy (freerdp-proxy3 binary) to freerdp-proxy (freerdp-proxy binary).",
+    "install": "freerdp3-proxy",
+    "size": "177 KB"
+   },
+   {
+    "binary": "freerdp3-proxy-modules",
+    "desc": "FreeRDP Remote Desktop Protocol proxy module libraries (transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package is used to transition from freerdp3-proxy-modules to freerdp-proxy-modules.",
+    "install": "freerdp3-proxy-modules",
+    "size": "172 KB"
+   },
+   {
+    "binary": "freerdp3-sdl",
+    "desc": "RDP client for Windows Terminal Services (SDL client transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-sdl (sdl-freerdp3 binary) to freerdp-sdl (sdl-freerdp binary).",
+    "install": "freerdp3-sdl",
+    "size": "177 KB"
+   },
+   {
+    "binary": "freerdp3-shadow-x11",
+    "desc": "FreeRDP x11 shadowing server (transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-shadow-x11 (freerdp-shadow-cli3 binary) to freerdp-shadow-x11 (freerdp-shadow-cli binary).",
+    "install": "freerdp3-shadow-x11",
+    "size": "177 KB"
+   },
+   {
+    "binary": "freerdp3-wayland",
+    "desc": "RDP client for Windows Terminal Services (wayland client transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-wayland (wlfreerdp3 binary) to freerdp-wayland (wlfreerdp binary).",
+    "install": "freerdp3-wayland",
+    "size": "177 KB"
+   },
+   {
+    "binary": "freerdp3-x11",
+    "desc": "RDP client for Windows Terminal Services (X11 client tramsitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-x11 (xfreerdp3 binary) to freerdp-x11 (xfreerdp binary).",
+    "install": "freerdp3-x11",
+    "size": "177 KB"
+   },
+   {
+    "binary": "libfreerdp-client3-3",
+    "desc": "Free Remote Desktop Protocol library (client library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library for common client functionality.",
+    "install": "libfreerdp-client3-3",
+    "size": "810 KB"
+   },
+   {
+    "binary": "libfreerdp-server-proxy3-3",
+    "desc": "Free Remote Desktop Protocol library (proxy library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library for proxying RDP connections.",
+    "install": "libfreerdp-server-proxy3-3",
+    "size": "143 KB"
+   },
+   {
+    "binary": "libfreerdp-server3-3",
+    "desc": "Free Remote Desktop Protocol library (server library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library with common server functionality.",
+    "install": "libfreerdp-server3-3",
+    "size": "288 KB"
+   },
+   {
+    "binary": "libfreerdp-shadow-subsystem3-3",
+    "desc": "FreeRDP Remote Desktop Protocol shadow subsystem libraries FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shadow subsystem libraries.",
+    "install": "libfreerdp-shadow-subsystem3-3",
+    "size": "54 KB"
+   },
+   {
+    "binary": "libfreerdp-shadow3-3",
+    "desc": "FreeRDP Remote Desktop Protocol shadow libraries FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shadow libraries.",
+    "install": "libfreerdp-shadow3-3",
+    "size": "102 KB"
+   },
+   {
+    "binary": "libfreerdp3-3",
+    "desc": "Free Remote Desktop Protocol library (core library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library with all core functionality.",
+    "install": "libfreerdp3-3",
+    "size": "2.15 MB"
+   },
+   {
+    "binary": "libwinpr-tools3-3",
+    "desc": "Windows Portable Runtime Tools library FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library for Windows Portable Runtime utilities and tools.",
+    "install": "libwinpr-tools3-3",
+    "size": "49 KB"
+   }
+  ],
+  "attack_category": "Command and Control"
+ }
+}

@@ -1,0 +1,1148 @@
+{
+ "aircrack-ng": {
+  "tool": "aircrack-ng",
+  "title": "aircrack-ng",
+  "description": "Wireless WEP/WPA cracking utilities aircrack-ng is an 802.11a/b/g WEP/WPA cracking program that can recover a 40-bit, 104-bit, 256-bit or 512-bit WEP key once enough encrypted packets have been gathered. Also it can attack WPA1/2 networks with some advanced methods or simply by brute force. It implements the standard FMS attack along with some optimizations, thus making the attack much faster compared to other WEP cracking tools. It can also fully use a multiprocessor system to its full power in order to speed up the cracking process.",
+  "usage": [
+   {
+    "binary": "wpaclean",
+    "parts": [
+     [
+      "p",
+      "Parse the provided capture files ( wpa-psk-linksys.cap wpa.cap ) and save any 4-way handshakes to a new file ( /root/handshakes.cap ):"
+     ],
+     [
+      "code",
+      "root@kali:/usr/share/doc/aircrack-ng/examples# wpaclean /root/handshakes.cap wpa-psk-linksys.cap wpa.cap\nPwning wpa-psk-linksys.cap (1/2 50%)\nNet 00:0b:86:c2:a4:85 linksys\nPwning wpa.cap (2/2 100%)\nNet 00:0d:93:eb:b0:8c test\nDone"
+     ]
+    ]
+   },
+   {
+    "binary": "wesside-ng",
+    "parts": [
+     [
+      "p",
+      "Use the specified monitor mode interface ( -i wlan0mon ) and target a single BSSID ( -v de:ad:be:ef:ca:fe ):"
+     ],
+     [
+      "code",
+      "root@kali:~# wesside-ng -i wlan0mon -v de:ad:be:ef:ca:fe\n[18:31:52] Using mac 3C:46:D8:4E:EF:AA\n[18:31:52] Looking for a victim...\n[18:32:13] Chan 04 -"
+     ]
+    ]
+   },
+   {
+    "binary": "makeivs-ng",
+    "parts": [
+     [
+      "p",
+      "Specify a BSSID ( -b de:ad:be:ef:ca:fe ), WEP key ( -k 123456789ABCDEF123456789AB ), and output filename ( -w makeivs.ivs ):"
+     ],
+     [
+      "code",
+      "root@kali:~# makeivs-ng -b de:ad:be:ef:ca:fe -k 123456789ABCDEF123456789AB -w makeivs.ivs\nCreating 100000 IVs with 16 bytes of keystream each.\nEstimated filesize: 2.29 MB\nUsing fake BSSID DE:AD:BE:EF:CA:FE\nDone."
+     ],
+     [
+      "code",
+      "root@kali:~# aircrack-ng makeivs.ivs\nOpening makeivs.ivs\nRead 100001 packets.\n\n   #  BSSID              ESSID                     Encryption\n\n   1  DE:AD:BE:EF:CA:FE                            WEP (100000 IVs)\n\nChoosing first network as target.\n\nOpening makeivs.ivs\nAttack will be restarted every 5000 captured ivs.\nStarting PTW attack with 100000 ivs.\n\n\n                                   Aircrack-ng 1.2 rc4\n\n\n                   [00:00:00] Tested 621 keys (got 100000 IVs)\n\n   KB    depth   byte(vote)\n    0    1/  2   76(113152) 1E(111104) 48(109824) 1C(109568) A6(109568)\n    1    1/  3   F5(112640) 06(111616) 33(111616) F4(111616) 05(111104)\n    2    0/  2   31(137216) F9(113664) 76(113152) DC(110336) B9(109568)\n    3   10/  3   E1(108800) 0A(108544) 34(108032) 3E(108032) 48(108032)\n    4    9/  4   7D(109312) BA(109056) 5E(108800) D6(108800) 11(108288)\n\n             KEY FOUND! [ 12:34:56:78:9A:BC:DE:F1:23:45:67:89:AB ]\n    Decrypted correctly: 100%"
+     ]
+    ]
+   },
+   {
+    "binary": "easside-ng",
+    "parts": [
+     [
+      "p",
+      "First, run buddy-ng, then launch the Easside-ng attack, specifying as many of the options as you can."
+     ],
+     [
+      "code",
+      "root@kali:~# buddy-ng\nWaiting for connexion"
+     ],
+     [
+      "code",
+      "root@kali:~# easside-ng -v de:ad:be:ef:ca:fe -m 3c:46:d8:4e:ef:aa -s 127.0.0.1 -f wlan0mon -c 6\nSetting tap MTU\nSorting out wifi MAC"
+     ]
+    ]
+   },
+   {
+    "binary": "airserv-ng",
+    "parts": [
+     [
+      "p",
+      "Start a server instance on a specific port ( -p 4444 ) using the wlan0mon interface on channel 6 ( -c 6 )."
+     ],
+     [
+      "code",
+      "root@kali:~# airserv-ng -p 4444 -d wlan0mon -c 6\nOpening card wlan0mon\nSetting chan 6\nOpening sock port 4444\nServing wlan0mon chan 6 on port 4444"
+     ]
+    ]
+   },
+   {
+    "binary": "airodump-ng-oui-update",
+    "parts": [
+     [
+      "p",
+      "airodump-ng-oui-update does not have any options. Run the command and wait for it to complete."
+     ],
+     [
+      "code",
+      "root@kali:~# airodump-ng-oui-update\n/usr/sbin/update-ieee-data\nUpdating /var/lib/ieee-data//oui.txt\n    Checking permissions on /var/lib/ieee-data//oui.txt\n    Downloading https://standards.ieee.org/develop/regauth/oui/oui.txt to /var/lib/ieee-data//oui.txt\n    Checking header\n    Temporary location /tmp/ieee-data_y1vJ3E to be moved to /var/lib/ieee-data//oui.txt\n    /var/lib/ieee-data//oui.txt updated.\nUpdating /var/lib/ieee-data//mam.txt\n    Checking permissions on /var/lib/ieee-data//mam.txt\n    Downloading https://standards.ieee.org/develop/regauth/oui28/mam.txt to /var/lib/ieee-data//mam.txt\n    Checking header\n    Temporary location /tmp/ieee-data_y1vJ3E to be moved to /var/lib/ieee-data//mam.txt\n    /var/lib/ieee-data//mam.txt updated.\nUpdating /var/lib/ieee-data//oui36.txt\n    Checking permissions on /var/lib/ieee-data//oui36.txt\n    Downloading https://standards.ieee.org/develop/regauth/oui36/oui36.txt to /var/lib/ieee-data//oui36.txt\n    Checking header\n    Temporary location /tmp/ieee-data_y1vJ3E to be moved to /var/lib/ieee-data//oui36.txt\n    /var/lib/ieee-data//oui36.txt updated.\nUpdating /var/lib/ieee-data//iab.txt\n    Checking permissions on /var/lib/ieee-data//iab.txt\n    Downloading https://standards.ieee.org/develop/regauth/iab/iab.txt to /var/lib/ieee-data//iab.txt\n    Checking header\n    Temporary location /tmp/ieee-data_y1vJ3E to be moved to /var/lib/ieee-data//iab.txt\n    /var/lib/ieee-data//iab.txt updated.\nUpdating /var/lib/ieee-data//oui.csv\n    Checking permissions on /var/lib/ieee-data//oui.csv\n    Downloading https://standards.ieee.org/develop/regauth/oui/oui.csv to /var/lib/ieee-data//oui.csv\n    Checking header\n    Temporary location /tmp/ieee-data_y1vJ3E to be moved to /var/lib/ieee-data//oui.csv\n    /var/lib/ieee-data//oui.csv updated.\nUpdating /var/lib/ieee-data//mam.csv\n    Checking permissions on /var/lib/ieee-data//mam.csv\n    Downloading https://standards.ieee.org/develop/regauth/oui28/mam.csv to /var/lib/ieee-data//mam.csv\n    Checking header\n    Temporary location /tmp/ieee-data_y1vJ3E to be moved to /var/lib/ieee-data//mam.csv\n    /var/lib/ieee-data//mam.csv updated.\nUpdating /var/lib/ieee-data//oui36.csv\n    Checking permissions on /var/lib/ieee-data//oui36.csv\n    Downloading https://standards.ieee.org/develop/regauth/oui36/oui36.csv to /var/lib/ieee-data//oui36.csv\n    Checking header\n    Temporary location /tmp/ieee-data_y1vJ3E to be moved to /var/lib/ieee-data//oui36.csv\n    /var/lib/ieee-data//oui36.csv update"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "aircrack-ng",
+    "desc": "Wireless WEP/WPA cracking utilities aircrack-ng is an 802.11a/b/g WEP/WPA cracking program that can recover a 40-bit, 104-bit, 256-bit or 512-bit WEP key once enough encrypted packets have been gathered. Also it can attack WPA1/2 networks with some advanced methods or simply by brute force. It implements the standard FMS attack along with some optimizations, thus making the attack much faster compared to other WEP cracking tools. It can also fully use a multiprocessor system to its full power in order to speed up the cracking process.",
+    "install": "aircrack-ng",
+    "size": "2.47 MB"
+   },
+   {
+    "binary": "airgraph-ng",
+    "desc": "Tool to graph txt files created by aircrack-ng airgraph-ng is a tool to create a graph ouf of the txt file created by airodump with its -w option. The graph shows the relationships between the clients and the access points. A 802.11 visualization utility",
+    "install": "airgraph-ng",
+    "size": "98 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "airgeddon": {
+  "tool": "airgeddon",
+  "title": "airgeddon",
+  "description": "Multi-use bash script for Linux systems to audit wireless networks airgeddon is a menu driven 3rd party tools wrapper to audit wireless networks with many features.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "airgeddon",
+    "desc": "Multi-use bash script for Linux systems to audit wireless networks airgeddon is a menu driven 3rd party tools wrapper to audit wireless networks with many features.",
+    "install": "airgeddon",
+    "size": "5.06 MB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "asleap": {
+  "tool": "asleap",
+  "title": "asleap",
+  "description": "A tool for exploiting Cisco LEAP networks Demonstrates a serious deficiency in proprietary Cisco LEAP networks.",
+  "usage": [
+   {
+    "binary": "genkeys",
+    "parts": [
+     [
+      "p",
+      "Read in a dictionary file ( -r /usr/share/wordlists/nmap.lst) , provide an output filename ( -f asleap.dat ), and an output index filename ( -n asleap.idx) :"
+     ],
+     [
+      "code",
+      "root@kali:~# asleap -C 58:16:d5:ac:4b:dc:e4:0f -R 50:ae:a3:0a:10:9e:28:f9:33:1b:44:b1:3d:9e:20:91:85:e8:2e:c3:c5:4c:00:23 -W password.lst\nasleap 2.2 - actively recover LEAP/PPTP passwords. <[email protected]>\nUsing wordlist mode with \"password.lst\".\n    hash bytes:        586c\n    NT hash:           8846f7eaee8fb117ad06bdd830b7586c\n    password:          password"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "asleap",
+    "desc": "A tool for exploiting Cisco LEAP networks Demonstrates a serious deficiency in proprietary Cisco LEAP networks.",
+    "install": "asleap",
+    "size": "235 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "bluelog": {
+  "tool": "bluelog",
+  "title": "bluelog",
+  "description": "Bluetooth scanner and logger Bluelog is a Bluetooth scanner designed to tell you how many discoverable devices there are in an area as quickly as possible. It is intended to be used as a site survey tool, identifying the number of possible Bluetooth targets there are in the surrounding environment. Bluetooth Scanner and Logger",
+  "usage": [
+   {
+    "binary": "bluelog",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# bluelog\nBluelog (v1.1.2) by MS3FGX\n---------------------------\nAutodetecting device...OK\nOpening output file: bluelog-2014-05-15-1651.log...OK\nWriting PID file: /tmp/bluelog.pid...OK\nScan started at [05/15/14 16:51:46] on 00:19:0E:0E:EA:4B.\nHit Ctrl+C to end scan."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "bluelog",
+    "desc": "Bluetooth scanner and logger Bluelog is a Bluetooth scanner designed to tell you how many discoverable devices there are in an area as quickly as possible. It is intended to be used as a site survey tool, identifying the number of possible Bluetooth targets there are in the surrounding environment. Bluetooth Scanner and Logger",
+    "install": "bluelog",
+    "size": "198 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "blueranger": {
+  "tool": "blueranger",
+  "title": "blueranger",
+  "description": "Simple Bash script to locate Bluetooth devices BlueRanger is a simple Bash script which uses Link Quality to locate Bluetooth device radios. It sends l2cap (Bluetooth) pings to create a connection between Bluetooth interfaces, since most devices allow pings without any authentication or authorization. The higher the link quality, the closer the device (in theory). Use a Bluetooth Class 1 adapter for long range location detection. Switch to a Class 3 adapter for more precise short range locating. The precision and accuracy depend on the build quality of the Bluetooth adapter, interference, and ",
+  "usage": [
+   {
+    "binary": "blueranger",
+    "parts": [
+     [
+      "p",
+      "Use the Bluetooth interface ( hci1 ) to scan for the specified remote address ( 20:C9:D0:43:4B:D8 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# blueranger hci1 20:C9:D0:43:4B:D8\n\nStarting ...\n\nClose with 2 X Crtl+C\n\n\n      (((B(l(u(e(R)a)n)g)e)r)))\n\nBy JP Dunning (.ronin)\nwww.hackfromacave.com\n\nLocating: ares (20:C9:D0:43:4B:D8)\nPing Count: 1\n\nProximity Change    Link Quality\n----------------    ------------\nFOUND           255/255\n\nRange\n------------------------------------\n|*\n------------------------------------"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "blueranger",
+    "desc": "Simple Bash script to locate Bluetooth devices BlueRanger is a simple Bash script which uses Link Quality to locate Bluetooth device radios. It sends l2cap (Bluetooth) pings to create a connection between Bluetooth interfaces, since most devices allow pings without any authentication or authorization. The higher the link quality, the closer the device (in theory). Use a Bluetooth Class 1 adapter for long range location detection. Switch to a Class 3 adapter for more precise short range locating. The precision and accuracy depend on the build quality of the Bluetooth adapter, interference, and ",
+    "install": "blueranger",
+    "size": "13 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "bluesnarfer": {
+  "tool": "bluesnarfer",
+  "title": "bluesnarfer",
+  "description": "Bluesnarfing utility A bluetooth bluesnarfing utility root@kali:~# bluesnarfer --help bluesnarfer: invalid option -- '-' bluesnarfer, version 0.1 - usage: bluesnarfer [options] [ATCMD] -b bt_addr ATCMD : valid AT+CMD (GSM EXTENSION) TYPE : valid phonebook type .. example : \"DC\" (dialed call list) \"SM\" (SIM phonebook) \"RC\" (recevied call list) \"XX\" much more -b bdaddr : bluetooth device address -C chan : bluetooth rfcomm channel -c ATCMD : custom action -r N-M : read phonebook entry N to M -w N-M : delete phonebook entry N to M -f name : search \"name\" in phonebook address -s TYPE : select phone",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "bluesnarfer",
+    "desc": "Bluesnarfing utility A bluetooth bluesnarfing utility root@kali:~# bluesnarfer --help bluesnarfer: invalid option -- '-' bluesnarfer, version 0.1 - usage: bluesnarfer [options] [ATCMD] -b bt_addr ATCMD : valid AT+CMD (GSM EXTENSION) TYPE : valid phonebook type .. example : \"DC\" (dialed call list) \"SM\" (SIM phonebook) \"RC\" (recevied call list) \"XX\" much more -b bdaddr : bluetooth device address -C chan : bluetooth rfcomm channel -c ATCMD : custom action -r N-M : read phonebook entry N to M -w N-M : delete phonebook entry N to M -f name : search \"name\" in phonebook address -s TYPE : select phone",
+    "install": "bluesnarfer",
+    "size": "30 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "btscanner": {
+  "tool": "btscanner",
+  "title": "btscanner",
+  "description": "Ncurses-based scanner for Bluetooth devices btscanner is a tool designed specifically to extract as much information as possible from a Bluetooth device without the requirement to pair. A detailed information screen extracts HCI and SDP information, and maintains an open connection to monitor the RSSI and link quality. btscanner is based on the BlueZ Bluetooth stack, which is included with recent Linux kernels, and the BlueZ toolset. btscanner also contains a complete listing of the IEEE OUI numbers and class lookup tables. Using the information gathered from these sources it is possible to ma",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "btscanner",
+    "desc": "Ncurses-based scanner for Bluetooth devices btscanner is a tool designed specifically to extract as much information as possible from a Bluetooth device without the requirement to pair. A detailed information screen extracts HCI and SDP information, and maintains an open connection to monitor the RSSI and link quality. btscanner is based on the BlueZ Bluetooth stack, which is included with recent Linux kernels, and the BlueZ toolset. btscanner also contains a complete listing of the IEEE OUI numbers and class lookup tables. Using the information gathered from these sources it is possible to ma",
+    "install": "btscanner",
+    "size": "112 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "bully": {
+  "tool": "bully",
+  "title": "bully",
+  "description": "Implementation of the WPS brute force attack, written in C Bully is a new implementation of the WPS brute force attack, written in C. It is conceptually identical to other programs, in that it exploits the (now well known) design flaw in the WPS specification. It has several advantages over the original reaver code. These include fewer dependencies, improved memory and cpu performance, correct handling of endianness, and a more robust set of options.",
+  "usage": [
+   {
+    "binary": "bully",
+    "parts": [
+     [
+      "p",
+      "Attack the wireless ESSID ( -e 6F36E6 ) through the monitor mode interface ( wlan0mon ):"
+     ],
+     [
+      "code",
+      "root@kali:~# bully -e 6F36E6 wlan0mon\n[!] Bully v1.0-22 - WPS vulnerability assessment utility\n[X] Unknown frequency '-113135872' reported by interface 'mon0'\n[!] Using '00:1f:33:f3:51:13' for the source MAC address\n[+] Datalink type set to '127', radiotap headers present\n[+] Scanning for beacon from '6F36E6' on channel 'unknown'\n[+] Got beacon for '6F36E6' (9c:d3:6d:b8:ff:56)\n[+] Switching interface 'mon0' to channel '8'\n[!] Beacon information element indicates WPS is locked\n[!] Creating new randomized pin file '/root/.bully/pins'\n[+] Index of starting pin number is '0000000'\n[+] Last State = 'NoAssoc'   Next pin '54744431'"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "bully",
+    "desc": "Implementation of the WPS brute force attack, written in C Bully is a new implementation of the WPS brute force attack, written in C. It is conceptually identical to other programs, in that it exploits the (now well known) design flaw in the WPS specification. It has several advantages over the original reaver code. These include fewer dependencies, improved memory and cpu performance, correct handling of endianness, and a more robust set of options.",
+    "install": "bully",
+    "size": "175 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "chirp": {
+  "tool": "chirp",
+  "title": "chirp",
+  "description": "Configuration tool for amateur radios CHIRP is a free, open-source tool for programming your amateur radio. It supports a large number of manufacturers and models, as well as provides a way to interface with multiple data sources and formats. CHIRP can handle data in the following formats:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "chirp",
+    "desc": "Configuration tool for amateur radios CHIRP is a free, open-source tool for programming your amateur radio. It supports a large number of manufacturers and models, as well as provides a way to interface with multiple data sources and formats. CHIRP can handle data in the following formats:",
+    "install": "chirp",
+    "size": "8.53 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "cowpatty": {
+  "tool": "cowpatty",
+  "title": "cowpatty",
+  "description": "Brute-force WPA dictionary attack If you are auditing WPA-PSK or WPA2-PSK networks, you can use this tool to identify weak passphrases that were used to generate the PMK. Supply a libpcap capture file that includes the 4-way handshake, a dictionary file of passphrases to guess with, and the SSID for the network. Brute-force dictionary attack against WPA-PSK",
+  "usage": [
+   {
+    "binary": "genpmk",
+    "parts": [
+     [
+      "p",
+      "Use the provided dictionary file ( -f /usr/share/wordlists/nmap.lst ) to generate a hashfile, saving it to a file ( -d cowpatty_dict ) for the given ESSID ( -s securenet ):"
+     ],
+     [
+      "code",
+      "root@kali:~# genpmk -f /usr/share/wordlists/nmap.lst -d cowpatty_dict -s securenet\ngenpmk 1.3 - WPA-PSK precomputation attack. \\&lt;[email protected]\\&gt;\nFile cowpatty_dict does not exist, creating.\nkey no. 1000: pinkgirl\n1641 passphrases tested in 3.60 seconds: 456.00 passphrases/second"
+     ]
+    ]
+   },
+   {
+    "binary": "cowpatty",
+    "parts": [
+     [
+      "p",
+      "Use the provided hashfile ( -d cowpatty_dict ), read the packet capture ( -r Kismet-20181113-13-37-00-1.pcapdump ), and crack the password for the given ESSID ( -s 6F36E6 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# cowpatty -d cowpatty_dict -r Kismet-20181113-13-37-00-1.pcapdump -s 6F36E6\ncowpatty 4.8 - WPA-PSK dictionary attack. <[email protected]>\n\nCollected all necessary data to mount crack against WPA2/PSK passphrase.\nStarting dictionary attack. Please be patient.\n\nThe PSK is \"12345678\".\n\n5 passphrases tested in 0.00 seconds: 50000.00 passphrases/second"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "cowpatty",
+    "desc": "Brute-force WPA dictionary attack If you are auditing WPA-PSK or WPA2-PSK networks, you can use this tool to identify weak passphrases that were used to generate the PMK. Supply a libpcap capture file that includes the 4-way handshake, a dictionary file of passphrases to guess with, and the SSID for the network. Brute-force dictionary attack against WPA-PSK",
+    "install": "cowpatty",
+    "size": "73 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "crackle": {
+  "tool": "crackle",
+  "title": "crackle",
+  "description": "Crack and decrypt BLE encryption crackle exploits a flaw in the BLE pairing process that allows an attacker to guess or very quickly brute force the TK (Temporary Key). With the TK and other data collected from the pairing process, the STK (Short Term Key) and later the LTK (Long Term Key) can be collected. With the STK and LTK, all communications between the master and the slave can be decrypted",
+  "usage": [
+   {
+    "binary": "crackle",
+    "parts": [
+     [
+      "p",
+      "Read the input file ( -i ltk_exchange.pcap ) and write the decrypted output to disk ( -o ltk-decrypted.pcap ):"
+     ],
+     [
+      "code",
+      "root@kali:~# crackle -i ltk_exchange.pcap -o ltk-decrypted.pcap\n\n\n!!!\nTK found: 000000\nding ding ding, using a TK of 0! Just Cracks(tm)\n!!!\n\nWarning: packet is too short to be encrypted (1), skipping\nLTK found: 7f62c053f104a5bbe68b1d896a2ed49c\nDone, processed 712 total packets, decrypted 3"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "crackle",
+    "desc": "Crack and decrypt BLE encryption crackle exploits a flaw in the BLE pairing process that allows an attacker to guess or very quickly brute force the TK (Temporary Key). With the TK and other data collected from the pairing process, the STK (Short Term Key) and later the LTK (Long Term Key) can be collected. With the STK and LTK, all communications between the master and the slave can be decrypted",
+    "install": "crackle",
+    "size": "54 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "fern-wifi-cracker": {
+  "tool": "fern-wifi-cracker",
+  "title": "fern-wifi-cracker",
+  "description": "Automated Wi-Fi cracker This package contains a Wireless security auditing and attack software program written using the Python Programming Language and the Python Qt GUI library, the program is able to crack and recover WEP/WPA/WPS keys and also run other network based attacks on wireless or ethernet based networks.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "fern-wifi-cracker",
+    "desc": "Automated Wi-Fi cracker This package contains a Wireless security auditing and attack software program written using the Python Programming Language and the Python Qt GUI library, the program is able to crack and recover WEP/WPA/WPS keys and also run other network based attacks on wireless or ethernet based networks.",
+    "install": "fern-wifi-cracker",
+    "size": "1.13 MB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "gnuradio": {
+  "tool": "gnuradio",
+  "title": "gnuradio",
+  "description": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "gnuradio",
+    "desc": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
+    "install": "gnuradio",
+    "size": "24.26 MB"
+   },
+   {
+    "binary": "gnuradio-dev",
+    "desc": "GNU Software Defined Radio toolkit development Header files for the GNU Radio software defined radio system. Since GNU Radio is a framework for development of SDR applications, you are likely to need this installed. Part of the main gnuradio build.",
+    "install": "gnuradio-dev",
+    "size": "2.58 MB"
+   },
+   {
+    "binary": "gnuradio-doc",
+    "desc": "GNU Software Defined Radio toolkit documentation Documentation for the GNU Radio software defined radio system in html and PDF form. HTML docs start file:///usr/share/doc/gnuradio-doc/html/index.html",
+    "install": "gnuradio-doc",
+    "size": "267.15 MB"
+   },
+   {
+    "binary": "libgnuradio-analog3.10.12",
+    "desc": "Gnuradio analog functions Library for handling analog signal processing functions. These functions are also in gnuradio-core. Part of the main gnuradio build.",
+    "install": "libgnuradio-analog3.10.12",
+    "size": "561 KB"
+   },
+   {
+    "binary": "libgnuradio-audio3.10.12",
+    "desc": "Gnuradio audio functions This is the gr-audio library, used to connect to audio sources (mic-in) and sinks (speaker-out) ports on a computer. The underlying hardware driver is system and OS dependent and this module should automatically discover the correct one to use. Part of the main gnuradio build.",
+    "install": "libgnuradio-audio3.10.12",
+    "size": "401 KB"
+   },
+   {
+    "binary": "libgnuradio-blocks3.10.12",
+    "desc": "Gnuradio blocks functions Some non-signal processing blocks. These functions are also in gnuradio-core. Part of the main gnuradio build.",
+    "install": "libgnuradio-blocks3.10.12",
+    "size": "2.87 MB"
+   },
+   {
+    "binary": "libgnuradio-channels3.10.12",
+    "desc": "Gnuradio channels functions Some channel oriented processing blocks. These functions are also in gnuradio-core. Part of the main gnuradio build.",
+    "install": "libgnuradio-channels3.10.12",
+    "size": "485 KB"
+   },
+   {
+    "binary": "libgnuradio-digital3.10.12",
+    "desc": "Gnuradio digital communications functions All the functions for doing digital modulation and demodulation, including bpsk, qpsk, gmsk and ofdm signals. Part of the main gnuradio build.",
+    "install": "libgnuradio-digital3.10.12",
+    "size": "1.54 MB"
+   },
+   {
+    "binary": "libgnuradio-dtv3.10.12",
+    "desc": "Gnuradio digital TV signal processing blocks ATSC support, gr-atsc ported to a new framework, as well as DVB-S2, DVB-T, DVB-T2 digital video broadcast standards. Part of the main gnuradio build.",
+    "install": "libgnuradio-dtv3.10.12",
+    "size": "1.22 MB"
+   },
+   {
+    "binary": "libgnuradio-fec3.10.12",
+    "desc": "Gnuradio forward error correction support Handle forward error correction processing in gnuradio. Implements the GNU Radio FEC API, supporting encoders and decoders for no-op dummmy, repetition, and convolutional classes. Part of the main gnuradio build.",
+    "install": "libgnuradio-fec3.10.12",
+    "size": "674 KB"
+   },
+   {
+    "binary": "libgnuradio-fft3.10.12",
+    "desc": "Gnuradio fast Fourier transform functions Library for Fourier transform techniques used in gnuradio. Uses single precision FFT from libfftw3-single3. Part of the main gnuradio build.",
+    "install": "libgnuradio-fft3.10.12",
+    "size": "253 KB"
+   },
+   {
+    "binary": "libgnuradio-filter3.10.12",
+    "desc": "Gnuradio filter functions Library of filter blocks used in gnuradio. Implements FIR, IIR and FFT filters, as well as Polyphase filterbank and PFB arbitrary resampler methods. Part of the main gnuradio build.",
+    "install": "libgnuradio-filter3.10.12",
+    "size": "969 KB"
+   },
+   {
+    "binary": "libgnuradio-iio3.10.12",
+    "desc": "IIO blocks for GnuRadio Libiio is a library that has been conceived to ease the development of applications interfacing Industrial Input/Output (IIO) devices through the IIO subsystem of the Linux kernel. The IIO blocks for GnuRadio can be used to create flowgraphs that interface IIO devices through libiio.",
+    "install": "libgnuradio-iio3.10.12",
+    "size": "421 KB"
+   },
+   {
+    "binary": "libgnuradio-network3.10.12",
+    "desc": "Gnuradio network library Library of blocks that implement UDP and TCP source and sink blocks supporting both IPv4 and IPv6. Part of the main gnuradio build.",
+    "install": "libgnuradio-network3.10.12",
+    "size": "569 KB"
+   },
+   {
+    "binary": "libgnuradio-pdu3.10.12",
+    "desc": "Gnuradio streaming protocol library Protocol Data Units library provides signal processing blocks that operate on Protocol Data Unit format messages. Many such blocks are analogs of streaming API functionality. Part of the main gnuradio build.",
+    "install": "libgnuradio-pdu3.10.12",
+    "size": "549 KB"
+   },
+   {
+    "binary": "libgnuradio-pmt3.10.12",
+    "desc": "Gnuradio pmt container library Polymorphic Types are opaque data types that are designed as generic containers of data that can be safely passed around between blocks and threads in GNU Radio. Part of the main gnuradio build.",
+    "install": "libgnuradio-pmt3.10.12",
+    "size": "421 KB"
+   },
+   {
+    "binary": "libgnuradio-qtgui3.10.12",
+    "desc": "Gnuradio Qt graphical user interface functions QT-based graphical sinks for gnuradio applications. Implements opengl, raster and native plotting methods, and supports a QT Style Sheet (QSS) file to adjust the look. Part of the main gnuradio build.",
+    "install": "libgnuradio-qtgui3.10.12",
+    "size": "1.81 MB"
+   },
+   {
+    "binary": "libgnuradio-runtime3.10.12",
+    "desc": "Gnuradio core runtime Top level component library. Defines core blocks. Handles settings for logging, performance counters, and control port. Part of the main gnuradio build.",
+    "install": "libgnuradio-runtime3.10.12",
+    "size": "1.91 MB"
+   },
+   {
+    "binary": "libgnuradio-soapy3.10.12",
+    "desc": "Gnuradio SoapySDR support Soapy hardware drivers using the SoapySDR driver framework. Part of the main gnuradio build.",
+    "install": "libgnuradio-soapy3.10.12",
+    "size": "365 KB"
+   },
+   {
+    "binary": "libgnuradio-trellis3.10.12",
+    "desc": "Gnuradio trellis modulation functions Library for trellis coding modulation, including the Viterbi Algorithm, Concatenated Coding and Turbo Decoding based upon finite state machine (FSM) class. Part of the main gnuradio build.",
+    "install": "libgnuradio-trellis3.10.12",
+    "size": "969 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "gqrx": {
+  "tool": "gqrx",
+  "title": "gqrx",
+  "description": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "gnuradio",
+    "desc": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
+    "install": "gnuradio",
+    "size": "24.26 MB"
+   },
+   {
+    "binary": "gnuradio-dev",
+    "desc": "GNU Software Defined Radio toolkit development Header files for the GNU Radio software defined radio system. Since GNU Radio is a framework for development of SDR applications, you are likely to need this installed. Part of the main gnuradio build.",
+    "install": "gnuradio-dev",
+    "size": "2.58 MB"
+   },
+   {
+    "binary": "gnuradio-doc",
+    "desc": "GNU Software Defined Radio toolkit documentation Documentation for the GNU Radio software defined radio system in html and PDF form. HTML docs start file:///usr/share/doc/gnuradio-doc/html/index.html",
+    "install": "gnuradio-doc",
+    "size": "267.15 MB"
+   },
+   {
+    "binary": "libgnuradio-analog3.10.12",
+    "desc": "Gnuradio analog functions Library for handling analog signal processing functions. These functions are also in gnuradio-core. Part of the main gnuradio build.",
+    "install": "libgnuradio-analog3.10.12",
+    "size": "561 KB"
+   },
+   {
+    "binary": "libgnuradio-audio3.10.12",
+    "desc": "Gnuradio audio functions This is the gr-audio library, used to connect to audio sources (mic-in) and sinks (speaker-out) ports on a computer. The underlying hardware driver is system and OS dependent and this module should automatically discover the correct one to use. Part of the main gnuradio build.",
+    "install": "libgnuradio-audio3.10.12",
+    "size": "401 KB"
+   },
+   {
+    "binary": "libgnuradio-blocks3.10.12",
+    "desc": "Gnuradio blocks functions Some non-signal processing blocks. These functions are also in gnuradio-core. Part of the main gnuradio build.",
+    "install": "libgnuradio-blocks3.10.12",
+    "size": "2.87 MB"
+   },
+   {
+    "binary": "libgnuradio-channels3.10.12",
+    "desc": "Gnuradio channels functions Some channel oriented processing blocks. These functions are also in gnuradio-core. Part of the main gnuradio build.",
+    "install": "libgnuradio-channels3.10.12",
+    "size": "485 KB"
+   },
+   {
+    "binary": "libgnuradio-digital3.10.12",
+    "desc": "Gnuradio digital communications functions All the functions for doing digital modulation and demodulation, including bpsk, qpsk, gmsk and ofdm signals. Part of the main gnuradio build.",
+    "install": "libgnuradio-digital3.10.12",
+    "size": "1.54 MB"
+   },
+   {
+    "binary": "libgnuradio-dtv3.10.12",
+    "desc": "Gnuradio digital TV signal processing blocks ATSC support, gr-atsc ported to a new framework, as well as DVB-S2, DVB-T, DVB-T2 digital video broadcast standards. Part of the main gnuradio build.",
+    "install": "libgnuradio-dtv3.10.12",
+    "size": "1.22 MB"
+   },
+   {
+    "binary": "libgnuradio-fec3.10.12",
+    "desc": "Gnuradio forward error correction support Handle forward error correction processing in gnuradio. Implements the GNU Radio FEC API, supporting encoders and decoders for no-op dummmy, repetition, and convolutional classes. Part of the main gnuradio build.",
+    "install": "libgnuradio-fec3.10.12",
+    "size": "674 KB"
+   },
+   {
+    "binary": "libgnuradio-fft3.10.12",
+    "desc": "Gnuradio fast Fourier transform functions Library for Fourier transform techniques used in gnuradio. Uses single precision FFT from libfftw3-single3. Part of the main gnuradio build.",
+    "install": "libgnuradio-fft3.10.12",
+    "size": "253 KB"
+   },
+   {
+    "binary": "libgnuradio-filter3.10.12",
+    "desc": "Gnuradio filter functions Library of filter blocks used in gnuradio. Implements FIR, IIR and FFT filters, as well as Polyphase filterbank and PFB arbitrary resampler methods. Part of the main gnuradio build.",
+    "install": "libgnuradio-filter3.10.12",
+    "size": "969 KB"
+   },
+   {
+    "binary": "libgnuradio-iio3.10.12",
+    "desc": "IIO blocks for GnuRadio Libiio is a library that has been conceived to ease the development of applications interfacing Industrial Input/Output (IIO) devices through the IIO subsystem of the Linux kernel. The IIO blocks for GnuRadio can be used to create flowgraphs that interface IIO devices through libiio.",
+    "install": "libgnuradio-iio3.10.12",
+    "size": "421 KB"
+   },
+   {
+    "binary": "libgnuradio-network3.10.12",
+    "desc": "Gnuradio network library Library of blocks that implement UDP and TCP source and sink blocks supporting both IPv4 and IPv6. Part of the main gnuradio build.",
+    "install": "libgnuradio-network3.10.12",
+    "size": "569 KB"
+   },
+   {
+    "binary": "libgnuradio-pdu3.10.12",
+    "desc": "Gnuradio streaming protocol library Protocol Data Units library provides signal processing blocks that operate on Protocol Data Unit format messages. Many such blocks are analogs of streaming API functionality. Part of the main gnuradio build.",
+    "install": "libgnuradio-pdu3.10.12",
+    "size": "549 KB"
+   },
+   {
+    "binary": "libgnuradio-pmt3.10.12",
+    "desc": "Gnuradio pmt container library Polymorphic Types are opaque data types that are designed as generic containers of data that can be safely passed around between blocks and threads in GNU Radio. Part of the main gnuradio build.",
+    "install": "libgnuradio-pmt3.10.12",
+    "size": "421 KB"
+   },
+   {
+    "binary": "libgnuradio-qtgui3.10.12",
+    "desc": "Gnuradio Qt graphical user interface functions QT-based graphical sinks for gnuradio applications. Implements opengl, raster and native plotting methods, and supports a QT Style Sheet (QSS) file to adjust the look. Part of the main gnuradio build.",
+    "install": "libgnuradio-qtgui3.10.12",
+    "size": "1.81 MB"
+   },
+   {
+    "binary": "libgnuradio-runtime3.10.12",
+    "desc": "Gnuradio core runtime Top level component library. Defines core blocks. Handles settings for logging, performance counters, and control port. Part of the main gnuradio build.",
+    "install": "libgnuradio-runtime3.10.12",
+    "size": "1.91 MB"
+   },
+   {
+    "binary": "libgnuradio-soapy3.10.12",
+    "desc": "Gnuradio SoapySDR support Soapy hardware drivers using the SoapySDR driver framework. Part of the main gnuradio build.",
+    "install": "libgnuradio-soapy3.10.12",
+    "size": "365 KB"
+   },
+   {
+    "binary": "libgnuradio-trellis3.10.12",
+    "desc": "Gnuradio trellis modulation functions Library for trellis coding modulation, including the Viterbi Algorithm, Concatenated Coding and Turbo Decoding based upon finite state machine (FSM) class. Part of the main gnuradio build.",
+    "install": "libgnuradio-trellis3.10.12",
+    "size": "969 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "hackrf_info": {
+  "tool": "hackrf_info",
+  "title": "hackrf_info",
+  "description": "Software defined radio peripheral - utilities HackRF is an open source Software Defined Radio that can receive and transmit between 30 MHz and 6 GHz. HackRF has a 20 MHz bandwidth. It is a High Speed USB device powered by the USB bus. This package contains a set of command line utilities:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "hackrf",
+    "desc": "Software defined radio peripheral - utilities HackRF is an open source Software Defined Radio that can receive and transmit between 30 MHz and 6 GHz. HackRF has a 20 MHz bandwidth. It is a High Speed USB device powered by the USB bus. This package contains a set of command line utilities:",
+    "install": "hackrf",
+    "size": "216 KB"
+   },
+   {
+    "binary": "hackrf-doc",
+    "desc": "Software defined radio peripheral - documentation HackRF is an open source Software Defined Radio that can receive and transmit between 30 MHz and 6 GHz. HackRF has a 20 MHz bandwidth. It is a High Speed USB device powered by the USB bus. This package contains generated documentation.",
+    "install": "hackrf-doc",
+    "size": "12.46 MB"
+   },
+   {
+    "binary": "hackrf-firmware",
+    "desc": "Firmware for HackRF devices The HackRF hardware needs some firmware to run. The firmware is built with arm-none-eabi-gcc. This package contains a number of firmware images that may be programmed into the HackRF hardware using the ‘hackrf_spiflash -w’ command or dfu-util. The following hardware is supported:",
+    "install": "hackrf-firmware",
+    "size": "326 KB"
+   },
+   {
+    "binary": "libhackrf-dev",
+    "desc": "Software defined radio peripheral - development HackRF is an open source Software Defined Radio that can receive and transmit between 30 MHz and 6 GHz. HackRF has a 20 MHz bandwidth. It is a High Speed USB device powered by the USB bus. This package contains development files.",
+    "install": "libhackrf-dev",
+    "size": "179 KB"
+   },
+   {
+    "binary": "libhackrf0",
+    "desc": "Software defined radio peripheral - runtime library HackRF is an open source Software Defined Radio that can receive and transmit between 30 MHz and 6 GHz. HackRF has a 20 MHz bandwidth. It is a High Speed USB device powered by the USB bus. This package contains the shared library.",
+    "install": "libhackrf0",
+    "size": "80 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "kismet": {
+  "tool": "kismet",
+  "title": "kismet",
+  "description": "Wireless network and device detector (metapackage) Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+  "usage": [
+   {
+    "binary": "kismet_server",
+    "parts": [
+     [
+      "p",
+      "Start the Kismet server, using the wireless interface as the capture source ( -c wlan0 ) and use the external GPSD option ( –use-gpsd-gps ):"
+     ],
+     [
+      "code",
+      "root@kali:~# kismet_server -c wlan0 --use-gpsd-gps\nERROR: Kismet was started as root, NOT launching external control binary.\n       This is NOT the preferred method of starting Kismet as Kismet will\n       continue to run as root the entire time.  Please read the README\n       file section about Installation & Security and be sure this is what\n       you want to do.\nINFO: Reading from config file /etc/kismet/kismet.conf\nINFO: No 'dronelisten' config line and no command line drone-listen\n      argument given, Kismet drone server will not be enabled.\nINFO: Created alert tracker...\nINFO: Creating device tracker...\nINFO: Registered 80211 PHY as id"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "kismet",
+    "desc": "Wireless network and device detector (metapackage) Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet",
+    "size": "23 KB"
+   },
+   {
+    "binary": "kismet-capture-antsdr-droneid",
+    "desc": "Capture driver for Kismet Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-antsdr-droneid",
+    "size": "190 KB"
+   },
+   {
+    "binary": "kismet-capture-bladerf-wiphy",
+    "desc": "Kismet capture driver bladerf wiphy Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-bladerf-wiphy",
+    "size": "202 KB"
+   },
+   {
+    "binary": "kismet-capture-common",
+    "desc": "Kismet Capture common helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-common",
+    "size": "42 KB"
+   },
+   {
+    "binary": "kismet-capture-freaklabs-zigbee",
+    "desc": "Kismet Freaklabs Zigbee datasource Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-freaklabs-zigbee",
+    "size": "197 KB"
+   },
+   {
+    "binary": "kismet-capture-hak5-wifi-coconut",
+    "desc": "Kismet capture helper for WiFi Coconut Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-hak5-wifi-coconut",
+    "size": "324 KB"
+   },
+   {
+    "binary": "kismet-capture-linux-bluetooth",
+    "desc": "Kismet Linux Bluetooth capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-linux-bluetooth",
+    "size": "204 KB"
+   },
+   {
+    "binary": "kismet-capture-linux-wifi",
+    "desc": "Kismet Linux Wi-Fi capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-linux-wifi",
+    "size": "281 KB"
+   },
+   {
+    "binary": "kismet-capture-nrf-51822",
+    "desc": "Kismet NRF51822 BTLE Sniffer capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-nrf-51822",
+    "size": "196 KB"
+   },
+   {
+    "binary": "kismet-capture-nrf-52840",
+    "desc": "Kismet NRF52840 BTLE Sniffer capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-nrf-52840",
+    "size": "200 KB"
+   },
+   {
+    "binary": "kismet-capture-nrf-mousejack",
+    "desc": "Kismet nRF MouseJack capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-nrf-mousejack",
+    "size": "200 KB"
+   },
+   {
+    "binary": "kismet-capture-nxp-kw41z",
+    "desc": "Kismet NXP KW41Z BTLE and Zigbee Sniffer capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-nxp-kw41z",
+    "size": "204 KB"
+   },
+   {
+    "binary": "kismet-capture-radiacode-usb",
+    "desc": "Capture driver for Kismet, radiacode usb Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-radiacode-usb",
+    "size": "198 KB"
+   },
+   {
+    "binary": "kismet-capture-rtl433",
+    "desc": "Kismet rtl_433 datasource Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-rtl433",
+    "size": "197 KB"
+   },
+   {
+    "binary": "kismet-capture-rtladsb",
+    "desc": "Kismet rtladsb datasource Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-rtladsb",
+    "size": "202 KB"
+   },
+   {
+    "binary": "kismet-capture-rz-killerbee",
+    "desc": "Kismet Killerbee Sniffer capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-rz-killerbee",
+    "size": "204 KB"
+   },
+   {
+    "binary": "kismet-capture-serial-radview",
+    "desc": "Kismet capture driver serial radview Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-serial-radview",
+    "size": "190 KB"
+   },
+   {
+    "binary": "kismet-capture-ti-cc-2531",
+    "desc": "Kismet TICC2531 802.15.4 Zigbee Sniffer capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-ti-cc-2531",
+    "size": "204 KB"
+   },
+   {
+    "binary": "kismet-capture-ti-cc-2540",
+    "desc": "Kismet TICC2540 BTLE Sniffer capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-ti-cc-2540",
+    "size": "204 KB"
+   },
+   {
+    "binary": "kismet-capture-ubertooth-one",
+    "desc": "Kismet Ubertooth One BT Sniffer capture helper Kismet is a wireless network and device detector, sniffer, wardriving tool, and WIDS (wireless intrusion detection) framework. Kismet works with Wi-Fi interfaces, Bluetooth interfaces, some SDR (software defined radio) hardware like the RTLSDR, and other specialized capture hardware.",
+    "install": "kismet-capture-ubertooth-one",
+    "size": "200 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "mfcuk": {
+  "tool": "mfcuk",
+  "title": "mfcuk",
+  "description": "MiFare Classic Universal toolKit Toolkit containing samples and various tools based on and around libnfc and crapto1, with emphasis on Mifare Classic NXP/Philips RFID cards. Special emphasis of the toolkit is on the following: root@kali:~# mfcuk -h mfcuk - 0.3.8 Mifare Classic DarkSide Key Recovery Tool - 0.3 by Andrei Costin, [email protected] , http://andreicostin.com Usage: -C - require explicit connection to the reader. Without this option, the connection is not made and recovery will not occur -i mifare.dmp - load input mifare_classic_tag type dump -I mifare_ext.dmp - load input extended ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "mfcuk",
+    "desc": "MiFare Classic Universal toolKit Toolkit containing samples and various tools based on and around libnfc and crapto1, with emphasis on Mifare Classic NXP/Philips RFID cards. Special emphasis of the toolkit is on the following: root@kali:~# mfcuk -h mfcuk - 0.3.8 Mifare Classic DarkSide Key Recovery Tool - 0.3 by Andrei Costin, [email protected] , http://andreicostin.com Usage: -C - require explicit connection to the reader. Without this option, the connection is not made and recovery will not occur -i mifare.dmp - load input mifare_classic_tag type dump -I mifare_ext.dmp - load input extended ",
+    "install": "mfcuk",
+    "size": "87 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "mfoc": {
+  "tool": "mfoc",
+  "title": "mfoc",
+  "description": "MIFARE Classic offline cracker MFOC is an open source implementation of “offline nested” attack by Nethemba. This program allow one to recover authentication keys from MIFARE Classic card.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "mfoc",
+    "desc": "MIFARE Classic offline cracker MFOC is an open source implementation of “offline nested” attack by Nethemba. This program allow one to recover authentication keys from MIFARE Classic card.",
+    "install": "mfoc",
+    "size": "69 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "mfterm": {
+  "tool": "mfterm",
+  "title": "mfterm",
+  "description": "Terminal for working with Mifare Classic 1-4k Tags mfterm is a terminal interface for working with Mifare Classic tags. Tab completion on commands is available. Also, commands that have file name arguments provide tab completion on files. There is also a command history, like in most normal shells. The Mifare Terminal",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "mfterm",
+    "desc": "Terminal for working with Mifare Classic 1-4k Tags mfterm is a terminal interface for working with Mifare Classic tags. Tab completion on commands is available. Also, commands that have file name arguments provide tab completion on files. There is also a command history, like in most normal shells. The Mifare Terminal",
+    "install": "mfterm",
+    "size": "106 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "pixiewps": {
+  "tool": "pixiewps",
+  "title": "pixiewps",
+  "description": "Offline WPS bruteforce tool Pixiewps is a tool written in C used to bruteforce offline the WPS pin exploiting the low or non-existing entropy of some APs (pixie dust attack). It is meant for educational purposes only. Offline Wi-Fi Protected Setup bruteforce tool",
+  "usage": [
+   {
+    "binary": "PixieWPS",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# pixiewps \\\n>    -a 7f:de:11:b9:69:1c:de:26:4a:21:a4:6f:eb:3d:b8:aa:aa:d7:30:09:09:32:b8:24:43:9b:e0:91:78:e7:6f:2c \\\n>    -e d4:38:91:0d:4e:6e:15:fe:70:f0:97:a8:70:2a:b8:94:f5:75:74:bf:64:19:9f:92:82:9b:e0:2c:c0:a3:75:48:08:8f:63:0a:82:37:0c:b7:95:42:cf:55:ca:a5:f0:f7:6c:b2:c7:5f:0e:23:18:44:f4:2d:00:f1:da:d4:94:23:56:c7:2c:b0:f6:87:c7:77:d0:cc:11:35:cf:b7:4f:bc:44:8d:ca:35:8a:78:3d:99:7f:2b:cf:44:21:d8:e2:0f:3c:7d:a4:72:c8:03:6f:77:2a:e9:fa:c1:e9:a8:2c:74:65:99:5a:e0:a5:26:d9:23:5e:4e:ec:5a:07:07:ab:80:db:3f:5f:18:7f:fa:fa:f1:57:74:b2:8d:a9:97:a6:c6:0a:a5:e0:ec:93:09:23:67:f6:3e:ec:1f:55:32:a4:5d:73:8f:ab:91:74:cf:1d:79:85:12:c1:81:f5:ea:a6:68:9d:8e:c7:c6:be:01:dc:d9:f8:68:80:11:55:d7:44:6a \\\n>    -r bc:ad:54:2f:88:44:7c:12:69:ef:34:31:4a:17:1c:92:b1:d7:06:4c:73:be:9f:d3:ed:87:63:74:10:46:0f:46:8c:36:b5:d4:a0:ba:af:85:9c:b2:30:42:d7:59:43:75:5a:d7:79:96:fb:ee:7b:66:db:b7:a8:f9:22:9c:a5:d3:b8:e7:c0:c4:5c:58:34:1f:56:a8:1a:41:a8:d2:e8:f6:3e:c9:3a:93:d9:9b:59:5c:a8:e0:78:84:6c:fc:05:e8:76:a3:e6:3b:33:94:4a:a9:ff:50:fb:60:fa:97:3b:6d:cc:04:f1:5e:36:24:a9:06:7a:f8:6b:00:e9:71:9d:89:be:9c:b2:9c:1f:ca:6d:d6:4d:ab:46:3d:b3:11:1f:8d:40:f7:c8:a4:39:48:c5:ca:1b:f6:30:95:7d:d9:68:41:ef:0a:37:b2:4a:37:e4:a4:b0:dd:7e:c1:af:3e:66:ea:bf:16:0a:7a:8a:05:00:01:a4:29:77:a9:d4:81:d4:0e \\\n>    -s 90:5f:f5:7d:93:e5:c4:3c:62:0d:26:65:dd:59:57:d5:ba:ba:f1:b7:30:91:72:7c:54:94:38:08:1e:13:35:38 \\\n>    -z b0:2b:07:50:28:e7:6e:5f:fa:27:1b:31:92:85:43:cb:c5:6a:ec:73:e2:27:c3:b9:80:ec:5b:ed:88:f0:1e:ec \\\n>    -n 00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00\n\n Pixiewps 1.4\n\n [?] Mode:     1 (RT/MT/CL)\n [*] Seed N1:  -\n [*] Seed ES1: 0x00000000\n [*] Seed ES2: 0x00000000\n [*] PSK1:     d4eb0c2a3815e1a03d70db7431eb53a3\n [*] PSK2:     d3b7e623f31d220a23ea07bb7f76658b\n [*] ES1:      00000000000000000000000000000000\n [*] ES2:      00000000000000000000000000000000\n [+] WPS pin:  04847533\n\n [*] Time taken: 0 s 4 ms\n\nroot@kali:~#"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "pixiewps",
+    "desc": "Offline WPS bruteforce tool Pixiewps is a tool written in C used to bruteforce offline the WPS pin exploiting the low or non-existing entropy of some APs (pixie dust attack). It is meant for educational purposes only. Offline Wi-Fi Protected Setup bruteforce tool",
+    "install": "pixiewps",
+    "size": "118 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "reaver": {
+  "tool": "reaver",
+  "title": "reaver",
+  "description": "Brute force attack tool against Wi-Fi Protected Setup PIN number Reaver performs a brute force attack against an access point’s Wi-Fi Protected Setup pin number. Once the WPS pin is found, the WPA PSK can be recovered and alternately the AP’s wireless settings can be reconfigured. This package also provides the Wash executable, an utility for identifying WPS enabled access points. See documentation in /usr/share/doc/reaver/README.WASH. WPS Cracker",
+  "usage": [
+   {
+    "binary": "wash",
+    "parts": [
+     [
+      "p",
+      "Scan for networks using the monitor mode interface ( -i wlan0mon ) on channel 6 ( -c 6 ), while ignoring frame checksum errors ( -C ):"
+     ],
+     [
+      "code",
+      "root@kali:~# wash -i wlan0mon -c 6 -C\nBSSID               Ch  dBm  WPS  Lck  Vendor    ESSID\n--------------------------------------------------------------------------------\nE0:3F:49:6A:57:78    6  -73  1.0  No   Unknown   ASUS"
+     ]
+    ]
+   },
+   {
+    "binary": "reaver",
+    "parts": [
+     [
+      "p",
+      "Use the monitor mode interface ( -i mon0 ) to attack the access point ( -b E0:3F:49:6A:57:78 ), displaying verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# reaver -i wlan0mon -b E0:3F:49:6A:57:78 -v\n\nReaver v1.6.5 WiFi Protected Setup Attack Tool\nCopyright (c) 2011, Tactical Network Solutions, Craig Heffner <[email protected]>\n\n[+] Waiting for beacon from E0:3F:49:6A:57:78\n[+] Associated with E0:3F:49:6A:57:78 (ESSID: ASUS)\n[+] Trying pin 12345670"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "reaver",
+    "desc": "Brute force attack tool against Wi-Fi Protected Setup PIN number Reaver performs a brute force attack against an access point’s Wi-Fi Protected Setup pin number. Once the WPS pin is found, the WPA PSK can be recovered and alternately the AP’s wireless settings can be reconfigured. This package also provides the Wash executable, an utility for identifying WPS enabled access points. See documentation in /usr/share/doc/reaver/README.WASH. WPS Cracker",
+    "install": "reaver",
+    "size": "851 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "rfcat": {
+  "tool": "rfcat",
+  "title": "rfcat",
+  "description": "Swiss army knife of sub-GHz radio Rfcat is a sub GHz analysis tool. The goals of the project are to reduce the time for security researchers to create needed tools for analyzing unknown targets, to aid in reverse-engineering of hardware. (unknown subject)",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "rfcat",
+    "desc": "Swiss army knife of sub-GHz radio Rfcat is a sub GHz analysis tool. The goals of the project are to reduce the time for security researchers to create needed tools for analyzing unknown targets, to aid in reverse-engineering of hardware. (unknown subject)",
+    "install": "rfcat",
+    "size": "443 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "sparrow-wifi": {
+  "tool": "sparrow-wifi",
+  "title": "sparrow-wifi",
+  "description": "Graphical Wi-Fi Analyzer for Linux This package contains a graphical Wi-Fi analyzer for Linux. It provides a more comprehensive GUI-based replacement for tools like inSSIDer and linssid that runs specifically on Linux. In its most comprehensive use cases, sparrow-wifi integrates Wi-Fi, software-defined radio (hackrf), advanced bluetooth tools (traditional and Ubertooth), traditional GPS (via gpsd), and drone/rover GPS via mavlink in one solution. root@kali:~# sparrowwifiagent -h usage: sparrowwifiagent.py [-h] [--port PORT] [--allowedips ALLOWEDIPS] [--staticcoord STATICCOORD] [--mavlinkgps MA",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sparrow-wifi",
+    "desc": "Graphical Wi-Fi Analyzer for Linux This package contains a graphical Wi-Fi analyzer for Linux. It provides a more comprehensive GUI-based replacement for tools like inSSIDer and linssid that runs specifically on Linux. In its most comprehensive use cases, sparrow-wifi integrates Wi-Fi, software-defined radio (hackrf), advanced bluetooth tools (traditional and Ubertooth), traditional GPS (via gpsd), and drone/rover GPS via mavlink in one solution. root@kali:~# sparrowwifiagent -h usage: sparrowwifiagent.py [-h] [--port PORT] [--allowedips ALLOWEDIPS] [--staticcoord STATICCOORD] [--mavlinkgps MA",
+    "install": "sparrow-wifi",
+    "size": "1.94 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "spooftooph": {
+  "tool": "spooftooph",
+  "title": "spooftooph",
+  "description": "Automates spoofing or cloning Bluetooth devices Spooftooph is designed to automate spoofing or cloning Bluetooth device Name, Class, and Address. Cloning this information effectively allows Bluetooth device to hide in plain site. Bluetooth scanning software will only list one of the devices if more than one device in range shares the same device information when the devices are in Discoverable Mode (specificaly the same Address). root@kali:~# spooftooph -h spooftooph v0.5.2 by JP Dunning (.ronin) <www.hackfromacave.com> (c) 2009-2012 Shadow Cave LLC. NAME spooftooph SYNOPSIS spooftooph -i dev ",
+  "usage": [
+   {
+    "binary": "spooftooph",
+    "parts": [
+     [
+      "p",
+      "Use the Bluetooth interface ( -i hci1 ) to spoof itself as the given address ( -a 00803789EE76 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# spooftooph -i hci1 -a 00803789EE76\nManufacturer:   Broadcom Corporation (15)\nDevice address: 00:19:0E:0E:EA:4B"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "spooftooph",
+    "desc": "Automates spoofing or cloning Bluetooth devices Spooftooph is designed to automate spoofing or cloning Bluetooth device Name, Class, and Address. Cloning this information effectively allows Bluetooth device to hide in plain site. Bluetooth scanning software will only list one of the devices if more than one device in range shares the same device information when the devices are in Discoverable Mode (specificaly the same Address). root@kali:~# spooftooph -h spooftooph v0.5.2 by JP Dunning (.ronin) <www.hackfromacave.com> (c) 2009-2012 Shadow Cave LLC. NAME spooftooph SYNOPSIS spooftooph -i dev ",
+    "install": "spooftooph",
+    "size": "74 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "ubertooth-util": {
+  "tool": "ubertooth-util",
+  "title": "ubertooth-util",
+  "description": "Shared library for Bluetooth experimentation - development files Project Ubertooth is an open source wireless development platform suitable for Bluetooth experimentation. Ubertooth ships with a capable BLE (Bluetooth Smart) sniffer and can sniff some data from Basic Rate (BR) Bluetooth Classic connections. This package provides the development files for using the ubertooth library.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libubertooth-dev",
+    "desc": "Shared library for Bluetooth experimentation - development files Project Ubertooth is an open source wireless development platform suitable for Bluetooth experimentation. Ubertooth ships with a capable BLE (Bluetooth Smart) sniffer and can sniff some data from Basic Rate (BR) Bluetooth Classic connections. This package provides the development files for using the ubertooth library.",
+    "install": "libubertooth-dev",
+    "size": "53 KB"
+   },
+   {
+    "binary": "libubertooth1",
+    "desc": "Shared library for Bluetooth experimentation Project Ubertooth is an open source wireless development platform suitable for Bluetooth experimentation. Ubertooth ships with a capable BLE (Bluetooth Smart) sniffer and can sniff some data from Basic Rate (BR) Bluetooth Classic connections. This package provides the shared library needed by Ubertooth.",
+    "install": "libubertooth1",
+    "size": "88 KB"
+   },
+   {
+    "binary": "ubertooth",
+    "desc": "2.4 GHz wireless development platform for Bluetooth experimentation Project Ubertooth is an open source wireless development platform suitable for Bluetooth experimentation. This package contains everything necessary to use the hardware dongle. Ubertooth is capable of sniffing BLE (Bluetooth Smart) connections and it also has some ability to sniff some data from Basic Rate (BR) Bluetooth Classic connections.",
+    "install": "ubertooth",
+    "size": "339 KB"
+   },
+   {
+    "binary": "ubertooth-firmware",
+    "desc": "Firmware for Ubertooth The Ubertooth hardware needs some firmware to run. The firmware is built with arm-none-eabi-gcc. This package contains a number of firmware images that may be programmed into the Ubertooth hardware using the ‘ubertooth-dfu’ command. The firmware images are installed in /usr/share/ubertooth/firmware/",
+    "install": "ubertooth-firmware",
+    "size": "88 KB"
+   },
+   {
+    "binary": "ubertooth-firmware-source",
+    "desc": "Source code for the Ubertooth firmware The Ubertooth hardware needs some firmware to run. The firmware is built with arm-none-eabi-gcc. This package contains the source code for the firmware that is found in the ubertooth-firmware package. The firmware source may be found in /usr/src/ubertooth-firmware-source.tar.gz after installing this package.",
+    "install": "ubertooth-firmware-source",
+    "size": "252 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "wash": {
+  "tool": "wash",
+  "title": "wash",
+  "description": "Brute force attack tool against Wi-Fi Protected Setup PIN number Reaver performs a brute force attack against an access point’s Wi-Fi Protected Setup pin number. Once the WPS pin is found, the WPA PSK can be recovered and alternately the AP’s wireless settings can be reconfigured. This package also provides the Wash executable, an utility for identifying WPS enabled access points. See documentation in /usr/share/doc/reaver/README.WASH. WPS Cracker",
+  "usage": [
+   {
+    "binary": "wash",
+    "parts": [
+     [
+      "p",
+      "Scan for networks using the monitor mode interface ( -i wlan0mon ) on channel 6 ( -c 6 ), while ignoring frame checksum errors ( -C ):"
+     ],
+     [
+      "code",
+      "root@kali:~# wash -i wlan0mon -c 6 -C\nBSSID               Ch  dBm  WPS  Lck  Vendor    ESSID\n--------------------------------------------------------------------------------\nE0:3F:49:6A:57:78    6  -73  1.0  No   Unknown   ASUS"
+     ]
+    ]
+   },
+   {
+    "binary": "reaver",
+    "parts": [
+     [
+      "p",
+      "Use the monitor mode interface ( -i mon0 ) to attack the access point ( -b E0:3F:49:6A:57:78 ), displaying verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# reaver -i wlan0mon -b E0:3F:49:6A:57:78 -v\n\nReaver v1.6.5 WiFi Protected Setup Attack Tool\nCopyright (c) 2011, Tactical Network Solutions, Craig Heffner <[email protected]>\n\n[+] Waiting for beacon from E0:3F:49:6A:57:78\n[+] Associated with E0:3F:49:6A:57:78 (ESSID: ASUS)\n[+] Trying pin 12345670"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "reaver",
+    "desc": "Brute force attack tool against Wi-Fi Protected Setup PIN number Reaver performs a brute force attack against an access point’s Wi-Fi Protected Setup pin number. Once the WPS pin is found, the WPA PSK can be recovered and alternately the AP’s wireless settings can be reconfigured. This package also provides the Wash executable, an utility for identifying WPS enabled access points. See documentation in /usr/share/doc/reaver/README.WASH. WPS Cracker",
+    "install": "reaver",
+    "size": "851 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "wifi-honey": {
+  "tool": "wifi-honey",
+  "title": "wifi-honey",
+  "description": "Wi-Fi honeypot In the case of WPA/WPA2, by running airodump-ng along side this you also end up capturing the first two packets of the four way handshake and so can attempt to crack the key with either aircrack-ng or coWPAtty. What this script does is to automate the setup process, it creates five monitor mode interfaces, four are used as APs and the fifth is used for airodump-ng. To make things easier, rather than having five windows all this is done in a screen session which allows you to switch between screens to see what is going on. All sessions are labelled so you know which is which.",
+  "usage": [
+   {
+    "binary": "wifi-honey",
+    "parts": [
+     [
+      "p",
+      "Broadcast the given ESSID ( FreeWiFi ) on channel 6 ( 6 ) using the wireless interface ( wlan0 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# wifi-honey FreeWiFi 6 wlan0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "wifi-honey",
+    "desc": "Wi-Fi honeypot In the case of WPA/WPA2, by running airodump-ng along side this you also end up capturing the first two packets of the four way handshake and so can attempt to crack the key with either aircrack-ng or coWPAtty. What this script does is to automate the setup process, it creates five monitor mode interfaces, four are used as APs and the fifth is used for airodump-ng. To make things easier, rather than having five windows all this is done in a screen session which allows you to switch between screens to see what is going on. All sessions are labelled so you know which is which.",
+    "install": "wifi-honey",
+    "size": "16 KB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "wifiphisher": {
+  "tool": "wifiphisher",
+  "title": "wifiphisher",
+  "description": "Automated phishing attacks against Wi-Fi networks This package contains a security tool that mounts automated phishing attacks against Wi-Fi networks in order to obtain secret passphrases or other credentials. It is a social engineering attack that unlike other methods it does not include any brute forcing. It is an easy way for obtaining credentials from captive portals and third party login pages or WPA/WPA2 secret passphrases. root@kali:~# wifiphisher -h usage: wifiphisher [-h] [-i INTERFACE] [-eI EXTENSIONSINTERFACE] [-aI APINTERFACE] [-iI INTERNETINTERFACE] [-pI PROTECTINTERFACE [PROTECTI",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "wifiphisher",
+    "desc": "Automated phishing attacks against Wi-Fi networks This package contains a security tool that mounts automated phishing attacks against Wi-Fi networks in order to obtain secret passphrases or other credentials. It is a social engineering attack that unlike other methods it does not include any brute forcing. It is an easy way for obtaining credentials from captive portals and third party login pages or WPA/WPA2 secret passphrases. root@kali:~# wifiphisher -h usage: wifiphisher [-h] [-i INTERFACE] [-eI EXTENSIONSINTERFACE] [-aI APINTERFACE] [-iI INTERNETINTERFACE] [-pI PROTECTINTERFACE [PROTECTI",
+    "install": "wifiphisher",
+    "size": "7.89 MB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ },
+ "wifipumpkin3": {
+  "tool": "wifipumpkin3",
+  "title": "wifipumpkin3",
+  "description": "Powerful framework for rogue access point attack This package contains a powerful framework for rogue access point attack, written in Python, that allow and offer to security researchers, red teamers and reverse engineers to mount a wireless network to conduct a man-in-the-middle attack. root@kali:~# captiveflask -h [*] CaptiveFlask v1.0.2 - subtool from wifipumpkin3 usage: captiveflask [-h] [-t TEMPLATE] [-s STATIC] [-r REDIRECT] [-p PORT] [-rU REDIRECT_URL] [-f FORCE_REDIRECT] [-v VERSION] CaptiveFlask - Server to create captive portal with flask doc: https://github.com/mh4x0f/captiveportals",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "wifipumpkin3",
+    "desc": "Powerful framework for rogue access point attack This package contains a powerful framework for rogue access point attack, written in Python, that allow and offer to security researchers, red teamers and reverse engineers to mount a wireless network to conduct a man-in-the-middle attack. root@kali:~# captiveflask -h [*] CaptiveFlask v1.0.2 - subtool from wifipumpkin3 usage: captiveflask [-h] [-t TEMPLATE] [-s STATIC] [-r REDIRECT] [-p PORT] [-rU REDIRECT_URL] [-f FORCE_REDIRECT] [-v VERSION] CaptiveFlask - Server to create captive portal with flask doc: https://github.com/mh4x0f/captiveportals",
+    "install": "wifipumpkin3",
+    "size": "29.24 MB"
+   }
+  ],
+  "attack_category": "Collection"
+ },
+ "wifite": {
+  "tool": "wifite",
+  "title": "wifite",
+  "description": "Python script to automate wireless auditing using aircrack-ng tools Wifite is a tool to audit WEP or WPA encrypted wireless networks. It uses aircrack-ng, pyrit, reaver, tshark tools to perform the audit. This tool is customizable to be automated with only a few arguments and can be trusted to run without supervision.",
+  "usage": [
+   {
+    "binary": "wifite",
+    "parts": [
+     [
+      "p",
+      "Attack access points with over 50 dB of power ( -pow 50 ) using the WPS attack ( -wps ):"
+     ],
+     [
+      "code",
+      "root@kali:~# wifite -pow 50 -wps\n\n  .;'                     `;,\n .;'  ,;'             `;,  `;,   WiFite v2 (r85)\n.;'  ,;'  ,;'     `;,  `;,  `;,\n::   ::   :   ( )   :   ::   ::  automated wireless auditor\n':.  ':.  ':. /_\\ ,:'  ,:'  ,:'\n ':.  ':.    /___\\    ,:'  ,:'   designed for Linux\n  ':.       /_____\\      ,:'\n           /       \\\n\n [+] targeting WPS-enabled networks\n\n [+] scanning for wireless devices...\n [+] enabling monitor mode on wlan0... done\n [+] initializing scan (mon0), updates at 5 sec intervals, CTRL+C when ready."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "wifite",
+    "desc": "Python script to automate wireless auditing using aircrack-ng tools Wifite is a tool to audit WEP or WPA encrypted wireless networks. It uses aircrack-ng, pyrit, reaver, tshark tools to perform the audit. This tool is customizable to be automated with only a few arguments and can be trusted to run without supervision.",
+    "install": "wifite",
+    "size": "8.01 MB"
+   }
+  ],
+  "attack_category": "Credential Access"
+ }
+}

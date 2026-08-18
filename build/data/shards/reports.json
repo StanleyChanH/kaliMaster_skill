@@ -1,0 +1,360 @@
+{
+ "arsenal-ng": {
+  "tool": "arsenal-ng",
+  "title": "arsenal-ng",
+  "description": "Go-based command library equipped with 200+ cybersecurity cheat-sheets Inspired by arsenal, rewritten from scratch with a focus on simplicity, speed and developer experience. The classic launcher, evolved. Fast, Go-based command library equipped with 200+ cybersecurity cheat-sheets. Just install and start hacking.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "arsenal-ng",
+    "desc": "Go-based command library equipped with 200+ cybersecurity cheat-sheets Inspired by arsenal, rewritten from scratch with a focus on simplicity, speed and developer experience. The classic launcher, evolved. Fast, Go-based command library equipped with 200+ cybersecurity cheat-sheets. Just install and start hacking.",
+    "install": "arsenal-ng",
+    "size": "5.81 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "cherrytree": {
+  "tool": "cherrytree",
+  "title": "cherrytree",
+  "description": "Hierarchical note taking application CherryTree is a hierarchical note taking application, featuring rich text, syntax highlighting, images handling, hyperlinks, import/export with support for multiple formats, support for multiple languages, and more. A hierarchical note taking application",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "cherrytree",
+    "desc": "Hierarchical note taking application CherryTree is a hierarchical note taking application, featuring rich text, syntax highlighting, images handling, hyperlinks, import/export with support for multiple formats, support for multiple languages, and more. A hierarchical note taking application",
+    "install": "cherrytree",
+    "size": "11.00 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "cutycapt": {
+  "tool": "cutycapt",
+  "title": "cutycapt",
+  "description": "Utility to capture WebKit’s rendering of a web page CutyCapt is a small cross-platform command-line utility to capture WebKit’s rendering of a web page into a variety of vector and bitmap formats, including SVG, PDF, PS, PNG, JPEG, TIFF, GIF, and BMP. Utility to capture WebKit’s rendering of a web page",
+  "usage": [
+   {
+    "binary": "cutycapt",
+    "parts": [
+     [
+      "p",
+      "Take a capture of the URL ( –url=http://www.kali.org ) and save it to disk ( –out=kali.png ):"
+     ],
+     [
+      "code",
+      "root@kali:~# cutycapt --url=http://www.kali.org --out=kali.png\nlibpng warning: iCCP: known incorrect sRGB profile\nlibpng warning: iCCP: known incorrect sRGB profile"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "cutycapt",
+    "desc": "Utility to capture WebKit’s rendering of a web page CutyCapt is a small cross-platform command-line utility to capture WebKit’s rendering of a web page into a variety of vector and bitmap formats, including SVG, PDF, PS, PNG, JPEG, TIFF, GIF, and BMP. Utility to capture WebKit’s rendering of a web page",
+    "install": "cutycapt",
+    "size": "76 KB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "defectdojo-start": {
+  "tool": "defectdojo-start",
+  "title": "defectdojo-start",
+  "description": "Security orchestration and vulnerability management platform This package contains a security orchestration and vulnerability management platform. DefectDojo allows you to manage your application security program, maintain product and application information, triage vulnerabilities and push findings to systems like JIRA and Slack. DefectDojo enriches and refines vulnerability data using a number of heuristic algorithms that improve with the more you use the platform. root@kali:~# defectdojo -h ┏━(Message from Kali developers) ┃ ┃ The command defectdojo is deprecated. Please use defectdojo-star",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "defectdojo",
+    "desc": "Security orchestration and vulnerability management platform This package contains a security orchestration and vulnerability management platform. DefectDojo allows you to manage your application security program, maintain product and application information, triage vulnerabilities and push findings to systems like JIRA and Slack. DefectDojo enriches and refines vulnerability data using a number of heuristic algorithms that improve with the more you use the platform. root@kali:~# defectdojo -h ┏━(Message from Kali developers) ┃ ┃ The command defectdojo is deprecated. Please use defectdojo-star",
+    "install": "defectdojo",
+    "size": "107.69 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "dradis-start": {
+  "tool": "dradis-start",
+  "title": "dradis-start",
+  "description": "Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. Dradis is an open-source project released in 2007 that has been refined for over a decade by security professionals around the world.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dradis",
+    "desc": "Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. Dradis is an open-source project released in 2007 that has been refined for over a decade by security professionals around the world.",
+    "install": "dradis",
+    "size": "153.94 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "dradis-stop": {
+  "tool": "dradis-stop",
+  "title": "dradis-stop",
+  "description": "Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. Dradis is an open-source project released in 2007 that has been refined for over a decade by security professionals around the world.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dradis",
+    "desc": "Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. Dradis is an open-source project released in 2007 that has been refined for over a decade by security professionals around the world.",
+    "install": "dradis",
+    "size": "153.94 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "dvwa-start": {
+  "tool": "dvwa-start",
+  "title": "dvwa-start",
+  "description": "Damn Vulnerable Web Application This package contains a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the processes of securing web applications and to aid both students & teachers to learn about web application security in a controlled class room environment. The aim of DVWA is to practice some of the most common web vulnerabilities, with various levels of difficulty, with a simple straightforward interface. Please note, there are both docu",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dvwa",
+    "desc": "Damn Vulnerable Web Application This package contains a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the processes of securing web applications and to aid both students & teachers to learn about web application security in a controlled class room environment. The aim of DVWA is to practice some of the most common web vulnerabilities, with various levels of difficulty, with a simple straightforward interface. Please note, there are both docu",
+    "install": "dvwa",
+    "size": "1.70 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "dvwa-stop": {
+  "tool": "dvwa-stop",
+  "title": "dvwa-stop",
+  "description": "Damn Vulnerable Web Application This package contains a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the processes of securing web applications and to aid both students & teachers to learn about web application security in a controlled class room environment. The aim of DVWA is to practice some of the most common web vulnerabilities, with various levels of difficulty, with a simple straightforward interface. Please note, there are both docu",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dvwa",
+    "desc": "Damn Vulnerable Web Application This package contains a PHP/MySQL web application that is damn vulnerable. Its main goal is to be an aid for security professionals to test their skills and tools in a legal environment, help web developers better understand the processes of securing web applications and to aid both students & teachers to learn about web application security in a controlled class room environment. The aim of DVWA is to practice some of the most common web vulnerabilities, with various levels of difficulty, with a simple straightforward interface. Please note, there are both docu",
+    "install": "dvwa",
+    "size": "1.70 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "eyewitness": {
+  "tool": "eyewitness",
+  "title": "eyewitness",
+  "description": "Rapid web application triage tool EyeWitness is designed to take screenshots of websites, provide some server header info, and identify default credentials if possible. Inspiration came from Tim Tomes’s PeepingTom Script.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "eyewitness",
+    "desc": "Rapid web application triage tool EyeWitness is designed to take screenshots of websites, provide some server header info, and identify default credentials if possible. Inspiration came from Tim Tomes’s PeepingTom Script.",
+    "install": "eyewitness",
+    "size": "5.78 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "gemini-cli": {
+  "tool": "gemini-cli",
+  "title": "gemini-cli",
+  "description": "Open-source AI agent This package contains an open-source AI agent that brings the power of Gemini directly into your terminal. It provides lightweight access to Gemini, giving you the most direct path from your prompt to the model. root@kali:~# gemini-cli -h Usage: gemini [options] [command] Gemini CLI - Defaults to interactive mode. Use -p/--prompt for non-interactive (headless) mode. Commands: gemini mcp Manage MCP servers gemini extensions <command> Manage Gemini CLI extensions. [aliases: extension] gemini skills <command> Manage agent skills. [aliases: skill] gemini hooks <command> Manage",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "gemini-cli",
+    "desc": "Open-source AI agent This package contains an open-source AI agent that brings the power of Gemini directly into your terminal. It provides lightweight access to Gemini, giving you the most direct path from your prompt to the model. root@kali:~# gemini-cli -h Usage: gemini [options] [command] Gemini CLI - Defaults to interactive mode. Use -p/--prompt for non-interactive (headless) mode. Commands: gemini mcp Manage MCP servers gemini extensions <command> Manage Gemini CLI extensions. [aliases: extension] gemini skills <command> Manage agent skills. [aliases: skill] gemini hooks <command> Manage",
+    "install": "gemini-cli",
+    "size": "45.55 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "juice-shop-start": {
+  "tool": "juice-shop-start",
+  "title": "juice-shop-start",
+  "description": "Insecure web application This package contains a modern and sophisticated insecure web application! It can be used in security trainings, awareness demos, CTFs and as a guinea pig for security tools! Juice Shop encompasses vulnerabilities from the entire OWASP Top Ten along with many other security flaws found in real-world applications! WARNING: Do not upload it to your hosting provider’s public html folder or any Internet facing servers, as they will be compromised.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "juice-shop",
+    "desc": "Insecure web application This package contains a modern and sophisticated insecure web application! It can be used in security trainings, awareness demos, CTFs and as a guinea pig for security tools! Juice Shop encompasses vulnerabilities from the entire OWASP Top Ten along with many other security flaws found in real-world applications! WARNING: Do not upload it to your hosting provider’s public html folder or any Internet facing servers, as they will be compromised.",
+    "install": "juice-shop",
+    "size": "1.04 GB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "juice-shop-stop": {
+  "tool": "juice-shop-stop",
+  "title": "juice-shop-stop",
+  "description": "Insecure web application This package contains a modern and sophisticated insecure web application! It can be used in security trainings, awareness demos, CTFs and as a guinea pig for security tools! Juice Shop encompasses vulnerabilities from the entire OWASP Top Ten along with many other security flaws found in real-world applications! WARNING: Do not upload it to your hosting provider’s public html folder or any Internet facing servers, as they will be compromised.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "juice-shop",
+    "desc": "Insecure web application This package contains a modern and sophisticated insecure web application! It can be used in security trainings, awareness demos, CTFs and as a guinea pig for security tools! Juice Shop encompasses vulnerabilities from the entire OWASP Top Ten along with many other security flaws found in real-world applications! WARNING: Do not upload it to your hosting provider’s public html folder or any Internet facing servers, as they will be compromised.",
+    "install": "juice-shop",
+    "size": "1.04 GB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "kali-tweaks": {
+  "tool": "kali-tweaks",
+  "title": "kali-tweaks",
+  "description": "Tool to adjust advanced configuration settings for Kali Linux This package provides tweaks for Kali Linux. This include things like:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "kali-tweaks",
+    "desc": "Tool to adjust advanced configuration settings for Kali Linux This package provides tweaks for Kali Linux. This include things like:",
+    "install": "kali-tweaks",
+    "size": "157 KB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "obsidian": {
+  "tool": "obsidian",
+  "title": "obsidian",
+  "description": "Private and flexible writing app that adapts to the way you think Obsidian stores notes on your device, so you can access them quickly, even offline. With hundreds of plugins and themes, you can shape Obsidian to fit your way of thinking.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "obsidian",
+    "desc": "Private and flexible writing app that adapts to the way you think Obsidian stores notes on your device, so you can access them quickly, even offline. With hundreds of plugins and themes, you can shape Obsidian to fit your way of thinking.",
+    "install": "obsidian",
+    "size": "287.27 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "pipal": {
+  "tool": "pipal",
+  "title": "pipal",
+  "description": "Statistical analysis on password dumps All this tool does is to give you the stats and the information to help you analyse the passwords. The real work is done by you in interpreting the results. root@kali:~# pipal -h pipal 3.4.0 Robin Wood ( [email protected] ) (http://digi.ninja) Usage: pipal [OPTION] ... FILENAME --help, -h, -?: show help --top, -t X: show the top X results (default 10) --output, -o <filename>: output to file --gkey <Google Maps API key>: to allow zip code lookups (optional) --list-checkers: Show the available checkers and which are enabled --verbose, -v: Verbose FILENAME: ",
+  "usage": [
+   {
+    "binary": "pipal",
+    "parts": [
+     [
+      "p",
+      "Analyze and display the top 5 passwords ( -t 5 ), using the given file as input ( /usr/share/wordlists/nmap.lst ):"
+     ],
+     [
+      "code",
+      "root@kali:~# pipal -t 5 /usr/share/wordlists/nmap.lst\nGenerating stats, hit CTRL-C to finish early and dump stats on words already processed.\nPlease wait...\nProcessing:    100% |ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo| Time: 00:00:04\n\n\nTotal entries = 5085\nTotal unique entries = 5076\n\nTop 5 passwords\n#!comment:  *                                                                         * = 10 (0.2%)\ncabrera = 1 (0.02%)\n#!comment:  * The Nmap Security Scanner is (C) 1996-2010 Insecure.Com LLC. Nmap is    * = 1 (0.02%)\n#!comment:  * also a registered trademark of Insecure.Com LLC.  This program is free  * = 1 (0.02%)\n#!comment:  * software; you may redistribute and/or modify it under the terms of the  * = 1 (0.02%)\n\nTop 5 base words\nlove = 26 (0.51%)\nangel = 22 (0.43%)\npassword = 18 (0.35%)\nsoccer = 18 (0.35%)\nprincess = 13 (0.26%)\n\nPassword length (length ordered)\n3 = 1 (0.02%)\n4 = 11 (0.22%)\n5 = 434 (8.53%)\n6 = 1863 (36.64%)\n7 = 1219 (23.97%)\n8 = 865 (17.01%)\n9 = 387 (7.61%)\n10 = 156 (3.07%)\n11 = 41 (0.81%)\n12 = 13 (0.26%)\n13 = 7 (0.14%)\n14 = 1 (0.02%)\n15 = 1 (0.02%)\n16 = 1 (0.02%)\n17 = 1 (0.02%)\n87 = 83 (1.63%)\n88 = 1 (0.02%)"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "pipal",
+    "desc": "Statistical analysis on password dumps All this tool does is to give you the stats and the information to help you analyse the passwords. The real work is done by you in interpreting the results. root@kali:~# pipal -h pipal 3.4.0 Robin Wood ( [email protected] ) (http://digi.ninja) Usage: pipal [OPTION] ... FILENAME --help, -h, -?: show help --top, -t X: show the top X results (default 10) --output, -o <filename>: output to file --gkey <Google Maps API key>: to allow zip code lookups (optional) --list-checkers: Show the available checkers and which are enabled --verbose, -v: Verbose FILENAME: ",
+    "install": "pipal",
+    "size": "243 KB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "portspoof-start": {
+  "tool": "portspoof-start",
+  "title": "portspoof-start",
+  "description": "Enhance OS security through a set of techniques This package contains a service to enhance OS security through a set of following techniques: * All 65535 TCP ports are always open Instead of informing an attacker that a particular port is in a CLOSED or FILTERED state Portspoof will return SYN+ACK for every port connection attempt/ * Every open TCP port emulates a service Portspoof has a huge database of dynamic service signatures, that will be used to generate fake banners and fool scanners. This tool requires configuration before use.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "portspoof",
+    "desc": "Enhance OS security through a set of techniques This package contains a service to enhance OS security through a set of following techniques: * All 65535 TCP ports are always open Instead of informing an attacker that a particular port is in a CLOSED or FILTERED state Portspoof will return SYN+ACK for every port connection attempt/ * Every open TCP port emulates a service Portspoof has a huge database of dynamic service signatures, that will be used to generate fake banners and fool scanners. This tool requires configuration before use.",
+    "install": "portspoof",
+    "size": "1.06 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "portspoof-stop": {
+  "tool": "portspoof-stop",
+  "title": "portspoof-stop",
+  "description": "Enhance OS security through a set of techniques This package contains a service to enhance OS security through a set of following techniques: * All 65535 TCP ports are always open Instead of informing an attacker that a particular port is in a CLOSED or FILTERED state Portspoof will return SYN+ACK for every port connection attempt/ * Every open TCP port emulates a service Portspoof has a huge database of dynamic service signatures, that will be used to generate fake banners and fool scanners. This tool requires configuration before use.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "portspoof",
+    "desc": "Enhance OS security through a set of techniques This package contains a service to enhance OS security through a set of following techniques: * All 65535 TCP ports are always open Instead of informing an attacker that a particular port is in a CLOSED or FILTERED state Portspoof will return SYN+ACK for every port connection attempt/ * Every open TCP port emulates a service Portspoof has a huge database of dynamic service signatures, that will be used to generate fake banners and fool scanners. This tool requires configuration before use.",
+    "install": "portspoof",
+    "size": "1.06 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "recordmydesktop": {
+  "tool": "recordmydesktop",
+  "title": "recordmydesktop",
+  "description": "Captures audio-video data of a Linux desktop session The application produces an ogg-encapsulated theora-vorbis file. recordMyDesktop tries to be as unobstrusive as possible by proccessing only regions of the screen that have changed Record desktop sessions to an Ogg Theora video file with Vorbis audio",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "recordmydesktop",
+    "desc": "Captures audio-video data of a Linux desktop session The application produces an ogg-encapsulated theora-vorbis file. recordMyDesktop tries to be as unobstrusive as possible by proccessing only regions of the screen that have changed Record desktop sessions to an Ogg Theora video file with Vorbis audio",
+    "install": "recordmydesktop",
+    "size": "128 KB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "redeye-start": {
+  "tool": "redeye-start",
+  "title": "redeye-start",
+  "description": "Tool to help you manage your data during a pentest operation This package contains a tool intended to help you manage your data during a pentest operation in the most efficient and organized way. root@kali:~# redeye -h ┏━(Message from Kali developers) ┃ ┃ The command redeye is deprecated. Please use redeye-start instead. ┃ ┗━ redeye-start root@kali:~# redeye-start -h ┏━(Message from Kali developers) ┃ ┃ Please wait for the redeye service to start ┃ .. ┃ [*] Web UI: http://127.0.0.1:8443 ┃ [i] You might need to refresh your browser once it opens ┃ ┗━ redeye-stop root@kali:~# redeye-stop -h ┏━(M",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "redeye",
+    "desc": "Tool to help you manage your data during a pentest operation This package contains a tool intended to help you manage your data during a pentest operation in the most efficient and organized way. root@kali:~# redeye -h ┏━(Message from Kali developers) ┃ ┃ The command redeye is deprecated. Please use redeye-start instead. ┃ ┗━ redeye-start root@kali:~# redeye-start -h ┏━(Message from Kali developers) ┃ ┃ Please wait for the redeye service to start ┃ .. ┃ [*] Web UI: http://127.0.0.1:8443 ┃ [i] You might need to refresh your browser once it opens ┃ ┗━ redeye-stop root@kali:~# redeye-stop -h ┏━(M",
+    "install": "redeye",
+    "size": "22.29 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "redeye-stop": {
+  "tool": "redeye-stop",
+  "title": "redeye-stop",
+  "description": "Tool to help you manage your data during a pentest operation This package contains a tool intended to help you manage your data during a pentest operation in the most efficient and organized way. root@kali:~# redeye -h ┏━(Message from Kali developers) ┃ ┃ The command redeye is deprecated. Please use redeye-start instead. ┃ ┗━ redeye-start root@kali:~# redeye-start -h ┏━(Message from Kali developers) ┃ ┃ Please wait for the redeye service to start ┃ .. ┃ [*] Web UI: http://127.0.0.1:8443 ┃ [i] You might need to refresh your browser once it opens ┃ ┗━ redeye-stop root@kali:~# redeye-stop -h ┏━(M",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "redeye",
+    "desc": "Tool to help you manage your data during a pentest operation This package contains a tool intended to help you manage your data during a pentest operation in the most efficient and organized way. root@kali:~# redeye -h ┏━(Message from Kali developers) ┃ ┃ The command redeye is deprecated. Please use redeye-start instead. ┃ ┗━ redeye-start root@kali:~# redeye-start -h ┏━(Message from Kali developers) ┃ ┃ Please wait for the redeye service to start ┃ .. ┃ [*] Web UI: http://127.0.0.1:8443 ┃ [i] You might need to refresh your browser once it opens ┃ ┗━ redeye-stop root@kali:~# redeye-stop -h ┏━(M",
+    "install": "redeye",
+    "size": "22.29 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "shell-gpt": {
+  "tool": "shell-gpt",
+  "title": "shell-gpt",
+  "description": "Command-line productivity tool powered by AI large language models A command-line productivity tool powered by AI large language models (LLM). This command-line tool offers streamlined generation of shell commands, code snippets, documentation, eliminating the need for external resources (like Google search). Supports Linux, macOS, Windows and compatible with all major Shells like PowerShell, CMD, Bash, Zsh, etc. Updated on: 2026-Jun-17",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "shell-gpt",
+    "desc": "Command-line productivity tool powered by AI large language models A command-line productivity tool powered by AI large language models (LLM). This command-line tool offers streamlined generation of shell commands, code snippets, documentation, eliminating the need for external resources (like Google search). Supports Linux, macOS, Windows and compatible with all major Shells like PowerShell, CMD, Bash, Zsh, etc. Updated on: 2026-Jun-17",
+    "install": "shell-gpt",
+    "size": "111 KB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "witnessme": {
+  "tool": "witnessme",
+  "title": "witnessme",
+  "description": "Web Inventory tool This package contains a Web Inventory tool inspired by Eyewitness, its also written to be extensible allowing you to create custom functionality that can take advantage of the headless browser it drives in the back-end. root@kali:~# witnessme -h usage: witnessme [-h] [--threads THREADS] [--timeout TIMEOUT] [-d] [-v] {screenshot,grab} ... WitnessMe! positional arguments: {screenshot,grab} options: -h, --help show this help message and exit --threads THREADS Number of concurrent browser tab(s) to open [WARNING: This can cause huge RAM consumption if set to high values] (defaul",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "witnessme",
+    "desc": "Web Inventory tool This package contains a Web Inventory tool inspired by Eyewitness, its also written to be extensible allowing you to create custom functionality that can take advantage of the headless browser it drives in the back-end. root@kali:~# witnessme -h usage: witnessme [-h] [--threads THREADS] [--timeout TIMEOUT] [-d] [-v] {screenshot,grab} ... WitnessMe! positional arguments: {screenshot,grab} options: -h, --help show this help message and exit --threads THREADS Number of concurrent browser tab(s) to open [WARNING: This can cause huge RAM consumption if set to high values] (defaul",
+    "install": "witnessme",
+    "size": "402 KB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ }
+}

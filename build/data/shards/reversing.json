@@ -1,0 +1,611 @@
+{
+ "apktool": {
+  "tool": "apktool",
+  "title": "apktool",
+  "description": "Tool for reverse engineering Android apk files A tool for reverse engineering 3rd party, closed, binary Android apps. It can decode resources to nearly original form and rebuild them after making some modifications; it makes possible to debug smali code step by step. Also it makes working with an app easier because of project-like file structure and automation of some repetitive tasks like building apk. Tool for reverse engineering Android apk files",
+  "usage": [
+   {
+    "binary": "apktool",
+    "parts": [
+     [
+      "p",
+      "Use debug mode ( d ) to decode the given apk file ( /root/SdkControllerApp.apk) :"
+     ],
+     [
+      "code",
+      "root@kali:~# apktool d Facebook\\ Lite_v121.0.0.8.97_apkpure.com.apk\nI: Using Apktool 2.3.4-dirty on Facebook Lite_v121.0.0.8.97_apkpure.com.apk\nI: Loading resource table...\nI: Decoding AndroidManifest.xml with resources...\nI: Loading resource table from file: /root/.local/share/apktool/framework/1.apk\nI: Regular manifest package...\nI: Decoding file-resources...\nI: Decoding values */* XMLs...\nI: Baksmaling classes.dex...\nI: Copying assets and libs...\nI: Copying unknown files...\nI: Copying original files..."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "apktool",
+    "desc": "Tool for reverse engineering Android apk files A tool for reverse engineering 3rd party, closed, binary Android apps. It can decode resources to nearly original form and rebuild them after making some modifications; it makes possible to debug smali code step by step. Also it makes working with an app easier because of project-like file structure and automation of some repetitive tasks like building apk. Tool for reverse engineering Android apk files",
+    "install": "apktool",
+    "size": "269 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "bed": {
+  "tool": "bed",
+  "title": "bed",
+  "description": "A network protocol fuzzer BED is a program which is designed to check daemons for potential buffer overflows, format strings et. al. root@kali:~# bed -h BED 0.5 by mjm ( www.codito.de ) & eric ( www.snake-basket.de ) Usage: bed -s <plugin> -t <target> -p <port> -o <timeout> [ depends on the plugin ] <plugin> = FTP/SMTP/POP/HTTP/IRC/IMAP/PJL/LPD/FINGER/SOCKS4/SOCKS5 <target> = Host to check (default: localhost) <port> = Port to connect to (default: standard port) <timeout> = seconds to wait after each test (default: 2 seconds) use \"bed -s <plugin>\" to obtain the parameters you need for the plug",
+  "usage": [
+   {
+    "binary": "bed",
+    "parts": [
+     [
+      "p",
+      "Use the HTTP plugin ( -s HTTP ) to fuzz the target server ( -t 192.168.1.15 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# bed -s HTTP -t 192.168.1.15\n\n BED 0.5 by mjm ( www.codito.de ) & eric ( www.snake-basket.de )\n\n + Buffer overflow testing:\n        testing: 1  HEAD XAXAX HTTP/1.0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "bed",
+    "desc": "A network protocol fuzzer BED is a program which is designed to check daemons for potential buffer overflows, format strings et. al. root@kali:~# bed -h BED 0.5 by mjm ( www.codito.de ) & eric ( www.snake-basket.de ) Usage: bed -s <plugin> -t <target> -p <port> -o <timeout> [ depends on the plugin ] <plugin> = FTP/SMTP/POP/HTTP/IRC/IMAP/PJL/LPD/FINGER/SOCKS4/SOCKS5 <target> = Host to check (default: localhost) <port> = Port to connect to (default: standard port) <timeout> = seconds to wait after each test (default: 2 seconds) use \"bed -s <plugin>\" to obtain the parameters you need for the plug",
+    "install": "bed",
+    "size": "73 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "bytecode-viewer": {
+  "tool": "bytecode-viewer",
+  "title": "bytecode-viewer",
+  "description": "Java 8+ Jar & Android APK Reverse Engineering Suite This package contains Bytecode Viewer (BCV). It is an Advanced Lightweight Java Bytecode Viewer, GUI Java Decompiler, GUI Bytecode Editor, GUI Smali, GUI Baksmali, GUI APK Editor, GUI Dex Editor, GUI APK Decompiler, GUI DEX Decompiler, GUI Procyon Java Decompiler, GUI Krakatau, GUI CFR Java Decompiler, GUI FernFlower Java Decompiler, GUI DEX2Jar, GUI Jar2DEX, GUI Jar-Jar, Hex Viewer, Code Searcher, Debugger and more. There is also a plugin system that will allow you to interact with the loaded classfiles, for example you can write a String de",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "bytecode-viewer",
+    "desc": "Java 8+ Jar & Android APK Reverse Engineering Suite This package contains Bytecode Viewer (BCV). It is an Advanced Lightweight Java Bytecode Viewer, GUI Java Decompiler, GUI Bytecode Editor, GUI Smali, GUI Baksmali, GUI APK Editor, GUI Dex Editor, GUI APK Decompiler, GUI DEX Decompiler, GUI Procyon Java Decompiler, GUI Krakatau, GUI CFR Java Decompiler, GUI FernFlower Java Decompiler, GUI DEX2Jar, GUI Jar2DEX, GUI Jar-Jar, Hex Viewer, Code Searcher, Debugger and more. There is also a plugin system that will allow you to interact with the loaded classfiles, for example you can write a String de",
+    "install": "bytecode-viewer",
+    "size": "66.93 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "code-oss": {
+  "tool": "code-oss",
+  "title": "code-oss",
+  "description": "Open Source package of vscode This package contains code-oss, a code editor with what developers need for their core edit-build-debug cycle. It provides comprehensive code editing, navigation, and understanding support along with lightweight debugging, a rich extensibility model, and lightweight integration with existing tools. This package is built from Microsoft open source code named code-oss.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "code-oss",
+    "desc": "Open Source package of vscode This package contains code-oss, a code editor with what developers need for their core edit-build-debug cycle. It provides comprehensive code editing, navigation, and understanding support along with lightweight debugging, a rich extensibility model, and lightweight integration with existing tools. This package is built from Microsoft open source code named code-oss.",
+    "install": "code-oss",
+    "size": "2.43 GB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "cstool": {
+  "tool": "cstool",
+  "title": "cstool",
+  "description": "Lightweight multi-architecture disassembly framework - command line tool Capstone is a lightweight multi-platform, multi-architecture disassembly framework. This package contains cstool, a command-line tool to disassemble hexadecimal strings.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "capstone-tool",
+    "desc": "Lightweight multi-architecture disassembly framework - command line tool Capstone is a lightweight multi-platform, multi-architecture disassembly framework. This package contains cstool, a command-line tool to disassemble hexadecimal strings.",
+    "install": "capstone-tool",
+    "size": "8.97 MB"
+   },
+   {
+    "binary": "libcapstone-dev",
+    "desc": "Lightweight multi-architecture disassembly framework - devel files Capstone is a lightweight multi-platform, multi-architecture disassembly framework. These are the development headers and libraries.",
+    "install": "libcapstone-dev",
+    "size": "10.74 MB"
+   },
+   {
+    "binary": "libcapstone5",
+    "desc": "Lightweight multi-architecture disassembly framework - library Capstone is a lightweight multi-platform, multi-architecture disassembly framework. Features:",
+    "install": "libcapstone5",
+    "size": "8.93 MB"
+   },
+   {
+    "binary": "python3-capstone",
+    "desc": "Lightweight multi-architecture disassembly framework - Python bindings Capstone is a lightweight multi-platform, multi-architecture disassembly framework. These are the Python 3 bindings.",
+    "install": "python3-capstone",
+    "size": "847 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "cutter": {
+  "tool": "cutter",
+  "title": "cutter",
+  "description": "Development files to build cutter plugins These files can be used to build cutter plugins and integrate such plugin into the Cutter GUI.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "librizin-cutter-dev",
+    "desc": "Development files to build cutter plugins These files can be used to build cutter plugins and integrate such plugin into the Cutter GUI.",
+    "install": "librizin-cutter-dev",
+    "size": "497 KB"
+   },
+   {
+    "binary": "rizin-cutter",
+    "desc": "Reverse engineering platform powered by rizin Cutter is a free and open-source reverse engineering platform powered by rizin. It aims at being an advanced and customizable reverse engineering platform while keeping the user experience in mind. Cutter is created by reverse engineers for reverse engineers. Updated on: 2026-May-25",
+    "install": "rizin-cutter",
+    "size": "8.63 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "d2j-dex2jar": {
+  "tool": "d2j-dex2jar",
+  "title": "d2j-dex2jar",
+  "description": "Tools to work with android .dex and java .class files dex2jar contains 4 compments: dex-reader is designed to read the Dalvik Executable (.dex/.odex) format. It has a light weight API similar with ASM. An example here dex-translator is designed to do the convert job. It reads the dex instruction to dex-ir format, after some optimize, convert to ASM format. dex-ir used by dex-translator, is designed to represent the dex instruction dex-tools tools to work with .class files.",
+  "usage": [
+   {
+    "binary": "d2j-dex2jar",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# d2j-dex2jar /usr/share/metasploit-framework/data/android/apk/classes.dex\ndex2jar /usr/share/metasploit-framework/data/android/apk/classes.dex -> classes-dex2jar.jar"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dex2jar",
+    "desc": "Tools to work with android .dex and java .class files dex2jar contains 4 compments: dex-reader is designed to read the Dalvik Executable (.dex/.odex) format. It has a light weight API similar with ASM. An example here dex-translator is designed to do the convert job. It reads the dex instruction to dex-ir format, after some optimize, convert to ASM format. dex-ir used by dex-translator, is designed to represent the dex instruction dex-tools tools to work with .class files.",
+    "install": "dex2jar",
+    "size": "5.80 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "edb": {
+  "tool": "edb",
+  "title": "edb",
+  "description": "Cross platform x86/x86-64 debugger edb is a graphical cross platform x86/x86-64 debugger. It was inspired by Ollydbg, but aims to function on x86 and x86-64 as well as multiple OS’s. Linux is the only officially supported platform at the moment, but FreeBSD, OpenBSD, OSX and Windows ports are underway with varying degrees of functionality. Graphical debugger and disassembler for executables",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "edb-debugger",
+    "desc": "Cross platform x86/x86-64 debugger edb is a graphical cross platform x86/x86-64 debugger. It was inspired by Ollydbg, but aims to function on x86 and x86-64 as well as multiple OS’s. Linux is the only officially supported platform at the moment, but FreeBSD, OpenBSD, OSX and Windows ports are underway with varying degrees of functionality. Graphical debugger and disassembler for executables",
+    "install": "edb-debugger",
+    "size": "1.68 MB"
+   },
+   {
+    "binary": "edb-debugger-plugins",
+    "desc": "Edb plugins edb is a graphical cross platform x86/x86-64 debugger. It was inspired by Ollydbg, but aims to function on x86 and x86-64 as well as multiple OS’s. Linux is the only officially supported platform at the moment, but FreeBSD, OpenBSD, OSX and Windows ports are underway with varying degrees of functionality. This package provides the plugins that used by edb.",
+    "install": "edb-debugger-plugins",
+    "size": "2.74 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "gdb": {
+  "tool": "gdb",
+  "title": "gdb",
+  "description": "GNU Debugger GDB is a source-level debugger, capable of breaking programs at any specific line, displaying variable values, and determining where errors occurred. Currently, gdb supports C, C++, D, Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2, Go, and Ada. A must-have for any serious programmer. Generate core files for running processes",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "gdb",
+    "desc": "GNU Debugger GDB is a source-level debugger, capable of breaking programs at any specific line, displaying variable values, and determining where errors occurred. Currently, gdb supports C, C++, D, Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2, Go, and Ada. A must-have for any serious programmer. Generate core files for running processes",
+    "install": "gdb",
+    "size": "12.16 MB"
+   },
+   {
+    "binary": "gdb-minimal",
+    "desc": "GNU Debugger (minimal version - dummy transitional package) GDB is a source-level debugger, capable of breaking programs at any specific line, displaying variable values, and determining where errors occurred. Currently, gdb supports C, C++, D, Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2, Go, and Ada. A must-have for any serious programmer. This is a transitional package. It can be safely removed.",
+    "install": "gdb-minimal",
+    "size": "168 KB"
+   },
+   {
+    "binary": "gdb-multiarch",
+    "desc": "GNU Debugger (with support for multiple architectures) GDB is a source-level debugger, capable of breaking programs at any specific line, displaying variable values, and determining where errors occurred. Currently, gdb supports C, C++, D, Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2, Go, and Ada. A must-have for any serious programmer. This package contains a version of GDB which supports multiple target architectures.",
+    "install": "gdb-multiarch",
+    "size": "37.64 MB"
+   },
+   {
+    "binary": "gdb-source",
+    "desc": "GNU Debugger (source) GDB is a source-level debugger, capable of breaking programs at any specific line, displaying variable values, and determining where errors occurred. Currently, gdb supports C, C++, D, Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2, Go, and Ada. A must-have for any serious programmer. This package contains the sources and patches which are needed to build GDB.",
+    "install": "gdb-source",
+    "size": "24.05 MB"
+   },
+   {
+    "binary": "gdbserver",
+    "desc": "GNU Debugger (remote server) GDB is a source-level debugger, capable of breaking programs at any specific line, displaying variable values, and determining where errors occurred. Currently, gdb supports C, C++, D, Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2, Go, and Ada. A must-have for any serious programmer. This package contains gdbserver. Install this to debug remotely from another system where GDB is installed.",
+    "install": "gdbserver",
+    "size": "921 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "gef": {
+  "tool": "gef",
+  "title": "gef",
+  "description": "Modern experience for GDB with advanced debugging capabilities GEF is a set of commands for x86/64, ARM, MIPS, PowerPC and SPARC to assist exploit developers and reverse-engineers when using old school GDB. It provides additional features to GDB using the Python API to assist during the process of dynamic analysis and exploit development. Application developers will also benefit from it, as GEF lifts a great part of regular GDB obscurity, avoiding repeating traditional commands, or bringing out the relevant information from the debugging runtime. root@kali:~# gef -h This is the GNU debugger. U",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "gef",
+    "desc": "Modern experience for GDB with advanced debugging capabilities GEF is a set of commands for x86/64, ARM, MIPS, PowerPC and SPARC to assist exploit developers and reverse-engineers when using old school GDB. It provides additional features to GDB using the Python API to assist during the process of dynamic analysis and exploit development. Application developers will also benefit from it, as GEF lifts a great part of regular GDB obscurity, avoiding repeating traditional commands, or bringing out the relevant information from the debugging runtime. root@kali:~# gef -h This is the GNU debugger. U",
+    "install": "gef",
+    "size": "436 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "generic_chunked": {
+  "tool": "generic_chunked",
+  "title": "generic_chunked",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "usage": [
+   {
+    "binary": "sfuzz",
+    "parts": [
+     [
+      "p",
+      "Fuzz the target server ( -S 192.168.1.1 ) on port 10443 ( -p 10443 ) with TCP output mode ( -T ), using the basic HTTP config ( -f /usr/share/sfuzz/sfuzz-sample/basic.http ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sfuzz -S 192.168.1.1 -p 10443 -T -f /usr/share/sfuzz/sfuzz-sample/basic.http\n[12:53:47] dumping options:\n    filename: </usr/share/sfuzz/sfuzz-sample/basic.http>\n    state:    <8>\n    lineno:   <56>\n    literals:  [74]\n    sequences: [34]\n    symbols: [0]\n    req_del:  <200>\n    mseq_len: <10024>\n    plugin: <none>\n    s_syms: <0>\n    literal[1] = [AREALLYBADSTRING]"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sfuzz",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "install": "sfuzz",
+    "size": "191 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "generic_listen_tcp": {
+  "tool": "generic_listen_tcp",
+  "title": "generic_listen_tcp",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "usage": [
+   {
+    "binary": "sfuzz",
+    "parts": [
+     [
+      "p",
+      "Fuzz the target server ( -S 192.168.1.1 ) on port 10443 ( -p 10443 ) with TCP output mode ( -T ), using the basic HTTP config ( -f /usr/share/sfuzz/sfuzz-sample/basic.http ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sfuzz -S 192.168.1.1 -p 10443 -T -f /usr/share/sfuzz/sfuzz-sample/basic.http\n[12:53:47] dumping options:\n    filename: </usr/share/sfuzz/sfuzz-sample/basic.http>\n    state:    <8>\n    lineno:   <56>\n    literals:  [74]\n    sequences: [34]\n    symbols: [0]\n    req_del:  <200>\n    mseq_len: <10024>\n    plugin: <none>\n    s_syms: <0>\n    literal[1] = [AREALLYBADSTRING]"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sfuzz",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "install": "sfuzz",
+    "size": "191 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "generic_send_tcp": {
+  "tool": "generic_send_tcp",
+  "title": "generic_send_tcp",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "usage": [
+   {
+    "binary": "sfuzz",
+    "parts": [
+     [
+      "p",
+      "Fuzz the target server ( -S 192.168.1.1 ) on port 10443 ( -p 10443 ) with TCP output mode ( -T ), using the basic HTTP config ( -f /usr/share/sfuzz/sfuzz-sample/basic.http ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sfuzz -S 192.168.1.1 -p 10443 -T -f /usr/share/sfuzz/sfuzz-sample/basic.http\n[12:53:47] dumping options:\n    filename: </usr/share/sfuzz/sfuzz-sample/basic.http>\n    state:    <8>\n    lineno:   <56>\n    literals:  [74]\n    sequences: [34]\n    symbols: [0]\n    req_del:  <200>\n    mseq_len: <10024>\n    plugin: <none>\n    s_syms: <0>\n    literal[1] = [AREALLYBADSTRING]"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sfuzz",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "install": "sfuzz",
+    "size": "191 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "generic_send_udp": {
+  "tool": "generic_send_udp",
+  "title": "generic_send_udp",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "usage": [
+   {
+    "binary": "sfuzz",
+    "parts": [
+     [
+      "p",
+      "Fuzz the target server ( -S 192.168.1.1 ) on port 10443 ( -p 10443 ) with TCP output mode ( -T ), using the basic HTTP config ( -f /usr/share/sfuzz/sfuzz-sample/basic.http ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sfuzz -S 192.168.1.1 -p 10443 -T -f /usr/share/sfuzz/sfuzz-sample/basic.http\n[12:53:47] dumping options:\n    filename: </usr/share/sfuzz/sfuzz-sample/basic.http>\n    state:    <8>\n    lineno:   <56>\n    literals:  [74]\n    sequences: [34]\n    symbols: [0]\n    req_del:  <200>\n    mseq_len: <10024>\n    plugin: <none>\n    s_syms: <0>\n    literal[1] = [AREALLYBADSTRING]"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sfuzz",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "install": "sfuzz",
+    "size": "191 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "ghidra": {
+  "tool": "ghidra",
+  "title": "ghidra",
+  "description": "Software Reverse Engineering Framework This package contains a software reverse engineering (SRE) framework created and maintained by the National Security Agency Research Directorate. This framework includes a suite of full-featured, high-end software analysis tools that enable users to analyze compiled code on a variety of platforms including Windows, macOS, and Linux. Capabilities include disassembly, assembly, decompilation, graphing, and scripting, along with hundreds of other features. Ghidra supports a wide variety of processor instruction sets and executable formats and can be run in b",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ghidra",
+    "desc": "Software Reverse Engineering Framework This package contains a software reverse engineering (SRE) framework created and maintained by the National Security Agency Research Directorate. This framework includes a suite of full-featured, high-end software analysis tools that enable users to analyze compiled code on a variety of platforms including Windows, macOS, and Linux. Capabilities include disassembly, assembly, decompilation, graphing, and scripting, along with hundreds of other features. Ghidra supports a wide variety of processor instruction sets and executable formats and can be run in b",
+    "install": "ghidra",
+    "size": "815.75 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "jadx-gui": {
+  "tool": "jadx-gui",
+  "title": "jadx-gui",
+  "description": "Dex to Java decompiler This package contains a Dex to Java decompiler. It contains a command line and GUI tools for produce Java source code from Android Dex and Apk files. Main features: - decompile Dalvik bytecode to java classes from APK, dex, aar and zip files - decode AndroidManifest.xml and other resources from resources.arsc - deobfuscator included",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "jadx",
+    "desc": "Dex to Java decompiler This package contains a Dex to Java decompiler. It contains a command line and GUI tools for produce Java source code from Android Dex and Apk files. Main features: - decompile Dalvik bytecode to java classes from APK, dex, aar and zip files - decode AndroidManifest.xml and other resources from resources.arsc - deobfuscator included",
+    "install": "jadx",
+    "size": "60.76 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "javasnoop": {
+  "tool": "javasnoop",
+  "title": "javasnoop",
+  "description": "Intercept Java applications locally Normally, without access to the original source code, testing the security of a Java client is unpredictable at best and unrealistic at worst. With access the original source, you can run a simple Java program and attach a debugger to it remotely, stepping through code and changing variables where needed. Doing the same with an applet is a little bit more difficult. JavaSnoop attempts to solve this problem by allowing you attach to an existing process (like a debugger) and instantly begin tampering with method calls, run custom code, or just watch what’s hap",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "javasnoop",
+    "desc": "Intercept Java applications locally Normally, without access to the original source code, testing the security of a Java client is unpredictable at best and unrealistic at worst. With access the original source, you can run a simple Java program and attach a debugger to it remotely, stepping through code and changing variables where needed. Doing the same with an applet is a little bit more difficult. JavaSnoop attempts to solve this problem by allowing you attach to an existing process (like a debugger) and instantly begin tampering with method calls, run custom code, or just watch what’s hap",
+    "install": "javasnoop",
+    "size": "13.14 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "jd-gui": {
+  "tool": "jd-gui",
+  "title": "jd-gui",
+  "description": "GUI Java .class decompiler JD-GUI is a standalone graphical utility that displays Java source codes of “.class” files. You can browse the reconstructed source code with the JD-GUI for instant access to methods and fields.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "jd-gui",
+    "desc": "GUI Java .class decompiler JD-GUI is a standalone graphical utility that displays Java source codes of “.class” files. You can browse the reconstructed source code with the JD-GUI for instant access to methods and fields.",
+    "install": "jd-gui",
+    "size": "1.43 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "msf-nasm_shell": {
+  "tool": "msf-nasm_shell",
+  "title": "msf-nasm_shell",
+  "description": "Framework for exploit development and vulnerability research The Metasploit Framework is an open source platform that supports vulnerability research, exploit development, and the creation of custom security tools. root@kali:~# msf-egghunter -h Usage: msf-egghunter [options] Example: msf-egghunter -f python -e W00T Specific options: -f, --format <String> See --list-formats for a list of supported output formats -b, --badchars <String> (Optional) Bad characters to avoid for the egg -e, --egg <String> The egg (Please give 4 bytes) -p, --platform <String> (Optional) Platform --startreg <String> (",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "metasploit-framework",
+    "desc": "Framework for exploit development and vulnerability research The Metasploit Framework is an open source platform that supports vulnerability research, exploit development, and the creation of custom security tools. root@kali:~# msf-egghunter -h Usage: msf-egghunter [options] Example: msf-egghunter -f python -e W00T Specific options: -f, --format <String> See --list-formats for a list of supported output formats -b, --badchars <String> (Optional) Bad characters to avoid for the egg -e, --egg <String> The egg (Please give 4 bytes) -p, --platform <String> (Optional) Platform --startreg <String> (",
+    "install": "metasploit-framework",
+    "size": "580.18 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "olefile": {
+  "tool": "olefile",
+  "title": "olefile",
+  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "oletools",
+    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+    "install": "oletools",
+    "size": "1.90 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "olevba": {
+  "tool": "olevba",
+  "title": "olevba",
+  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "oletools",
+    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+    "install": "oletools",
+    "size": "1.90 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "ollydbg": {
+  "tool": "ollydbg",
+  "title": "ollydbg",
+  "description": "32-bit assembler level analysing debugger OllyDbg is a 32-bit assembler level analysing debugger for Microsoft Windows. Emphasis on binary code analysis makes it particularly useful in cases where source is unavailable.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ollydbg",
+    "desc": "32-bit assembler level analysing debugger OllyDbg is a 32-bit assembler level analysing debugger for Microsoft Windows. Emphasis on binary code analysis makes it particularly useful in cases where source is unavailable.",
+    "install": "ollydbg",
+    "size": "2.50 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "pyinstaller": {
+  "tool": "pyinstaller",
+  "title": "pyinstaller",
+  "description": "Utility to bundle a Python application into a single package PyInstaller reads a Python script written by you. It analyzes your code to discover every other module and library your script needs in order to execute. Then it collects copies of all those files and puts them with your script in a single folder, or optionally in a single executable file. This package contains the executables. It depends on ‘python3-pyinstaller’, which contains the Python modules.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "pyinstaller",
+    "desc": "Utility to bundle a Python application into a single package PyInstaller reads a Python script written by you. It analyzes your code to discover every other module and library your script needs in order to execute. Then it collects copies of all those files and puts them with your script in a single folder, or optionally in a single executable file. This package contains the executables. It depends on ‘python3-pyinstaller’, which contains the Python modules.",
+    "install": "pyinstaller",
+    "size": "104 KB"
+   },
+   {
+    "binary": "python3-pyinstaller",
+    "desc": "Python modules to bundle a Python application into a single package PyInstaller reads a Python script written by you. It analyzes your code to discover every other module and library your script needs in order to execute. Then it collects copies of all those files and puts them with your script in a single folder, or optionally in a single executable file. This package contains the Python modules. The utility executables are contained in the ‘pyinstaller’ package.",
+    "install": "python3-pyinstaller",
+    "size": "2.35 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "radare2": {
+  "tool": "radare2",
+  "title": "radare2",
+  "description": "Libraries from the radare2 suite The project aims to create a complete, portable, multi-architecture, unix-like toolchain for reverse engineering. It is composed by an hexadecimal editor (radare) with a wrapped IO layer supporting multiple backends for local/remote files, debugger (OS X, BSD, Linux, W32), stream analyzer, assembler/disassembler (rasm) for x86, ARM, PPC, m68k, Java, MSIL, SPARC, code analysis modules and scripting facilities. A bindiffer named radiff, base converter (rax), shellcode development helper (rasc), a binary information extractor supporting PE, mach0, ELF, class, etc.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libradare2-6.0.0t64",
+    "desc": "Libraries from the radare2 suite The project aims to create a complete, portable, multi-architecture, unix-like toolchain for reverse engineering. It is composed by an hexadecimal editor (radare) with a wrapped IO layer supporting multiple backends for local/remote files, debugger (OS X, BSD, Linux, W32), stream analyzer, assembler/disassembler (rasm) for x86, ARM, PPC, m68k, Java, MSIL, SPARC, code analysis modules and scripting facilities. A bindiffer named radiff, base converter (rax), shellcode development helper (rasc), a binary information extractor supporting PE, mach0, ELF, class, etc.",
+    "install": "libradare2-6.0.0t64",
+    "size": "21.52 MB"
+   },
+   {
+    "binary": "libradare2-common",
+    "desc": "Arch independent files from the radare2 suite The project aims to create a complete, portable, multi-architecture, unix-like toolchain for reverse engineering. It is composed by an hexadecimal editor (radare) with a wrapped IO layer supporting multiple backends for local/remote files, debugger (OS X, BSD, Linux, W32), stream analyzer, assembler/disassembler (rasm) for x86, ARM, PPC, m68k, Java, MSIL, SPARC, code analysis modules and scripting facilities. A bindiffer named radiff, base converter (rax), shellcode development helper (rasc), a binary information extractor supporting PE, mach0, ELF",
+    "install": "libradare2-common",
+    "size": "9.84 MB"
+   },
+   {
+    "binary": "libradare2-dev",
+    "desc": "Devel files from the radare2 suite The project aims to create a complete, portable, multi-architecture, unix-like toolchain for reverse engineering. It is composed by an hexadecimal editor (radare) with a wrapped IO layer supporting multiple backends for local/remote files, debugger (OS X, BSD, Linux, W32), stream analyzer, assembler/disassembler (rasm) for x86, ARM, PPC, m68k, Java, MSIL, SPARC, code analysis modules and scripting facilities. A bindiffer named radiff, base converter (rax), shellcode development helper (rasc), a binary information extractor supporting PE, mach0, ELF, class, et",
+    "install": "libradare2-dev",
+    "size": "1.41 MB"
+   },
+   {
+    "binary": "radare2",
+    "desc": "Free and advanced command line hexadecimal editor The project aims to create a complete, portable, multi-architecture, unix-like toolchain for reverse engineering. It is composed by an hexadecimal editor (radare) with a wrapped IO layer supporting multiple backends for local/remote files, debugger (OS X, BSD, Linux, W32), stream analyzer, assembler/disassembler (rasm) for x86, ARM, PPC, m68k, Java, MSIL, SPARC, code analysis modules and scripting facilities. A bindiffer named radiff, base converter (rax), shellcode development helper (rasc), a binary information extractor supporting PE, mach0,",
+    "install": "radare2",
+    "size": "3.58 MB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "rizin": {
+  "tool": "rizin",
+  "title": "rizin",
+  "description": "Arch independent files from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "librizin-common",
+    "desc": "Arch independent files from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
+    "install": "librizin-common",
+    "size": "8.73 MB"
+   },
+   {
+    "binary": "librizin-dev",
+    "desc": "Devel files from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
+    "install": "librizin-dev",
+    "size": "1.60 MB"
+   },
+   {
+    "binary": "librizin0",
+    "desc": "Libraries from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
+    "install": "librizin0",
+    "size": "15.95 MB"
+   },
+   {
+    "binary": "rizin",
+    "desc": "Reverse engineering framework and command-line toolset Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
+    "install": "rizin",
+    "size": "270 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "sfuzz": {
+  "tool": "sfuzz",
+  "title": "sfuzz",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "usage": [
+   {
+    "binary": "sfuzz",
+    "parts": [
+     [
+      "p",
+      "Fuzz the target server ( -S 192.168.1.1 ) on port 10443 ( -p 10443 ) with TCP output mode ( -T ), using the basic HTTP config ( -f /usr/share/sfuzz/sfuzz-sample/basic.http ):"
+     ],
+     [
+      "code",
+      "root@kali:~# sfuzz -S 192.168.1.1 -p 10443 -T -f /usr/share/sfuzz/sfuzz-sample/basic.http\n[12:53:47] dumping options:\n    filename: </usr/share/sfuzz/sfuzz-sample/basic.http>\n    state:    <8>\n    lineno:   <56>\n    literals:  [74]\n    sequences: [34]\n    symbols: [0]\n    req_del:  <200>\n    mseq_len: <10024>\n    plugin: <none>\n    s_syms: <0>\n    literal[1] = [AREALLYBADSTRING]"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "sfuzz",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "install": "sfuzz",
+    "size": "191 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ },
+ "sickle-pdk": {
+  "tool": "sickle-pdk",
+  "title": "sickle-pdk",
+  "description": "Payload development kit Sickle is a payload development kit originally created to aid in crafting shellcode, however it can be used in crafting payloads for other exploit types as well (non-binary). Although the current modules are mostly aimed towards assembly this tool is not limited to shellcode. root@kali:~# sickle-pdk -h usage: sickle-pdk [-h] [-r READ] [-p PAYLOAD] [-f FORMAT] [-m MODULE] [-a ARCH] [-b BADCHARS] [-v VARNAME] [-i] [-l [LIST]] Sickle - Payload Development Kit options: -h, --help Show this help message and exit -r, --read READ Read bytes from binary file (use - for stdin) -",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sickle-pdk",
+    "desc": "Payload development kit Sickle is a payload development kit originally created to aid in crafting shellcode, however it can be used in crafting payloads for other exploit types as well (non-binary). Although the current modules are mostly aimed towards assembly this tool is not limited to shellcode. root@kali:~# sickle-pdk -h usage: sickle-pdk [-h] [-r READ] [-p PAYLOAD] [-f FORMAT] [-m MODULE] [-a ARCH] [-b BADCHARS] [-v VARNAME] [-i] [-l [LIST]] Sickle - Payload Development Kit options: -h, --help Show this help message and exit -r, --read READ Read bytes from binary file (use - for stdin) -",
+    "install": "sickle-pdk",
+    "size": "471 KB"
+   }
+  ],
+  "attack_category": "Resource Development"
+ }
+}

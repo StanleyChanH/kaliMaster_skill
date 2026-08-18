@@ -1,0 +1,770 @@
+{
+ "amass": {
+  "tool": "amass",
+  "title": "amass",
+  "description": "In-depth DNS Enumeration and Network Mapping This package contains a tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery using open source information gathering and active reconnaissance techniques. Information Gathering Techniques Used: - DNS: Basic enumeration, Brute forcing (upon request), Reverse DNS sweeping, Subdomain name alterations/permutations, Zone transfers (upon request) - Scraping: Ask, Baidu, Bing, DNSDumpster, DNSTable, Dogpile, Exalead, Google, HackerOne, IPv4Info, Netcraft, PTRArchive, Riddler, SiteDo",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "amass",
+    "desc": "In-depth DNS Enumeration and Network Mapping This package contains a tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery using open source information gathering and active reconnaissance techniques. Information Gathering Techniques Used: - DNS: Basic enumeration, Brute forcing (upon request), Reverse DNS sweeping, Subdomain name alterations/permutations, Zone transfers (upon request) - Scraping: Ask, Baidu, Bing, DNSDumpster, DNSTable, Dogpile, Exalead, Google, HackerOne, IPv4Info, Netcraft, PTRArchive, Riddler, SiteDo",
+    "install": "amass",
+    "size": "50.54 MB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "assetfinder": {
+  "tool": "assetfinder",
+  "title": "assetfinder",
+  "description": "Find domains and subdomains related to a given domain assetfinder is a command-line tool designed to find domains and subdomains associated with a specific domain. The main objective of the tool is to help security researchers and IT professionals discover and understand how the domains and sub-domains of a given organization are distributed, trying to find possible security flaws and vulnerabilities.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "assetfinder",
+    "desc": "Find domains and subdomains related to a given domain assetfinder is a command-line tool designed to find domains and subdomains associated with a specific domain. The main objective of the tool is to help security researchers and IT professionals discover and understand how the domains and sub-domains of a given organization are distributed, trying to find possible security flaws and vulnerabilities.",
+    "install": "assetfinder",
+    "size": "5.96 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "caido-cli": {
+  "tool": "caido-cli",
+  "title": "caido-cli",
+  "description": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Enable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cache",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "caido-cli",
+    "desc": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Enable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cache",
+    "install": "caido-cli",
+    "size": "151.57 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "caido": {
+  "tool": "caido",
+  "title": "caido",
+  "description": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Jun-17",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "caido",
+    "desc": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Jun-17",
+    "install": "caido",
+    "size": "477.53 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "dmitry": {
+  "tool": "dmitry",
+  "title": "dmitry",
+  "description": "Deepmagic Information Gathering Tool DMitry is a UNIX/(GNU)Linux command line application written in C. DMitry can find possible subdomains, email addresses, uptime information, perform tcp port scan, whois lookups, and more. Deepmagic Information Gathering Tool",
+  "usage": [
+   {
+    "binary": "dmitry",
+    "parts": [
+     [
+      "p",
+      "Run a domain whois lookup ( w ), an IP whois lookup ( i ), retrieve Netcraft info ( n ), search for subdomains ( s ), search for email addresses ( e ), do a TCP port scan ( p ), and save the output to example.txt ( o ) for the domain example.com :"
+     ],
+     [
+      "code",
+      "root@kali:~# dmitry -winsepo example.txt example.com\nDeepmagic Information Gathering Tool\n\"There be some deep magic going on\"\n\nWriting output to 'example.txt'\n\nHostIP:93.184.216.119\nHostName:example.com\n\nGathered Inet-whois information for 93.184.216.119\n---------------------------------"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dmitry",
+    "desc": "Deepmagic Information Gathering Tool DMitry is a UNIX/(GNU)Linux command line application written in C. DMitry can find possible subdomains, email addresses, uptime information, perform tcp port scan, whois lookups, and more. Deepmagic Information Gathering Tool",
+    "install": "dmitry",
+    "size": "50 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "dnsenum": {
+  "tool": "dnsenum",
+  "title": "dnsenum",
+  "description": "Tool to enumerate domain DNS information Dnsenum is a multithreaded perl script to enumerate DNS information of a domain and to discover non-contiguous ip blocks. The main purpose of Dnsenum is to gather as much information as possible about a domain. The program currently performs the following operations: This program is useful for pentesters, ethical hackers and forensics experts. It also can be used for security tests.",
+  "usage": [
+   {
+    "binary": "dnsenum",
+    "parts": [
+     [
+      "p",
+      "Don’t do a reverse lookup ( –noreverse ) and save the output to a file ( -o mydomain.xml ) for the domain example.com :"
+     ],
+     [
+      "code",
+      "root@kali:~# dnsenum --noreverse -o mydomain.xml example.com\ndnsenum VERSION:1.2.4\n\n-----   example.com   -----\n\n\nHost's addresses:\n__________________\n\nexample.com.                             392      IN    A        93.184.216.119\n\n\nName Servers:\n______________\n\nb.iana-servers.net.                      122      IN    A        199.43.133.53\na.iana-servers.net.                      122      IN    A        199.43.132.53\n\n\nMail (MX) Servers:\n___________________"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dnsenum",
+    "desc": "Tool to enumerate domain DNS information Dnsenum is a multithreaded perl script to enumerate DNS information of a domain and to discover non-contiguous ip blocks. The main purpose of Dnsenum is to gather as much information as possible about a domain. The program currently performs the following operations: This program is useful for pentesters, ethical hackers and forensics experts. It also can be used for security tests.",
+    "install": "dnsenum",
+    "size": "87 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "dnsmap": {
+  "tool": "dnsmap",
+  "title": "dnsmap",
+  "description": "DNS domain name brute forcing tool dnsmap scans a domain for common subdomains using a built-in or an external wordlist (if specified using -w option). The internal wordlist has around 1000 words in English and Spanish as ns1, firewall servicios and smtp. So will be possible search for smtp.example.com inside example.com automatically. Results can be saved in CSV and human-readable format for further processing. dnsmap does NOT require root privileges to be run, and should NOT be run with such privileges for security reasons. dnsmap was originally released back in 2006 and was inspired by the ",
+  "usage": [
+   {
+    "binary": "dnsmap",
+    "parts": [
+     [
+      "p",
+      "Scan example.com using a wordlist ( -w /usr/share/wordlists/dnsmap.txt ):"
+     ],
+     [
+      "code",
+      "root@kali:~# dnsmap example.com -w /usr/share/wordlists/dnsmap.txt\ndnsmap 0.30 - DNS Network Mapper by pagvac (gnucitizen.org)\n\n[+] searching (sub)domains for example.com using /usr/share/wordlists/dnsmap.txt\n[+] using maximum random delay of 10 millisecond(s) between requests"
+     ]
+    ]
+   },
+   {
+    "binary": "dnsmap-bulk",
+    "parts": [
+     [
+      "p",
+      "Create a file containing domain names to scan (domains.txt) and pass it to dnsmap-bulk.sh:"
+     ],
+     [
+      "code",
+      "root@kali:~# echo \"example.com\" >> domains.txt\nroot@kali:~# echo \"example.org\" >> domains.txt\nroot@kali:~# dnsmap-bulk.sh domains.txt\ndnsmap 0.30 - DNS Network Mapper by pagvac (gnucitizen.org)\n\n[+] searching (sub)domains for example.com using built-in wordlist\n[+] using maximum random delay of 10 millisecond(s) between requests"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dnsmap",
+    "desc": "DNS domain name brute forcing tool dnsmap scans a domain for common subdomains using a built-in or an external wordlist (if specified using -w option). The internal wordlist has around 1000 words in English and Spanish as ns1, firewall servicios and smtp. So will be possible search for smtp.example.com inside example.com automatically. Results can be saved in CSV and human-readable format for further processing. dnsmap does NOT require root privileges to be run, and should NOT be run with such privileges for security reasons. dnsmap was originally released back in 2006 and was inspired by the ",
+    "install": "dnsmap",
+    "size": "259 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "dnsrecon": {
+  "tool": "dnsrecon",
+  "title": "dnsrecon",
+  "description": "Powerful DNS enumeration script DNSRecon is a Python script that provides the ability to perform: DNS Enumeration and Scanning Tool",
+  "usage": [
+   {
+    "binary": "dnsrecon",
+    "parts": [
+     [
+      "p",
+      "Scan a domain ( -d example.com ), use a dictionary to brute force hostnames ( -D /usr/share/wordlists/dnsmap.txt) , do a standard scan ( -t std ), and save the output to a file ( –xml dnsrecon.xml ):"
+     ],
+     [
+      "code",
+      "root@kali:~# dnsrecon -d example.com -D /usr/share/wordlists/dnsmap.txt -t std --xml dnsrecon.xml\n[*] Performing General Enumeration of Domain:example.com\n[*] DNSSEC is configured for example.com\n[*] DNSKEYs:"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dnsrecon",
+    "desc": "Powerful DNS enumeration script DNSRecon is a Python script that provides the ability to perform: DNS Enumeration and Scanning Tool",
+    "install": "dnsrecon",
+    "size": "1.45 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "dnstracer": {
+  "tool": "dnstracer",
+  "title": "dnstracer",
+  "description": "Trace DNS queries to the source dnstracer determines where a given Domain Name Server (DNS) gets its information from for a given hostname, and follows the chain of DNS servers back to the authoritative answer. Trace a chain of DNS servers to the source",
+  "usage": [
+   {
+    "binary": "dnstracer",
+    "parts": [
+     [
+      "p",
+      "Scan a domain ( example.com ), retry up to 3 times ( -r 3 ), and display verbose output ( -v ):"
+     ],
+     [
+      "code",
+      "root@kali:~# dnstracer -r 3 -v example.com\nTracing to example.com[a] via 192.168.1.1, maximum of 3 retries\n192.168.1.1 (192.168.1.1) IP HEADER\n- Destination address:  192.168.1.1\nDNS HEADER (send)"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dnstracer",
+    "desc": "Trace DNS queries to the source dnstracer determines where a given Domain Name Server (DNS) gets its information from for a given hostname, and follows the chain of DNS servers back to the authoritative answer. Trace a chain of DNS servers to the source",
+    "install": "dnstracer",
+    "size": "59 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "dnswalk": {
+  "tool": "dnswalk",
+  "title": "dnswalk",
+  "description": "Checks dns zone information using nameserver lookups dnswalk is a DNS debugger. It performs zone transfers of specified domains, and checks the database in numerous ways for internal consistency, as well as accuracy. A DNS database debugger",
+  "usage": [
+   {
+    "binary": "dnswalk",
+    "parts": [
+     [
+      "p",
+      "Attempt to get DNS zone information from the target domain ( example.com. ):"
+     ],
+     [
+      "code",
+      "root@kali:~# dnswalk example.com.\nChecking example.com."
+     ],
+     [
+      "code",
+      "root@kali:~# dnswalk -r -d example.com.\nChecking example.com."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dnswalk",
+    "desc": "Checks dns zone information using nameserver lookups dnswalk is a DNS debugger. It performs zone transfers of specified domains, and checks the database in numerous ways for internal consistency, as well as accuracy. A DNS database debugger",
+    "install": "dnswalk",
+    "size": "46 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "email2phonenumber": {
+  "tool": "email2phonenumber",
+  "title": "email2phonenumber",
+  "description": "OSINT tool to obtain a target’s phone number by having their email address This package contains an OSINT tool that allows you to obtain a target’s phone number just by having their email address. This tool helps automate discovering someone’s phone number by abusing password reset design weaknesses and publicly available data. It supports 3 main functions:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "email2phonenumber",
+    "desc": "OSINT tool to obtain a target’s phone number by having their email address This package contains an OSINT tool that allows you to obtain a target’s phone number just by having their email address. This tool helps automate discovering someone’s phone number by abusing password reset design weaknesses and publicly available data. It supports 3 main functions:",
+    "install": "email2phonenumber",
+    "size": "72 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "emailharvester": {
+  "tool": "emailharvester",
+  "title": "emailharvester",
+  "description": "Email addresses harvester This package contains EmailHarvester, a tool to retrieve Domain email addresses from Search Engines. Features: root@kali:~# emailharvester -h usage: EmailHarvester.py [-h] [-d DOMAIN] [-s FILE] [-e ENGINE] [-l LIMIT] [-u USER-AGENT] [-x PROXY] [--noprint] [-r EXCLUDED_PLUGINS] [-p] _____ _ _ _ _ _ | ___| (_)| | | | | | | | | |__ _ __ ___ __ _ _ | | | |_| | __ _ _ __ __ __ ___ ___ | |_ ___ _ __ | __|| '_ ` _ \\ / _` || || | | _ | / _` || '__|\\ \\ / // _ \\/ __|| __|/ _ \\| '__| | |___| | | | | || (_| || || | | | | || (_| || | \\ V /| __/\\__ \\| |_| __/| | \\____/|_| |_| |_| \\",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "emailharvester",
+    "desc": "Email addresses harvester This package contains EmailHarvester, a tool to retrieve Domain email addresses from Search Engines. Features: root@kali:~# emailharvester -h usage: EmailHarvester.py [-h] [-d DOMAIN] [-s FILE] [-e ENGINE] [-l LIMIT] [-u USER-AGENT] [-x PROXY] [--noprint] [-r EXCLUDED_PLUGINS] [-p] _____ _ _ _ _ _ | ___| (_)| | | | | | | | | |__ _ __ ___ __ _ _ | | | |_| | __ _ _ __ __ __ ___ ___ | |_ ___ _ __ | __|| '_ ` _ \\ / _` || || | | _ | / _` || '__|\\ \\ / // _ \\/ __|| __|/ _ \\| '__| | |___| | | | | || (_| || || | | | | || (_| || | \\ V /| __/\\__ \\| |_| __/| | \\____/|_| |_| |_| \\",
+    "install": "emailharvester",
+    "size": "70 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "fierce": {
+  "tool": "fierce",
+  "title": "fierce",
+  "description": "Domain DNS scanner Fierce is a semi-lightweight scanner that helps locate non-contiguous IP space and hostnames against specified domains. It’s really meant as a pre-cursor to nmap, unicornscan, nessus, nikto, etc, since all of those require that you already know what IP space you are looking for. This does not perform exploitation and does not scan the whole internet indiscriminately. It is meant specifically to locate likely targets both inside and outside a corporate network. Because it uses DNS primarily you will often find mis-configured networks that leak internal address space. That’s e",
+  "usage": [
+   {
+    "binary": "fierce",
+    "parts": [
+     [
+      "p",
+      "Run a default scan against the target domain ( --domain example.com ):"
+     ],
+     [
+      "code",
+      "root@kali:~# fierce --domain example.com\nDNS Servers for example.com:\n    b.iana-servers.net\n    a.iana-servers.net\n\nTrying zone transfer first...\n    Testing b.iana-servers.net\n        Request timed out or transfer not allowed.\n    Testing a.iana-servers.net\n        Request timed out or transfer not allowed.\n\nUnsuccessful in zone transfer (it was worth a shot)\nOkay, trying the good old fashioned way... brute force\n\nChecking for wildcard DNS...\nNope. Good.\nNow performing 2280 test(s)..."
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "fierce",
+    "desc": "Domain DNS scanner Fierce is a semi-lightweight scanner that helps locate non-contiguous IP space and hostnames against specified domains. It’s really meant as a pre-cursor to nmap, unicornscan, nessus, nikto, etc, since all of those require that you already know what IP space you are looking for. This does not perform exploitation and does not scan the whole internet indiscriminately. It is meant specifically to locate likely targets both inside and outside a corporate network. Because it uses DNS primarily you will often find mis-configured networks that leak internal address space. That’s e",
+    "install": "fierce",
+    "size": "242 KB"
+   }
+  ],
+  "attack_category": "Discovery"
+ },
+ "finalrecon": {
+  "tool": "finalrecon",
+  "title": "finalrecon",
+  "description": "Fast and simple Python script for web reconnaissance A fast and simple Python script for web reconnaissance that follows a modular structure and provides detailed information on various areas. root@kali:~# finalrecon -h usage: finalrecon [-h] [--url URL] [--headers] [--sslinfo] [--whois] [--crawl] [--dns] [--sub] [--dir] [--wayback] [--ps] [--full] [-nb] [-dt DT] [-pt PT] [-T T] [-w W] [-r] [-s] [-sp SP] [-d D] [-e E] [-o O] [-cd CD] [-of OF] [-k K] FinalRecon - All in One Web Recon | v1.1.8 options: -h, --help show this help message and exit --url URL Target URL --headers Header Information -",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "finalrecon",
+    "desc": "Fast and simple Python script for web reconnaissance A fast and simple Python script for web reconnaissance that follows a modular structure and provides detailed information on various areas. root@kali:~# finalrecon -h usage: finalrecon [-h] [--url URL] [--headers] [--sslinfo] [--whois] [--crawl] [--dns] [--sub] [--dir] [--wayback] [--ps] [--full] [-nb] [-dt DT] [-pt PT] [-T T] [-w W] [-r] [-s] [-sp SP] [-d D] [-e E] [-o O] [-cd CD] [-of OF] [-k K] FinalRecon - All in One Web Recon | v1.1.8 options: -h, --help show this help message and exit --url URL Target URL --headers Header Information -",
+    "install": "finalrecon",
+    "size": "420 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "findomain": {
+  "tool": "findomain",
+  "title": "findomain",
+  "description": "Fastest and most complete solution for domain recognition Findomain is fastest and most complete solution for domain recognition. It supports screenshoting, port scanning, HTTP checks, data imports from other tools, subdomain monitoring, alerts via Discord, Slack & Telegram, multiple API Keys for sourcing and much more. root@kali:~# findomain -h The fastest and cross-platform subdomain enumerator, do not waste your time. Usage: findomain [OPTIONS] Options: -t, --target <TARGET> Target host -r, --resolved Show/write only resolved subdomains -i, --ip Show/write the ip address of resolved subdoma",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "findomain",
+    "desc": "Fastest and most complete solution for domain recognition Findomain is fastest and most complete solution for domain recognition. It supports screenshoting, port scanning, HTTP checks, data imports from other tools, subdomain monitoring, alerts via Discord, Slack & Telegram, multiple API Keys for sourcing and much more. root@kali:~# findomain -h The fastest and cross-platform subdomain enumerator, do not waste your time. Usage: findomain [OPTIONS] Options: -t, --target <TARGET> Target host -r, --resolved Show/write only resolved subdomains -i, --ip Show/write the ip address of resolved subdoma",
+    "install": "findomain",
+    "size": "18.61 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "gospider": {
+  "tool": "gospider",
+  "title": "gospider",
+  "description": "Fast web spider written in Go This package contains a Fast web spider written in Go. The features are: - Fast web crawling - Brute force and parse sitemap.xml - Parse robots.txt - Generate and verify link from JavaScript files - Link Finder - Find AWS-S3 from response source - Find subdomains from response source - Get URLs from Wayback Machine, Common Crawl, Virus Total, Alien Vault - Format output easy to Grep - Support Burp input - Crawl multiple sites in parallel - Random mobile/web User-AgentShowcases root@kali:~# gospider -h A Simple Web Spider - v1.1.0 by @theblackturtle Usage: gospider",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "gospider",
+    "desc": "Fast web spider written in Go This package contains a Fast web spider written in Go. The features are: - Fast web crawling - Brute force and parse sitemap.xml - Parse robots.txt - Generate and verify link from JavaScript files - Link Finder - Find AWS-S3 from response source - Find subdomains from response source - Get URLs from Wayback Machine, Common Crawl, Virus Total, Alien Vault - Format output easy to Grep - Support Burp input - Crawl multiple sites in parallel - Random mobile/web User-AgentShowcases root@kali:~# gospider -h A Simple Web Spider - v1.1.0 by @theblackturtle Usage: gospider",
+    "install": "gospider",
+    "size": "11.18 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "instaloader": {
+  "tool": "instaloader",
+  "title": "instaloader",
+  "description": "Instagram automatic photo downloader Instaloader downloads photos from Instagram, including public and private profiles, hashtags, user stories, feeds and saved media. How as well as comments, geotags and captions for each post. It automatically detects profile name changes and renames the target directory accordingly. It also allows for refined customization of filters and where to store downloaded media be able to detect automatically stop previously interrupted download interactions.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "instaloader",
+    "desc": "Instagram automatic photo downloader Instaloader downloads photos from Instagram, including public and private profiles, hashtags, user stories, feeds and saved media. How as well as comments, geotags and captions for each post. It automatically detects profile name changes and renames the target directory accordingly. It also allows for refined customization of filters and where to store downloaded media be able to detect automatically stop previously interrupted download interactions.",
+    "install": "instaloader",
+    "size": "319 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "lbd": {
+  "tool": "lbd",
+  "title": "lbd",
+  "description": "Load balancer detector Checks if a given domain uses load-balancing. root@kali:~# lbd -h host: illegal option -- h Usage: host [-aCdilrTvVw] [-c class] [-N ndots] [-t type] [-W time] [-R number] [-m flag] [-p port] hostname [server] -a is equivalent to -v -t ANY -A is like -a but omits RRSIG, NSEC, NSEC3 -c specifies query class for non-IN data -C compares SOA records on authoritative nameservers -d is equivalent to -v -l lists all hosts in a domain, using AXFR -m set memory debugging flag (trace|record|usage) -N changes the number of dots allowed before root lookup is done -p specifies the po",
+  "usage": [
+   {
+    "binary": "lbd",
+    "parts": [
+     [
+      "p",
+      "Test to see if the target domain ( example.com ) is using a load balancer:"
+     ],
+     [
+      "code",
+      "root@kali:~# lbd example.com\n\nlbd - load balancing detector 0.1 - Checks if a given domain uses load-balancing.\nWritten by Stefan Behte (http://ge.mine.nu)\nProof-of-concept! Might give false positives.\n\nChecking for DNS-Loadbalancing: NOT FOUND\nChecking for HTTP-Loadbalancing [Server]:\nECS (sea/55ED)\nECS (sea/1C15)\nFOUND"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "lbd",
+    "desc": "Load balancer detector Checks if a given domain uses load-balancing. root@kali:~# lbd -h host: illegal option -- h Usage: host [-aCdilrTvVw] [-c class] [-N ndots] [-t type] [-W time] [-R number] [-m flag] [-p port] hostname [server] -a is equivalent to -v -t ANY -A is like -a but omits RRSIG, NSEC, NSEC3 -c specifies query class for non-IN data -C compares SOA records on authoritative nameservers -d is equivalent to -v -l lists all hosts in a domain, using AXFR -m set memory debugging flag (trace|record|usage) -N changes the number of dots allowed before root lookup is done -p specifies the po",
+    "install": "lbd",
+    "size": "15 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "linkedin2username": {
+  "tool": "linkedin2username",
+  "title": "linkedin2username",
+  "description": "Generate username lists for companies on LinkedIn OSINT Tool: Generate username lists from companies on LinkedIn. This is a pure web-scraper, no API key required. You use your valid LinkedIn username and password to login, it will create several lists of possible username formats for all employees of a company you point it at.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "linkedin2username",
+    "desc": "Generate username lists for companies on LinkedIn OSINT Tool: Generate username lists from companies on LinkedIn. This is a pure web-scraper, no API key required. You use your valid LinkedIn username and password to login, it will create several lists of possible username formats for all employees of a company you point it at.",
+    "install": "linkedin2username",
+    "size": "39 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "maltego": {
+  "tool": "maltego",
+  "title": "maltego",
+  "description": "Open source intelligence and forensics application Maltego is an open source intelligence and forensics application. It will offer you timous mining and gathering of information as well as the representation of this information in a easy to understand format. This package replaces previous packages matlegoce and casefile.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "maltego",
+    "desc": "Open source intelligence and forensics application Maltego is an open source intelligence and forensics application. It will offer you timous mining and gathering of information as well as the representation of this information in a easy to understand format. This package replaces previous packages matlegoce and casefile.",
+    "install": "maltego",
+    "size": "299.66 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "massdns": {
+  "tool": "massdns",
+  "title": "massdns",
+  "description": "High-performance DNS stub resolver This package contains a simple high-performance DNS stub resolver targeting those who seek to resolve a massive amount of domain names in the order of millions or even billions. Without special configuration, MassDNS is capable of resolving over 350,000 names per second using publicly available resolvers. High-performance DNS stub resolver for bulk lookups and reconnaissance",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "massdns",
+    "desc": "High-performance DNS stub resolver This package contains a simple high-performance DNS stub resolver targeting those who seek to resolve a massive amount of domain names in the order of millions or even billions. Without special configuration, MassDNS is capable of resolving over 350,000 names per second using publicly available resolvers. High-performance DNS stub resolver for bulk lookups and reconnaissance",
+    "install": "massdns",
+    "size": "128 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "metagoofil": {
+  "tool": "metagoofil",
+  "title": "metagoofil",
+  "description": "Tool designed for extracting metadata of public documents Metagoofil is an information gathering tool designed for extracting metadata of public documents (pdf,doc,xls,ppt,docx,pptx,xlsx) belonging to a target company. Metagoofil will perform a search in Google to identify and download the documents to local disk. Metagoofil does no longer extract the metadata. See /usr/share/doc/metagoofil/README.md.gz.",
+  "usage": [
+   {
+    "binary": "metagoofil",
+    "parts": [
+     [
+      "p",
+      "Scan for documents from a domain ( -d kali.org) that are PDF files ( -t pdf ), searching 100 results ( -l 100 ), download 25 files ( -n 25 ), saving the downloads to a directory ( -o kalipdf ), and saving the output to a file ( -f kalipdf.html ):"
+     ],
+     [
+      "code",
+      "root@kali:~# metagoofil -d kali.org -t pdf -l 100 -n 25 -o kalipdf -f kalipdf.html\n\n******************************************************\n*     /\\/\\   ___| |_ __ _  __ _  ___   ___  / _(_) | *\n*    /    \\ / _ \\ __/ _` |/ _` |/ _ \\ / _ \\| |_| | | *\n*   / /\\/\\ \\  __/ || (_| | (_| | (_) | (_) |  _| | | *\n*   \\/    \\/\\___|\\__\\__,_|\\__, |\\___/ \\___/|_| |_|_| *\n*                         |___/                      *\n* Metagoofil Ver 2.2                                 *\n* Christian Martorella                               *\n* Edge-Security.com                                  *\n* cmartorella_at_edge-security.com                   *\n******************************************************\n['pdf']\n\n[-] Starting online search...\n\n[-] Searching for pdf files, with a limit of 100\n        Searching 100 results...\nResults: 21 files found\nStarting to download 25 of them:"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "metagoofil",
+    "desc": "Tool designed for extracting metadata of public documents Metagoofil is an information gathering tool designed for extracting metadata of public documents (pdf,doc,xls,ppt,docx,pptx,xlsx) belonging to a target company. Metagoofil will perform a search in Google to identify and download the documents to local disk. Metagoofil does no longer extract the metadata. See /usr/share/doc/metagoofil/README.md.gz.",
+    "install": "metagoofil",
+    "size": "126 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "owasp-mantra-ff": {
+  "tool": "owasp-mantra-ff",
+  "title": "owasp-mantra-ff",
+  "description": "Web application security testing framework built on top of Firefox Mantra is a browser especially designed for web application security testing. By having such a product, more people will come to know the easiness and flexibility of being able to follow basic testing procedures within the browser. Mantra believes that having such a portable, easy to use and yet powerful platform can be helpful for the industry. Mantra has many built in tools to modify headers, manipulate input strings, replay GET/POST requests, edit cookies, quickly switch between multiple proxies, control forced redirects etc",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "owasp-mantra-ff",
+    "desc": "Web application security testing framework built on top of Firefox Mantra is a browser especially designed for web application security testing. By having such a product, more people will come to know the easiness and flexibility of being able to follow basic testing procedures within the browser. Mantra believes that having such a portable, easy to use and yet powerful platform can be helpful for the industry. Mantra has many built in tools to modify headers, manipulate input strings, replay GET/POST requests, edit cookies, quickly switch between multiple proxies, control forced redirects etc",
+    "install": "owasp-mantra-ff",
+    "size": "119.65 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "parsero": {
+  "tool": "parsero",
+  "title": "parsero",
+  "description": "Robots.txt audit tool Parsero is a free script written in Python which reads the Robots.txt file of a web server and looks at the Disallow entries. The Disallow entries tell the search engines what directories or files hosted on a web server mustn’t be indexed. For example, “Disallow: /portal/login” means that the content on www.example.com/portal/login it’s not allowed to be indexed by crawlers like Google, Bing, Yahoo… This is the way the administrator have to not share sensitive or private information with the search engines. root@kali:~# parsero -h usage: parsero [-h] [-u URL] [-o] [-sb] [",
+  "usage": [
+   {
+    "binary": "parsero",
+    "parts": [
+     [
+      "p",
+      "Search for results from a website ( -u www.bing.com ) using Bing indexed Disallows ( -sb ):"
+     ],
+     [
+      "code",
+      "root@kali:~# parsero -u www.bing.com -sb\n\n____\n| _ \\ __ _ _ __ ___ ___ _ __ ___\n| |_) / _` | '__/ __|/ _ \\ '__/ _ \\\n| __/ (_| | | \\__ \\ __/ | | (_) |\n|_| \\__,_|_| |___/\\___|_| \\___/\n\nStarting Parsero v0.75 (https://github.com/behindthefirewalls/Parsero) at 06/09/14 12:48:25\nParsero scan report for www.bing.com\nhttp://www.bing.com/travel/secure 301 Moved Permanently\nhttp://www.bing.com/travel/flight/flightSearchAction 301 Moved Permanently\nhttp://www.bing.com/travel/css 301 Moved Permanently\nhttp://www.bing.com/results 404 Not Found\nhttp://www.bing.com/spbasic 404 Not Found\nhttp://www.bing.com/entities/search 302 Found\nhttp://www.bing.com/translator/? 200 OK\nhttp://www.bing.com/Proxy.ashx 404 Not Found\nhttp://www.bing.com/images/search? 200 OK\nhttp://www.bing.com/travel/hotel/hotelSearch 301 Moved Permanently\nhttp://www.bing.com/static/ 404 Not Found\nhttp://www.bing.com/offers/proxy/dealsserver/api/log 405 Method Not Allowed\nhttp://www.bing.com/shenghuo 301 Moved Permanently\nhttp://www.bing.com/widget/render 200 OK"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "parsero",
+    "desc": "Robots.txt audit tool Parsero is a free script written in Python which reads the Robots.txt file of a web server and looks at the Disallow entries. The Disallow entries tell the search engines what directories or files hosted on a web server mustn’t be indexed. For example, “Disallow: /portal/login” means that the content on www.example.com/portal/login it’s not allowed to be indexed by crawlers like Google, Bing, Yahoo… This is the way the administrator have to not share sensitive or private information with the search engines. root@kali:~# parsero -h usage: parsero [-h] [-u URL] [-o] [-sb] [",
+    "install": "parsero",
+    "size": "20 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "photon": {
+  "tool": "photon",
+  "title": "photon",
+  "description": "Incredibly fast crawler designed for open source intelligence This package includes a fast and flexible crawler designed for open source intelligence (OSINT). Photon can extract the following data while crawling:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "photon",
+    "desc": "Incredibly fast crawler designed for open source intelligence This package includes a fast and flexible crawler designed for open source intelligence (OSINT). Photon can extract the following data while crawling:",
+    "install": "photon",
+    "size": "60 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "recon-ng": {
+  "tool": "recon-ng",
+  "title": "recon-ng",
+  "description": "Web Reconnaissance framework written in Python Recon-ng is a full-featured Web Reconnaissance framework written in Python. Complete with independent modules, database interaction, built in convenience functions, interactive help, and command completion, Recon-ng provides a powerful environment in which open source web-based reconnaissance can be conducted quickly and thoroughly. Recon-ng has a look and feel similar to the Metasploit Framework, reducing the learning curve for leveraging the framework. However, it is quite different. Recon-ng is not intended to compete with existing frameworks, ",
+  "usage": [
+   {
+    "binary": "recon-ng",
+    "parts": [
+     [
+      "p",
+      "Search for results on xssed.com ( use recon/domains-vulnerabilities/xssed ) for the target domain ( set SOURCE cisco.com ):"
+     ],
+     [
+      "code",
+      "root@kali:~# recon-ng\n\n    _/_/_/    _/_/_/_/    _/_/_/    _/_/_/    _/      _/            _/      _/    _/_/_/\n   _/    _/  _/        _/        _/      _/  _/_/    _/            _/_/    _/  _/\n  _/_/_/    _/_/_/    _/        _/      _/  _/  _/  _/  _/_/_/_/  _/  _/  _/  _/  _/_/_/\n _/    _/  _/        _/        _/      _/  _/    _/_/            _/    _/_/  _/      _/\n_/    _/  _/_/_/_/    _/_/_/    _/_/_/    _/      _/            _/      _/    _/_/_/\n\n\n                                          /\\\n                                         / \\\\ /\\\n        Sponsored by...           /\\  /\\/  \\\\V  \\/\\\n                                 / \\\\/ // \\\\\\\\\\ \\\\ \\/\\\n                                // // BLACK HILLS \\/ \\\\\n                               www.blackhillsinfosec.com\n\n                      [recon-ng v4.9.4, Tim Tomes (@LaNMaSteR53)]\n\n[76] Recon modules\n[8]  Reporting modules\n[2]  Import modules\n[2]  Exploitation modules\n[2]  Discovery modules\n\n[recon-ng][default] > use recon/domains-vulnerabilities/xssed\n[recon-ng][default][xssed] > set SOURCE cisco.com\nSOURCE => cisco.com\n[recon-ng][default][xssed] > run\n\n---------\nCISCO.COM\n---------\n[*] Category: Redirect\n[*] Example: http://www.cisco.com/survey/exit.html?http://xssed.com/\n[*] Host: www.cisco.com\n[*] Reference: http://xssed.com/mirror/76478/\n[*] Status: unfixed\n[*] --------------------------------------------------\n[*] Category: XSS\n[*] Example: http://developer.cisco.com/web/webdialer/wikidocs?p_p_id=1_WAR_wikinavigationportlet_INSTANCE_veD7&p<br>_p_lifecycle=0&p_p_state=normal&p_p_mode=view&p_p_col_id=column-1&p_p_col_count=1&p_r_p_185834411_no<br>deId=803209&p_r_p_185834411_title=%22%3E%3Ch1%3ECross-Site%20Scripting%20@matiaslonigro%3C/h1%3E%3Cs<br>cript%3Ealert%28/xss/%29%3C/script%3E\n[*] Host: developer.cisco.com\n[*] Reference: http://xssed.com/mirror/76294/\n[*] Status: unfixed\n[...]"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "recon-ng",
+    "desc": "Web Reconnaissance framework written in Python Recon-ng is a full-featured Web Reconnaissance framework written in Python. Complete with independent modules, database interaction, built in convenience functions, interactive help, and command completion, Recon-ng provides a powerful environment in which open source web-based reconnaissance can be conducted quickly and thoroughly. Recon-ng has a look and feel similar to the Metasploit Framework, reducing the learning curve for leveraging the framework. However, it is quite different. Recon-ng is not intended to compete with existing frameworks, ",
+    "install": "recon-ng",
+    "size": "271 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "sherlock": {
+  "tool": "sherlock",
+  "title": "sherlock",
+  "description": "Find usernames across social networks Sherlock relies on the site’s designers providing a unique URL for a registered username. To determine if a username is available, Sherlock queries that URL, and uses to response to understand if there is a claimed username already there. Currently, the tool is capable of locating users on more than 300 social networks: Apple Developer, Arduino, Docker Hub, GitHub, GitLab, Facebook, BitCoinForum, CNET, IFTTT, Instagram, PlayStore PyPI, Scribd, Telegram, TikTok, Tinder etc.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sherlock",
+    "desc": "Find usernames across social networks Sherlock relies on the site’s designers providing a unique URL for a registered username. To determine if a username is available, Sherlock queries that URL, and uses to response to understand if there is a claimed username already there. Currently, the tool is capable of locating users on more than 300 social networks: Apple Developer, Arduino, Docker Hub, GitHub, GitLab, Facebook, BitCoinForum, CNET, IFTTT, Instagram, PlayStore PyPI, Scribd, Telegram, TikTok, Tinder etc.",
+    "install": "sherlock",
+    "size": "188 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "spiderfoot-cli": {
+  "tool": "spiderfoot-cli",
+  "title": "spiderfoot-cli",
+  "description": "OSINT collection and reconnaissance tool This package contains an open source intelligence (OSINT) automation tool. Its goal is to automate the process of gathering intelligence about a given target, which may be an IP address, domain name, hostname, network subnet, ASN, e-mail address or person’s name. SpiderFoot can be used offensively, i.e. as part of a black-box penetration test to gather information about the target, or defensively to identify what information you or your organisation are freely providing for attackers to use against you.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "spiderfoot",
+    "desc": "OSINT collection and reconnaissance tool This package contains an open source intelligence (OSINT) automation tool. Its goal is to automate the process of gathering intelligence about a given target, which may be an IP address, domain name, hostname, network subnet, ASN, e-mail address or person’s name. SpiderFoot can be used offensively, i.e. as part of a black-box penetration test to gather information about the target, or defensively to identify what information you or your organisation are freely providing for attackers to use against you.",
+    "install": "spiderfoot",
+    "size": "13.73 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "spiderfoot": {
+  "tool": "spiderfoot",
+  "title": "spiderfoot",
+  "description": "OSINT collection and reconnaissance tool This package contains an open source intelligence (OSINT) automation tool. Its goal is to automate the process of gathering intelligence about a given target, which may be an IP address, domain name, hostname, network subnet, ASN, e-mail address or person’s name. SpiderFoot can be used offensively, i.e. as part of a black-box penetration test to gather information about the target, or defensively to identify what information you or your organisation are freely providing for attackers to use against you.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "spiderfoot",
+    "desc": "OSINT collection and reconnaissance tool This package contains an open source intelligence (OSINT) automation tool. Its goal is to automate the process of gathering intelligence about a given target, which may be an IP address, domain name, hostname, network subnet, ASN, e-mail address or person’s name. SpiderFoot can be used offensively, i.e. as part of a black-box penetration test to gather information about the target, or defensively to identify what information you or your organisation are freely providing for attackers to use against you.",
+    "install": "spiderfoot",
+    "size": "13.73 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "subfinder": {
+  "tool": "subfinder",
+  "title": "subfinder",
+  "description": "Subdomain discovery tool This package contains a subdomain discovery tool that discovers valid subdomains for websites by using passive online sources. It has a simple modular architecture and is optimized for speed. subfinder is built for doing one thing only - passive subdomain enumeration, and it does that very well. root@kali:~# subfinder -h Subfinder is a subdomain discovery tool that discovers subdomains for websites by using passive online sources. Usage: subfinder [flags] Flags: INPUT: -d, -domain string[] domains to find subdomains for -dL, -list string file containing list of domains",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "subfinder",
+    "desc": "Subdomain discovery tool This package contains a subdomain discovery tool that discovers valid subdomains for websites by using passive online sources. It has a simple modular architecture and is optimized for speed. subfinder is built for doing one thing only - passive subdomain enumeration, and it does that very well. root@kali:~# subfinder -h Subfinder is a subdomain discovery tool that discovers subdomains for websites by using passive online sources. Usage: subfinder [flags] Flags: INPUT: -d, -domain string[] domains to find subdomains for -dL, -list string file containing list of domains",
+    "install": "subfinder",
+    "size": "31.01 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "sublist3r": {
+  "tool": "sublist3r",
+  "title": "sublist3r",
+  "description": "Fast subdomains enumeration tool for penetration testers This package contains a Python security tool designed to enumerate subdomains of websites using OSINT. It helps penetration testers and bug hunters collect and gather subdomains for the domain they are targeting over the network. Sublist3r enumerates subdomains using many search engines such as Google, Yahoo, Bing, Baidu, and Ask. Sublist3r also enumerates subdomains using Netcraft, Virustotal, ThreatCrowd, DNSdumpster, and ReverseDNS. Subbrute was integrated with Sublist3r to increase the possibility of finding more subdomains using bru",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "sublist3r",
+    "desc": "Fast subdomains enumeration tool for penetration testers This package contains a Python security tool designed to enumerate subdomains of websites using OSINT. It helps penetration testers and bug hunters collect and gather subdomains for the domain they are targeting over the network. Sublist3r enumerates subdomains using many search engines such as Google, Yahoo, Bing, Baidu, and Ask. Sublist3r also enumerates subdomains using Netcraft, Virustotal, ThreatCrowd, DNSdumpster, and ReverseDNS. Subbrute was integrated with Sublist3r to increase the possibility of finding more subdomains using bru",
+    "install": "sublist3r",
+    "size": "1.85 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "theHarvester": {
+  "tool": "theHarvester",
+  "title": "theHarvester",
+  "description": "Tool for gathering e-mail accounts and subdomain names from public sources The package contains a tool for gathering subdomain names, e-mail addresses, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers).",
+  "usage": [
+   {
+    "binary": "theharvester",
+    "parts": [
+     [
+      "p",
+      "Search from email addresses from a domain ( -d kali.org ), limiting the results to 500 ( -l 500 ), using DuckDuckGo ( -b duckduckgo ):"
+     ],
+     [
+      "code",
+      "root@kali:~# theHarvester -d kali.org -l 500 -b duckduckgo\n*******************************************************************\n*  _   _                                            _             *\n* | |_| |__   ___    /\\  /\\__ _ _ ____   _____  ___| |_ ___ _ __  *\n* | __|  _ \\ / _ \\  / /_/ / _` | '__\\ \\ / / _ \\/ __| __/ _ \\ '__| *\n* | |_| | | |  __/ / __  / (_| | |   \\ V /  __/\\__ \\ ||  __/ |    *\n*  \\__|_| |_|\\___| \\/ /_/ \\__,_|_|    \\_/ \\___||___/\\__\\___|_|    *\n*                                                                 *\n* theHarvester 4.4.3                                              *\n* Coded by Christian Martorella                                   *\n* Edge-Security Research                                          *\n* [email protected]                                   *\n*                                                                 *\n*******************************************************************\n\n[*] Target: kali.org\n\n[*] Searching Duckduckgo.\n\n[*] No IPs found.\n\n[*] No emails found.\n\n[*] Hosts found: 14\n---------------------\n[...]\n\n```console"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "theharvester",
+    "desc": "Tool for gathering e-mail accounts and subdomain names from public sources The package contains a tool for gathering subdomain names, e-mail addresses, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers).",
+    "install": "theharvester",
+    "size": "2.24 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "tookie-osint": {
+  "tool": "tookie-osint",
+  "title": "tookie-osint",
+  "description": "OSINT information gathering tool for finding social media accounts Tookie-osint has a simple-to-use UI and is really straightforward. The main idea of Tookie-osint is to discover usernames that are requested from an input. Tookie-osint is similar to the tool called Sherlock. It discovers all the user accounts across different websites and Tookie-osint is successful at this task almost 80% of the time. root@kali:~# tookie-osint -h usage: tookie-osint [-h] (-u USER | -U USERFILE) [-t THREADS] [-d] [-sk] [-p PROXY] [-W] [-o {txt,csv,json}] [-D DELAY] [-a] [-H] Username OSINT scanner options: -h, ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "tookie-osint",
+    "desc": "OSINT information gathering tool for finding social media accounts Tookie-osint has a simple-to-use UI and is really straightforward. The main idea of Tookie-osint is to discover usernames that are requested from an input. Tookie-osint is similar to the tool called Sherlock. It discovers all the user accounts across different websites and Tookie-osint is successful at this task almost 80% of the time. root@kali:~# tookie-osint -h usage: tookie-osint [-h] (-u USER | -U USERFILE) [-t THREADS] [-d] [-sk] [-p PROXY] [-W] [-o {txt,csv,json}] [-D DELAY] [-a] [-H] Username OSINT scanner options: -h, ",
+    "install": "tookie-osint",
+    "size": "1.12 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "uniscan-gui": {
+  "tool": "uniscan-gui",
+  "title": "uniscan-gui",
+  "description": "LFI, RFI, and RCE vulnerability scanner Uniscan is a simple Remote File Include, Local File Include and Remote Command Execution vulnerability scanner. root@kali:~# uniscan -h #################################### # Uniscan project # # http://uniscan.sourceforge.net/ # #################################### V. 6.3 OPTIONS: -h help -u <url> example: https://www.example.com/ -f <file> list of url's -b Uniscan go to background -q Enable Directory checks -w Enable File checks -e Enable robots.txt and sitemap.xml check -d Enable Dynamic checks -s Enable Static checks -r Enable Stress checks -i <dork> ",
+  "usage": [
+   {
+    "binary": "uniscan",
+    "parts": [
+     [
+      "p",
+      "Scan the given URL ( -u http://192.168.1.202/ ) for vulnerabilities, enabling directory and dynamic checks ( -qd ):"
+     ],
+     [
+      "code",
+      "root@kali:~# uniscan -u http://192.168.1.202/ -qd\n####################################\n# Uniscan project                  #\n# http://uniscan.sourceforge.net/  #\n####################################\nV. 6.2\n\n\nScan date: 16-5-2014 16:29:48\n===================================================================================================\n| Domain: http://192.168.1.202/\n| Server: Apache/2.2.22 (Debian)\n| IP: 192.168.1.202\n===================================================================================================\n|\n| Directory check:\n| [+] CODE: 200 URL: http://192.168.1.202/joomla/\n| [+] CODE: 200 URL: http://192.168.1.202/wordpress/\n===================================================================================================\n|\n| Crawler Started:\n| Plugin name: FCKeditor upload test v.1 Loaded.\n| Plugin name: Web Backdoor Disclosure v.1.1 Loaded.\n| Plugin name: phpinfo() Disclosure v.1 Loaded.\n| Plugin name: E-mail Detection v.1.1 Loaded.\n| Plugin name: Timthumb <= 1.32 vulnerability v.1 Loaded.\n| Plugin name: Code Disclosure v.1.1 Loaded.\n| Plugin name: Upload Form Detect v.1.1 Loaded.\n| Plugin name: External Host Detect v.1.2 Loaded.\n| [+] Crawling finished, 27 URL's found!"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "uniscan",
+    "desc": "LFI, RFI, and RCE vulnerability scanner Uniscan is a simple Remote File Include, Local File Include and Remote Command Execution vulnerability scanner. root@kali:~# uniscan -h #################################### # Uniscan project # # http://uniscan.sourceforge.net/ # #################################### V. 6.3 OPTIONS: -h help -u <url> example: https://www.example.com/ -f <file> list of url's -b Uniscan go to background -q Enable Directory checks -w Enable File checks -e Enable robots.txt and sitemap.xml check -d Enable Dynamic checks -s Enable Static checks -r Enable Stress checks -i <dork> ",
+    "install": "uniscan",
+    "size": "1.19 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "urlcrazy": {
+  "tool": "urlcrazy",
+  "title": "urlcrazy",
+  "description": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h URLCrazy dependencies are not installed. To install the dependencies, copy and paste the following command, or check the Installation section of the README.md file. `$ bundle install` Updated on: 2026-Mar-02",
+  "usage": [
+   {
+    "binary": "urlcrazy",
+    "parts": [
+     [
+      "p",
+      "Search for URLs using the dvorak layout ( -k dvorak ) and do no resolve hostnames ( -r ) for the given domain ( example.com ):"
+     ],
+     [
+      "code",
+      "root@kali:~# urlcrazy -k dvorak -r example.com\nURLCrazy Domain Report\nDomain    : example.com\nKeyboard  : dvorak\nAt        : 2014-05-13 17:04:01 -0600\n\n# Please wait. 95 hostnames to process\n\nTypo Type              Typo            CC-A  Extn\n---------------------------------------------------\nCharacter Omission     eample.com      ?     com\nCharacter Omission     examle.com      ?     com\nCharacter Omission     exampe.com      ?     com\nCharacter Omission     exampl.com      ?     com\nCharacter Omission     example.cm      ?     cm\nCharacter Omission     exaple.com      ?     com"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "urlcrazy",
+    "desc": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h URLCrazy dependencies are not installed. To install the dependencies, copy and paste the following command, or check the Installation section of the README.md file. `$ bundle install` Updated on: 2026-Mar-02",
+    "install": "urlcrazy",
+    "size": "1.31 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "uro": {
+  "tool": "uro",
+  "title": "uro",
+  "description": "Declutter URLs for crawling/pentesting Uro declutters a list of URLs by removing root@kali:~# uro -h usage: uro [-h] [-i INPUT_FILE] [-o OUTPUT_FILE] [-w WHITELIST [WHITELIST ...]] [-b BLACKLIST [BLACKLIST ...]] [-f FILTERS [FILTERS ...]] options: -h, --help show this help message and exit -i INPUT_FILE file containing urls -o OUTPUT_FILE output file -w, --whitelist WHITELIST [WHITELIST ...] only keep these extensions and extensionless urls -b, --blacklist BLACKLIST [BLACKLIST ...] remove these extensions -f, --filters FILTERS [FILTERS ...] additional filters, read docs Updated on: 2026-Jun-17",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "uro",
+    "desc": "Declutter URLs for crawling/pentesting Uro declutters a list of URLs by removing root@kali:~# uro -h usage: uro [-h] [-i INPUT_FILE] [-o OUTPUT_FILE] [-w WHITELIST [WHITELIST ...]] [-b BLACKLIST [BLACKLIST ...]] [-f FILTERS [FILTERS ...]] options: -h, --help show this help message and exit -i INPUT_FILE file containing urls -o OUTPUT_FILE output file -w, --whitelist WHITELIST [WHITELIST ...] only keep these extensions and extensionless urls -b, --blacklist BLACKLIST [BLACKLIST ...] remove these extensions -f, --filters FILTERS [FILTERS ...] additional filters, read docs Updated on: 2026-Jun-17",
+    "install": "uro",
+    "size": "38 KB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ },
+ "wpprobe": {
+  "tool": "wpprobe",
+  "title": "wpprobe",
+  "description": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 12:04:23 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "wpprobe",
+    "desc": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 12:04:23 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
+    "install": "wpprobe",
+    "size": "12.66 MB"
+   }
+  ],
+  "attack_category": "Reconnaissance"
+ }
+}

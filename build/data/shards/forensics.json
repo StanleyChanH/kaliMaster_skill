@@ -1,0 +1,2074 @@
+{
+ "autopsy": {
+  "tool": "autopsy",
+  "title": "autopsy",
+  "description": "Graphical interface to SleuthKit The Autopsy Forensic Browser is a graphical interface to the command line digital forensic analysis tools in The Sleuth Kit. Together, The Sleuth Kit and Autopsy provide many of the same features as commercial digital forensics tools for the analysis of Windows and UNIX file systems (NTFS, FAT, FFS, EXT2FS, and EXT3FS). Autopsy Forensic Browser",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "autopsy",
+    "desc": "Graphical interface to SleuthKit The Autopsy Forensic Browser is a graphical interface to the command line digital forensic analysis tools in The Sleuth Kit. Together, The Sleuth Kit and Autopsy provide many of the same features as commercial digital forensics tools for the analysis of Windows and UNIX file systems (NTFS, FAT, FFS, EXT2FS, and EXT3FS). Autopsy Forensic Browser",
+    "install": "autopsy",
+    "size": "1.00 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "binwalk": {
+  "tool": "binwalk",
+  "title": "binwalk",
+  "description": "Tool library for analyzing binary blobs and executable code Binwalk is a tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images. Binwalk uses the libmagic library, so it is compatible with magic signatures created for the Unix file utility. Binwalk also includes a custom magic signature file which contains improved signatures for files that are commonly found in firmware images such as compressed/archived files, firmware headers, Linux kernels, bootloaders, filesystems, etc.",
+  "usage": [
+   {
+    "binary": "binwalk",
+    "parts": [
+     [
+      "p",
+      "Run a file signature scan ( -B ) on the given firmware file ( ddwrt-linksys-wrt1200ac-webflash.bin ):"
+     ],
+     [
+      "code",
+      "root@kali:~# binwalk -B ddwrt-linksys-wrt1200ac-webflash.bin\n\nDECIMAL       HEXADECIMAL     DESCRIPTION\n--------------------------------------------------------------------------------\n0             0x0             TRX firmware header, little endian, image size: 37883904 bytes, CRC32: 0x95C5DF32, flags: 0x1, version: 1, header size: 28 bytes, loader offset: 0x1C, linux kernel offset: 0x0, rootfs offset: 0x0\n28            0x1C            uImage header, header size: 64 bytes, header CRC: 0x780C2742, created: 2018-10-10 02:12:20, image size: 2150281 bytes, Data Address: 0x8000, Entry Point: 0x8000, data CRC: 0xA097CFEA, OS: Linux, CPU: ARM, image type: OS Kernel Image, compression type: none, image name: \"DD-WRT\"\n92            0x5C            Linux kernel ARM boot executable zImage (little-endian)\n2460          0x99C           device tree image (dtb)\n23432         0x5B88          xz compressed data\n23776         0x5CE0          xz compressed data\n2117484       0x204F6C        device tree image (dtb)\n3145756       0x30001C        UBI erase count header, version: 1, EC: 0x0, VID header offset: 0x800, data offset: 0x1000"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "binwalk",
+    "desc": "Tool library for analyzing binary blobs and executable code Binwalk is a tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images. Binwalk uses the libmagic library, so it is compatible with magic signatures created for the Unix file utility. Binwalk also includes a custom magic signature file which contains improved signatures for files that are commonly found in firmware images such as compressed/archived files, firmware headers, Linux kernels, bootloaders, filesystems, etc.",
+    "install": "binwalk",
+    "size": "16 KB"
+   },
+   {
+    "binary": "python3-binwalk",
+    "desc": "Python3 library for analyzing binary blobs and executable code Binwalk is a tool for searching a given binary image for embedded files and executable code. Specifically, it is designed for identifying files and code embedded inside of firmware images. Binwalk uses the libmagic library, so it is compatible with magic signatures created for the Unix file utility. Binwalk also includes a custom magic signature file which contains improved signatures for files that are commonly found in firmware images such as compressed/archived files, firmware headers, Linux kernels, bootloaders, filesystems, et",
+    "install": "python3-binwalk",
+    "size": "659 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "binwalk3": {
+  "tool": "binwalk3",
+  "title": "binwalk3",
+  "description": "Tool library for analyzing binary blobs and executable code Binwalk is a tool for identifying, and optionally extracting, files and data that have been embedded inside of other files. While its primary focus is firmware analysis, it supports a wide variety of file and data types.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "binwalk3",
+    "desc": "Tool library for analyzing binary blobs and executable code Binwalk is a tool for identifying, and optionally extracting, files and data that have been embedded inside of other files. While its primary focus is firmware analysis, it supports a wide variety of file and data types.",
+    "install": "binwalk3",
+    "size": "3.88 MB"
+   },
+   {
+    "binary": "librust-binwalk-dev",
+    "desc": "Analyzes data for embedded file types - Rust source code Source code for Debianized Rust crate “binwalk”",
+    "install": "librust-binwalk-dev",
+    "size": "2.18 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "blkcalc": {
+  "tool": "blkcalc",
+  "title": "blkcalc",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "blkcat": {
+  "tool": "blkcat",
+  "title": "blkcat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "blkls": {
+  "tool": "blkls",
+  "title": "blkls",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "blkstat": {
+  "tool": "blkstat",
+  "title": "blkstat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "bulk_extractor": {
+  "tool": "bulk_extractor",
+  "title": "bulk_extractor",
+  "description": "Extracts information without parsing filesystem bulk_extractor is a C++ program that scans a disk image, a file, or a directory of files and extracts useful information without parsing the file system or file system structures. The results are stored in feature files that can be easily inspected, parsed, or processed with automated tools. bulk_extractor also creates histograms of features that it finds, as features that are more common tend to be more important. Scans a disk image for regular expressions and other content.",
+  "usage": [
+   {
+    "binary": "bulk_extractor",
+    "parts": [
+     [
+      "p",
+      "Extract files to the output directory ( -o bulk-out ) after analyzing the image file ( xp-laptop-2005-07-04-1430.img ):"
+     ],
+     [
+      "code",
+      "root@kali:~# bulk_extractor -o bulk-out xp-laptop-2005-07-04-1430.img\nbulk_extractor version: 1.3\nHostname: kali\nInput file: xp-laptop-2005-07-04-1430.img\nOutput directory: bulk-out\nDisk Size: 536715264\nThreads: 1\nPhase 1.\n13:02:46 Offset 0MB (0.00%) Done in n/a at 13:02:45\n13:03:39 Offset 67MB (12.50%) Done in  0:06:14 at 13:09:53\n13:04:43 Offset 134MB (25.01%) Done in  0:05:50 at 13:10:33\n13:04:55 Offset 201MB (37.51%) Done in  0:03:36 at 13:08:31\n13:06:01 Offset 268MB (50.01%) Done in  0:03:15 at 13:09:16\n13:06:48 Offset 335MB (62.52%) Done in  0:02:25 at 13:09:13\n13:07:04 Offset 402MB (75.02%) Done in  0:01:25 at 13:08:29\n13:07:20 Offset 469MB (87.53%) Done in  0:00:39 at 13:07:59\nAll Data is Read; waiting for threads to finish...\nTime elapsed waiting for 1 thread to finish:\n     (please wait for another 60 min .)\nTime elapsed waiting for 1 thread to finish:\n    6 sec (please wait for another 59 min 54 sec.)\nThread 0: Processing 520093696\n\nTime elapsed waiting for 1 thread to finish:\n    12 sec (please wait for another 59 min 48 sec.)\nThread 0: Processing 520093696\n\nTime elapsed waiting for 1 thread to finish:\n    18 sec (please wait for another 59 min 42 sec.)\nThread 0: Processing 520093696\n\nTime elapsed waiting for 1 thread to finish:\n    24 sec (please wait for another 59 min 36 sec.)\nThread 0: Processing 520093696\n\nTime elapsed waiting for 1 thread to finish:\n    30 sec (please wait for another 59 min 30 sec.)\nThread 0: Processing 520093696\n\nAll Threads Finished!\nProducer time spent waiting: 335.984 sec.\nAverage consumer time spent waiting: 0.143353 sec.\n*******************************************\n** bulk_extractor is probably CPU bound. **\n**    Run on a computer with more cores  **\n**      to get better performance.       **\n*******************************************\nPhase 2. Shutting down scanners\nPhase 3. Creating Histograms\n   ccn histogram...   ccn_track2 histogram...   domain histogram...\n   email histogram...   ether histogram...   find histogram...\n   ip histogram...   tcp histogram...   telephone histogram...\n   url histogram...   url microsoft-live...   url services...\n   url facebook-address...   url facebook-id...   url searches...\n\nElapsed time: 378.5 sec.\nOverall performance: 1.418 MBytes/sec.\nTotal email features found: 899"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "bulk-extractor",
+    "desc": "Extracts information without parsing filesystem bulk_extractor is a C++ program that scans a disk image, a file, or a directory of files and extracts useful information without parsing the file system or file system structures. The results are stored in feature files that can be easily inspected, parsed, or processed with automated tools. bulk_extractor also creates histograms of features that it finds, as features that are more common tend to be more important. Scans a disk image for regular expressions and other content.",
+    "install": "bulk-extractor",
+    "size": "15.82 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "chkrootkit": {
+  "tool": "chkrootkit",
+  "title": "chkrootkit",
+  "description": "Rootkit detector The chkrootkit security scanner searches for signs that the system is infected with a ‘rootkit’. Rootkits are a form of malware that seek to exploit security flaws to grant unauthorised access to a computer or its services, generally for malicious purposes. chkrootkit can identify signs of over 70 different rootkits (see the project’s website for a list).",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "chkrootkit",
+    "desc": "Rootkit detector The chkrootkit security scanner searches for signs that the system is infected with a ‘rootkit’. Rootkits are a form of malware that seek to exploit security flaws to grant unauthorised access to a computer or its services, generally for malicious purposes. chkrootkit can identify signs of over 70 different rootkits (see the project’s website for a list).",
+    "install": "chkrootkit",
+    "size": "987 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "dc3dd": {
+  "tool": "dc3dd",
+  "title": "dc3dd",
+  "description": "Patched version of GNU dd with forensic features dc3dd is a patched version of GNU dd with added features for computer forensics: Convert and copy a file",
+  "usage": [
+   {
+    "binary": "dc3dd",
+    "parts": [
+     [
+      "p",
+      "Write a binary image from the source ( if=/var/log/messages ) to the destination ( of=/tmp/dc3dd ) and calculate the SHA512 sum ( hash=sha512 ):"
+     ],
+     [
+      "code",
+      "root@kali:~# dc3dd if=/var/log/messages of=/tmp/dc3dd hash=sha512\n\ndc3dd 7.2.646 started at 2018-12-01 13:37:20 -0500\ncompiled options:\ncommand line: dc3dd if=/var/log/messages of=/tmp/dc3dd hash=sha512\nsector size: 512 bytes (assumed)\n    42015925 bytes ( 40 M ) copied ( 100% ),    0 s, 185 M/s\n\ninput results for file `/var/log/messages':\n   82062 sectors + 181 bytes in\n   2dd19a4fd6bdebddf2ce754f4b09f7914b7cb7433efc5b8678ff437d9e13857995815c2b63ae4722a6d4c143347458497fb6b1b4a1ef4e4fd3c5d9cd08111f16 (sha512)\n\noutput results for file `/tmp/dc3dd':\n   82062 sectors + 181 bytes out\n\ndc3dd completed at 2018-12-01 13:37:21 -0500"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "dc3dd",
+    "desc": "Patched version of GNU dd with forensic features dc3dd is a patched version of GNU dd with added features for computer forensics: Convert and copy a file",
+    "install": "dc3dd",
+    "size": "478 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "dcfldd": {
+  "tool": "dcfldd",
+  "title": "dcfldd",
+  "description": "Enhanced version of dd for forensics and security dcfldd was initially developed at Department of Defense Computer Forensics Lab (DCFL). This tool is based on the dd program with the following additional features: Enhanced version of dd for forensics and security",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "dcfldd",
+    "desc": "Enhanced version of dd for forensics and security dcfldd was initially developed at Department of Defense Computer Forensics Lab (DCFL). This tool is based on the dd program with the following additional features: Enhanced version of dd for forensics and security",
+    "install": "dcfldd",
+    "size": "113 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "dd_rescue": {
+  "tool": "dd_rescue",
+  "title": "dd_rescue",
+  "description": "Data recovery and protection tool When your disk has crashed and you try to copy it over to another one, standard Unix tools like cp, cat, and dd will abort on every I/O error, dd_rescue does not. It optimizes copying by using large blocks as long as no errors occur and falls back to smaller blocks. It supports reverse direction copying (to approach a bad spot from the top), sparse copying, preallocating space, splice zerocopy, and bypassing the kernel pagecache with O_DIRECT. dd_rescue provides safe deletion of data by overwriting files (or better partitions/disks) multiple times with fast ra",
+  "usage": [
+   {
+    "binary": "dd_rescue",
+    "parts": [
+     [
+      "p",
+      "Start at position 100 of the input file ( -s 100 /var/log/messages ) and write, beginning at position 0 of the destination file ( -S 0 /tmp/ddrescue-out ):"
+     ],
+     [
+      "code",
+      "root@kali:~# dd_rescue -s 100 /var/log/messages -S 0 /tmp/ddrescue-out\ndd_rescue: (info): Using softbs=65536, hardbs=4096\ndd_rescue: (info) expect to copy 1766kB from /var/log/messages\ndd_rescue: (info): ipos:      1024.1k, opos:      1024.0k, xferd:      1024.0k\n                   errs:      0, errxfer:         0.0k, succxfer:      1024.0k\n             +curr.rate:  1122807kB/s, avg.rate:  1018906kB/s, avg.load:  0.0%\n             >.......................-.................<  57%  ETA:  0:00:00\ndd_rescue: (info): read /var/log/messages (1767.0k): EOF\ndd_rescue: (info): Summary for /var/log/messages -> /tmp/ddrescue-out:\ndd_rescue: (info): ipos:      1767.0k, opos:      1767.0k, xferd:      1767.0k\n                   errs:      0, errxfer:         0.0k, succxfer:      1767.0k\n             +curr.rate:   352945kB/s, avg.rate:   568151kB/s, avg.load:  0.0%\n             >.......................-................-< 100%  ETA:  0:00:00"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "ddrescue",
+    "desc": "Data recovery and protection tool When your disk has crashed and you try to copy it over to another one, standard Unix tools like cp, cat, and dd will abort on every I/O error, dd_rescue does not. It optimizes copying by using large blocks as long as no errors occur and falls back to smaller blocks. It supports reverse direction copying (to approach a bad spot from the top), sparse copying, preallocating space, splice zerocopy, and bypassing the kernel pagecache with O_DIRECT. dd_rescue provides safe deletion of data by overwriting files (or better partitions/disks) multiple times with fast ra",
+    "install": "ddrescue",
+    "size": "411 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "ext3grep": {
+  "tool": "ext3grep",
+  "title": "ext3grep",
+  "description": "Tool to help recover deleted files on ext3 filesystems ext3grep is a simple tool intended to aid anyone who accidentally deletes a file on an ext3 filesystem, only to find that they wanted it shortly thereafter. This package is useful in forensics investigations.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ext3grep",
+    "desc": "Tool to help recover deleted files on ext3 filesystems ext3grep is a simple tool intended to aid anyone who accidentally deletes a file on an ext3 filesystem, only to find that they wanted it shortly thereafter. This package is useful in forensics investigations.",
+    "install": "ext3grep",
+    "size": "299 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "ext4magic": {
+  "tool": "ext4magic",
+  "title": "ext4magic",
+  "description": "Recover deleted files from ext3 or ext4 partitions ext4magic is a file carver (or file carving). It can be used when recovering from disasters or in digital forensics activities. The deletion of files in ext3/4 filesystems can not be easily reversed. Zero out of the block references in the inodes makes that impossible. Experiences with other programs have proved that is possible restore sufficient information for a recover of many data files, directly from the filesystem journal.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "ext4magic",
+    "desc": "Recover deleted files from ext3 or ext4 partitions ext4magic is a file carver (or file carving). It can be used when recovering from disasters or in digital forensics activities. The deletion of files in ext3/4 filesystems can not be easily reversed. Zero out of the block references in the inodes makes that impossible. Experiences with other programs have proved that is possible restore sufficient information for a recover of many data files, directly from the filesystem journal.",
+    "install": "ext4magic",
+    "size": "235 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "extundelete": {
+  "tool": "extundelete",
+  "title": "extundelete",
+  "description": "Utility to recover deleted files from ext3/ext4 partition extundelete uses the information stored in the partition’s journal to attempt to recover a file that has been deleted. There is no guarantee that any particular file will be able to be undeleted. Utility to undelete files from an ext3 or ext4 partition.",
+  "usage": [
+   {
+    "binary": "extundelete",
+    "parts": [
+     [
+      "p",
+      "Read the partition ( /dev/sda1 ) and restore ( –restore-file ) the given file name (root/importantfile):"
+     ],
+     [
+      "code",
+      "root@kali:~# extundelete /dev/sda1 --restore-file root/importantfile\nWARNING: Extended attributes are not restored.\nWARNING: EXT3_FEATURE_INCOMPAT_RECOVER is set.\nThe partition should be unmounted to undelete any files without further data loss.\nIf the partition is not currently mounted, this message indicates\nit was improperly unmounted, and you should run fsck before continuing.\nIf you decide to continue, extundelete may overwrite some of the deleted\nfiles and make recovering those files impossible.  You should unmount the\nfile system and check it with fsck before using extundelete.\nWould you like to continue? (y/n)\ny\nLoading filesystem metadata ... 192 groups loaded.\nLoading journal descriptors ... 29495 descriptors loaded.\nWriting output to directory RECOVERED_FILES/"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "extundelete",
+    "desc": "Utility to recover deleted files from ext3/ext4 partition extundelete uses the information stored in the partition’s journal to attempt to recover a file that has been deleted. There is no guarantee that any particular file will be able to be undeleted. Utility to undelete files from an ext3 or ext4 partition.",
+    "install": "extundelete",
+    "size": "152 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "ffind": {
+  "tool": "ffind",
+  "title": "ffind",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "fls": {
+  "tool": "fls",
+  "title": "fls",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "foremost": {
+  "tool": "foremost",
+  "title": "foremost",
+  "description": "Forensic program to recover lost files Foremost is a forensic program to recover lost files based on their headers, footers, and internal data structures. Foremost can work on image files, such as those generated by dd, Safeback, Encase, etc, or directly on a drive. The headers and footers can be specified by a configuration file or you can use command line switches to specify built-in file types. These built-in types look at the data structures of a given file format allowing for a more reliable and faster recovery.",
+  "usage": [
+   {
+    "binary": "foremost",
+    "parts": [
+     [
+      "p",
+      "Search for a selection of file types ( -t doc,jpg,pdf,xls ) in the given image file ( -i image.dd ):"
+     ],
+     [
+      "code",
+      "root@kali:~# foremost -t doc,jpg,pdf,xls -i image.dd\nProcessing: image.dd\n|*|\nroot@kali:~# ls output/\naudit.txt  jpg  pdf"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "foremost",
+    "desc": "Forensic program to recover lost files Foremost is a forensic program to recover lost files based on their headers, footers, and internal data structures. Foremost can work on image files, such as those generated by dd, Safeback, Encase, etc, or directly on a drive. The headers and footers can be specified by a configuration file or you can use command line switches to specify built-in file types. These built-in types look at the data structures of a given file format allowing for a more reliable and faster recovery.",
+    "install": "foremost",
+    "size": "102 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "fsstat": {
+  "tool": "fsstat",
+  "title": "fsstat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "galleta": {
+  "tool": "galleta",
+  "title": "galleta",
+  "description": "Internet Explorer cookie forensic analysis tool Galleta is a forensics tool that examines the content of cookie files produced by Microsoft Internet Explorer (MSIE). It parses the file and outputs a field separated that can be loaded in a spreadsheet. Tool to extract information from MSIE cookie files",
+  "usage": [
+   {
+    "binary": "galleta",
+    "parts": [
+     [
+      "p",
+      "Read file.txt and output the content using ; as Field Delimiter ( d )."
+     ],
+     [
+      "code",
+      "root@kali:~# galleta -d\";\" file.txt"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "galleta",
+    "desc": "Internet Explorer cookie forensic analysis tool Galleta is a forensics tool that examines the content of cookie files produced by Microsoft Internet Explorer (MSIE). It parses the file and outputs a field separated that can be loaded in a spreadsheet. Tool to extract information from MSIE cookie files",
+    "install": "galleta",
+    "size": "31 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "grokevt-addlog": {
+  "tool": "grokevt-addlog",
+  "title": "grokevt-addlog",
+  "description": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "grokevt",
+    "desc": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+    "install": "grokevt",
+    "size": "122 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "grokevt-builddb": {
+  "tool": "grokevt-builddb",
+  "title": "grokevt-builddb",
+  "description": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "grokevt",
+    "desc": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+    "install": "grokevt",
+    "size": "122 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "grokevt-findlogs": {
+  "tool": "grokevt-findlogs",
+  "title": "grokevt-findlogs",
+  "description": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "grokevt",
+    "desc": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+    "install": "grokevt",
+    "size": "122 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "grokevt-parselog": {
+  "tool": "grokevt-parselog",
+  "title": "grokevt-parselog",
+  "description": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "grokevt",
+    "desc": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+    "install": "grokevt",
+    "size": "122 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "grokevt-ripdll": {
+  "tool": "grokevt-ripdll",
+  "title": "grokevt-ripdll",
+  "description": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "grokevt",
+    "desc": "Scripts for reading Microsoft Windows event log files GrokEVT is a collection of scripts built for reading Microsoft Windows NT/2000/XP/2003 event log files. Currently the scripts work together on one or more mounted Microsoft Windows partitions to extract all information needed (registry entries, message templates, and log files) to convert the logs to a human-readable format.",
+    "install": "grokevt",
+    "size": "122 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "guymager": {
+  "tool": "guymager",
+  "title": "guymager",
+  "description": "Forensic imaging tool based on Qt The forensic imager contained in this package, guymager, was designed to support different image file formats, to be most user-friendly and to run really fast. It has a high speed multi-threaded engine using parallel compression for best performance on multi-processor and hyper-threading machines. A forensic acquisition program",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "guymager",
+    "desc": "Forensic imaging tool based on Qt The forensic imager contained in this package, guymager, was designed to support different image file formats, to be most user-friendly and to run really fast. It has a high speed multi-threaded engine using parallel compression for best performance on multi-processor and hyper-threading machines. A forensic acquisition program",
+    "install": "guymager",
+    "size": "1.02 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "hashdeep": {
+  "tool": "hashdeep",
+  "title": "hashdeep",
+  "description": "Recursively compute hashsums or piecewise hashings hashdeep is a set of tools to compute MD5, SHA1, SHA256, tiger and whirlpool hashsums of arbitrary number of files recursively. The main hashdeep features are:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "hashdeep",
+    "desc": "Recursively compute hashsums or piecewise hashings hashdeep is a set of tools to compute MD5, SHA1, SHA256, tiger and whirlpool hashsums of arbitrary number of files recursively. The main hashdeep features are:",
+    "install": "hashdeep",
+    "size": "1.57 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "hexwalk": {
+  "tool": "hexwalk",
+  "title": "hexwalk",
+  "description": "Hex analyzer, editor and viewer HexWalk is an Hex editor, viewer, analyzer based on opensource projects like qhexedit2, binwalk and QT It is cross platform and has plenty of features: Updated on: 2025-Dec-09",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "hexwalk",
+    "desc": "Hex analyzer, editor and viewer HexWalk is an Hex editor, viewer, analyzer based on opensource projects like qhexedit2, binwalk and QT It is cross platform and has plenty of features: Updated on: 2025-Dec-09",
+    "install": "hexwalk",
+    "size": "936 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "hfind": {
+  "tool": "hfind",
+  "title": "hfind",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "icat": {
+  "tool": "icat",
+  "title": "icat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "ifind": {
+  "tool": "ifind",
+  "title": "ifind",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "ils": {
+  "tool": "ils",
+  "title": "ils",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "img_cat": {
+  "tool": "img_cat",
+  "title": "img_cat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "img_stat": {
+  "tool": "img_stat",
+  "title": "img_stat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "istat": {
+  "tool": "istat",
+  "title": "istat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "jcat": {
+  "tool": "jcat",
+  "title": "jcat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "jls": {
+  "tool": "jls",
+  "title": "jls",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "mactime": {
+  "tool": "mactime",
+  "title": "mactime",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "magicrescue": {
+  "tool": "magicrescue",
+  "title": "magicrescue",
+  "description": "Recover files by looking for magic bytes Magic Rescue scans a block device for file types it knows how to recover and calls an external program to extract them. It looks at “magic bytes” (file patterns) in file contents, so it can be used both as an undelete utility and for recovering a corrupted drive or partition. As long as the file data is there, it will find it. Magic Rescue uses files called ‘recipes’. These files have strings and commands to identify and extract data from devices or forensics images. So, you can write your own recipes. Currently, there are the following recipes: avi, ca",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "magicrescue",
+    "desc": "Recover files by looking for magic bytes Magic Rescue scans a block device for file types it knows how to recover and calls an external program to extract them. It looks at “magic bytes” (file patterns) in file contents, so it can be used both as an undelete utility and for recovering a corrupted drive or partition. As long as the file data is there, it will find it. Magic Rescue uses files called ‘recipes’. These files have strings and commands to identify and extract data from devices or forensics images. So, you can write your own recipes. Currently, there are the following recipes: avi, ca",
+    "install": "magicrescue",
+    "size": "257 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "missidentify": {
+  "tool": "missidentify",
+  "title": "missidentify",
+  "description": "Find win32 applications Miss Identify (missidentify) is a program to find MS Windows type win32 applications. By default, it displays the filename of any executable that does not have an extension, as exe, dll, com, sys, cpl, hxs, hxi, olb, rll or tlb. It can also display all the executables regardless the extension. Miss Identify is useful in forensics investigations.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "missidentify",
+    "desc": "Find win32 applications Miss Identify (missidentify) is a program to find MS Windows type win32 applications. By default, it displays the filename of any executable that does not have an extension, as exe, dll, com, sys, cpl, hxs, hxi, olb, rll or tlb. It can also display all the executables regardless the extension. Miss Identify is useful in forensics investigations.",
+    "install": "missidentify",
+    "size": "47 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "mmcat": {
+  "tool": "mmcat",
+  "title": "mmcat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "mmls": {
+  "tool": "mmls",
+  "title": "mmls",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "mmstat": {
+  "tool": "mmstat",
+  "title": "mmstat",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "myrescue": {
+  "tool": "myrescue",
+  "title": "myrescue",
+  "description": "Rescue data from damaged disks myrescue is a program to rescue the still-readable data from a damaged harddisk, CD-ROM, DVD, flash drives, etc. It is similar in purpose to dd_rescue (or ddrescue), but it tries to quickly get out of damaged areas to first handle the not yet damaged part of the disk and return later. This package is useful to recover data from any media and for forensics investigations.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "myrescue",
+    "desc": "Rescue data from damaged disks myrescue is a program to rescue the still-readable data from a damaged harddisk, CD-ROM, DVD, flash drives, etc. It is similar in purpose to dd_rescue (or ddrescue), but it tries to quickly get out of damaged areas to first handle the not yet damaged part of the disk and return later. This package is useful to recover data from any media and for forensics investigations.",
+    "install": "myrescue",
+    "size": "81 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "outguess": {
+  "tool": "outguess",
+  "title": "outguess",
+  "description": "OutGuess is a universal tool for steganography that allows the insertion of hidden information into the redundant bits of data sources. The nature of the data source is irrelevant to the core of OutGuess. The program relies on data specific handlers that will extract redundant bits and write them back after modification. The supported formats are JPEG, PPM and PNM.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "outguess",
+    "desc": "OutGuess is a universal tool for steganography that allows the insertion of hidden information into the redundant bits of data sources. The nature of the data source is irrelevant to the core of OutGuess. The program relies on data specific handlers that will extract redundant bits and write them back after modification. The supported formats are JPEG, PPM and PNM.",
+    "install": "outguess",
+    "size": "230 KB"
+   }
+  ],
+  "attack_category": "Defense Evasion"
+ },
+ "pasco": {
+  "tool": "pasco",
+  "title": "pasco",
+  "description": "Internet Explorer cache forensic analysis tool Pasco is a forensic tool that examines the content of cache files (index.dat) produced by Microsoft Internet Explorer. It parses the file and outputs a field separated that can be loaded in a spreadsheet.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "pasco",
+    "desc": "Internet Explorer cache forensic analysis tool Pasco is a forensic tool that examines the content of cache files (index.dat) produced by Microsoft Internet Explorer. It parses the file and outputs a field separated that can be loaded in a spreadsheet.",
+    "install": "pasco",
+    "size": "34 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "pdf-parser": {
+  "tool": "pdf-parser",
+  "title": "pdf-parser",
+  "description": "Parses PDF files to identify fundamental elements This tool will parse a PDF document to identify the fundamental elements used in the analyzed file. It will not render a PDF document.",
+  "usage": [
+   {
+    "binary": "pdf-parser",
+    "parts": [
+     [
+      "p",
+      "Display statistics ( -a ) for the given PDF file ( /usr/share/doc/texmf/fonts/lm/lm-info.pdf ):"
+     ],
+     [
+      "code",
+      "root@kali:~# pdf-parser -a /usr/share/doc/texmf/fonts/lm/lm-info.pdf\nComment: 3\nXREF: 1\nTrailer: 1\nStartXref: 1\nIndirect object: 526\n  282: 7, 8, 12, 17, 18, 27, 28, 30, 31, 34, 35, 43, 44, 78, 79, 111, 112, 120, 121, 123, 124, 126, 127, 129, 130, 132, 133, 135, 136, 138, 139, 141, 142, 144, 145, 155, 156, 158, 159, 164, 165, 168, 169, 172, 173, 176, 177, 179, 180, 183, 184, 187, 188, 191, 192, 2, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 484, 485, 486, 488, 489, 490, 492, 493, 494, 496, 497, 498, 500, 501, 502, 504, 505, 506, 508, 509, 510, 512, 513, 514, 516, 517, 518, 520, 521, 522, 524, 525, 526, 372, 374, 375, 383, 450, 451, 453, 454, 457, 458, 460, 461, 463, 464, 466, 467, 469, 470\n /Catalog 1: 1\n /Encoding 1: 10\n /ExtGState 1: 6\n /Font 105: 11, 4, 5, 14, 20, 21, 22, 23, 24, 25, 26, 33, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 161, 162, 163, 167, 171, 175, 182, 186, 190, 15, 37, 39, 41, 114, 116, 118, 147, 149, 151, 153, 16, 38, 40, 42, 115, 117, 119, 148, 150, 152, 154\n /FontDescriptor 94: 9, 373, 376, 377, 378, 379, 380, 381, 382, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 452, 455, 456, 459, 462, 465, 468, 471, 483, 487, 491, 495, 499,"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "pdf-parser",
+    "desc": "Parses PDF files to identify fundamental elements This tool will parse a PDF document to identify the fundamental elements used in the analyzed file. It will not render a PDF document.",
+    "install": "pdf-parser",
+    "size": "87 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "pdfid": {
+  "tool": "pdfid",
+  "title": "pdfid",
+  "description": "Scans PDF files for certain PDF keywords This tool is not a PDF parser, but it will scan a file to look for certain PDF keywords, allowing you to identify PDF documents that contain (for example) JavaScript or execute an action when opened. PDFiD will also handle name obfuscation.",
+  "usage": [
+   {
+    "binary": "pdfid",
+    "parts": [
+     [
+      "code",
+      "root@kali:~# pdfid /usr/share/doc/texmf/fonts/lm/lm-info.pdf\nPDFiD 0.0.12 /usr/share/doc/texmf/fonts/lm/lm-info.pdf\n PDF Header: %PDF-1.4\n obj                  526\n endobj               526\n stream               151\n endstream            151\n xref                   1\n trailer                1\n startxref              1\n /Page                 26\n /Encrypt               0\n /ObjStm                0\n /JS                    0\n /JavaScript            0\n /AA                    0\n /OpenAction            0\n /AcroForm              0\n /JBIG2Decode           0\n /RichMedia             0\n /Launch                0\n /EmbeddedFile          0\n /Colors > 2^24         0"
+     ]
+    ]
+   }
+  ],
+  "packages": [
+   {
+    "binary": "pdfid",
+    "desc": "Scans PDF files for certain PDF keywords This tool is not a PDF parser, but it will scan a file to look for certain PDF keywords, allowing you to identify PDF documents that contain (for example) JavaScript or execute an action when opened. PDFiD will also handle name obfuscation.",
+    "install": "pdfid",
+    "size": "106 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "photorec": {
+  "tool": "photorec",
+  "title": "photorec",
+  "description": "Partition scanner and disk recovery tool, and PhotoRec file recovery tool TestDisk checks the partition and boot sectors of your disks. It is very useful in forensics, recovering lost partitions. It works with : PhotoRec is file data recovery software designed to recover lost pictures from digital camera memory or even Hard Disks. It has been extended to search also for non audio/video headers. It searches for following files and is able to undelete them:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "testdisk",
+    "desc": "Partition scanner and disk recovery tool, and PhotoRec file recovery tool TestDisk checks the partition and boot sectors of your disks. It is very useful in forensics, recovering lost partitions. It works with : PhotoRec is file data recovery software designed to recover lost pictures from digital camera memory or even Hard Disks. It has been extended to search also for non audio/video headers. It searches for following files and is able to undelete them:",
+    "install": "testdisk",
+    "size": "1.45 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "readpe": {
+  "tool": "readpe",
+  "title": "readpe",
+  "description": "Library to read Windows PE files (development files) The libpe1t64 package provides a shared library which allows reading PE 32 and 64-bit files. Third party programs depend on this package to read internals of PE files. This library is part of readpe.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libpe-dev",
+    "desc": "Library to read Windows PE files (development files) The libpe1t64 package provides a shared library which allows reading PE 32 and 64-bit files. Third party programs depend on this package to read internals of PE files. This library is part of readpe.",
+    "install": "libpe-dev",
+    "size": "176 KB"
+   },
+   {
+    "binary": "libpe1t64",
+    "desc": "Library to read Windows PE files The libpe1t64 package provides a shared library which allows reading PE 32 and 64-bit files. Third party programs depend on this package to read internals of PE files. This library is part of readpe.",
+    "install": "libpe1t64",
+    "size": "127 KB"
+   },
+   {
+    "binary": "readpe",
+    "desc": "Command-line tools to manipulate Windows PE files readpe is a toolkit designed to analyze Microsoft Windows PE (Portable Executable) binary files. Its tools can parse and compare PE32/PE32+ executable files (EXE, DLL, OCX, etc), and analyze them in search of suspicious characteristics. It can be used to get information from those executable files, such as headers, sections, resources and more. It also provides tools to disassemble PE files and determine their security mitigations. It is useful for application security research, digital forensics and incident response, and malware analysis.",
+    "install": "readpe",
+    "size": "1.23 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "readpst": {
+  "tool": "readpst",
+  "title": "readpst",
+  "description": "Library for reading Microsoft Outlook PST files (development files) Library for accessing data from Microsoft Outlook PST files. This package include the files needed for developing with libpst, including the headers, static library and documentation.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libpst-dev",
+    "desc": "Library for reading Microsoft Outlook PST files (development files) Library for accessing data from Microsoft Outlook PST files. This package include the files needed for developing with libpst, including the headers, static library and documentation.",
+    "install": "libpst-dev",
+    "size": "2.58 MB"
+   },
+   {
+    "binary": "libpst4t64",
+    "desc": "Library for reading Microsoft Outlook PST files Library for accessing data from Microsoft Outlook PST files. This package include the libpst shared library used by applications.",
+    "install": "libpst4t64",
+    "size": "221 KB"
+   },
+   {
+    "binary": "pst-utils",
+    "desc": "Tools for reading Microsoft Outlook PST files This package contains tools based on libpst to read data from Microsoft Outlook PST files. List PST (MS Outlook Personal Folders) file data",
+    "install": "pst-utils",
+    "size": "220 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "recoverdm": {
+  "tool": "recoverdm",
+  "title": "recoverdm",
+  "description": "Recover files on disks with damaged sectors recoverdm recover disks with bad sectors. You can recover files as well complete devices. In case it finds sectors which simply cannot be recovered, it writes an empty sector to the output file and continues. When recovering a CD or a DVD and the program cannot read the sector in “normal mode”, then the program will try to read the sector in “RAW mode” (without error-checking etc.). This toolkit also has a utility called ‘mergebad’ which merges multiple images into one.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "recoverdm",
+    "desc": "Recover files on disks with damaged sectors recoverdm recover disks with bad sectors. You can recover files as well complete devices. In case it finds sectors which simply cannot be recovered, it writes an empty sector to the output file and continues. When recovering a CD or a DVD and the program cannot read the sector in “normal mode”, then the program will try to read the sector in “RAW mode” (without error-checking etc.). This toolkit also has a utility called ‘mergebad’ which merges multiple images into one.",
+    "install": "recoverdm",
+    "size": "64 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "recoverjpeg": {
+  "tool": "recoverjpeg",
+  "title": "recoverjpeg",
+  "description": "Recover JFIF (JPEG) pictures and MOV movies recoverjpeg tries to recover JFIF (JPEG) pictures and MOV movies from a peripheral. This may be useful if you mistakenly overwrite a partition or if a device such as a digital camera memory card is bogus. This package provides these executables: recoverjpeg, recovermov, remove-duplicates and sort-pictures. The remove-duplicates is useful to remove duplicate files found. sort-pictures can be used to sort pictures according to exif date.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "recoverjpeg",
+    "desc": "Recover JFIF (JPEG) pictures and MOV movies recoverjpeg tries to recover JFIF (JPEG) pictures and MOV movies from a peripheral. This may be useful if you mistakenly overwrite a partition or if a device such as a digital camera memory card is bogus. This package provides these executables: recoverjpeg, recovermov, remove-duplicates and sort-pictures. The remove-duplicates is useful to remove duplicate files found. sort-pictures can be used to sort pictures according to exif date.",
+    "install": "recoverjpeg",
+    "size": "65 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "reglookup": {
+  "tool": "reglookup",
+  "title": "reglookup",
+  "description": "Utility to analysis for Windows NT-based registry (devel files) RegLookup is a system to direct analysis of Windows NT-based registry files providing command line tools, a C API, and a Python module for accessing registry data structures. The project has a focus on providing tools for digital forensics investigations (though is useful for many purposes), and includes algorithms for retrieving deleted data structures from registry hives. Currently the program allows one to read an entire registry and output it in a (mostly) standardized, quoted format. It also provides features for filtering of",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libregfi-dev",
+    "desc": "Utility to analysis for Windows NT-based registry (devel files) RegLookup is a system to direct analysis of Windows NT-based registry files providing command line tools, a C API, and a Python module for accessing registry data structures. The project has a focus on providing tools for digital forensics investigations (though is useful for many purposes), and includes algorithms for retrieving deleted data structures from registry hives. Currently the program allows one to read an entire registry and output it in a (mostly) standardized, quoted format. It also provides features for filtering of",
+    "install": "libregfi-dev",
+    "size": "98 KB"
+   },
+   {
+    "binary": "libregfi1t64",
+    "desc": "Utility to analysis for Windows NT-based registry (shared library) RegLookup is a system to direct analysis of Windows NT-based registry files providing command line tools, a C API, and a Python module for accessing registry data structures. The project has a focus on providing tools for digital forensics investigations (though is useful for many purposes), and includes algorithms for retrieving deleted data structures from registry hives. Currently the program allows one to read an entire registry and output it in a (mostly) standardized, quoted format. It also provides features for filtering",
+    "install": "libregfi1t64",
+    "size": "94 KB"
+   },
+   {
+    "binary": "python3-pyregfi",
+    "desc": "Python 3 Bindings for reglookup This package contains Python 3 bindings to libregfi. There are the low-level data structures for winsec library and C API mappings for accessing registry data structures.",
+    "install": "python3-pyregfi",
+    "size": "80 KB"
+   },
+   {
+    "binary": "reglookup",
+    "desc": "Utility to analysis for Windows NT-based registry RegLookup is a system to direct analysis of Windows NT-based registry files providing command line tools, a C API, and a Python module for accessing registry data structures. The project has a focus on providing tools for digital forensics investigations (though is useful for many purposes), and includes algorithms for retrieving deleted data structures from registry hives. Currently the program allows one to read an entire registry and output it in a (mostly) standardized, quoted format. It also provides features for filtering of results based",
+    "install": "reglookup",
+    "size": "87 KB"
+   },
+   {
+    "binary": "reglookup-doc",
+    "desc": "Developer documentation for libregfi and python-pyregfi RegLookup is a system to direct analysis of Windows NT-based registry files providing command line tools, a C API, and a Python module for accessing registry data structures. The project has a focus on providing tools for digital forensics investigations (though is useful for many purposes), and includes algorithms for retrieving deleted data structures from registry hives. Currently the program allows one to read an entire registry and output it in a (mostly) standardized, quoted format. It also provides features for filtering of results",
+    "install": "reglookup-doc",
+    "size": "3.13 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "regripper": {
+  "tool": "regripper",
+  "title": "regripper",
+  "description": "Perform forensic analysis of registry hives Regripper’s CLI tool can be used to surgically extract, translate, and display information (both data and metadata) from Registry-formatted files via plugins in the form of Perl-scripts. It allows the analyst to select a hive-file to parse and a plugin or a profile, which is a list of plugins to run against the given hive. The results go to STDOUT and can be redirected to a file, that the analyst designates. Forensic analysis of Registry hives",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "regripper",
+    "desc": "Perform forensic analysis of registry hives Regripper’s CLI tool can be used to surgically extract, translate, and display information (both data and metadata) from Registry-formatted files via plugins in the form of Perl-scripts. It allows the analyst to select a hive-file to parse and a plugin or a profile, which is a list of plugins to run against the given hive. The results go to STDOUT and can be redirected to a file, that the analyst designates. Forensic analysis of Registry hives",
+    "install": "regripper",
+    "size": "1.07 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "rifiuti": {
+  "tool": "rifiuti",
+  "title": "rifiuti",
+  "description": "MS Windows recycle bin analysis tool Rifiuti is a tool to examine the INFO2 files. The INFO2 file gives meta information about the files found in the MS Windows recycle bin. This package is useful in forensics investigations.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "rifiuti",
+    "desc": "MS Windows recycle bin analysis tool Rifiuti is a tool to examine the INFO2 files. The INFO2 file gives meta information about the files found in the MS Windows recycle bin. This package is useful in forensics investigations.",
+    "install": "rifiuti",
+    "size": "30 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "rifiuti2": {
+  "tool": "rifiuti2",
+  "title": "rifiuti2",
+  "description": "Replacement for rifiuti, a MS Windows recycle bin analysis tool Rifiuti2 analyses recycle bin files from Windows. Analysis of Windows recycle bin is usually carried out during Windows computer forensics. Rifiuti2 can extract file deletion time, original path and size of deleted files and whether the deleted files have been moved out from the recycle bin since they are trashed.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "rifiuti2",
+    "desc": "Replacement for rifiuti, a MS Windows recycle bin analysis tool Rifiuti2 analyses recycle bin files from Windows. Analysis of Windows recycle bin is usually carried out during Windows computer forensics. Rifiuti2 can extract file deletion time, original path and size of deleted files and whether the deleted files have been moved out from the recycle bin since they are trashed.",
+    "install": "rifiuti2",
+    "size": "134 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "rkhunter": {
+  "tool": "rkhunter",
+  "title": "rkhunter",
+  "description": "Rootkit, backdoor, sniffer and exploit scanner Rootkit Hunter scans systems for known and unknown rootkits, backdoors, sniffers and exploits. It checks for:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "rkhunter",
+    "desc": "Rootkit, backdoor, sniffer and exploit scanner Rootkit Hunter scans systems for known and unknown rootkits, backdoors, sniffers and exploits. It checks for:",
+    "install": "rkhunter",
+    "size": "1.05 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "safecopy": {
+  "tool": "safecopy",
+  "title": "safecopy",
+  "description": "Data recovery tool for problematic or damaged media Safecopy tries to get as much data from SOURCE as possible, even resorting to device specific low level operations if applicable. This is achieved by identifying problematic or damaged areas, skipping over them and continuing reading afterwards. The corresponding area in the destination file is either skipped (on initial creation that means padded with zeros) or deliberately filled with a recognizable pattern to later find affected files on a corrupted device. The work is similar to ddrescue, generating an image of the original media. This me",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "safecopy",
+    "desc": "Data recovery tool for problematic or damaged media Safecopy tries to get as much data from SOURCE as possible, even resorting to device specific low level operations if applicable. This is achieved by identifying problematic or damaged areas, skipping over them and continuing reading afterwards. The corresponding area in the destination file is either skipped (on initial creation that means padded with zeros) or deliberately filled with a recognizable pattern to later find affected files on a corrupted device. The work is similar to ddrescue, generating an image of the original media. This me",
+    "install": "safecopy",
+    "size": "97 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "scalpel": {
+  "tool": "scalpel",
+  "title": "scalpel",
+  "description": "Fast filesystem-independent file recovery scalpel is a fast file carver that reads a database of header and footer definitions and extracts matching files from a set of image files or raw device files. scalpel is filesystem-independent and will carve files from FAT16, FAT32, exFAT, NTFS, Ext2, Ext3, Ext4, JFS, XFS, ReiserFS, raw partitions, etc.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "scalpel",
+    "desc": "Fast filesystem-independent file recovery scalpel is a fast file carver that reads a database of header and footer definitions and extracts matching files from a set of image files or raw device files. scalpel is filesystem-independent and will carve files from FAT16, FAT32, exFAT, NTFS, Ext2, Ext3, Ext4, JFS, XFS, ReiserFS, raw partitions, etc.",
+    "install": "scalpel",
+    "size": "89 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "scrounge-ntfs": {
+  "tool": "scrounge-ntfs",
+  "title": "scrounge-ntfs",
+  "description": "Data recovery program for NTFS filesystems Scrounge NTFS is a data recovery program for NTFS filesystems. It reads each block of the hard disk and try to rebuild the original filesystem tree into a directory. This package is useful in forensics investigations.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "scrounge-ntfs",
+    "desc": "Data recovery program for NTFS filesystems Scrounge NTFS is a data recovery program for NTFS filesystems. It reads each block of the hard disk and try to rebuild the original filesystem tree into a directory. This package is useful in forensics investigations.",
+    "install": "scrounge-ntfs",
+    "size": "49 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "sigfind": {
+  "tool": "sigfind",
+  "title": "sigfind",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "sorter": {
+  "tool": "sorter",
+  "title": "sorter",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "srch_strings": {
+  "tool": "srch_strings",
+  "title": "srch_strings",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "ssdeep": {
+  "tool": "ssdeep",
+  "title": "ssdeep",
+  "description": "Recursive piecewise hashing tool (development headers) ssdeep is a tool for recursive computing and matching of Context Triggered Piecewise Hashing (aka Fuzzy Hashing). Fuzzy hashing is a method for comparing similar but not identical files. This tool can be used to compare files like regular hashing does (like md5sum or sha1sum) but it will find similar files with little differences.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libfuzzy-dev",
+    "desc": "Recursive piecewise hashing tool (development headers) ssdeep is a tool for recursive computing and matching of Context Triggered Piecewise Hashing (aka Fuzzy Hashing). Fuzzy hashing is a method for comparing similar but not identical files. This tool can be used to compare files like regular hashing does (like md5sum or sha1sum) but it will find similar files with little differences.",
+    "install": "libfuzzy-dev",
+    "size": "61 KB"
+   },
+   {
+    "binary": "libfuzzy2",
+    "desc": "Recursive piecewise hashing tool (library) ssdeep is a tool for recursive computing and matching of Context Triggered Piecewise Hashing (aka Fuzzy Hashing). Fuzzy hashing is a method for comparing similar but not identical files. This tool can be used to compare files like regular hashing does (like md5sum or sha1sum) but it will find similar files with little differences.",
+    "install": "libfuzzy2",
+    "size": "50 KB"
+   },
+   {
+    "binary": "ssdeep",
+    "desc": "Recursive piecewise hashing tool ssdeep is a tool for recursive computing and matching of Context Triggered Piecewise Hashing (aka Fuzzy Hashing). Fuzzy hashing is a method for comparing similar but not identical files. This tool can be used to compare files like regular hashing does (like md5sum or sha1sum) but it will find similar files with little differences.",
+    "install": "ssdeep",
+    "size": "83 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "steghide": {
+  "tool": "steghide",
+  "title": "steghide",
+  "description": "Steganography hiding tool Steghide is steganography program which hides bits of a data file in some of the least significant bits of another file in such a way that the existence of the data file is not visible and cannot be proven. Steghide is designed to be portable and configurable and features hiding data in bmp, jpeg, wav and au files, blowfish encryption, MD5 hashing of passphrases to blowfish keys, and pseudo-random distribution of hidden bits in the container data.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "steghide",
+    "desc": "Steganography hiding tool Steghide is steganography program which hides bits of a data file in some of the least significant bits of another file in such a way that the existence of the data file is not visible and cannot be proven. Steghide is designed to be portable and configurable and features hiding data in bmp, jpeg, wav and au files, blowfish encryption, MD5 hashing of passphrases to blowfish keys, and pseudo-random distribution of hidden bits in the container data.",
+    "install": "steghide",
+    "size": "477 KB"
+   },
+   {
+    "binary": "steghide-doc",
+    "desc": "Steganography hiding tool - documentation files Steghide is steganography program which hides bits of a data file in some of the least significant bits of another file in such a way that the existence of the data file is not visible and cannot be proven. Steghide is designed to be portable and configurable and features hiding data in bmp, jpeg, wav and au files, blowfish encryption, MD5 hashing of passphrases to blowfish keys, and pseudo-random distribution of hidden bits in the container data.",
+    "install": "steghide-doc",
+    "size": "7.45 MB"
+   }
+  ],
+  "attack_category": "Defense Evasion"
+ },
+ "stegosuite": {
+  "tool": "stegosuite",
+  "title": "stegosuite",
+  "description": "Steganography tool to hide information in image files Stegosuite is a graphical steganography tool to easily hide information in image files. It allows the embedding of text messages and multiple files of any type. In addition, the embedded data is encrypted using AES. Currently supported file types are BMP, GIF, JPG and PNG. Stegosuite is written in Java and utilizes the SWT toolkit for its interface. Steganography tool to hide information in image files",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "stegosuite",
+    "desc": "Steganography tool to hide information in image files Stegosuite is a graphical steganography tool to easily hide information in image files. It allows the embedding of text messages and multiple files of any type. In addition, the embedded data is encrypted using AES. Currently supported file types are BMP, GIF, JPG and PNG. Stegosuite is written in Java and utilizes the SWT toolkit for its interface. Steganography tool to hide information in image files",
+    "install": "stegosuite",
+    "size": "279 KB"
+   }
+  ],
+  "attack_category": "Defense Evasion"
+ },
+ "stegsnow": {
+  "tool": "stegsnow",
+  "title": "stegsnow",
+  "description": "Steganography using ASCII files This utility can conceal messages in ASCII text by appending whitespaces to the end of lines. Because spaces and tabs are generally not visible in text viewers, the message is effectively hidden from casual observers. And if the built-in encryption is used, the message cannot be read even if it is detected. About the name: locating trailing whitespace in text is like finding a polar bear in a snowstorm. And it uses the ICE encryption algorithm, so the name is thematically consistent.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "stegsnow",
+    "desc": "Steganography using ASCII files This utility can conceal messages in ASCII text by appending whitespaces to the end of lines. Because spaces and tabs are generally not visible in text viewers, the message is effectively hidden from casual observers. And if the built-in encryption is used, the message cannot be read even if it is detected. About the name: locating trailing whitespace in text is like finding a polar bear in a snowstorm. And it uses the ICE encryption algorithm, so the name is thematically consistent.",
+    "install": "stegsnow",
+    "size": "56 KB"
+   }
+  ],
+  "attack_category": "Defense Evasion"
+ },
+ "tailscale": {
+  "tool": "tailscale",
+  "title": "tailscale",
+  "description": "Secure connectivity platform This package contains the tailscaled daemon and the tailscale CLI tool. The tailscaled daemon runs on Linux. root@kali:~# tailscale -h The easiest, most secure way to use WireGuard. USAGE tailscale [flags] <subcommand> [command flags] For help on subcommands, add --help after: \"tailscale status --help\". This CLI is still under active development. Commands and flags will change in the future. SUBCOMMANDS up Connect to Tailscale, logging in if needed down Disconnect from Tailscale set Change specified preferences login Log in to a Tailscale account logout Disconnect ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "tailscale",
+    "desc": "Secure connectivity platform This package contains the tailscaled daemon and the tailscale CLI tool. The tailscaled daemon runs on Linux. root@kali:~# tailscale -h The easiest, most secure way to use WireGuard. USAGE tailscale [flags] <subcommand> [command flags] For help on subcommands, add --help after: \"tailscale status --help\". This CLI is still under active development. Commands and flags will change in the future. SUBCOMMANDS up Connect to Tailscale, logging in if needed down Disconnect from Tailscale set Change specified preferences login Log in to a Tailscale account logout Disconnect ",
+    "install": "tailscale",
+    "size": "47.09 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "testdisk": {
+  "tool": "testdisk",
+  "title": "testdisk",
+  "description": "Partition scanner and disk recovery tool, and PhotoRec file recovery tool TestDisk checks the partition and boot sectors of your disks. It is very useful in forensics, recovering lost partitions. It works with : PhotoRec is file data recovery software designed to recover lost pictures from digital camera memory or even Hard Disks. It has been extended to search also for non audio/video headers. It searches for following files and is able to undelete them:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "testdisk",
+    "desc": "Partition scanner and disk recovery tool, and PhotoRec file recovery tool TestDisk checks the partition and boot sectors of your disks. It is very useful in forensics, recovering lost partitions. It works with : PhotoRec is file data recovery software designed to recover lost pictures from digital camera memory or even Hard Disks. It has been extended to search also for non audio/video headers. It searches for following files and is able to undelete them:",
+    "install": "testdisk",
+    "size": "1.45 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "tsk_comparedir": {
+  "tool": "tsk_comparedir",
+  "title": "tsk_comparedir",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "tsk_gettimes": {
+  "tool": "tsk_gettimes",
+  "title": "tsk_gettimes",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "tsk_loaddb": {
+  "tool": "tsk_loaddb",
+  "title": "tsk_loaddb",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "tsk_recover": {
+  "tool": "tsk_recover",
+  "title": "tsk_recover",
+  "description": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libsleuthkit-java",
+    "desc": "Java Bindings for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see partitions la",
+    "install": "libsleuthkit-java",
+    "size": "3.30 MB"
+   },
+   {
+    "binary": "libsleuthkit-jni",
+    "desc": "Java native interface for SleuthKit The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems journal, see parti",
+    "install": "libsleuthkit-jni",
+    "size": "190 KB"
+   },
+   {
+    "binary": "libtsk-dev",
+    "desc": "Library for forensics analysis (development files) The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesystems jou",
+    "install": "libtsk-dev",
+    "size": "2.71 MB"
+   },
+   {
+    "binary": "libtsk23",
+    "desc": "Library for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine files",
+    "install": "libtsk23",
+    "size": "1.05 MB"
+   },
+   {
+    "binary": "sleuthkit",
+    "desc": "Tools for forensics analysis on volume and filesystem data The Sleuth Kit, also known as TSK, is a collection of UNIX-based command line file and volume system forensic analysis tools. The filesystem tools allow you to examine filesystems of a suspect computer in a non-intrusive fashion. Because the tools do not rely on the operating system to process the filesystems, deleted and hidden content is shown. The volume system (media management) tools allow you to examine the layout of disks and other media. You can also recover deleted files, get information stored in slack spaces, examine filesys",
+    "install": "sleuthkit",
+    "size": "1.09 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "undbx": {
+  "tool": "undbx",
+  "title": "undbx",
+  "description": "Tool to extract, recover and undelete e-mail messages from .dbx files UnDBX is a tool to extract, recover and undelete e-mail messages from MS Outlook Express .dbx files (or similar e-mail programs in MS Windows). Corrupted .dbx files can be parsed to try to recover messages from it. It can also try to undelete messages, not only from Deleted Items but also from fragments of deleted messages that were not overwritten. UnDBX is useful in forensics investigations.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "undbx",
+    "desc": "Tool to extract, recover and undelete e-mail messages from .dbx files UnDBX is a tool to extract, recover and undelete e-mail messages from MS Outlook Express .dbx files (or similar e-mail programs in MS Windows). Corrupted .dbx files can be parsed to try to recover messages from it. It can also try to undelete messages, not only from Deleted Items but also from fragments of deleted messages that were not overwritten. UnDBX is useful in forensics investigations.",
+    "install": "undbx",
+    "size": "61 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "unhide": {
+  "tool": "unhide",
+  "title": "unhide",
+  "description": "Forensic tool to find hidden processes and ports Unhide is a forensic tool to find processes and TCP/UDP ports hidden by rootkits, Linux kernel modules or by other techniques. It includes two utilities: unhide and unhide-tcp. unhide detects hidden processes using the following six techniques:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "unhide",
+    "desc": "Forensic tool to find hidden processes and ports Unhide is a forensic tool to find processes and TCP/UDP ports hidden by rootkits, Linux kernel modules or by other techniques. It includes two utilities: unhide and unhide-tcp. unhide detects hidden processes using the following six techniques:",
+    "install": "unhide",
+    "size": "172 KB"
+   },
+   {
+    "binary": "unhide-gui",
+    "desc": "Graphical user interface for unhide This package unhide-gui provides a graphical user interface for unhide. Unhide is a forensic tool to find processes and TCP/UDP ports hidden by rootkits, Linux kernel modules or by other techniques. It includes two utilities: unhide and unhide-tcp.",
+    "install": "unhide-gui",
+    "size": "52 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "vinetto": {
+  "tool": "vinetto",
+  "title": "vinetto",
+  "description": "Forensics tool to examine Thumbs.db files vinetto is a console program to extract thumbnail pictures and their metadata from Thumbs.db files, that are generated under Microsoft Windows. vinetto can help *nix-based forensics investigators to:",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "vinetto",
+    "desc": "Forensics tool to examine Thumbs.db files vinetto is a console program to extract thumbnail pictures and their metadata from Thumbs.db files, that are generated under Microsoft Windows. vinetto can help *nix-based forensics investigators to:",
+    "install": "vinetto",
+    "size": "234 KB"
+   }
+  ],
+  "attack_category": "Forensics"
+ },
+ "xplico-webui-start": {
+  "tool": "xplico-webui-start",
+  "title": "xplico-webui-start",
+  "description": "Network Forensic Analysis Tool (NFAT) The goal of Xplico is extract from an internet traffic capture the applications data contained. For example, from a pcap file Xplico extracts each email (POP, IMAP, and SMTP protocols), all HTTP contents, each VoIP call (SIP, MGCP, H323), FTP, TFTP, and so on. Xplico is not a network protocol analyzer. root@kali:~# mfbc -h mfbc v1.2.2 Internet Traffic Decoder (NFAT). See http://www.xplico.org for more information. Copyright 2007-2019 Gianluca Costa & Andrea de Franceschi and contributors. This is free software; see the source for copying conditions. There ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "xplico",
+    "desc": "Network Forensic Analysis Tool (NFAT) The goal of Xplico is extract from an internet traffic capture the applications data contained. For example, from a pcap file Xplico extracts each email (POP, IMAP, and SMTP protocols), all HTTP contents, each VoIP call (SIP, MGCP, H323), FTP, TFTP, and so on. Xplico is not a network protocol analyzer. root@kali:~# mfbc -h mfbc v1.2.2 Internet Traffic Decoder (NFAT). See http://www.xplico.org for more information. Copyright 2007-2019 Gianluca Costa & Andrea de Franceschi and contributors. This is free software; see the source for copying conditions. There ",
+    "install": "xplico",
+    "size": "10.08 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "xplico-webui-stop": {
+  "tool": "xplico-webui-stop",
+  "title": "xplico-webui-stop",
+  "description": "Network Forensic Analysis Tool (NFAT) The goal of Xplico is extract from an internet traffic capture the applications data contained. For example, from a pcap file Xplico extracts each email (POP, IMAP, and SMTP protocols), all HTTP contents, each VoIP call (SIP, MGCP, H323), FTP, TFTP, and so on. Xplico is not a network protocol analyzer. root@kali:~# mfbc -h mfbc v1.2.2 Internet Traffic Decoder (NFAT). See http://www.xplico.org for more information. Copyright 2007-2019 Gianluca Costa & Andrea de Franceschi and contributors. This is free software; see the source for copying conditions. There ",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "xplico",
+    "desc": "Network Forensic Analysis Tool (NFAT) The goal of Xplico is extract from an internet traffic capture the applications data contained. For example, from a pcap file Xplico extracts each email (POP, IMAP, and SMTP protocols), all HTTP contents, each VoIP call (SIP, MGCP, H323), FTP, TFTP, and so on. Xplico is not a network protocol analyzer. root@kali:~# mfbc -h mfbc v1.2.2 Internet Traffic Decoder (NFAT). See http://www.xplico.org for more information. Copyright 2007-2019 Gianluca Costa & Andrea de Franceschi and contributors. This is free software; see the source for copying conditions. There ",
+    "install": "xplico",
+    "size": "10.08 MB"
+   }
+  ],
+  "attack_category": "Services and Other Tools"
+ },
+ "yara": {
+  "tool": "yara",
+  "title": "yara",
+  "description": "YARA development libraries and headers YARA is a tool aimed at helping malware researchers to identify and classify malware samples. With YARA, it is possible to create descriptions of malware families based on textual or binary patterns contained in samples of those families. Each description consists of a set of strings and a Boolean expression which determines its logic. Complex and powerful rules can be created by using binary strings with wild-cards, case-insensitive text strings, special operators, regular expressions and many other features.",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "libyara-dev",
+    "desc": "YARA development libraries and headers YARA is a tool aimed at helping malware researchers to identify and classify malware samples. With YARA, it is possible to create descriptions of malware families based on textual or binary patterns contained in samples of those families. Each description consists of a set of strings and a Boolean expression which determines its logic. Complex and powerful rules can be created by using binary strings with wild-cards, case-insensitive text strings, special operators, regular expressions and many other features.",
+    "install": "libyara-dev",
+    "size": "1.31 MB"
+   },
+   {
+    "binary": "libyara10",
+    "desc": "YARA shared library YARA is a tool aimed at helping malware researchers to identify and classify malware samples. With YARA, it is possible to create descriptions of malware families based on textual or binary patterns contained in samples of those families. Each description consists of a set of strings and a Boolean expression which determines its logic. Complex and powerful rules can be created by using binary strings with wild-cards, case-insensitive text strings, special operators, regular expressions and many other features.",
+    "install": "libyara10",
+    "size": "599 KB"
+   },
+   {
+    "binary": "yara",
+    "desc": "Pattern matching swiss knife for malware researchers YARA is a tool aimed at helping malware researchers to identify and classify malware samples. With YARA, it is possible to create descriptions of malware families based on textual or binary patterns contained in samples of those families. Each description consists of a set of strings and a Boolean expression which determines its logic. Complex and powerful rules can be created by using binary strings with wild-cards, case-insensitive text strings, special operators, regular expressions and many other features.",
+    "install": "yara",
+    "size": "637 KB"
+   },
+   {
+    "binary": "yara-doc",
+    "desc": "HTML documentation for YARA YARA is a tool aimed at helping malware researchers to identify and classify malware samples. With YARA, it is possible to create descriptions of malware families based on textual or binary patterns contained in samples of those families. Each description consists of a set of strings and a Boolean expression which determines its logic. Complex and powerful rules can be created by using binary strings with wild-cards, case-insensitive text strings, special operators, regular expressions and many other features.",
+    "install": "yara-doc",
+    "size": "1.39 MB"
+   }
+  ],
+  "attack_category": "Forensics"
+ }
+}
