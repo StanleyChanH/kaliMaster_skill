@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  integrity:
+    name: Skill integrity check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run integrity check
+        run: python build/integrity_check.py
+
+      - name: Verify tool-index install commands
+        run: |
+          # every index row must carry an apt install command or an explicit dash
+          python - << 'EOF'
+          import re, sys, pathlib
+          idx = pathlib.Path('kali-master/references/tool-index.md').read_text(encoding='utf-8')
+          rows = [l for l in idx.splitlines() if l.startswith('| `')]
+          bad = [l for l in rows if 'apt install' not in l and not l.rstrip().endswith('| — |')]
+          print(f'{len(rows)} index rows checked, {len(bad)} malformed')
+          sys.exit(1 if bad else 0)
+          EOF

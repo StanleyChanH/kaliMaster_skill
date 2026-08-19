@@ -4,7 +4,7 @@
 
 [![English](https://img.shields.io/badge/README-English-blue)](README.md) [![简体中文](https://img.shields.io/badge/README-简体中文-red)](README.zh-CN.md)
 
-![tools](https://img.shields.io/badge/tools-470+-blue) ![references](https://img.shields.io/badge/references-13_domains-green) ![workflows](https://img.shields.io/badge/workflows-3_playbooks-orange) ![verified](https://img.shields.io/badge/commands-61_fixes_applied-brightgreen) ![license](https://img.shields.io/badge/license-MIT-lightgrey)
+![CI](https://img.shields.io/github/actions/workflow/status/StanleyChanH/kaliMaster_skill/ci.yml?branch=main) ![tools](https://img.shields.io/badge/tools-470+-blue) ![references](https://img.shields.io/badge/references-13_domains-green) ![workflows](https://img.shields.io/badge/workflows-3_playbooks-orange) ![verified](https://img.shields.io/badge/commands-61_fixes_applied-brightgreen) ![license](https://img.shields.io/badge/license-MIT-lightgrey)
 
 - **Full coverage of 470+ tools** — data scraped page-by-page from the official [kali.org/tools](https://www.kali.org/tools/) documentation (16 MITRE ATT&CK tactic categories, 337 official usage examples, complete apt install info)
 - **13 domain references** — Recon / Scanning / Web / Exploitation / Passwords / Wireless / MITM / AD & Windows intranet / Tunneling / Privilege escalation / Forensics / Reversing / Reporting
