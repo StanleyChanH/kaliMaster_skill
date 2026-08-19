@@ -1,0 +1,36 @@
+name: Tool request
+description: Suggest a tool to add to a domain reference
+labels: [enhancement]
+body:
+  - type: input
+    id: tool
+    attributes:
+      label: Tool name
+    validations:
+      required: true
+  - type: dropdown
+    id: source
+    attributes:
+      label: Is it in the official Kali repo?
+      options:
+        - "Yes — listed on kali.org/tools"
+        - "No — external (pip/go/release)"
+    validations:
+      required: true
+  - type: input
+    id: domain
+    attributes:
+      label: Which domain reference fits best?
+      placeholder: "e.g. 03-web-testing, 11-forensics"
+  - type: textarea
+    id: why
+    attributes:
+      label: Why it deserves an entry
+      description: What job it does better than the tools already documented
+    validations:
+      required: true
+  - type: textarea
+    id: usage
+    attributes:
+      label: Verified usage example (optional)
+      render: bash

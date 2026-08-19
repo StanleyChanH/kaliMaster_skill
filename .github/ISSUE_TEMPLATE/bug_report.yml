@@ -1,0 +1,45 @@
+name: Bug report
+description: A documented command is wrong or fails on current Kali
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! Commands go stale as upstream CLIs change —
+        precise reports get fixed fast.
+  - type: input
+    id: file
+    attributes:
+      label: File & line
+      placeholder: "references/05-passwords.md, line 214"
+    validations:
+      required: true
+  - type: textarea
+    id: command
+    attributes:
+      label: The documented command
+      render: bash
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What actually happens
+      description: Error output, or the corrected semantics
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: fixed
+    attributes:
+      label: Correct command (if known)
+      placeholder: "verified against upstream README / -h output"
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      placeholder: |
+        Kali version: cat /etc/os-release
+        Tool version: <tool> --version
+    validations:
+      required: true

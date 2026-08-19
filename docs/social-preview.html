@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1280px; height: 640px; overflow: hidden;
+    font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #0d1117;
+    background-image:
+      radial-gradient(ellipse 900px 500px at 85% 15%, rgba(56,139,253,.14), transparent 60%),
+      radial-gradient(ellipse 700px 400px at 10% 90%, rgba(63,185,80,.08), transparent 60%);
+    color: #e6edf3;
+    display: flex; align-items: center;
+    padding: 0 72px;
+    position: relative;
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(240,246,252,.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,246,252,.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .left { width: 660px; z-index: 2; }
+  .kicker {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 21px; font-weight: 600; letter-spacing: .5px;
+    color: #58a6ff; margin-bottom: 22px;
+  }
+  .kicker .dot { width: 12px; height: 12px; border-radius: 50%; background: #3fb950; box-shadow: 0 0 12px #3fb950; }
+  h1 { font-size: 88px; font-weight: 800; letter-spacing: -1.5px; line-height: 1.02; }
+  h1 .accent { color: #58a6ff; }
+  .tagline { font-size: 30px; color: #9198a1; margin-top: 18px; line-height: 1.4; }
+  .badges { display: flex; gap: 14px; margin-top: 40px; }
+  .badge {
+    font-size: 22px; font-weight: 700; padding: 12px 22px; border-radius: 12px;
+    border: 1px solid rgba(240,246,252,.14); background: rgba(240,246,252,.05);
+  }
+  .badge b { color: #3fb950; }
+  .badge.b1 b { color: #58a6ff; }
+  .badge.b2 b { color: #d29922; }
+  .badge.b3 b { color: #f778ba; }
+  .term {
+    position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
+    width: 440px; z-index: 2;
+    background: #161b22; border: 1px solid rgba(240,246,252,.12);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 24px 60px rgba(0,0,0,.5);
+  }
+  .term-bar {
+    height: 40px; background: #21262d; display: flex; align-items: center;
+    padding: 0 16px; gap: 8px;
+  }
+  .term-bar i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+  .term-bar i:nth-child(1){background:#ff5f57}.term-bar i:nth-child(2){background:#febc2e}.term-bar i:nth-child(3){background:#28c840}
+  .term-bar span { margin-left: 10px; font-size: 15px; color: #8b949e; font-family: Consolas, monospace; }
+  .term-body { padding: 20px 20px 24px; font-family: Consolas, "Courier New", monospace; font-size: 17px; line-height: 1.75; }
+  .u { color: #f778ba; }
+  .c { color: #79c0ff; }
+  .o { color: #a5d6ff; }
+  .g { color: #3fb950; }
+  .cursor { display:inline-block; width:10px; height:20px; background:#3fb950; vertical-align:-3px; }
+  .footer {
+    position: absolute; left: 72px; bottom: 44px; z-index: 2;
+    font-size: 20px; color: #6e7681; letter-spacing: .3px;
+  }
+  .footer b { color: #9198a1; font-weight: 600; }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="left">
+    <div class="kicker"><span class="dot"></span>Claude Code Skill</div>
+    <h1>kali<span class="accent">-master</span></h1>
+    <div class="tagline">470+ Kali Linux tools, one command away</div>
+    <div class="badges">
+      <div class="badge b1"><b>470+</b> tools</div>
+      <div class="badge"><b>13</b> domains</div>
+      <div class="badge b2"><b>3</b> playbooks</div>
+      <div class="badge b3"><b>61</b> fixes</div>
+    </div>
+  </div>
+  <div class="term">
+    <div class="term-bar"><i></i><i></i><i></i><span>claude — kali</span></div>
+    <div class="term-body">
+      <div><span class="u">❯</span> <span class="c">full scan on 10.10.10.5</span></div>
+      <div class="o">→ nmap -sV -sC -p- -oA scan</div>
+      <div class="g">✓ 22/tcp  ssh   OpenSSH 8.4</div>
+      <div class="g">✓ 80/tcp  http  nginx 1.18</div>
+      <div class="g">✓ 445/tcp smb   synology DSM</div>
+      <div><span class="u">❯</span> <span class="c">enumerate the web app</span></div>
+      <div class="o">→ ffuf -w common.txt -mc 200,301</div>
+      <div class="g">✓ /admin  /backup  /.git<span class="cursor"></span></div>
+    </div>
+  </div>
+  <div class="footer">github.com/<b>StanleyChanH</b>/kaliMaster_skill · MIT</div>
+</body>
+</html>

@@ -4,7 +4,7 @@
 
 [![English](https://img.shields.io/badge/README-English-blue)](README.md) [![简体中文](https://img.shields.io/badge/README-简体中文-red)](README.zh-CN.md)
 
-![CI](https://img.shields.io/github/actions/workflow/status/StanleyChanH/kaliMaster_skill/ci.yml?branch=main) ![tools](https://img.shields.io/badge/tools-470+-blue) ![references](https://img.shields.io/badge/references-13_domains-green) ![workflows](https://img.shields.io/badge/workflows-3_playbooks-orange) ![verified](https://img.shields.io/badge/commands-61_fixes_applied-brightgreen) ![license](https://img.shields.io/badge/license-MIT-lightgrey)
+![CI](https://img.shields.io/github/actions/workflow/status/StanleyChanH/kaliMaster_skill/ci.yml?branch=main) ![tools](https://img.shields.io/badge/tools-470+-blue) ![references](https://img.shields.io/badge/references-13_domains-green) ![workflows](https://img.shields.io/badge/workflows-3_playbooks-orange) ![snapshot](https://img.shields.io/badge/data_snapshot-2026--08-informational) ![license](https://img.shields.io/badge/license-MIT-lightgrey)
 
 - **470+ 工具全覆盖**:数据逐页抓取自 [kali.org/tools](https://www.kali.org/tools/) 官方文档(16 个 ATT&CK 战术分类、337 条官方用法示例、完整 apt 安装信息)
 - **13 个领域参考**:侦察 / 扫描 / Web / 利用 / 密码 / 无线 / MITM / AD 内网 / 隧道 / 提权 / 取证 / 逆向 / 报告
