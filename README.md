@@ -1,87 +1,89 @@
 # kali-master
 
-**Kali Linux 渗透测试 Skill for Claude Code** —— 让 Claude Code 在渗透测试、CTF、漏洞评估任务中**选对工具、给出准确命令、按标准流程推进**。
+**Kali Linux Penetration Testing Skill for Claude Code** — lets Claude Code *pick the right tool, produce accurate commands, and follow standard methodology* across pentest, CTF, and vulnerability assessment work.
+
+[![English](https://img.shields.io/badge/README-English-blue)](README.md) [![简体中文](https://img.shields.io/badge/README-简体中文-red)](README.zh-CN.md)
 
 ![tools](https://img.shields.io/badge/tools-470+-blue) ![references](https://img.shields.io/badge/references-13_domains-green) ![workflows](https://img.shields.io/badge/workflows-3_playbooks-orange) ![verified](https://img.shields.io/badge/commands-61_fixes_applied-brightgreen) ![license](https://img.shields.io/badge/license-MIT-lightgrey)
 
-- **470+ 工具全覆盖**:数据逐页抓取自 [kali.org/tools](https://www.kali.org/tools/) 官方文档(16 个 ATT&CK 战术分类、337 条官方用法示例、完整 apt 安装信息)
-- **13 个领域参考**:侦察 / 扫描 / Web / 利用 / 密码 / 无线 / MITM / AD 内网 / 隧道 / 提权 / 取证 / 逆向 / 报告
-- **3 套实战 playbook**:授权渗透全流程、CTF 分题型手册、合规漏洞评估
-- **渐进式加载**:入口仅 158 行常驻上下文,参考文档按任务路由按需读取,不影响普通编码任务的 token 开销
-- **合规内建**:授权确认门(书面授权 / CTF / 自有资产 / 防御研究)是每次主动操作的先决步骤
+- **Full coverage of 470+ tools** — data scraped page-by-page from the official [kali.org/tools](https://www.kali.org/tools/) documentation (16 MITRE ATT&CK tactic categories, 337 official usage examples, complete apt install info)
+- **13 domain references** — Recon / Scanning / Web / Exploitation / Passwords / Wireless / MITM / AD & Windows intranet / Tunneling / Privilege escalation / Forensics / Reversing / Reporting
+- **3 workflow playbooks** — full authorized pentest engagement, CTF by category, and compliance-focused vulnerability assessment
+- **Progressive loading** — the entry file is only ~160 lines resident in context; domain references load on demand per task, so ordinary coding tasks pay no token overhead
+- **Compliance built-in** — an authorization gate (written authorization / CTF / own assets / defensive research) precedes every offensive action
 
-## 安装
+## Installation
 
 ```bash
-# 用户级(所有项目可用,推荐)
-git clone https://github.com/StanleyChanH/kali-master-skill.git
+# User-level (available in all projects, recommended)
+git clone https://github.com/StanleyChanH/kaliMaster_skill.git
 mkdir -p ~/.claude/skills
-cp -r kali-master-skill/kali-master ~/.claude/skills/
+cp -r kaliMaster_skill/kali-master ~/.claude/skills/
 
-# 或项目级(仅当前项目)
-mkdir -p .claude/skills && cp -r kali-master-skill/kali-master .claude/skills/
+# Or project-level (current project only)
+mkdir -p .claude/skills && cp -r kaliMaster_skill/kali-master .claude/skills/
 ```
 
-安装后重启 Claude Code 或新开会话即自动生效。
+Restart Claude Code (or open a new session) and the skill activates automatically.
 
-## 快速上手
+## Quick Start
 
-安装后直接用自然语言,skill 会按任务自动路由到对应领域参考:
+After installation, just talk naturally — the skill routes to the right domain reference per task:
 
-| 你说 | Claude 会做 |
+| You say | Claude does |
 |---|---|
-| "对 10.10.10.5 做全面端口和服务扫描" | nmap/masscan 组合 + `-oA` 落盘 + 结果解读 |
-| "这个 HTB 靶机开了 80 端口,帮我枚举" | whatweb/ffuf/nikto 链路 + CMS 识别 |
-| "用 hashcat 破解这个 NTLM hash" | 识别模式 1000 → rockyou → 后台跑 + 进度查看 |
-| "CTF 给了个 pcap" | tshark 过滤器套路 + 流提取 + 凭据嗅探 |
-| "拿到 shell 了,怎么提权" | linpeas/winpeas 流程 + SUID/cron 检查清单 |
-| "已知一组域凭据,下一步" | nxc 验证 → impacket 横向 → BloodHound 路径分析 |
+| "Run a full port and service scan on 10.10.10.5" | nmap/masscan combo, `-oA` output files, result interpretation |
+| "This HTB box has port 80 open, enumerate it" | whatweb → ffuf → nikto chain + CMS fingerprinting |
+| "Crack this NTLM hash with hashcat" | identify mode 1000 → rockyou → background run + progress |
+| "CTF gave me a pcap" | tshark filter patterns + stream extraction + credential sniffing |
+| "Got a shell, how do I escalate?" | linpeas/winpeas flow + SUID/cron checklists |
+| "I have a set of domain creds, what next?" | nxc validation → impacket lateral movement → BloodHound path analysis |
 
-## 结构
+## Structure
 
 ```
-kali-master/                    # skill 本体(复制这个目录)
-├── SKILL.md                    # 入口:授权确认 → 环境检测 → 任务路由 → 执行原则
-├── references/                 # 领域详解(按需加载)
-│   ├── 01-recon.md             # 侦察/OSINT · theHarvester amass subfinder sherlock…
-│   ├── 02-scanning.md          # 扫描 · nmap masscan autorecon enum4linux OpenVAS…
+kali-master/                    # the skill itself (copy this directory)
+├── SKILL.md                    # entry: auth gate → env check → task routing → principles
+├── references/                 # domain deep-dives (loaded on demand)
+│   ├── 01-recon.md             # Recon/OSINT · theHarvester amass subfinder sherlock…
+│   ├── 02-scanning.md          # Scanning · nmap masscan autorecon enum4linux OpenVAS…
 │   ├── 03-web-testing.md       # Web · sqlmap ffuf nikto wpscan nuclei burpsuite…
-│   ├── 04-exploitation.md      # 利用 · metasploit msfvenom searchsploit veil…
-│   ├── 05-passwords.md         # 密码 · hashcat john hydra cewl seclists…
-│   ├── 06-wireless.md          # 无线 · aircrack-ng 套件 wifite reaver hackrf…
-│   ├── 07-network-attacks.md   # MITM/嗅探 · ettercap bettercap dsniff scapy…
-│   ├── 08-ad-windows.md        # AD/内网 · impacket netexec BloodHound responder…
-│   ├── 09-tunnels-c2.md        # 隧道 · chisel ligolo-ng sshuttle proxychains…
-│   ├── 10-privesc.md           # 提权 · linpeas winpeas pspy + 检查清单
-│   ├── 11-forensics.md         # 取证 · binwalk testdisk foremost steghide…
-│   ├── 12-reversing.md         # 逆向 · ghidra radare2 gdb+gef jadx…
-│   ├── 13-reporting-labs.md    # 报告/靶场 · dradis eyewitness DVWA juice-shop…
-│   └── tool-index.md           # 470 工具全量索引(Grep 检索)
+│   ├── 04-exploitation.md      # Exploitation · metasploit msfvenom searchsploit veil…
+│   ├── 05-passwords.md         # Passwords · hashcat john hydra cewl seclists…
+│   ├── 06-wireless.md          # Wireless · aircrack-ng suite wifite reaver hackrf…
+│   ├── 07-network-attacks.md   # MITM/sniffing · ettercap bettercap dsniff scapy…
+│   ├── 08-ad-windows.md        # AD/intranet · impacket netexec BloodHound responder…
+│   ├── 09-tunnels-c2.md        # Tunneling · chisel ligolo-ng sshuttle proxychains…
+│   ├── 10-privesc.md           # Privesc · linpeas winpeas pspy + checklists
+│   ├── 11-forensics.md         # Forensics · binwalk testdisk foremost steghide…
+│   ├── 12-reversing.md         # Reversing · ghidra radare2 gdb+gef jadx…
+│   ├── 13-reporting-labs.md    # Reporting/labs · dradis eyewitness DVWA juice-shop…
+│   └── tool-index.md           # full index of all 470 tools (grep it, don't read it)
 ├── workflows/
-│   ├── pentest-engagement.md   # 标准授权渗透测试全流程
-│   ├── ctf.md                  # CTF 解题手册(Web/Pwn/Rev/Crypto/Forensics/Misc)
-│   └── vuln-assessment.md      # 合规漏洞评估(只验证不利用)
+│   ├── pentest-engagement.md   # standard authorized pentest methodology
+│   ├── ctf.md                  # CTF playbook (Web/Pwn/Rev/Crypto/Forensics/Misc)
+│   └── vuln-assessment.md      # compliance-focused vuln assessment (verify, don't exploit)
 └── scripts/
-    └── env-check.sh            # 环境与工具可用性自检
+    └── env-check.sh            # environment & tool availability self-check
 
-build/                          # 数据构建与质检管线(可选,见 build/README.md)
+build/                          # data build & QA pipeline (optional, see build/README.md)
 ```
 
-## 质量保障
+## Quality Assurance
 
-1. **数据真实性**:所有工具条目源自 kali.org 官方页面抓取解析(非模型记忆)
-2. **独立验证**:16 份文档逐一经独立验证 agent 审查(命令参数真实性抽查、分片覆盖率核对)
-3. **修复闭环**:验证发现的 61 处命令错误(过期参数、张冠李戴的选项、CLI 版本变更等)全部修复
-4. **可回归质检**:`python build/integrity_check.py` 一键体检(结构/引用/覆盖/语法)
+1. **Authentic data** — every tool entry comes from scraped official kali.org pages, not model memory
+2. **Independent verification** — all 16 documents were reviewed by independent verifier agents (command/flag authenticity spot-checks, shard coverage cross-checks)
+3. **Closed-loop fixes** — all 61 command errors found during verification (outdated flags, swapped options, CLI breaking changes) were applied and re-checked
+4. **Repeatable QA** — `python build/integrity_check.py` runs a full health check (structure / references / coverage / syntax)
 
-## 维护
+## Maintenance
 
-数据与索引可从官网全量重建,见 [build/README.md](build/README.md)。
+Data and the tool index can be rebuilt from the official site — see [build/README.md](build/README.md).
 
-## 合规声明
+## Legal / Compliance
 
-本 skill 面向**已获授权**的渗透测试、CTF 竞赛、靶场练习与安全教学。SKILL.md 内置授权确认门,针对未授权第三方目标的请求会被拒绝。使用者应始终确保操作在书面授权范围内进行。
+This skill is intended for **authorized** penetration testing, CTF competitions, lab practice, and security education. SKILL.md contains a built-in authorization gate; requests targeting unauthorized third-party systems are refused. Always ensure your actions stay within written authorization.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE) © 2026 StanleyChanH
