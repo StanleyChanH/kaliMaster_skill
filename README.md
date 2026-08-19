@@ -12,6 +12,8 @@
 - **Progressive loading** — the entry file is only ~160 lines resident in context; domain references load on demand per task, so ordinary coding tasks pay no token overhead
 - **Compliance built-in** — an authorization gate (written authorization / CTF / own assets / defensive research) precedes every offensive action
 
+> **Note**: the domain references and playbooks are written in Chinese; all commands, flags, and tool names are universal. English translations are welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Installation
 
 ```bash
