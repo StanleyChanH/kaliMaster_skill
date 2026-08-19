@@ -17,13 +17,15 @@
 ## Installation
 
 ```bash
-# User-level (available in all projects, recommended)
-git clone https://github.com/StanleyChanH/kaliMaster_skill.git
+# One-liner (clone + install user-level)
+git clone https://github.com/StanleyChanH/kaliMaster_skill.git && bash kaliMaster_skill/install.sh
+
+# Or manually:
 mkdir -p ~/.claude/skills
 cp -r kaliMaster_skill/kali-master ~/.claude/skills/
 
 # Or project-level (current project only)
-mkdir -p .claude/skills && cp -r kaliMaster_skill/kali-master .claude/skills/
+bash install.sh --project
 ```
 
 Restart Claude Code (or open a new session) and the skill activates automatically.
@@ -80,7 +82,11 @@ build/                          # data build & QA pipeline (optional, see build/
 
 ## Maintenance
 
-Data and the tool index can be rebuilt from the official site — see [build/README.md](build/README.md).
+Data and the tool index can be rebuilt from the official site — see [build/README.md](build/README.md). A monthly GitHub Action re-scrapes kali.org and opens a refresh PR automatically.
+
+## Contributing
+
+**13 `good first issue` i18n tasks are open** — translating the domain references to English, one file each. Commands stay byte-identical; only prose is translated. Start at the [tracking issue #14](https://github.com/StanleyChanH/kaliMaster_skill/issues/14), or fix a stale command via the bug report template. See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Legal / Compliance
 

@@ -64,12 +64,10 @@ command -v nmap && nmap --version | head -1
 | 报告/证据/靶场环境 | `references/13-reporting-labs.md` | dradis, cherrytree, eyewitness, DVWA/juice-shop 启动… |
 | **查某个具体工具**(不确定属于哪类) | `references/tool-index.md` | 470 工具全量索引(用 Grep 查找,勿全读) |
 
-**查找具体工具的推荐方式**:
+**查找具体工具的推荐方式**(索引约 2.4 万行,**永远用 Grep 工具检索,不要整读**):
 
-```bash
-# 在索引中搜工具名或关键词(文件 2.4 万行,永远用 grep 而不是全读)
-grep -i "smb" references/tool-index.md | head -20
-```
+- 用 Grep 工具搜索本 skill 目录下 `references/tool-index.md`,pattern 传工具名或关键词(如 `smb`、`kerberoast`),`output_mode: content` + `head_limit: 20`
+- 索引每行含:工具名 | 用途摘要 | 安装命令;命中后进入该行所在领域分组对应的参考文件深挖
 
 ## 第 3 步:套用标准工作流(多阶段任务)
 

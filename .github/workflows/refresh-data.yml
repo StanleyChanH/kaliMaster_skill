@@ -1,0 +1,64 @@
+name: Refresh data from kali.org
+
+# Monthly: re-scrape kali.org/tools, rebuild derived data + tool index,
+# and open a PR when anything changed. Keeps the "data snapshot" badge honest.
+on:
+  schedule:
+    - cron: '17 3 1 * *'   # 1st of each month, off the :00 mark
+  workflow_dispatch:        # manual trigger from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Fetch + rebuild
+        run: |
+          cd build
+          python fetch_pages.py
+          python parse_pages.py
+          python split_shards.py
+          python gen_index.py
+
+      - name: Integrity check
+        run: python build/integrity_check.py
+
+      - name: Detect changes
+        id: diff
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create refresh PR
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          BRANCH="data/refresh-$(date +%Y-%m)"
+          git checkout -b "$BRANCH"
+          git add build/data kali-master/references/tool-index.md
+          git commit -m "data: refresh from kali.org ($(date +%Y-%m))"
+          git push origin "$BRANCH"
+          gh pr create \
+            --title "data: refresh from kali.org ($(date +%Y-%m))" \
+            --body "Automated monthly re-scrape of [kali.org/tools](https://www.kali.org/tools/).
+
+          Review focus:
+          - new tools appearing in \`tool-index.md\`
+          - shard diffs that hint at upstream description changes
+
+          After merge, update the \`data_snapshot\` badge in both READMEs."
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

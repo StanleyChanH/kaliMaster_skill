@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If this skill helps your authorized security work, cite it as below."
+title: kali-master — Kali Linux pentest skill for Claude Code
+type: software
+authors:
+  - name: StanleyChanH
+repository-code: "https://github.com/StanleyChanH/kaliMaster_skill"
+url: "https://github.com/StanleyChanH/kaliMaster_skill"
+abstract: >-
+  A Claude Code skill covering 470+ Kali Linux tools across 13 domain
+  references and 3 workflow playbooks, built from official kali.org data
+  for authorized penetration testing, CTF, and vulnerability assessment.
+keywords:
+  - penetration-testing
+  - kali-linux
+  - claude-code
+  - security
+  - ctf
+license: MIT

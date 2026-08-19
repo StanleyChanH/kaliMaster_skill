@@ -15,13 +15,15 @@
 ## 安装
 
 ```bash
-# 用户级(所有项目可用,推荐)
-git clone https://github.com/StanleyChanH/kaliMaster_skill.git
+# 一行安装(clone + 装到用户级)
+git clone https://github.com/StanleyChanH/kaliMaster_skill.git && bash kaliMaster_skill/install.sh
+
+# 或手动:
 mkdir -p ~/.claude/skills
 cp -r kaliMaster_skill/kali-master ~/.claude/skills/
 
 # 或项目级(仅当前项目)
-mkdir -p .claude/skills && cp -r kaliMaster_skill/kali-master .claude/skills/
+bash install.sh --project
 ```
 
 安装后重启 Claude Code 或新开会话即自动生效。
@@ -78,7 +80,11 @@ build/                          # 数据构建与质检管线(可选,见 build/R
 
 ## 维护
 
-数据与索引可从官网全量重建,见 [build/README.md](build/README.md)。
+数据与索引可从官网全量重建,见 [build/README.md](build/README.md);月度 GitHub Action 会自动重抓 kali.org 并开刷新 PR。
+
+## 贡献
+
+**13 个 `good first issue` 翻译任务开放中** — 参考文档英文化,一文件一题,命令保持字节不变、只译散文。从[跟踪 issue #14](https://github.com/StanleyChanH/kaliMaster_skill/issues/14) 领取,或通过 bug 模板纠错过期命令。详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ## 合规声明
 
