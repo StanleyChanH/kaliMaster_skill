@@ -64,7 +64,7 @@ command -v nmap && nmap --version | head -1
 | 报告/证据/靶场环境 | `references/13-reporting-labs.md` | dradis, cherrytree, eyewitness, DVWA/juice-shop 启动… |
 | **查某个具体工具**(不确定属于哪类) | `references/tool-index.md` | 470 工具全量索引(用 Grep 查找,勿全读) |
 
-**查找具体工具的推荐方式**(索引约 2.4 万行,**永远用 Grep 工具检索,不要整读**):
+**查找具体工具的推荐方式**(索引约 540 行、470 工具,**优先用 Grep 工具检索,不要整读**):
 
 - 用 Grep 工具搜索本 skill 目录下 `references/tool-index.md`,pattern 传工具名或关键词(如 `smb`、`kerberoast`),`output_mode: content` + `head_limit: 20`
 - 索引每行含:工具名 | 用途摘要 | 安装命令;命中后进入该行所在领域分组对应的参考文件深挖
@@ -129,7 +129,7 @@ python3 -c 'import pty; pty.spawn("/bin/bash")'
 
 ## 失败处理
 
-- **工具不存在**:`sudo apt install <包名>`;包名不确定时 grep `references/tool-index.md` 查安装列。
+- **工具不存在**:`sudo apt install <包名>`;包名不确定时用 Grep 工具检索 `references/tool-index.md`(pattern 传工具名,`output_mode: content`)查安装列。
 - **命令语法错误**:先 `<tool> -h | head -30` 看真实参数,不要凭记忆硬写。
 - **目标无响应**:检查路由/防火墙(`ping`、`traceroute`),确认 IP 范围是否授权。
 - **权限不足**:scapy/aircrack/原始套接字类必须 root;WSL 下无线/原始包不可用,换 Kali VM。

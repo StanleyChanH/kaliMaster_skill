@@ -22,12 +22,16 @@ jobs:
 
       - name: Verify tool-index install commands
         run: |
-          # every index row must carry an apt install command or an explicit dash
+          # every index row must carry an apt install command or an explicit dash,
+          # and each tool must appear exactly once (no duplicated sections)
           python - << 'EOF'
           import re, sys, pathlib
           idx = pathlib.Path('kali-master/references/tool-index.md').read_text(encoding='utf-8')
           rows = [l for l in idx.splitlines() if l.startswith('| `')]
+          names = [l.split('`')[1] for l in rows]
+          assert len(names) == len(set(names)), f'duplicate tool rows: {len(names) - len(set(names))}'
+          sections = len(re.findall(r'^## ', idx, re.M))
+          print(f'{len(rows)} unique index rows, {sections} domain sections')
           bad = [l for l in rows if 'apt install' not in l and not l.rstrip().endswith('| — |')]
-          print(f'{len(rows)} index rows checked, {len(bad)} malformed')
           sys.exit(1 if bad else 0)
           EOF

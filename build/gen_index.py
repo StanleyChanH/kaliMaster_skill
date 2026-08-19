@@ -32,7 +32,7 @@ lines = [
     '',
 ]
 
-for dom in sorted(tool_domain.values(), key=lambda d: list(DOMAIN_CN).index(d) if d in DOMAIN_CN else 99):
+for dom in sorted(set(tool_domain.values()), key=lambda d: list(DOMAIN_CN).index(d) if d in DOMAIN_CN else 99):
     tools = sorted([t for t, d in tool_domain.items() if d == dom])
     lines.append(f'## {DOMAIN_CN.get(dom, dom)}({dom})— {len(tools)} 个')
     lines.append('')

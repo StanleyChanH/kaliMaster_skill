@@ -48,9 +48,11 @@ jobs:
         run: |
           BRANCH="data/refresh-$(date +%Y-%m)"
           git checkout -b "$BRANCH"
-          git add build/data kali-master/references/tool-index.md
+          git add build/data/tools_raw_list.json build/data/tools_parsed.json build/data/shards kali-master/references/tool-index.md
           git commit -m "data: refresh from kali.org ($(date +%Y-%m))"
-          git push origin "$BRANCH"
+          # branch name is fixed per month; force-push makes reruns idempotent
+          # (branch is fully regenerated from a fresh checkout, so this is safe)
+          git push --force origin "$BRANCH"
           gh pr create \
             --title "data: refresh from kali.org ($(date +%Y-%m))" \
             --body "Automated monthly re-scrape of [kali.org/tools](https://www.kali.org/tools/).
@@ -59,6 +61,7 @@ jobs:
           - new tools appearing in \`tool-index.md\`
           - shard diffs that hint at upstream description changes
 
-          After merge, update the \`data_snapshot\` badge in both READMEs."
+          After merge, update the \`data_snapshot\` badge in both READMEs." \
+            || echo "PR for $BRANCH already open; branch force-pushed with fresh data instead"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

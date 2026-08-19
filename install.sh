@@ -18,7 +18,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC="$SCRIPT_DIR/kali-master"
 
 if [ ! -f "$SRC/SKILL.md" ]; then
-  echo "error: $SRC/SKILL.md not found — run this script from the repo root" >&2
+  echo "error: $SRC/SKILL.md not found — this script must sit next to the kali-master/ directory (repo root)" >&2
   exit 1
 fi
 

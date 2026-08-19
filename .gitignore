@@ -5,8 +5,9 @@
 __pycache__/
 *.pyc
 
-# Fetched raw pages (regenerable via build/fetch_pages.py)
+# Fetched raw pages & transient fetch report (regenerable via build/fetch_pages.py)
 build/data/pages/
+build/data/fetch_results.json
 
 # OS / editor
 .DS_Store

@@ -93,8 +93,13 @@ for f in (HERE/'data'/'shards').glob('*.json'):
     expected.update(json.loads(f.read_text(encoding='utf-8')).keys())
 idx = (SRC/'references'/'tool-index.md').read_text(encoding='utf-8')
 missing = [t for t in expected if f'`{t}`' not in idx]
-print(f'[7] tool-index coverage: {len(expected)-len(missing)}/{len(expected)}', 'OK' if not missing else missing[:10])
+row_names = [l.split('`')[1] for l in idx.splitlines() if l.startswith('| `')]
+dupes = len(row_names) - len(set(row_names))
+sections = len(re.findall(r'^## ', idx, re.M))
+print(f'[7] tool-index: {len(set(row_names))}/{len(expected)} tools, dupes={dupes}, sections={sections}')
 if missing: issues.append(f'index missing tools: {missing}')
+if dupes: issues.append(f'index has {dupes} duplicated tool rows (generator regression?)')
+if sections != 13: issues.append(f'index has {sections} domain sections, expected 13')
 
 # ===== 8. env-check.sh syntax (git-bash if available, else bash) =====
 bash = None
