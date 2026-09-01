@@ -117,7 +117,7 @@
     "binary": "airgeddon",
     "desc": "Multi-use bash script for Linux systems to audit wireless networks airgeddon is a menu driven 3rd party tools wrapper to audit wireless networks with many features.",
     "install": "airgeddon",
-    "size": "5.06 MB"
+    "size": "5.07 MB"
    }
   ],
   "attack_category": "Credential Access"
@@ -375,7 +375,7 @@
     "binary": "gnuradio",
     "desc": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
     "install": "gnuradio",
-    "size": "24.26 MB"
+    "size": "24.31 MB"
    },
    {
     "binary": "gnuradio-dev",
@@ -489,7 +489,7 @@
     "binary": "libgnuradio-trellis3.10.12",
     "desc": "Gnuradio trellis modulation functions Library for trellis coding modulation, including the Viterbi Algorithm, Concatenated Coding and Turbo Decoding based upon finite state machine (FSM) class. Part of the main gnuradio build.",
     "install": "libgnuradio-trellis3.10.12",
-    "size": "969 KB"
+    "size": "965 KB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -504,7 +504,7 @@
     "binary": "gnuradio",
     "desc": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
     "install": "gnuradio",
-    "size": "24.26 MB"
+    "size": "24.31 MB"
    },
    {
     "binary": "gnuradio-dev",
@@ -618,7 +618,7 @@
     "binary": "libgnuradio-trellis3.10.12",
     "desc": "Gnuradio trellis modulation functions Library for trellis coding modulation, including the Viterbi Algorithm, Concatenated Coding and Turbo Decoding based upon finite state machine (FSM) class. Part of the main gnuradio build.",
     "install": "libgnuradio-trellis3.10.12",
-    "size": "969 KB"
+    "size": "965 KB"
    }
   ],
   "attack_category": "Reconnaissance"

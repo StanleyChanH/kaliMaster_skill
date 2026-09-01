@@ -9,7 +9,7 @@
     "binary": "azurehound",
     "desc": "BloodHound data collector for Microsoft Azure (program) This package contains the BloodHound data collector for Microsoft Azure. root@kali:~# azurehound -h The official tool for collecting Azure data for BloodHound and BloodHound Enterprise Usage: azurehound [command] Available Commands: completion Generate the autocompletion script for the specified shell configure Configure AzureHound help Help about any command list Lists Azure Objects start Start Azure data collection service for BloodHound Enterprise Flags: -c, --config string AzureHound configuration file (default: /root/.config/azurehou",
     "install": "azurehound",
-    "size": "12.94 MB"
+    "size": "13.05 MB"
    }
   ],
   "attack_category": "Discovery"
@@ -54,7 +54,7 @@
     "binary": "bloodhound",
     "desc": "Six Degrees of Domain Admin, BloodHound CE This package contains BloodHound Community Edition, a single page Javascript web application. BloodHound uses graph theory to reveal the hidden and often unintended relationships within an Active Directory environment. Attackers can use BloodHound to easily identify highly complex attack paths that would otherwise be impossible to quickly identify. Defenders can use BloodHound to identify and eliminate those same attack paths. Both blue and red teams can use BloodHound to easily gain a deeper understanding of privilege relationships in an Active Direc",
     "install": "bloodhound",
-    "size": "281.25 MB"
+    "size": "345.26 MB"
    }
   ],
   "attack_category": "Discovery"
@@ -69,7 +69,7 @@
     "binary": "bloodyad",
     "desc": "Active Directory privilege escalation framework bloodyAD can perform specific LDAP calls to a domain controller in order to perform AD privesc. It supports authentication using cleartext passwords, pass-the-hash, pass-the-ticket or certificates and binds to LDAP services of a domain controller to perform AD privesc. Exchange of sensitive information without LDAPS is supported. It is also designed to be used transparently with a SOCKS proxy.",
     "install": "bloodyad",
-    "size": "49.50 MB"
+    "size": "54.80 MB"
    }
   ],
   "attack_category": "Privilege Escalation"
@@ -304,7 +304,7 @@
     "binary": "powershell-empire",
     "desc": "PowerShell and Python post-exploitation agent This package contains a post-exploitation framework that includes a pure-PowerShell2.0 Windows agent, and a pure Python Linux/OS X agent. It is the merge of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and a flexible architecture. On the PowerShell side, Empire implements the ability to run PowerShell agents without needing powershell.exe, rapidly deployable post-exploitation modules ranging from key loggers to Mimikatz, and adaptable communications to evade network detection,",
     "install": "powershell-empire",
-    "size": "49.87 MB"
+    "size": "50.34 MB"
    }
   ],
   "attack_category": "Command and Control"
@@ -460,7 +460,7 @@
     "binary": "freerdp-sdl",
     "desc": "RDP client for Windows Terminal Services (SDL client) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the SDL based client.",
     "install": "freerdp-sdl",
-    "size": "864 KB"
+    "size": "872 KB"
    },
    {
     "binary": "freerdp-shadow-x11",
@@ -478,55 +478,55 @@
     "binary": "freerdp-x11",
     "desc": "RDP client for Windows Terminal Services (X11 client) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the X11 based client.",
     "install": "freerdp-x11",
-    "size": "784 KB"
+    "size": "780 KB"
    },
    {
     "binary": "freerdp3-dev",
     "desc": "Free Remote Desktop Protocol library (development files) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the FreeRDP development files.",
     "install": "freerdp3-dev",
-    "size": "1.18 MB"
+    "size": "1.25 MB"
    },
    {
     "binary": "freerdp3-proxy",
     "desc": "FreeRDP proxy server (transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-proxy (freerdp-proxy3 binary) to freerdp-proxy (freerdp-proxy binary).",
     "install": "freerdp3-proxy",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "freerdp3-proxy-modules",
     "desc": "FreeRDP Remote Desktop Protocol proxy module libraries (transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package is used to transition from freerdp3-proxy-modules to freerdp-proxy-modules.",
     "install": "freerdp3-proxy-modules",
-    "size": "172 KB"
+    "size": "179 KB"
    },
    {
     "binary": "freerdp3-sdl",
     "desc": "RDP client for Windows Terminal Services (SDL client transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-sdl (sdl-freerdp3 binary) to freerdp-sdl (sdl-freerdp binary).",
     "install": "freerdp3-sdl",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "freerdp3-shadow-x11",
     "desc": "FreeRDP x11 shadowing server (transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-shadow-x11 (freerdp-shadow-cli3 binary) to freerdp-shadow-x11 (freerdp-shadow-cli binary).",
     "install": "freerdp3-shadow-x11",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "freerdp3-wayland",
     "desc": "RDP client for Windows Terminal Services (wayland client transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-wayland (wlfreerdp3 binary) to freerdp-wayland (wlfreerdp binary).",
     "install": "freerdp3-wayland",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "freerdp3-x11",
     "desc": "RDP client for Windows Terminal Services (X11 client tramsitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-x11 (xfreerdp3 binary) to freerdp-x11 (xfreerdp binary).",
     "install": "freerdp3-x11",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "libfreerdp-client3-3",
     "desc": "Free Remote Desktop Protocol library (client library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library for common client functionality.",
     "install": "libfreerdp-client3-3",
-    "size": "810 KB"
+    "size": "819 KB"
    },
    {
     "binary": "libfreerdp-server-proxy3-3",
@@ -538,7 +538,7 @@
     "binary": "libfreerdp-server3-3",
     "desc": "Free Remote Desktop Protocol library (server library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library with common server functionality.",
     "install": "libfreerdp-server3-3",
-    "size": "288 KB"
+    "size": "312 KB"
    },
    {
     "binary": "libfreerdp-shadow-subsystem3-3",
@@ -556,7 +556,7 @@
     "binary": "libfreerdp3-3",
     "desc": "Free Remote Desktop Protocol library (core library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library with all core functionality.",
     "install": "libfreerdp3-3",
-    "size": "2.15 MB"
+    "size": "2.20 MB"
    },
    {
     "binary": "libwinpr-tools3-3",

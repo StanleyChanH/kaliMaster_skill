@@ -103,13 +103,13 @@
     "binary": "libcapstone-dev",
     "desc": "Lightweight multi-architecture disassembly framework - devel files Capstone is a lightweight multi-platform, multi-architecture disassembly framework. These are the development headers and libraries.",
     "install": "libcapstone-dev",
-    "size": "10.74 MB"
+    "size": "10.75 MB"
    },
    {
     "binary": "libcapstone5",
     "desc": "Lightweight multi-architecture disassembly framework - library Capstone is a lightweight multi-platform, multi-architecture disassembly framework. Features:",
     "install": "libcapstone5",
-    "size": "8.93 MB"
+    "size": "8.94 MB"
    },
    {
     "binary": "python3-capstone",
@@ -130,13 +130,13 @@
     "binary": "librizin-cutter-dev",
     "desc": "Development files to build cutter plugins These files can be used to build cutter plugins and integrate such plugin into the Cutter GUI.",
     "install": "librizin-cutter-dev",
-    "size": "497 KB"
+    "size": "573 KB"
    },
    {
     "binary": "rizin-cutter",
-    "desc": "Reverse engineering platform powered by rizin Cutter is a free and open-source reverse engineering platform powered by rizin. It aims at being an advanced and customizable reverse engineering platform while keeping the user experience in mind. Cutter is created by reverse engineers for reverse engineers. Updated on: 2026-May-25",
+    "desc": "Reverse engineering platform powered by rizin Cutter is a free and open-source reverse engineering platform powered by rizin. It aims at being an advanced and customizable reverse engineering platform while keeping the user experience in mind. Cutter is created by reverse engineers for reverse engineers. Updated on: 2026-Aug-25",
     "install": "rizin-cutter",
-    "size": "8.63 MB"
+    "size": "10.61 MB"
    }
   ],
   "attack_category": "Resource Development"
@@ -221,7 +221,7 @@
     "binary": "gdbserver",
     "desc": "GNU Debugger (remote server) GDB is a source-level debugger, capable of breaking programs at any specific line, displaying variable values, and determining where errors occurred. Currently, gdb supports C, C++, D, Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2, Go, and Ada. A must-have for any serious programmer. This package contains gdbserver. Install this to debug remotely from another system where GDB is installed.",
     "install": "gdbserver",
-    "size": "921 KB"
+    "size": "922 KB"
    }
   ],
   "attack_category": "Resource Development"
@@ -244,7 +244,7 @@
  "generic_chunked": {
   "tool": "generic_chunked",
   "title": "generic_chunked",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -263,7 +263,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }
@@ -273,7 +273,7 @@
  "generic_listen_tcp": {
   "tool": "generic_listen_tcp",
   "title": "generic_listen_tcp",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -292,7 +292,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }
@@ -302,7 +302,7 @@
  "generic_send_tcp": {
   "tool": "generic_send_tcp",
   "title": "generic_send_tcp",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -321,7 +321,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }
@@ -331,7 +331,7 @@
  "generic_send_udp": {
   "tool": "generic_send_udp",
   "title": "generic_send_udp",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -350,7 +350,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }
@@ -367,7 +367,7 @@
     "binary": "ghidra",
     "desc": "Software Reverse Engineering Framework This package contains a software reverse engineering (SRE) framework created and maintained by the National Security Agency Research Directorate. This framework includes a suite of full-featured, high-end software analysis tools that enable users to analyze compiled code on a variety of platforms including Windows, macOS, and Linux. Capabilities include disassembly, assembly, decompilation, graphing, and scripting, along with hundreds of other features. Ghidra supports a wide variety of processor instruction sets and executable formats and can be run in b",
     "install": "ghidra",
-    "size": "815.75 MB"
+    "size": "816.31 MB"
    }
   ],
   "attack_category": "Resource Development"
@@ -382,7 +382,7 @@
     "binary": "jadx",
     "desc": "Dex to Java decompiler This package contains a Dex to Java decompiler. It contains a command line and GUI tools for produce Java source code from Android Dex and Apk files. Main features: - decompile Dalvik bytecode to java classes from APK, dex, aar and zip files - decode AndroidManifest.xml and other resources from resources.arsc - deobfuscator included",
     "install": "jadx",
-    "size": "60.76 MB"
+    "size": "74.63 MB"
    }
   ],
   "attack_category": "Resource Development"
@@ -427,7 +427,7 @@
     "binary": "metasploit-framework",
     "desc": "Framework for exploit development and vulnerability research The Metasploit Framework is an open source platform that supports vulnerability research, exploit development, and the creation of custom security tools. root@kali:~# msf-egghunter -h Usage: msf-egghunter [options] Example: msf-egghunter -f python -e W00T Specific options: -f, --format <String> See --list-formats for a list of supported output formats -b, --badchars <String> (Optional) Bad characters to avoid for the egg -e, --egg <String> The egg (Please give 4 bytes) -p, --platform <String> (Optional) Platform --startreg <String> (",
     "install": "metasploit-framework",
-    "size": "580.18 MB"
+    "size": "597.47 MB"
    }
   ],
   "attack_category": "Resource Development"
@@ -435,12 +435,12 @@
  "olefile": {
   "tool": "olefile",
   "title": "olefile",
-  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.14.6 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> [",
   "usage": [],
   "packages": [
    {
     "binary": "oletools",
-    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.14.6 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> [",
     "install": "oletools",
     "size": "1.90 MB"
    }
@@ -450,12 +450,12 @@
  "olevba": {
   "tool": "olevba",
   "title": "olevba",
-  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.14.6 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> [",
   "usage": [],
   "packages": [
    {
     "binary": "oletools",
-    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.14.6 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> [",
     "install": "oletools",
     "size": "1.90 MB"
    }
@@ -541,25 +541,25 @@
     "binary": "librizin-common",
     "desc": "Arch independent files from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
     "install": "librizin-common",
-    "size": "8.73 MB"
+    "size": "8.77 MB"
    },
    {
     "binary": "librizin-dev",
     "desc": "Devel files from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
     "install": "librizin-dev",
-    "size": "1.60 MB"
+    "size": "1.74 MB"
    },
    {
     "binary": "librizin0",
     "desc": "Libraries from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
     "install": "librizin0",
-    "size": "15.95 MB"
+    "size": "18.01 MB"
    },
    {
     "binary": "rizin",
     "desc": "Reverse engineering framework and command-line toolset Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
     "install": "rizin",
-    "size": "270 KB"
+    "size": "334 KB"
    }
   ],
   "attack_category": "Resource Development"
@@ -567,7 +567,7 @@
  "sfuzz": {
   "tool": "sfuzz",
   "title": "sfuzz",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -586,7 +586,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }

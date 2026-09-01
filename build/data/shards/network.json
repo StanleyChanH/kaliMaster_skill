@@ -39,7 +39,7 @@
     "binary": "arping",
     "desc": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
     "install": "arping",
-    "size": "90 KB"
+    "size": "97 KB"
    }
   ],
   "attack_category": "Discovery"
@@ -69,7 +69,7 @@
     "binary": "arpwatch",
     "desc": "Ethernet/FDDI station activity monitor Arpwatch maintains a database of Ethernet MAC addresses seen on the network, with their associated IP pairs. Alerts the system administrator via e-mail if any change happens, such as new station/activity, flip-flops, changed and re-used old addresses. If you want to maintain a list authorized MAC addresses manually, take a look at the arpalert package which may fit your needs better.",
     "install": "arpwatch",
-    "size": "153 KB"
+    "size": "159 KB"
    }
   ],
   "attack_category": "Discovery"
@@ -102,35 +102,6 @@
    }
   ],
   "attack_category": "Reconnaissance"
- },
- "cge.pl": {
-  "tool": "cge.pl",
-  "title": "cge.pl",
-  "description": "Simple and fast Cisco exploitation tool Cisco Global Exploiter (CGE), is an advanced, simple and fast security testing tool. root@kali:~# cge.pl -h Usage : perl cge.pl <target> <vulnerability number> Vulnerabilities list : [1] - Cisco 677/678 Telnet Buffer Overflow Vulnerability [2] - Cisco IOS Router Denial of Service Vulnerability [3] - Cisco IOS HTTP Auth Vulnerability [4] - Cisco IOS HTTP Configuration Arbitrary Administrative Access Vulnerability [5] - Cisco Catalyst SSH Protocol Mismatch Denial of Service Vulnerability [6] - Cisco 675 Web Administration Denial of Service Vulnerability [7",
-  "usage": [
-   {
-    "binary": "cisco-global-exploiter",
-    "parts": [
-     [
-      "p",
-      "Attack the target host ( 192.168.99.230 ) using the Cisco IOS HTTP Auth Vulnerability ( 3 ):"
-     ],
-     [
-      "code",
-      "root@kali:~# cge.pl 192.168.99.230 3\n\nVulnerability successful exploited with [http://192.168.99.230/level/17/exec/....] ..."
-     ]
-    ]
-   }
-  ],
-  "packages": [
-   {
-    "binary": "cisco-global-exploiter",
-    "desc": "Simple and fast Cisco exploitation tool Cisco Global Exploiter (CGE), is an advanced, simple and fast security testing tool. root@kali:~# cge.pl -h Usage : perl cge.pl <target> <vulnerability number> Vulnerabilities list : [1] - Cisco 677/678 Telnet Buffer Overflow Vulnerability [2] - Cisco IOS Router Denial of Service Vulnerability [3] - Cisco IOS HTTP Auth Vulnerability [4] - Cisco IOS HTTP Configuration Arbitrary Administrative Access Vulnerability [5] - Cisco Catalyst SSH Protocol Mismatch Denial of Service Vulnerability [6] - Cisco 675 Web Administration Denial of Service Vulnerability [7",
-    "install": "cisco-global-exploiter",
-    "size": "37 KB"
-   }
-  ],
-  "attack_category": "Discovery"
  },
  "cisco-ocs": {
   "tool": "cisco-ocs",
@@ -498,7 +469,7 @@
     "binary": "fluxion",
     "desc": "Security auditing and social-engineering research tool Fluxion is a security auditing and social-engineering research tool. It is a remake of linset by vk496 with (hopefully) fewer bugs and more functionality. The script attempts to retrieve the WPA/WPA2 key from a target access point by means of a social engineering (phishing) attack. It’s compatible with the latest release of Kali (rolling). Fluxion’s attacks’ setup is mostly manual, but experimental auto-mode handles some of the attacks’ setup parameters. Read the FAQ before requesting issues. Fluxion is a security auditing and social-engin",
     "install": "fluxion",
-    "size": "24.29 MB"
+    "size": "24.30 MB"
    }
   ],
   "attack_category": "Collection"
@@ -686,43 +657,43 @@
     "binary": "httrack",
     "desc": "Copy websites to your computer (Offline browser) HTTrack is an offline browser utility, allowing you to download a World Wide website from the Internet to a local directory, building recursively all directories, getting html, images, and other files from the server to your computer. HTTrack arranges the original site’s relative link-structure. Simply open a page of the “mirrored” website in your browser, and you can browse the site from link to link, as if you were viewing it online. HTTrack can also update an existing mirrored site, and resume interrupted downloads. HTTrack is fully configura",
     "install": "httrack",
-    "size": "66 KB"
+    "size": "75 KB"
    },
    {
     "binary": "httrack-doc",
     "desc": "Httrack website copier additional documentation This package adds supplemental documentation for httrack and webhttrack as a browsable html documentation",
     "install": "httrack-doc",
-    "size": "974 KB"
+    "size": "1.45 MB"
    },
    {
     "binary": "libhttrack-dev",
     "desc": "Httrack website copier includes and development files This package adds supplemental files for using the httrack website copier library",
     "install": "libhttrack-dev",
-    "size": "374 KB"
+    "size": "454 KB"
    },
    {
-    "binary": "libhttrack2",
+    "binary": "libhttrack3",
     "desc": "Httrack website copier library This package is the library part of httrack, website copier and mirroring utility",
-    "install": "libhttrack2",
-    "size": "725 KB"
+    "install": "libhttrack3",
+    "size": "1.01 MB"
    },
    {
     "binary": "proxytrack",
     "desc": "Build HTTP Caches using archived websites copied by HTTrack ProxyTrack is a simple proxy server aimed to deliver content archived by HTTrack sessions. It can aggregate multiple download caches, for direct use (through any browser) or as an upstream cache slave server. This proxy can handle HTTP/1.1 proxy connections, and is able to reply to ICPv2 requests for an efficient integration within other cache servers, such as Squid. It can also handle transparent HTTP requests to allow cached live connections inside an offline network. Proxy to serve content archived by httrack website copier",
     "install": "proxytrack",
-    "size": "160 KB"
+    "size": "184 KB"
    },
    {
     "binary": "webhttrack",
     "desc": "Copy websites to your computer, httrack with a Web interface WebHTTrack is an offline browser utility, allowing you to download a World Wide website from the Internet to a local directory, building recursively all directories, getting html, images, and other files from the server to your computer, using a step-by-step web interface. WebHTTrack arranges the original site’s relative link-structure. Simply open a page of the “mirrored” website in your browser, and you can browse the site from link to link, as if you were viewing it online. HTTrack can also update an existing mirrored site, and re",
     "install": "webhttrack",
-    "size": "129 KB"
+    "size": "148 KB"
    },
    {
     "binary": "webhttrack-common",
-    "desc": "Webhttrack common files This package is the common files of webhttrack, website copier and mirroring utility Updated on: 2026-Jun-17",
+    "desc": "Webhttrack common files This package is the common files of webhttrack, website copier and mirroring utility Updated on: 2026-Aug-25",
     "install": "webhttrack-common",
-    "size": "1.27 MB"
+    "size": "1.36 MB"
    }
   ],
   "attack_category": "Collection"
@@ -759,7 +730,7 @@
  "intrace": {
   "tool": "intrace",
   "title": "intrace",
-  "description": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/06/17 10:57:19.601877 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Jun-17",
+  "description": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/08/25 20:39:33.583130 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Aug-25",
   "usage": [
    {
     "binary": "intrace",
@@ -778,7 +749,7 @@
   "packages": [
    {
     "binary": "intrace",
-    "desc": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/06/17 10:57:19.601877 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Jun-17",
+    "desc": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/08/25 20:39:33.583130 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Aug-25",
     "install": "intrace",
     "size": "52 KB"
    }
@@ -813,21 +784,6 @@
    }
   ],
   "attack_category": "Impact"
- },
- "iputils-arping": {
-  "tool": "iputils-arping",
-  "title": "iputils-arping",
-  "description": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
-  "usage": [],
-  "packages": [
-   {
-    "binary": "arping",
-    "desc": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
-    "install": "arping",
-    "size": "90 KB"
-   }
-  ],
-  "attack_category": "Discovery"
  },
  "macchanger": {
   "tool": "macchanger",
@@ -1285,12 +1241,12 @@
  "sippts": {
   "tool": "sippts",
   "title": "sippts",
-  "description": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts --help usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⠤⠶⠒⠛⠉⠉⠉⠉⠀⠀⢀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣬⣍⣙⣳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠴⠒⠋⠉⠀⠀⠀",
+  "description": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts -h usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... _ _ | |------------| | .-'| | | |`-. .' | | SIPPTS | | `. .-' \\ \\ / / `-. .' _.| |--------| |._ `. / -. .' | | | | `. .- \\ / `( | |________| | )' \\ | \\ .i--",
   "usage": [],
   "packages": [
    {
     "binary": "sippts",
-    "desc": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts --help usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⠤⠶⠒⠛⠉⠉⠉⠉⠀⠀⢀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣬⣍⣙⣳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠴⠒⠋⠉⠀⠀⠀",
+    "desc": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts -h usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... _ _ | |------------| | .-'| | | |`-. .' | | SIPPTS | | `. .-' \\ \\ / / `-. .' _.| |--------| |._ `. / -. .' | | | | `. .- \\ / `( | |________| | )' \\ | \\ .i--",
     "install": "sippts",
     "size": "762 KB"
    }
@@ -1635,7 +1591,7 @@
     "binary": "tcpreplay",
     "desc": "Tool to replay saved tcpdump files at arbitrary speeds Tcpreplay is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces. Unlike programmatically-generated artificial traffic which doesn’t exercise the application/protocol inspection that a NIDS performs, and doesn’t reproduce the real-world anomalies that appear on production networks (asymmetric routes, traffic bursts/lulls, fragmentation, retransmissions, etc.), tcpr",
     "install": "tcpreplay",
-    "size": "2.13 MB"
+    "size": "1.99 MB"
    }
   ],
   "attack_category": "Discovery"
@@ -1826,7 +1782,7 @@
     "binary": "yersinia",
     "desc": "Network vulnerabilities check software Yersinia is a framework for performing layer 2 attacks. It is designed to take advantage of some weakeness in different network protocols. It pretends to be a solid framework for analyzing and testing the deployed networks and systems. Attacks for the following network protocols are implemented in this particular release:",
     "install": "yersinia",
-    "size": "417 KB"
+    "size": "415 KB"
    }
   ],
   "attack_category": "Discovery"

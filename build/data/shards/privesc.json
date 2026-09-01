@@ -9,7 +9,7 @@
     "binary": "peass",
     "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
     "install": "peass",
-    "size": "88.07 MB"
+    "size": "89.45 MB"
    }
   ],
   "attack_category": "Privilege Escalation"
@@ -53,7 +53,7 @@
     "binary": "peass",
     "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
     "install": "peass",
-    "size": "88.07 MB"
+    "size": "89.45 MB"
    }
   ],
   "attack_category": "Privilege Escalation"
@@ -123,7 +123,7 @@
     "binary": "peass",
     "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
     "install": "peass",
-    "size": "88.07 MB"
+    "size": "89.45 MB"
    }
   ],
   "attack_category": "Privilege Escalation"

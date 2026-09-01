@@ -45,12 +45,11 @@
 | `uro` | Declutter URLs for crawling/pentesting Uro declutters a list of URLs by removing | `sudo apt install uro` |
 | `wpprobe` | Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabil | `sudo apt install wpprobe` |
 
-## 网络扫描(scanning)— 28 个
+## 网络扫描(scanning)— 27 个
 
 | 工具 | 用途 | 安装 |
 |---|---|---|
 | `apache-users` | Enumerate usernames on systems with Apache UserDir module This Perl script will enumerate the usernames on any system that uses Apache with the UserDir module. | `sudo apt install apache-users` |
-| `atk6-thcping6` | The Hacker Choice’s IPv6 Attack Toolkit Attack toolkit for testing IPv6 and ICMPv6 protocol weaknesses. Some of the tools included: | `sudo apt install thc-ipv6` |
 | `autorecon` | Multi-threaded network reconnaissance tool AutoRecon is a multi-threaded network reconnaissance tool which performs automated enumeration of services. | `sudo apt install autorecon` |
 | `braa` | Mass SNMP scanner Braa is a mass snmp scanner. | `sudo apt install braa` |
 | `enum4linux` | Enumerates info from Windows and Samba systems Enum4linux is a tool for enumerating information from Windows and Samba systems. | `sudo apt install enum4linux` |
@@ -234,7 +233,7 @@
 | `wifipumpkin3` | Powerful framework for rogue access point attack | `sudo apt install wifipumpkin3` |
 | `wifite` | Python script to automate wireless auditing using aircrack-ng tools Wifite is a tool to audit WEP or WPA encrypted wireless networks. | `sudo apt install wifite` |
 
-## 网络攻防(network)— 75 个
+## 网络攻防(network)— 73 个
 
 | 工具 | 用途 | 安装 |
 |---|---|---|
@@ -244,7 +243,6 @@
 | `arpspoof` | Various tools to sniff network traffic for cleartext insecurities | `sudo apt install dsniff` |
 | `arpwatch` | Ethernet/FDDI station activity monitor Arpwatch maintains a database of Ethernet MAC addresses seen on the network, with their associated IP pairs. | `sudo apt install arpwatch` |
 | `bettercap` | Complete, modular, portable and easily extensible MITM framework The Swiss Army knife for 802.11, BLE, IPv4 and IPv6 networks reconnaissance and MITM attacks. | `sudo apt install bettercap` |
-| `cge.pl` | Simple and fast Cisco exploitation tool Cisco Global Exploiter (CGE), is an advanced, simple and fast security testing tool. | `sudo apt install cisco-global-exploiter` |
 | `cisco-ocs` | Mass Cisco scanner A mass Cisco scanning tool. | `sudo apt install cisco-ocs` |
 | `cisco-torch` | Cisco device scanner The main feature that makes cisco-torch different from similar tools is the extensive use of forking to launch multiple scanning processes  | `sudo apt install cisco-torch` |
 | `copy-router-config.pl` | Copies Cisco configs via SNMP This package copies configuration files from Cisco devices running SNMP. | `sudo apt install copy-router-config` |
@@ -271,7 +269,6 @@
 | `iaxflood` | VoIP flooder tool A UDP Inter-Asterisk_eXchange (i.e. IAX) packet was captured from an IAX channel between two Asterisk IP PBX’s. | `sudo apt install iaxflood` |
 | `intrace` | Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting | `sudo apt install intrace` |
 | `inviteflood` | SIP/SDP INVITE message flooding over UDP/IP A tool to perform SIP/SDP INVITE message flooding over UDP/IP. | `sudo apt install inviteflood` |
-| `iputils-arping` | Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. | `sudo apt install arping` |
 | `macchanger` | Utility for manipulating the MAC address of network interfaces GNU MAC Changer is an utility that makes the maniputation of MAC addresses of network interfaces  | `sudo apt install macchanger` |
 | `mdk3` | Wireless attack tool for IEEE 802.11 networks MDK is a proof-of-concept tool to exploit common IEEE 802.11 (Wi-Fi) protocol weaknesses. | `sudo apt install mdk3` |
 | `merge-router-config.pl` | Copies Cisco configs via SNMP This package copies configuration files from Cisco devices running SNMP. | `sudo apt install copy-router-config` |
@@ -365,11 +362,11 @@
 | `ligolo-mp-client` | Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tun | `sudo apt install ligolo-ng` |
 | `ligolo-ng-common-binaries` | Prebuilt binaries for Advanced ligolo-ng Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS con | `sudo apt install ligolo-ng-common-binaries` |
 | `ligolo-proxy` | Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tun | `sudo apt install ligolo-ng` |
-| `minicom` | Friendly menu driven serial communication program Minicom is a clone of the MS-DOS “Telix” communication program. | `sudo apt install minicom` |
+| `minicom` | Menu-driven serial communication program Minicom is a text-mode serial communications program modelled on the MS-DOS program Telix. | `sudo apt install minicom` |
 | `miredo` | Teredo IPv6 tunneling through NATs The Teredo IPv6 tunneling protocol encapsulates IPv6 packets into UDP/IPv4 datagrams, to allow hosts behind NAT devices to ac | `sudo apt install miredo` |
 | `ncat` | NMAP netcat reimplementation ncat is a reimplementation of Netcat by the NMAP project, providing most of the features present in the original implementations, a | `sudo apt install ncat` |
 | `netcat` | TCP/IP swiss army knife A simple Unix utility which reads and writes data across network connections using TCP or UDP protocol. | `sudo apt install netcat-traditional` |
-| `penelope` | Powerful shell handler Penelope is a powerful shell handler built as a modern netcat replacement for RCE exploitation, aiming to simplify, accelerate, and optim | `sudo apt install penelope` |
+| `penelope` | Advanced shell handler for penetration testing and CTFs Penelope is a modern shell handler designed for penetration testers and CTF players. | `sudo apt install penelope` |
 | `powercat` | Netcat features all in powershell v2 | `sudo apt install powercat` |
 | `proxytunnel` | Help SSH and other protocols through HTTP(S) proxies Proxytunnel creates tunnels through HTTP(S) proxies for any TCP based protocol. | `sudo apt install proxytunnel` |
 | `ptunnel` | Tunnel TCP connections over ICMP packets ptunnel is an application that allows you to reliably tunnel TCP connections to a remote host using ICMP echo request a | `sudo apt install ptunnel` |
@@ -511,7 +508,7 @@
 | `sfuzz` | Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (wh | `sudo apt install sfuzz` |
 | `sickle-pdk` | Payload development kit Sickle is a payload development kit originally created to aid in crafting shellcode, however it can be used in crafting payloads for oth | `sudo apt install sickle-pdk` |
 
-## 报告/靶场(reports)— 22 个
+## 报告/靶场(reports)— 23 个
 
 | 工具 | 用途 | 安装 |
 |---|---|---|
@@ -519,6 +516,7 @@
 | `cherrytree` | Hierarchical note taking application CherryTree is a hierarchical note taking application, featuring rich text, syntax highlighting, images handling, hyperlinks | `sudo apt install cherrytree` |
 | `cutycapt` | Utility to capture WebKit’s rendering of a web page CutyCapt is a small cross-platform command-line utility to capture WebKit’s rendering of a web page into a v | `sudo apt install cutycapt` |
 | `defectdojo-start` | Security orchestration and vulnerability management platform | `sudo apt install defectdojo` |
+| `defectdojo-stop` | Security orchestration and vulnerability management platform | `sudo apt install defectdojo` |
 | `dradis-start` | Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. | `sudo apt install dradis` |
 | `dradis-stop` | Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. | `sudo apt install dradis` |
 | `dvwa-start` | Damn Vulnerable Web Application | `sudo apt install dvwa` |

@@ -144,7 +144,7 @@
     "binary": "airgeddon",
     "desc": "Multi-use bash script for Linux systems to audit wireless networks airgeddon is a menu driven 3rd party tools wrapper to audit wireless networks with many features.",
     "install": "airgeddon",
-    "size": "5.06 MB"
+    "size": "5.07 MB"
    }
   ]
  },
@@ -158,7 +158,7 @@
     "binary": "amass",
     "desc": "In-depth DNS Enumeration and Network Mapping This package contains a tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery using open source information gathering and active reconnaissance techniques. Information Gathering Techniques Used: - DNS: Basic enumeration, Brute forcing (upon request), Reverse DNS sweeping, Subdomain name alterations/permutations, Zone transfers (upon request) - Scraping: Ask, Baidu, Bing, DNSDumpster, DNSTable, Dogpile, Exalead, Google, HackerOne, IPv4Info, Netcraft, PTRArchive, Riddler, SiteDo",
     "install": "amass",
-    "size": "50.54 MB"
+    "size": "50.57 MB"
    }
   ]
  },
@@ -279,7 +279,7 @@
     "binary": "arping",
     "desc": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
     "install": "arping",
-    "size": "90 KB"
+    "size": "97 KB"
    }
   ]
  },
@@ -307,7 +307,7 @@
     "binary": "arpwatch",
     "desc": "Ethernet/FDDI station activity monitor Arpwatch maintains a database of Ethernet MAC addresses seen on the network, with their associated IP pairs. Alerts the system administrator via e-mail if any change happens, such as new station/activity, flip-flops, changed and re-used old addresses. If you want to maintain a list authorized MAC addresses manually, take a look at the arpalert package which may fit your needs better.",
     "install": "arpwatch",
-    "size": "153 KB"
+    "size": "159 KB"
    }
   ]
  },
@@ -321,7 +321,7 @@
     "binary": "arsenal-ng",
     "desc": "Go-based command library equipped with 200+ cybersecurity cheat-sheets Inspired by arsenal, rewritten from scratch with a focus on simplicity, speed and developer experience. The classic launcher, evolved. Fast, Go-based command library equipped with 200+ cybersecurity cheat-sheets. Just install and start hacking.",
     "install": "arsenal-ng",
-    "size": "5.81 MB"
+    "size": "5.85 MB"
    }
   ]
  },
@@ -367,61 +367,6 @@
    }
   ]
  },
- "atk6-thcping6": {
-  "tool": "atk6-thcping6",
-  "title": "atk6-thcping6",
-  "description": "The Hacker Choice’s IPv6 Attack Toolkit Attack toolkit for testing IPv6 and ICMPv6 protocol weaknesses. Some of the tools included:",
-  "usage": [
-   {
-    "binary": "address6",
-    "parts": [
-     [
-      "p",
-      "Convert an IPv6 address to a MAC address and vice-versa:"
-     ],
-     [
-      "code",
-      "root@kali:~# address6 fe80::76d4:35ff:fe4e:39c8\n74:d4:35:4e:39:c8\nroot@kali:~# address6 74:d4:35:4e:39:c8\nfe80::76d4:35ff:fe4e:39c8"
-     ]
-    ]
-   },
-   {
-    "binary": "alive6",
-    "parts": [
-     [
-      "code",
-      "root@kali:~# alive6 eth0\nAlive: fd77:7c68:420a:1:426c:8fff:fe1b:cb90 [ICMP parameter problem]\nAlive: fd77:7c68:420a:1:20c:29ff:fee5:5bf4 [ICMP echo-reply]\nAlive: fd77:7c68:420a:1:75d9:4f39:a46a:6f83 [ICMP echo-reply]\nAlive: fd77:7c68:420a:1:6912:8e80:e02f:1969 [ICMP echo-reply]\nAlive: fd77:7c68:420a:1:201:6cff:fe6f:ddd1 [ICMP echo-reply]"
-     ]
-    ]
-   },
-   {
-    "binary": "detect-new-ip6",
-    "parts": [
-     [
-      "code",
-      "root@kali:~# detect-new-ip6 eth0\nStarted ICMP6 DAD detection (Press Control-C to end) ...\nDetected new ip6 address: fe80::85d:9879:9251:853a"
-     ]
-    ]
-   },
-   {
-    "binary": "dnsdict6",
-    "parts": [
-     [
-      "code",
-      "root@kali:~# dnsdict6 example.com\nStarting DNS enumeration work on example.com. ...\nStarting enumerating example.com. - creating 8 threads for 798 words...\nEstimated time to completion: 1 to 2 minutes\nwww.example.com. => 2606:2800:220:6d:26bf:1447:1097:aa7"
-     ]
-    ]
-   }
-  ],
-  "packages": [
-   {
-    "binary": "thc-ipv6",
-    "desc": "The Hacker Choice’s IPv6 Attack Toolkit Attack toolkit for testing IPv6 and ICMPv6 protocol weaknesses. Some of the tools included:",
-    "install": "thc-ipv6",
-    "size": "3.68 MB"
-   }
-  ]
- },
  "autopsy": {
   "tool": "autopsy",
   "title": "autopsy",
@@ -460,7 +405,7 @@
     "binary": "azurehound",
     "desc": "BloodHound data collector for Microsoft Azure (program) This package contains the BloodHound data collector for Microsoft Azure. root@kali:~# azurehound -h The official tool for collecting Azure data for BloodHound and BloodHound Enterprise Usage: azurehound [command] Available Commands: completion Generate the autocompletion script for the specified shell configure Configure AzureHound help Help about any command list Lists Azure Objects start Start Azure data collection service for BloodHound Enterprise Flags: -c, --config string AzureHound configuration file (default: /root/.config/azurehou",
     "install": "azurehound",
-    "size": "12.94 MB"
+    "size": "13.05 MB"
    }
   ]
  },
@@ -840,7 +785,7 @@
     "binary": "bloodhound",
     "desc": "Six Degrees of Domain Admin, BloodHound CE This package contains BloodHound Community Edition, a single page Javascript web application. BloodHound uses graph theory to reveal the hidden and often unintended relationships within an Active Directory environment. Attackers can use BloodHound to easily identify highly complex attack paths that would otherwise be impossible to quickly identify. Defenders can use BloodHound to identify and eliminate those same attack paths. Both blue and red teams can use BloodHound to easily gain a deeper understanding of privilege relationships in an Active Direc",
     "install": "bloodhound",
-    "size": "281.25 MB"
+    "size": "345.26 MB"
    }
   ]
  },
@@ -854,7 +799,7 @@
     "binary": "bloodyad",
     "desc": "Active Directory privilege escalation framework bloodyAD can perform specific LDAP calls to a domain controller in order to perform AD privesc. It supports authentication using cleartext passwords, pass-the-hash, pass-the-ticket or certificates and binds to LDAP services of a domain controller to perform AD privesc. Exchange of sensitive information without LDAPS is supported. It is also designed to be used transparently with a SOCKS proxy.",
     "install": "bloodyad",
-    "size": "49.50 MB"
+    "size": "54.80 MB"
    }
   ]
  },
@@ -962,7 +907,7 @@
     "binary": "braa",
     "desc": "Mass SNMP scanner Braa is a mass snmp scanner. The intended usage of such a tool is of course making SNMP queries - but unlike snmpget or snmpwalk from net-snmp, it is able to query dozens or hundreds of hosts simultaneously, and in a single process. Thus, it consumes very few system resources and does the scanning VERY fast. Braa implements its OWN snmp stack, so it does NOT need any SNMP libraries like net-snmp. The implementation is very dirty, supports only several data types, and in any case cannot be stated ‘standard-conforming’! It was designed to be fast, and it is fast. For this reaso",
     "install": "braa",
-    "size": "62 KB"
+    "size": "66 KB"
    }
   ]
  },
@@ -1046,7 +991,7 @@
     "binary": "burpsuite",
     "desc": "Platform for security testing of web applications Burp Suite is an integrated platform for performing security testing of web applications. Its various tools work seamlessly together to support the entire testing process, from initial mapping and analysis of an application’s attack surface, through to finding and exploiting security vulnerabilities. Burp gives you full control, letting you combine advanced manual techniques with state-of-the-art automation, to make your work faster, more effective, and more fun.",
     "install": "burpsuite",
-    "size": "319.85 MB"
+    "size": "341.59 MB"
    }
   ]
  },
@@ -1081,28 +1026,28 @@
  "caido-cli": {
   "tool": "caido-cli",
   "title": "caido-cli",
-  "description": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Enable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cache",
+  "description": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Disable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cach",
   "usage": [],
   "packages": [
    {
     "binary": "caido-cli",
-    "desc": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Enable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cache",
+    "desc": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Disable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cach",
     "install": "caido-cli",
-    "size": "151.57 MB"
+    "size": "132.53 MB"
    }
   ]
  },
  "caido": {
   "tool": "caido",
   "title": "caido",
-  "description": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Jun-17",
+  "description": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Aug-25",
   "usage": [],
   "packages": [
    {
     "binary": "caido",
-    "desc": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Jun-17",
+    "desc": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Aug-25",
     "install": "caido",
-    "size": "477.53 MB"
+    "size": "459.30 MB"
    }
   ]
  },
@@ -1120,7 +1065,7 @@
    },
    {
     "binary": "elpa-ps-ccrypt",
-    "desc": "Emacs addon for working with files encrypted with ccrypt elpa-ps-ccrypt provides low-level support for reading, writing, and loading files encrypted with ccrypt. It hooks into the low-level file I/O functions (including write-region and insert-file-contents) so that they automatically encrypt or decrypt a file if the file appears to need it (based on the extension of the file name). Packages like Rmail, VM, GNUS, and Info should be able to work with encrypted files without modification. Updated on: 2025-Dec-09",
+    "desc": "Emacs addon for working with files encrypted with ccrypt elpa-ps-ccrypt provides low-level support for reading, writing, and loading files encrypted with ccrypt. It hooks into the low-level file I/O functions (including write-region and insert-file-contents) so that they automatically encrypt or decrypt a file if the file appears to need it (based on the extension of the file name). Packages like Rmail, VM, GNUS, and Info should be able to work with encrypted files without modification. Updated on: 2026-Aug-25",
     "install": "elpa-ps-ccrypt",
     "size": "75 KB"
    }
@@ -1151,34 +1096,6 @@
     "desc": "Custom word list generator CeWL (Custom Word List generator) is a ruby app which spiders a given URL, up to a specified depth, and returns a list of words which can then be used for password crackers such as John the Ripper. Optionally, CeWL can follow external links. CeWL can also create a list of email addresses found in mailto links. These email addresses can be used as usernames in brute force actions.",
     "install": "cewl",
     "size": "81 KB"
-   }
-  ]
- },
- "cge.pl": {
-  "tool": "cge.pl",
-  "title": "cge.pl",
-  "description": "Simple and fast Cisco exploitation tool Cisco Global Exploiter (CGE), is an advanced, simple and fast security testing tool. root@kali:~# cge.pl -h Usage : perl cge.pl <target> <vulnerability number> Vulnerabilities list : [1] - Cisco 677/678 Telnet Buffer Overflow Vulnerability [2] - Cisco IOS Router Denial of Service Vulnerability [3] - Cisco IOS HTTP Auth Vulnerability [4] - Cisco IOS HTTP Configuration Arbitrary Administrative Access Vulnerability [5] - Cisco Catalyst SSH Protocol Mismatch Denial of Service Vulnerability [6] - Cisco 675 Web Administration Denial of Service Vulnerability [7",
-  "usage": [
-   {
-    "binary": "cisco-global-exploiter",
-    "parts": [
-     [
-      "p",
-      "Attack the target host ( 192.168.99.230 ) using the Cisco IOS HTTP Auth Vulnerability ( 3 ):"
-     ],
-     [
-      "code",
-      "root@kali:~# cge.pl 192.168.99.230 3\n\nVulnerability successful exploited with [http://192.168.99.230/level/17/exec/....] ..."
-     ]
-    ]
-   }
-  ],
-  "packages": [
-   {
-    "binary": "cisco-global-exploiter",
-    "desc": "Simple and fast Cisco exploitation tool Cisco Global Exploiter (CGE), is an advanced, simple and fast security testing tool. root@kali:~# cge.pl -h Usage : perl cge.pl <target> <vulnerability number> Vulnerabilities list : [1] - Cisco 677/678 Telnet Buffer Overflow Vulnerability [2] - Cisco IOS Router Denial of Service Vulnerability [3] - Cisco IOS HTTP Auth Vulnerability [4] - Cisco IOS HTTP Configuration Arbitrary Administrative Access Vulnerability [5] - Cisco Catalyst SSH Protocol Mismatch Denial of Service Vulnerability [6] - Cisco 675 Web Administration Denial of Service Vulnerability [7",
-    "install": "cisco-global-exploiter",
-    "size": "37 KB"
    }
   ]
  },
@@ -1220,7 +1137,7 @@
     "binary": "chisel-common-binaries",
     "desc": "Prebuilt binaries for chisel This package contains a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.",
     "install": "chisel-common-binaries",
-    "size": "107.75 MB"
+    "size": "108.26 MB"
    }
   ]
  },
@@ -1234,7 +1151,7 @@
     "binary": "chisel",
     "desc": "Fast TCP/UDP tunnel over HTTP (program) This package contains a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.",
     "install": "chisel",
-    "size": "10.12 MB"
+    "size": "10.17 MB"
    }
   ]
  },
@@ -1248,7 +1165,7 @@
     "binary": "chkrootkit",
     "desc": "Rootkit detector The chkrootkit security scanner searches for signs that the system is infected with a ‘rootkit’. Rootkits are a form of malware that seek to exploit security flaws to grant unauthorised access to a computer or its services, generally for malicious purposes. chkrootkit can identify signs of over 70 different rootkits (see the project’s website for a list).",
     "install": "chkrootkit",
-    "size": "987 KB"
+    "size": "988 KB"
    }
   ]
  },
@@ -1584,13 +1501,13 @@
     "binary": "libcapstone-dev",
     "desc": "Lightweight multi-architecture disassembly framework - devel files Capstone is a lightweight multi-platform, multi-architecture disassembly framework. These are the development headers and libraries.",
     "install": "libcapstone-dev",
-    "size": "10.74 MB"
+    "size": "10.75 MB"
    },
    {
     "binary": "libcapstone5",
     "desc": "Lightweight multi-architecture disassembly framework - library Capstone is a lightweight multi-platform, multi-architecture disassembly framework. Features:",
     "install": "libcapstone5",
-    "size": "8.93 MB"
+    "size": "8.94 MB"
    },
    {
     "binary": "python3-capstone",
@@ -1610,13 +1527,13 @@
     "binary": "librizin-cutter-dev",
     "desc": "Development files to build cutter plugins These files can be used to build cutter plugins and integrate such plugin into the Cutter GUI.",
     "install": "librizin-cutter-dev",
-    "size": "497 KB"
+    "size": "573 KB"
    },
    {
     "binary": "rizin-cutter",
-    "desc": "Reverse engineering platform powered by rizin Cutter is a free and open-source reverse engineering platform powered by rizin. It aims at being an advanced and customizable reverse engineering platform while keeping the user experience in mind. Cutter is created by reverse engineers for reverse engineers. Updated on: 2026-May-25",
+    "desc": "Reverse engineering platform powered by rizin Cutter is a free and open-source reverse engineering platform powered by rizin. It aims at being an advanced and customizable reverse engineering platform while keeping the user experience in mind. Cutter is created by reverse engineers for reverse engineers. Updated on: 2026-Aug-25",
     "install": "rizin-cutter",
-    "size": "8.63 MB"
+    "size": "10.61 MB"
    }
   ]
  },
@@ -1837,6 +1754,20 @@
  "defectdojo-start": {
   "tool": "defectdojo-start",
   "title": "defectdojo-start",
+  "description": "Security orchestration and vulnerability management platform This package contains a security orchestration and vulnerability management platform. DefectDojo allows you to manage your application security program, maintain product and application information, triage vulnerabilities and push findings to systems like JIRA and Slack. DefectDojo enriches and refines vulnerability data using a number of heuristic algorithms that improve with the more you use the platform. root@kali:~# defectdojo -h ┏━(Message from Kali developers) ┃ ┃ The command defectdojo is deprecated. Please use defectdojo-star",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "defectdojo",
+    "desc": "Security orchestration and vulnerability management platform This package contains a security orchestration and vulnerability management platform. DefectDojo allows you to manage your application security program, maintain product and application information, triage vulnerabilities and push findings to systems like JIRA and Slack. DefectDojo enriches and refines vulnerability data using a number of heuristic algorithms that improve with the more you use the platform. root@kali:~# defectdojo -h ┏━(Message from Kali developers) ┃ ┃ The command defectdojo is deprecated. Please use defectdojo-star",
+    "install": "defectdojo",
+    "size": "107.69 MB"
+   }
+  ]
+ },
+ "defectdojo-stop": {
+  "tool": "defectdojo-stop",
+  "title": "defectdojo-stop",
   "description": "Security orchestration and vulnerability management platform This package contains a security orchestration and vulnerability management platform. DefectDojo allows you to manage your application security program, maintain product and application information, triage vulnerabilities and push findings to systems like JIRA and Slack. DefectDojo enriches and refines vulnerability data using a number of heuristic algorithms that improve with the more you use the platform. root@kali:~# defectdojo -h ┏━(Message from Kali developers) ┃ ┃ The command defectdojo is deprecated. Please use defectdojo-star",
   "usage": [],
   "packages": [
@@ -2169,7 +2100,7 @@
     "binary": "dnsrecon",
     "desc": "Powerful DNS enumeration script DNSRecon is a Python script that provides the ability to perform: DNS Enumeration and Scanning Tool",
     "install": "dnsrecon",
-    "size": "1.45 MB"
+    "size": "1.51 MB"
    }
   ]
  },
@@ -2197,7 +2128,7 @@
     "binary": "dnstracer",
     "desc": "Trace DNS queries to the source dnstracer determines where a given Domain Name Server (DNS) gets its information from for a given hostname, and follows the chain of DNS servers back to the authoritative answer. Trace a chain of DNS servers to the source",
     "install": "dnstracer",
-    "size": "59 KB"
+    "size": "63 KB"
    }
   ]
  },
@@ -2243,7 +2174,7 @@
     "binary": "dradis",
     "desc": "Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. Dradis is an open-source project released in 2007 that has been refined for over a decade by security professionals around the world.",
     "install": "dradis",
-    "size": "153.94 MB"
+    "size": "236.14 MB"
    }
   ]
  },
@@ -2257,7 +2188,7 @@
     "binary": "dradis",
     "desc": "Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. Dradis is an open-source project released in 2007 that has been refined for over a decade by security professionals around the world.",
     "install": "dradis",
-    "size": "153.94 MB"
+    "size": "236.14 MB"
    }
   ]
  },
@@ -2895,7 +2826,7 @@
     "binary": "fluxion",
     "desc": "Security auditing and social-engineering research tool Fluxion is a security auditing and social-engineering research tool. It is a remake of linset by vk496 with (hopefully) fewer bugs and more functionality. The script attempts to retrieve the WPA/WPA2 key from a target access point by means of a social engineering (phishing) attack. It’s compatible with the latest release of Kali (rolling). Fluxion’s attacks’ setup is mostly manual, but experimental auto-mode handles some of the attacks’ setup parameters. Read the FAQ before requesting issues. Fluxion is a security auditing and social-engin",
     "install": "fluxion",
-    "size": "24.29 MB"
+    "size": "24.30 MB"
    }
   ]
  },
@@ -2923,7 +2854,7 @@
     "binary": "foremost",
     "desc": "Forensic program to recover lost files Foremost is a forensic program to recover lost files based on their headers, footers, and internal data structures. Foremost can work on image files, such as those generated by dd, Safeback, Encase, etc, or directly on a drive. The headers and footers can be specified by a configuration file or you can use command line switches to specify built-in file types. These built-in types look at the data structures of a given file format allowing for a more reliable and faster recovery.",
     "install": "foremost",
-    "size": "102 KB"
+    "size": "101 KB"
    }
   ]
  },
@@ -2979,103 +2910,85 @@
     "binary": "freeradius",
     "desc": "High-performance and highly configurable RADIUS server FreeRADIUS is a high-performance RADIUS server with support for: See if a user is (still) logged in on a certain port.",
     "install": "freeradius",
-    "size": "3.35 MB"
+    "size": "3.38 MB"
    },
    {
     "binary": "freeradius-common",
     "desc": "FreeRADIUS common files This package contains common files used by several of the other packages from the FreeRADIUS project.",
     "install": "freeradius-common",
-    "size": "1.29 MB"
+    "size": "1.30 MB"
    },
    {
     "binary": "freeradius-config",
     "desc": "FreeRADIUS default config files freeradius-config contains the default configuration for FreeRADIUS. You can install a custom package which sets “Provides: freeradius-config” in order to use the FreeRADIUS packages without any default configuration getting into your way.",
     "install": "freeradius-config",
-    "size": "1.29 MB"
+    "size": "1.31 MB"
    },
    {
     "binary": "freeradius-dhcp",
     "desc": "DHCP module for FreeRADIUS server The FreeRADIUS server can act as a DHCP server, and this module is necessary for that.",
     "install": "freeradius-dhcp",
-    "size": "117 KB"
+    "size": "119 KB"
    },
    {
     "binary": "freeradius-iodbc",
     "desc": "IODBC module for FreeRADIUS server The FreeRADIUS server can use iODBC to access databases to authenticate users and do accounting, and this module is necessary for that.",
     "install": "freeradius-iodbc",
-    "size": "60 KB"
+    "size": "62 KB"
    },
    {
     "binary": "freeradius-krb5",
     "desc": "Kerberos module for FreeRADIUS server The FreeRADIUS server can use Kerberos to authenticate users, and this module is necessary for that.",
     "install": "freeradius-krb5",
-    "size": "66 KB"
+    "size": "68 KB"
    },
    {
     "binary": "freeradius-ldap",
     "desc": "LDAP module for FreeRADIUS server The FreeRADIUS server can use LDAP to authenticate users, and this module is necessary for that.",
     "install": "freeradius-ldap",
-    "size": "148 KB"
+    "size": "150 KB"
    },
    {
     "binary": "freeradius-memcached",
     "desc": "Memcached module for FreeRADIUS server The FreeRADIUS server can cache data in memcached and this package contains the required module.",
     "install": "freeradius-memcached",
-    "size": "70 KB"
+    "size": "72 KB"
    },
    {
     "binary": "freeradius-mysql",
-    "desc": "MySQL module for FreeRADIUS server The FreeRADIUS server can use MySQL to authenticate users and do accounting, and this module is necessary for that.",
+    "desc": "MariaDB module for FreeRADIUS server The FreeRADIUS server can use MariaDB to authenticate users and do accounting, and this module is necessary for that.",
     "install": "freeradius-mysql",
-    "size": "70 KB"
+    "size": "72 KB"
    },
    {
     "binary": "freeradius-postgresql",
     "desc": "PostgreSQL module for FreeRADIUS server The FreeRADIUS server can use PostgreSQL to authenticate users and do accounting, and this module is necessary for that.",
     "install": "freeradius-postgresql",
-    "size": "89 KB"
+    "size": "91 KB"
    },
    {
     "binary": "freeradius-python3",
     "desc": "Python 3 module for FreeRADIUS server This package is required to add Python 3 functionality to the FreeRADIUS server. It was introduced in FreeRADIUS 3.0.20 as EXPERIMENTAL module. Use at your own risk.",
     "install": "freeradius-python3",
-    "size": "87 KB"
+    "size": "89 KB"
    },
    {
     "binary": "freeradius-redis",
     "desc": "Redis module for FreeRADIUS server This module is required to enable the FreeRADIUS server to access Redis databases.",
     "install": "freeradius-redis",
-    "size": "104 KB"
+    "size": "106 KB"
    },
    {
     "binary": "freeradius-rest",
     "desc": "REST module for FreeRADIUS server The FreeRADIUS server can make calls to remote web APIs, and this module is necessary for that.",
     "install": "freeradius-rest",
-    "size": "98 KB"
+    "size": "100 KB"
    },
    {
     "binary": "freeradius-utils",
     "desc": "FreeRADIUS client utilities This package contains various client programs and utilities from the FreeRADIUS Server project, including: Send packets to a RADIUS server, show reply",
     "install": "freeradius-utils",
-    "size": "390 KB"
-   },
-   {
-    "binary": "freeradius-yubikey",
-    "desc": "Yubikey module for FreeRADIUS server This package is required to add Yubikey functionality to the FreeRADIUS server.",
-    "install": "freeradius-yubikey",
-    "size": "74 KB"
-   },
-   {
-    "binary": "libfreeradius-dev",
-    "desc": "FreeRADIUS shared library development files The FreeRADIUS projects’ libfreeradius-radius and libfreeradius-eap, used by the FreeRADIUS server and some of the utilities. This package contains the development headers and static library version.",
-    "install": "libfreeradius-dev",
-    "size": "1.21 MB"
-   },
-   {
-    "binary": "libfreeradius3",
-    "desc": "FreeRADIUS shared library The FreeRADIUS projects’ libfreeradius-radius and libfreeradius-eap, used by the FreeRADIUS server and some of the utilities.",
-    "install": "libfreeradius3",
-    "size": "578 KB"
+    "size": "461 KB"
    }
   ]
  },
@@ -3179,7 +3092,7 @@
     "binary": "gdbserver",
     "desc": "GNU Debugger (remote server) GDB is a source-level debugger, capable of breaking programs at any specific line, displaying variable values, and determining where errors occurred. Currently, gdb supports C, C++, D, Objective-C, Fortran, Java, OpenCL C, Pascal, assembly, Modula-2, Go, and Ada. A must-have for any serious programmer. This package contains gdbserver. Install this to debug remotely from another system where GDB is installed.",
     "install": "gdbserver",
-    "size": "921 KB"
+    "size": "922 KB"
    }
   ]
  },
@@ -3207,14 +3120,14 @@
     "binary": "gemini-cli",
     "desc": "Open-source AI agent This package contains an open-source AI agent that brings the power of Gemini directly into your terminal. It provides lightweight access to Gemini, giving you the most direct path from your prompt to the model. root@kali:~# gemini-cli -h Usage: gemini [options] [command] Gemini CLI - Defaults to interactive mode. Use -p/--prompt for non-interactive (headless) mode. Commands: gemini mcp Manage MCP servers gemini extensions <command> Manage Gemini CLI extensions. [aliases: extension] gemini skills <command> Manage agent skills. [aliases: skill] gemini hooks <command> Manage",
     "install": "gemini-cli",
-    "size": "45.55 MB"
+    "size": "47.73 MB"
    }
   ]
  },
  "generic_chunked": {
   "tool": "generic_chunked",
   "title": "generic_chunked",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -3233,7 +3146,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }
@@ -3242,7 +3155,7 @@
  "generic_listen_tcp": {
   "tool": "generic_listen_tcp",
   "title": "generic_listen_tcp",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -3261,7 +3174,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }
@@ -3270,7 +3183,7 @@
  "generic_send_tcp": {
   "tool": "generic_send_tcp",
   "title": "generic_send_tcp",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -3289,7 +3202,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }
@@ -3298,7 +3211,7 @@
  "generic_send_udp": {
   "tool": "generic_send_udp",
   "title": "generic_send_udp",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -3317,7 +3230,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }
@@ -3333,7 +3246,7 @@
     "binary": "ghidra",
     "desc": "Software Reverse Engineering Framework This package contains a software reverse engineering (SRE) framework created and maintained by the National Security Agency Research Directorate. This framework includes a suite of full-featured, high-end software analysis tools that enable users to analyze compiled code on a variety of platforms including Windows, macOS, and Linux. Capabilities include disassembly, assembly, decompilation, graphing, and scripting, along with hundreds of other features. Ghidra supports a wide variety of processor instruction sets and executable formats and can be run in b",
     "install": "ghidra",
-    "size": "815.75 MB"
+    "size": "816.31 MB"
    }
   ]
  },
@@ -3361,7 +3274,7 @@
     "binary": "gnuradio",
     "desc": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
     "install": "gnuradio",
-    "size": "24.26 MB"
+    "size": "24.31 MB"
    },
    {
     "binary": "gnuradio-dev",
@@ -3475,7 +3388,7 @@
     "binary": "libgnuradio-trellis3.10.12",
     "desc": "Gnuradio trellis modulation functions Library for trellis coding modulation, including the Viterbi Algorithm, Concatenated Coding and Turbo Decoding based upon finite state machine (FSM) class. Part of the main gnuradio build.",
     "install": "libgnuradio-trellis3.10.12",
-    "size": "969 KB"
+    "size": "965 KB"
    }
   ]
  },
@@ -3538,14 +3451,14 @@
  "goshs": {
   "tool": "goshs",
   "title": "goshs",
-  "description": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.0 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
+  "description": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.5 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
   "usage": [],
   "packages": [
    {
     "binary": "goshs",
-    "desc": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.0 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
+    "desc": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.5 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
     "install": "goshs",
-    "size": "22.01 MB"
+    "size": "22.61 MB"
    }
   ]
  },
@@ -3573,7 +3486,7 @@
     "binary": "gnuradio",
     "desc": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
     "install": "gnuradio",
-    "size": "24.26 MB"
+    "size": "24.31 MB"
    },
    {
     "binary": "gnuradio-dev",
@@ -3687,7 +3600,7 @@
     "binary": "libgnuradio-trellis3.10.12",
     "desc": "Gnuradio trellis modulation functions Library for trellis coding modulation, including the Viterbi Algorithm, Concatenated Coding and Turbo Decoding based upon finite state machine (FSM) class. Part of the main gnuradio build.",
     "install": "libgnuradio-trellis3.10.12",
-    "size": "969 KB"
+    "size": "965 KB"
    }
   ]
  },
@@ -4100,43 +4013,43 @@
     "binary": "httrack",
     "desc": "Copy websites to your computer (Offline browser) HTTrack is an offline browser utility, allowing you to download a World Wide website from the Internet to a local directory, building recursively all directories, getting html, images, and other files from the server to your computer. HTTrack arranges the original site’s relative link-structure. Simply open a page of the “mirrored” website in your browser, and you can browse the site from link to link, as if you were viewing it online. HTTrack can also update an existing mirrored site, and resume interrupted downloads. HTTrack is fully configura",
     "install": "httrack",
-    "size": "66 KB"
+    "size": "75 KB"
    },
    {
     "binary": "httrack-doc",
     "desc": "Httrack website copier additional documentation This package adds supplemental documentation for httrack and webhttrack as a browsable html documentation",
     "install": "httrack-doc",
-    "size": "974 KB"
+    "size": "1.45 MB"
    },
    {
     "binary": "libhttrack-dev",
     "desc": "Httrack website copier includes and development files This package adds supplemental files for using the httrack website copier library",
     "install": "libhttrack-dev",
-    "size": "374 KB"
+    "size": "454 KB"
    },
    {
-    "binary": "libhttrack2",
+    "binary": "libhttrack3",
     "desc": "Httrack website copier library This package is the library part of httrack, website copier and mirroring utility",
-    "install": "libhttrack2",
-    "size": "725 KB"
+    "install": "libhttrack3",
+    "size": "1.01 MB"
    },
    {
     "binary": "proxytrack",
     "desc": "Build HTTP Caches using archived websites copied by HTTrack ProxyTrack is a simple proxy server aimed to deliver content archived by HTTrack sessions. It can aggregate multiple download caches, for direct use (through any browser) or as an upstream cache slave server. This proxy can handle HTTP/1.1 proxy connections, and is able to reply to ICPv2 requests for an efficient integration within other cache servers, such as Squid. It can also handle transparent HTTP requests to allow cached live connections inside an offline network. Proxy to serve content archived by httrack website copier",
     "install": "proxytrack",
-    "size": "160 KB"
+    "size": "184 KB"
    },
    {
     "binary": "webhttrack",
     "desc": "Copy websites to your computer, httrack with a Web interface WebHTTrack is an offline browser utility, allowing you to download a World Wide website from the Internet to a local directory, building recursively all directories, getting html, images, and other files from the server to your computer, using a step-by-step web interface. WebHTTrack arranges the original site’s relative link-structure. Simply open a page of the “mirrored” website in your browser, and you can browse the site from link to link, as if you were viewing it online. HTTrack can also update an existing mirrored site, and re",
     "install": "webhttrack",
-    "size": "129 KB"
+    "size": "148 KB"
    },
    {
     "binary": "webhttrack-common",
-    "desc": "Webhttrack common files This package is the common files of webhttrack, website copier and mirroring utility Updated on: 2026-Jun-17",
+    "desc": "Webhttrack common files This package is the common files of webhttrack, website copier and mirroring utility Updated on: 2026-Aug-25",
     "install": "webhttrack-common",
-    "size": "1.27 MB"
+    "size": "1.36 MB"
    }
   ]
  },
@@ -4553,7 +4466,7 @@
  "intrace": {
   "tool": "intrace",
   "title": "intrace",
-  "description": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/06/17 10:57:19.601877 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Jun-17",
+  "description": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/08/25 20:39:33.583130 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Aug-25",
   "usage": [
    {
     "binary": "intrace",
@@ -4572,7 +4485,7 @@
   "packages": [
    {
     "binary": "intrace",
-    "desc": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/06/17 10:57:19.601877 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Jun-17",
+    "desc": "Traceroute-like application piggybacking on existing TCP connections InTrace is a traceroute-like application that enables users to enumerate IP hops exploiting existing TCP connections, both initiated from local network (local system) or from remote hosts. It could be useful for network reconnaissance and firewall bypassing. root@kali:~# intrace -h InTrace, version 1.6 (C)2007-2016 Robert Swiecki < [email protected] > 2026/08/25 20:39:33.583130 <INFO> Usage: intrace <-h hostname> [-p <port>] [-d <debuglevel>] [-s <payloadsize>] [-4] [-6] Updated on: 2026-Aug-25",
     "install": "intrace",
     "size": "52 KB"
    }
@@ -4617,20 +4530,6 @@
     "desc": "Tool for tunneling IPv4 data through a DNS server This is a piece of software that lets you tunnel IPv4 data through a DNS server. This can be usable in different situations where internet access is firewalled, but DNS queries are allowed. Tunnel IPv4 over DNS",
     "install": "iodine",
     "size": "245 KB"
-   }
-  ]
- },
- "iputils-arping": {
-  "tool": "iputils-arping",
-  "title": "iputils-arping",
-  "description": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
-  "usage": [],
-  "packages": [
-   {
-    "binary": "arping",
-    "desc": "Sends IP and/or ARP pings (to the MAC address) The arping utility sends ARP and/or ICMP requests to the specified host and displays the replies. The host may be specified by its hostname, its IP address, or its MAC address. Sends arp and/or ip pings to a given host",
-    "install": "arping",
-    "size": "90 KB"
    }
   ]
  },
@@ -4682,7 +4581,7 @@
     "binary": "jadx",
     "desc": "Dex to Java decompiler This package contains a Dex to Java decompiler. It contains a command line and GUI tools for produce Java source code from Android Dex and Apk files. Main features: - decompile Dalvik bytecode to java classes from APK, dex, aar and zip files - decode AndroidManifest.xml and other resources from resources.arsc - deobfuscator included",
     "install": "jadx",
-    "size": "60.76 MB"
+    "size": "74.63 MB"
    }
   ]
  },
@@ -4831,7 +4730,7 @@
     "binary": "john",
     "desc": "Active password cracking tool John the Ripper is a tool designed to help systems administrators to find weak (easy to guess or crack through brute force) passwords, and even automatically mail users warning them about it, if it is desired. Besides several crypt(3) password hash types most commonly found on various Unix flavors, supported out of the box are Kerberos AFS and Windows NT/2000/XP/2003 LM hashes, plus several more with contributed patches.",
     "install": "john",
-    "size": "78.18 MB"
+    "size": "78.67 MB"
    },
    {
     "binary": "john-data",
@@ -4886,14 +4785,14 @@
  "jsql": {
   "tool": "jsql",
   "title": "jsql",
-  "description": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-06-17 11:01:59,599 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-06-17 11:02:00,298 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Jun-17",
+  "description": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-08-25 21:14:22,883 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-08-25 21:14:24,490 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Aug-25",
   "usage": [],
   "packages": [
    {
     "binary": "jsql-injection",
-    "desc": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-06-17 11:01:59,599 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-06-17 11:02:00,298 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Jun-17",
+    "desc": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-08-25 21:14:22,883 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-08-25 21:14:24,490 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Aug-25",
     "install": "jsql-injection",
-    "size": "12.48 MB"
+    "size": "12.51 MB"
    }
   ]
  },
@@ -5217,7 +5116,7 @@
     "binary": "ligolo-ng",
     "desc": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
     "install": "ligolo-ng",
-    "size": "25.74 MB"
+    "size": "26.49 MB"
    }
   ]
  },
@@ -5231,7 +5130,7 @@
     "binary": "ligolo-ng",
     "desc": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
     "install": "ligolo-ng",
-    "size": "25.74 MB"
+    "size": "26.49 MB"
    }
   ]
  },
@@ -5259,7 +5158,7 @@
     "binary": "ligolo-ng-common-binaries",
     "desc": "Prebuilt binaries for Advanced ligolo-ng Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
     "install": "ligolo-ng-common-binaries",
-    "size": "158.13 MB"
+    "size": "158.37 MB"
    }
   ]
  },
@@ -5273,7 +5172,7 @@
     "binary": "ligolo-ng",
     "desc": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
     "install": "ligolo-ng",
-    "size": "25.74 MB"
+    "size": "26.49 MB"
    }
   ]
  },
@@ -5301,7 +5200,7 @@
     "binary": "peass",
     "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
     "install": "peass",
-    "size": "88.07 MB"
+    "size": "89.45 MB"
    }
   ]
  },
@@ -5409,7 +5308,7 @@
     "binary": "maltego",
     "desc": "Open source intelligence and forensics application Maltego is an open source intelligence and forensics application. It will offer you timous mining and gathering of information as well as the representation of this information in a easy to understand format. This package replaces previous packages matlegoce and casefile.",
     "install": "maltego",
-    "size": "299.66 MB"
+    "size": "301.19 MB"
    }
   ]
  },
@@ -5661,7 +5560,7 @@
     "binary": "metasploit-framework",
     "desc": "Framework for exploit development and vulnerability research The Metasploit Framework is an open source platform that supports vulnerability research, exploit development, and the creation of custom security tools. root@kali:~# msf-egghunter -h Usage: msf-egghunter [options] Example: msf-egghunter -f python -e W00T Specific options: -f, --format <String> See --list-formats for a list of supported output formats -b, --badchars <String> (Optional) Bad characters to avoid for the egg -e, --egg <String> The egg (Please give 4 bytes) -p, --platform <String> (Optional) Platform --startreg <String> (",
     "install": "metasploit-framework",
-    "size": "580.18 MB"
+    "size": "597.47 MB"
    }
   ]
  },
@@ -5738,14 +5637,14 @@
  "minicom": {
   "tool": "minicom",
   "title": "minicom",
-  "description": "Friendly menu driven serial communication program Minicom is a clone of the MS-DOS “Telix” communication program. It emulates ANSI and VT102 terminals, has a dialing directory and auto zmodem download. Upload/download files using the ASCII protocol",
+  "description": "Menu-driven serial communication program Minicom is a text-mode serial communications program modelled on the MS-DOS program Telix. It drives modems and serial consoles through a full-screen, menu-driven interface and emulates ANSI and VT102 terminals. A dialling directory with auto-redial, a scripting language for automating log-ins and other exchanges, capture-to-file logging, remappable key bindings and a configurable status line are included. File transfers rely on external X-, Y- and ZMODEM helpers such as those in the lrzsz package.",
   "usage": [],
   "packages": [
    {
     "binary": "minicom",
-    "desc": "Friendly menu driven serial communication program Minicom is a clone of the MS-DOS “Telix” communication program. It emulates ANSI and VT102 terminals, has a dialing directory and auto zmodem download. Upload/download files using the ASCII protocol",
+    "desc": "Menu-driven serial communication program Minicom is a text-mode serial communications program modelled on the MS-DOS program Telix. It drives modems and serial consoles through a full-screen, menu-driven interface and emulates ANSI and VT102 terminals. A dialling directory with auto-redial, a scripting language for automating log-ins and other exchanges, capture-to-file logging, remappable key bindings and a configurable status line are included. File transfers rely on external X-, Y- and ZMODEM helpers such as those in the lrzsz package.",
     "install": "minicom",
-    "size": "1.09 MB"
+    "size": "1.10 MB"
    }
   ]
  },
@@ -5949,7 +5848,7 @@
     "binary": "metasploit-framework",
     "desc": "Framework for exploit development and vulnerability research The Metasploit Framework is an open source platform that supports vulnerability research, exploit development, and the creation of custom security tools. root@kali:~# msf-egghunter -h Usage: msf-egghunter [options] Example: msf-egghunter -f python -e W00T Specific options: -f, --format <String> See --list-formats for a list of supported output formats -b, --badchars <String> (Optional) Bad characters to avoid for the egg -e, --egg <String> The egg (Please give 4 bytes) -p, --platform <String> (Optional) Platform --startreg <String> (",
     "install": "metasploit-framework",
-    "size": "580.18 MB"
+    "size": "597.47 MB"
    }
   ]
  },
@@ -5977,7 +5876,7 @@
     "binary": "metasploit-framework",
     "desc": "Framework for exploit development and vulnerability research The Metasploit Framework is an open source platform that supports vulnerability research, exploit development, and the creation of custom security tools. root@kali:~# msf-egghunter -h Usage: msf-egghunter [options] Example: msf-egghunter -f python -e W00T Specific options: -f, --format <String> See --list-formats for a list of supported output formats -b, --badchars <String> (Optional) Bad characters to avoid for the egg -e, --egg <String> The egg (Please give 4 bytes) -p, --platform <String> (Optional) Platform --startreg <String> (",
     "install": "metasploit-framework",
-    "size": "580.18 MB"
+    "size": "597.47 MB"
    }
   ]
  },
@@ -6232,7 +6131,7 @@
     "binary": "nikto",
     "desc": "Web server security scanner Nikto is a pluggable web server and CGI scanner written in Perl, using rfp’s LibWhisker to perform fast security or informational checks. Features:",
     "install": "nikto",
-    "size": "2.12 MB"
+    "size": "2.15 MB"
    }
   ]
  },
@@ -6361,7 +6260,7 @@
     "binary": "nuclei",
     "desc": "Fast and customizable vulnerability scanner based on simple YAML based DSL This package contains a fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use. Nuclei is used to send requests across targets based on a template leading to zero false positives and providing fast scanning on large number of hosts. Nuclei offers scanning for a variety of protocols including TCP, DNS, HTTP, File, etc. With powerful and flexible templating, all kinds of security checks can be modelled with Nuclei.",
     "install": "nuclei",
-    "size": "119.32 MB"
+    "size": "136.31 MB"
    }
   ]
  },
@@ -6410,12 +6309,12 @@
  "olefile": {
   "tool": "olefile",
   "title": "olefile",
-  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.14.6 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> [",
   "usage": [],
   "packages": [
    {
     "binary": "oletools",
-    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.14.6 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> [",
     "install": "oletools",
     "size": "1.90 MB"
    }
@@ -6424,12 +6323,12 @@
  "olevba": {
   "tool": "olevba",
   "title": "olevba",
-  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+  "description": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.14.6 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> [",
   "usage": [],
   "packages": [
    {
     "binary": "oletools",
-    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.13.12 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> ",
+    "desc": "Analyze MS OLE2 files and MS Office documents Tools to analyze Microsoft OLE2 files (also called Structured Storage, Compound File Binary Format or Compound Document File Format), such as Microsoft Office 97-2003 documents, MSI files or Outlook messages, mainly for malware analysis, forensics and debugging. It is based on the olefile parser. root@kali:~# ftguess -h ftguess 0.60.2 on Python 3.14.6 - http://decalage.info/python/oletools THIS IS WORK IN PROGRESS - Check updates regularly! Please report any issue at https://github.com/decalage2/oletools/issues Usage: ftguess [options] <filename> [",
     "install": "oletools",
     "size": "1.90 MB"
    }
@@ -6590,12 +6489,12 @@
  "padbuster": {
   "tool": "padbuster",
   "title": "padbuster",
-  "description": "Script for performing Padding Oracle attacks PadBuster is a Perl script for automating Padding Oracle Attacks. PadBuster provides the capability to decrypt arbitrary ciphertext, encrypt arbitrary plaintext, and perform automated response analysis to determine whether a request is vulnerable to padding oracle attacks. root@kali:~# padbuster -h Option headers requires an argument Use: padbuster URL EncryptedSample BlockSize [options] Where: URL = The target URL (and query string if applicable) EncryptedSample = The encrypted value you want to test. Must also be present in the URL, PostData or a ",
+  "description": "Script for performing Padding Oracle attacks PadBuster is a Perl script for automating Padding Oracle Attacks. PadBuster provides the capability to decrypt arbitrary ciphertext, encrypt arbitrary plaintext, and perform automated response analysis to determine whether a request is vulnerable to padding oracle attacks. root@kali:~# padbuster -h Possible precedence problem between ! and string eq at /usr/bin/padbuster line 677. Option headers requires an argument Use: padbuster URL EncryptedSample BlockSize [options] Where: URL = The target URL (and query string if applicable) EncryptedSample = T",
   "usage": [],
   "packages": [
    {
     "binary": "padbuster",
-    "desc": "Script for performing Padding Oracle attacks PadBuster is a Perl script for automating Padding Oracle Attacks. PadBuster provides the capability to decrypt arbitrary ciphertext, encrypt arbitrary plaintext, and perform automated response analysis to determine whether a request is vulnerable to padding oracle attacks. root@kali:~# padbuster -h Option headers requires an argument Use: padbuster URL EncryptedSample BlockSize [options] Where: URL = The target URL (and query string if applicable) EncryptedSample = The encrypted value you want to test. Must also be present in the URL, PostData or a ",
+    "desc": "Script for performing Padding Oracle attacks PadBuster is a Perl script for automating Padding Oracle Attacks. PadBuster provides the capability to decrypt arbitrary ciphertext, encrypt arbitrary plaintext, and perform automated response analysis to determine whether a request is vulnerable to padding oracle attacks. root@kali:~# padbuster -h Possible precedence problem between ! and string eq at /usr/bin/padbuster line 677. Option headers requires an argument Use: padbuster URL EncryptedSample BlockSize [options] Where: URL = The target URL (and query string if applicable) EncryptedSample = T",
     "install": "padbuster",
     "size": "40 KB"
    }
@@ -6761,21 +6660,21 @@
     "binary": "peass",
     "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
     "install": "peass",
-    "size": "88.07 MB"
+    "size": "89.45 MB"
    }
   ]
  },
  "penelope": {
   "tool": "penelope",
   "title": "penelope",
-  "description": "Powerful shell handler Penelope is a powerful shell handler built as a modern netcat replacement for RCE exploitation, aiming to simplify, accelerate, and optimize post-exploitation workflows. root@kali:~# penelope -h usage: penelope [-p PORTS] [-i ] [-c ] [-j ] [-a] [-l] [-h] [-L] [-T] [-CT] [-m ] [-M] [-S] [-C] [-U] [-O] [-s] [-prefix ] [-N ] [-v] [-d] [-dd] [-cu] [args ...] Penelope Shell Handler positional arguments: args Arguments for -s/--serve and SSH reverse shell modes options: -p, --ports PORTS Ports (comma separated) to listen/connect/serve, depending on -i/-c/-s options (Default: 4",
+  "description": "Advanced shell handler for penetration testing and CTFs Penelope is a modern shell handler designed for penetration testers and CTF players. It provides a highly capable alternative to basic netcat listeners, streamlining reverse and bind shell management during post-exploitation. It operates entirely using the Python standard library, requiring no external dependencies.",
   "usage": [],
   "packages": [
    {
     "binary": "penelope",
-    "desc": "Powerful shell handler Penelope is a powerful shell handler built as a modern netcat replacement for RCE exploitation, aiming to simplify, accelerate, and optimize post-exploitation workflows. root@kali:~# penelope -h usage: penelope [-p PORTS] [-i ] [-c ] [-j ] [-a] [-l] [-h] [-L] [-T] [-CT] [-m ] [-M] [-S] [-C] [-U] [-O] [-s] [-prefix ] [-N ] [-v] [-d] [-dd] [-cu] [args ...] Penelope Shell Handler positional arguments: args Arguments for -s/--serve and SSH reverse shell modes options: -p, --ports PORTS Ports (comma separated) to listen/connect/serve, depending on -i/-c/-s options (Default: 4",
+    "desc": "Advanced shell handler for penetration testing and CTFs Penelope is a modern shell handler designed for penetration testers and CTF players. It provides a highly capable alternative to basic netcat listeners, streamlining reverse and bind shell management during post-exploitation. It operates entirely using the Python standard library, requiring no external dependencies.",
     "install": "penelope",
-    "size": "210 KB"
+    "size": "228 KB"
    }
   ]
  },
@@ -6803,7 +6702,7 @@
     "binary": "testdisk",
     "desc": "Partition scanner and disk recovery tool, and PhotoRec file recovery tool TestDisk checks the partition and boot sectors of your disks. It is very useful in forensics, recovering lost partitions. It works with : PhotoRec is file data recovery software designed to recover lost pictures from digital camera memory or even Hard Disks. It has been extended to search also for non audio/video headers. It searches for following files and is able to undelete them:",
     "install": "testdisk",
-    "size": "1.45 MB"
+    "size": "2.22 MB"
    }
   ]
  },
@@ -6980,7 +6879,7 @@
     "binary": "powershell-empire",
     "desc": "PowerShell and Python post-exploitation agent This package contains a post-exploitation framework that includes a pure-PowerShell2.0 Windows agent, and a pure Python Linux/OS X agent. It is the merge of the previous PowerShell Empire and Python EmPyre projects. The framework offers cryptologically-secure communications and a flexible architecture. On the PowerShell side, Empire implements the ability to run PowerShell agents without needing powershell.exe, rapidly deployable post-exploitation modules ranging from key loggers to Mimikatz, and adaptable communications to evade network detection,",
     "install": "powershell-empire",
-    "size": "49.87 MB"
+    "size": "50.34 MB"
    }
   ]
  },
@@ -7367,7 +7266,7 @@
     "binary": "recordmydesktop",
     "desc": "Captures audio-video data of a Linux desktop session The application produces an ogg-encapsulated theora-vorbis file. recordMyDesktop tries to be as unobstrusive as possible by proccessing only regions of the screen that have changed Record desktop sessions to an Ogg Theora video file with Vorbis audio",
     "install": "recordmydesktop",
-    "size": "128 KB"
+    "size": "126 KB"
    }
   ]
  },
@@ -7475,7 +7374,7 @@
     "binary": "regripper",
     "desc": "Perform forensic analysis of registry hives Regripper’s CLI tool can be used to surgically extract, translate, and display information (both data and metadata) from Registry-formatted files via plugins in the form of Perl-scripts. It allows the analyst to select a hive-file to parse and a plugin or a profile, which is a list of plugins to run against the given hive. The results go to STDOUT and can be redirected to a file, that the analyst designates. Forensic analysis of Registry hives",
     "install": "regripper",
-    "size": "1.07 MB"
+    "size": "1.11 MB"
    }
   ]
  },
@@ -7559,25 +7458,25 @@
     "binary": "librizin-common",
     "desc": "Arch independent files from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
     "install": "librizin-common",
-    "size": "8.73 MB"
+    "size": "8.77 MB"
    },
    {
     "binary": "librizin-dev",
     "desc": "Devel files from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
     "install": "librizin-dev",
-    "size": "1.60 MB"
+    "size": "1.74 MB"
    },
    {
     "binary": "librizin0",
     "desc": "Libraries from the Rizin suite Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
     "install": "librizin0",
-    "size": "15.95 MB"
+    "size": "18.01 MB"
    },
    {
     "binary": "rizin",
     "desc": "Reverse engineering framework and command-line toolset Rizin is a fork of the radare2 reverse engineering framework with a focus on usability, working features and code cleanliness. Rizin is portable and it can be used to analyze binaries, disassemble code, debug programs, as a forensics tool, as a scriptable command-line hexadecimal editor able to open disk files, and much more!",
     "install": "rizin",
-    "size": "270 KB"
+    "size": "334 KB"
    }
   ]
  },
@@ -7928,7 +7827,7 @@
  "setoolkit": {
   "tool": "setoolkit",
   "title": "setoolkit",
-  "description": "Social-Engineer Toolkit The Social-Engineer Toolkit (SET) is an open-source Python-driven tool aimed at penetration testing around Social-Engineering. root@kali:~# se-toolkit -h ┏━(Message from Kali developers) ┃ ┃ The command se-toolkit is deprecated. Please use setoolkit instead. ┃ ┗━ setoolkit root@kali:~# setoolkit -h [-] New set.config.py file generated on: 2026-06-17 11:42:46.130540 [-] Verifying configuration update... [*] Update verified, config timestamp is: 2026-06-17 11:42:46.130540 [*] SET is using the new config, no need to restart Copyright 2020, The Social-Engineer Toolkit (SET)",
+  "description": "Social-Engineer Toolkit The Social-Engineer Toolkit (SET) is an open-source Python-driven tool aimed at penetration testing around Social-Engineering. root@kali:~# se-toolkit -h ┏━(Message from Kali developers) ┃ ┃ The command se-toolkit is deprecated. Please use setoolkit instead. ┃ ┗━ setoolkit root@kali:~# setoolkit -h [-] New set.config.py file generated on: 2026-08-25 22:25:07.516963 [-] Verifying configuration update... [*] Update verified, config timestamp is: 2026-08-25 22:25:07.516963 [*] SET is using the new config, no need to restart Copyright 2020, The Social-Engineer Toolkit (SET)",
   "usage": [
    {
     "binary": "SET",
@@ -7943,7 +7842,7 @@
   "packages": [
    {
     "binary": "set",
-    "desc": "Social-Engineer Toolkit The Social-Engineer Toolkit (SET) is an open-source Python-driven tool aimed at penetration testing around Social-Engineering. root@kali:~# se-toolkit -h ┏━(Message from Kali developers) ┃ ┃ The command se-toolkit is deprecated. Please use setoolkit instead. ┃ ┗━ setoolkit root@kali:~# setoolkit -h [-] New set.config.py file generated on: 2026-06-17 11:42:46.130540 [-] Verifying configuration update... [*] Update verified, config timestamp is: 2026-06-17 11:42:46.130540 [*] SET is using the new config, no need to restart Copyright 2020, The Social-Engineer Toolkit (SET)",
+    "desc": "Social-Engineer Toolkit The Social-Engineer Toolkit (SET) is an open-source Python-driven tool aimed at penetration testing around Social-Engineering. root@kali:~# se-toolkit -h ┏━(Message from Kali developers) ┃ ┃ The command se-toolkit is deprecated. Please use setoolkit instead. ┃ ┗━ setoolkit root@kali:~# setoolkit -h [-] New set.config.py file generated on: 2026-08-25 22:25:07.516963 [-] Verifying configuration update... [*] Update verified, config timestamp is: 2026-08-25 22:25:07.516963 [*] SET is using the new config, no need to restart Copyright 2020, The Social-Engineer Toolkit (SET)",
     "install": "set",
     "size": "30.40 MB"
    }
@@ -7952,7 +7851,7 @@
  "sfuzz": {
   "tool": "sfuzz",
   "title": "sfuzz",
-  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+  "description": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
   "usage": [
    {
     "binary": "sfuzz",
@@ -7971,7 +7870,7 @@
   "packages": [
    {
     "binary": "sfuzz",
-    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720902]. [720902] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [720906]. [720906] Exited (possibly normal), status[255] [sfo] ==",
+    "desc": "Black Box testing utilities In the same vein as the Generic Protocol Framework, sfuzz is a really simple to use black box testing suite called Simple Fuzzer (what else would you expect?). The goal is to provide a simple to use, but fairly powerful and flexible black box testing utility. root@kali:~# sfo -h [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663800]. [663800] Exited (possibly normal), status[255] [sfo] === spawning! [] Attempting to spawn a monitored task. [SFUZZ-ORACLE] attached [663801]. [663801] Exited (possibly normal), status[255] [sfo] ==",
     "install": "sfuzz",
     "size": "191 KB"
    }
@@ -8057,7 +7956,7 @@
     "binary": "sherlock",
     "desc": "Find usernames across social networks Sherlock relies on the site’s designers providing a unique URL for a registered username. To determine if a username is available, Sherlock queries that URL, and uses to response to understand if there is a claimed username already there. Currently, the tool is capable of locating users on more than 300 social networks: Apple Developer, Arduino, Docker Hub, GitHub, GitLab, Facebook, BitCoinForum, CNET, IFTTT, Instagram, PlayStore PyPI, Scribd, Telegram, TikTok, Tinder etc.",
     "install": "sherlock",
-    "size": "188 KB"
+    "size": "187 KB"
    }
   ]
  },
@@ -8078,7 +7977,7 @@
  "sidguess": {
   "tool": "sidguess",
   "title": "sidguess",
-  "description": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) Updated on: 2026-Mar-02",
+  "description": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) -h Show usage and exit -v Increase verbosity Updated on: 2026-Aug-25",
   "usage": [
    {
     "binary": "sidguess",
@@ -8097,7 +7996,7 @@
   "packages": [
    {
     "binary": "sidguesser",
-    "desc": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) Updated on: 2026-Mar-02",
+    "desc": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) -h Show usage and exit -v Increase verbosity Updated on: 2026-Aug-25",
     "install": "sidguesser",
     "size": "25 KB"
    }
@@ -8214,12 +8113,12 @@
  "sippts": {
   "tool": "sippts",
   "title": "sippts",
-  "description": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts --help usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⠤⠶⠒⠛⠉⠉⠉⠉⠀⠀⢀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣬⣍⣙⣳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠴⠒⠋⠉⠀⠀⠀",
+  "description": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts -h usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... _ _ | |------------| | .-'| | | |`-. .' | | SIPPTS | | `. .-' \\ \\ / / `-. .' _.| |--------| |._ `. / -. .' | | | | `. .- \\ / `( | |________| | )' \\ | \\ .i--",
   "usage": [],
   "packages": [
    {
     "binary": "sippts",
-    "desc": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts --help usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣤⣤⣄⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⠤⠶⠒⠛⠉⠉⠉⠉⠀⠀⢀⣀⣀⣀⣤⣤⣤⣤⣤⣤⣤⣤⣬⣍⣙⣳⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠴⠒⠋⠉⠀⠀⠀",
+    "desc": "Set of tools to audit SIP based VoIP Systems Sippts is a set of tools to audit VoIP servers and devices using SIP protocol. Sippts is programmed in Python and it allows pentesters to check the security of a VoIP server using SIP protocol. root@kali:~# sippts -h usage: sippts [-h] {video,astami,scan,exten,rcrack,send,wssend,enumerate,leak,ping,invite,dump,dcrack,flood,sniff,spoof,pcapdump,rtpbleed,rtcpbleed,rtpbleedflood,rtpbleedinject} ... _ _ | |------------| | .-'| | | |`-. .' | | SIPPTS | | `. .-' \\ \\ / / `-. .' _.| |--------| |._ `. / -. .' | | | | `. .- \\ / `( | |________| | )' \\ | \\ .i--",
     "install": "sippts",
     "size": "762 KB"
    }
@@ -8553,14 +8452,14 @@
     "binary": "sqlmap",
     "desc": "Automatic SQL injection tool sqlmap goal is to detect and take advantage of SQL injection vulnerabilities in web applications. Once it detects one or more SQL injections on the target host, the user can choose among a variety of options to perform an extensive back-end database management system fingerprint, retrieve DBMS session user and database, enumerate users, password hashes, privileges, databases, dump entire or user’s specific DBMS tables/columns, run his own SQL statement, read specific files on the file system and more. Automatic SQL injection tool",
     "install": "sqlmap",
-    "size": "10.36 MB"
+    "size": "12.69 MB"
    }
   ]
  },
  "sqlninja": {
   "tool": "sqlninja",
   "title": "sqlninja",
-  "description": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.40.1. Usage: s",
+  "description": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.42.2. Usage: s",
   "usage": [
    {
     "binary": "sqlninja",
@@ -8579,7 +8478,7 @@
   "packages": [
    {
     "binary": "sqlninja",
-    "desc": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.40.1. Usage: s",
+    "desc": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.42.2. Usage: s",
     "install": "sqlninja",
     "size": "1.00 MB"
    }
@@ -8719,7 +8618,7 @@
     "binary": "sslh",
     "desc": "Applicative protocol multiplexer sslh lets one accept HTTPS, SSH, OpenVPN, tinc and XMPP connections on the same port. This makes it possible to connect to any of these servers on port 443 (e.g. from inside a corporate firewall, which almost never block port 443) while still serving HTTPS on that port. Protocol demultiplexer",
     "install": "sslh",
-    "size": "513 KB"
+    "size": "839 KB"
    }
   ]
  },
@@ -8824,28 +8723,28 @@
  "starkiller-start": {
   "tool": "starkiller-start",
   "title": "starkiller-start",
-  "description": "Frontend for Powershell Empire This package contains a Frontend for Powershell Empire. Updated on: 2026-May-25",
+  "description": "Frontend for Powershell Empire This package contains a Frontend for Powershell Empire. Updated on: 2026-Aug-25",
   "usage": [],
   "packages": [
    {
     "binary": "starkiller",
-    "desc": "Frontend for Powershell Empire This package contains a Frontend for Powershell Empire. Updated on: 2026-May-25",
+    "desc": "Frontend for Powershell Empire This package contains a Frontend for Powershell Empire. Updated on: 2026-Aug-25",
     "install": "starkiller",
-    "size": "8.64 MB"
+    "size": "8.51 MB"
    }
   ]
  },
  "starkiller-stop": {
   "tool": "starkiller-stop",
   "title": "starkiller-stop",
-  "description": "Frontend for Powershell Empire This package contains a Frontend for Powershell Empire. Updated on: 2026-May-25",
+  "description": "Frontend for Powershell Empire This package contains a Frontend for Powershell Empire. Updated on: 2026-Aug-25",
   "usage": [],
   "packages": [
    {
     "binary": "starkiller",
-    "desc": "Frontend for Powershell Empire This package contains a Frontend for Powershell Empire. Updated on: 2026-May-25",
+    "desc": "Frontend for Powershell Empire This package contains a Frontend for Powershell Empire. Updated on: 2026-Aug-25",
     "install": "starkiller",
-    "size": "8.64 MB"
+    "size": "8.51 MB"
    }
   ]
  },
@@ -8900,13 +8799,13 @@
     "binary": "steghide",
     "desc": "Steganography hiding tool Steghide is steganography program which hides bits of a data file in some of the least significant bits of another file in such a way that the existence of the data file is not visible and cannot be proven. Steghide is designed to be portable and configurable and features hiding data in bmp, jpeg, wav and au files, blowfish encryption, MD5 hashing of passphrases to blowfish keys, and pseudo-random distribution of hidden bits in the container data.",
     "install": "steghide",
-    "size": "477 KB"
+    "size": "525 KB"
    },
    {
     "binary": "steghide-doc",
     "desc": "Steganography hiding tool - documentation files Steghide is steganography program which hides bits of a data file in some of the least significant bits of another file in such a way that the existence of the data file is not visible and cannot be proven. Steghide is designed to be portable and configurable and features hiding data in bmp, jpeg, wav and au files, blowfish encryption, MD5 hashing of passphrases to blowfish keys, and pseudo-random distribution of hidden bits in the container data.",
     "install": "steghide-doc",
-    "size": "7.45 MB"
+    "size": "7.71 MB"
    }
   ]
  },
@@ -8962,7 +8861,7 @@
     "binary": "subfinder",
     "desc": "Subdomain discovery tool This package contains a subdomain discovery tool that discovers valid subdomains for websites by using passive online sources. It has a simple modular architecture and is optimized for speed. subfinder is built for doing one thing only - passive subdomain enumeration, and it does that very well. root@kali:~# subfinder -h Subfinder is a subdomain discovery tool that discovers subdomains for websites by using passive online sources. Usage: subfinder [flags] Flags: INPUT: -d, -domain string[] domains to find subdomains for -dL, -list string file containing list of domains",
     "install": "subfinder",
-    "size": "31.01 MB"
+    "size": "28.31 MB"
    }
   ]
  },
@@ -9248,7 +9147,7 @@
     "binary": "tcpreplay",
     "desc": "Tool to replay saved tcpdump files at arbitrary speeds Tcpreplay is aimed at testing the performance of a NIDS by replaying real background network traffic in which to hide attacks. Tcpreplay allows you to control the speed at which the traffic is replayed, and can replay arbitrary tcpdump traces. Unlike programmatically-generated artificial traffic which doesn’t exercise the application/protocol inspection that a NIDS performs, and doesn’t reproduce the real-world anomalies that appear on production networks (asymmetric routes, traffic bursts/lulls, fragmentation, retransmissions, etc.), tcpr",
     "install": "tcpreplay",
-    "size": "2.13 MB"
+    "size": "1.99 MB"
    }
   ]
  },
@@ -9286,7 +9185,7 @@
     "binary": "testdisk",
     "desc": "Partition scanner and disk recovery tool, and PhotoRec file recovery tool TestDisk checks the partition and boot sectors of your disks. It is very useful in forensics, recovering lost partitions. It works with : PhotoRec is file data recovery software designed to recover lost pictures from digital camera memory or even Hard Disks. It has been extended to search also for non audio/video headers. It searches for following files and is able to undelete them:",
     "install": "testdisk",
-    "size": "1.45 MB"
+    "size": "2.22 MB"
    }
   ]
  },
@@ -9356,7 +9255,7 @@
     "binary": "theharvester",
     "desc": "Tool for gathering e-mail accounts and subdomain names from public sources The package contains a tool for gathering subdomain names, e-mail addresses, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers).",
     "install": "theharvester",
-    "size": "2.24 MB"
+    "size": "2.26 MB"
    }
   ]
  },
@@ -9813,7 +9712,7 @@
  "urlcrazy": {
   "tool": "urlcrazy",
   "title": "urlcrazy",
-  "description": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h URLCrazy dependencies are not installed. To install the dependencies, copy and paste the following command, or check the Installation section of the README.md file. `$ bundle install` Updated on: 2026-Mar-02",
+  "description": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h Warning. File descriptor limit may be too low. Check with `ulimit -a` and change with `ulimit -n 10000` Updated on: 2026-Aug-25",
   "usage": [
    {
     "binary": "urlcrazy",
@@ -9832,7 +9731,7 @@
   "packages": [
    {
     "binary": "urlcrazy",
-    "desc": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h URLCrazy dependencies are not installed. To install the dependencies, copy and paste the following command, or check the Installation section of the README.md file. `$ bundle install` Updated on: 2026-Mar-02",
+    "desc": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h Warning. File descriptor limit may be too low. Check with `ulimit -a` and change with `ulimit -n 10000` Updated on: 2026-Aug-25",
     "install": "urlcrazy",
     "size": "1.31 MB"
    }
@@ -9872,7 +9771,7 @@
    },
    {
     "binary": "veil-evasion",
-    "desc": "Transitional package for veil This is a transitional package. It can safely be removed. Updated on: 2026-May-25",
+    "desc": "Transitional package for veil This is a transitional package. It can safely be removed. Updated on: 2026-Aug-25",
     "install": "veil-evasion",
     "size": "12 KB"
    }
@@ -10030,14 +9929,14 @@
  "webscarab": {
   "tool": "webscarab",
   "title": "webscarab",
-  "description": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2025-Dec-09",
+  "description": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2026-Aug-25",
   "usage": [],
   "packages": [
    {
     "binary": "webscarab",
-    "desc": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2025-Dec-09",
+    "desc": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2026-Aug-25",
     "install": "webscarab",
-    "size": "11.27 MB"
+    "size": "11.26 MB"
    }
   ]
  },
@@ -10229,7 +10128,7 @@
     "binary": "peass",
     "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
     "install": "peass",
-    "size": "88.07 MB"
+    "size": "89.45 MB"
    }
   ]
  },
@@ -10360,14 +10259,14 @@
  "wpprobe": {
   "tool": "wpprobe",
   "title": "wpprobe",
-  "description": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 12:04:23 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
+  "description": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 23:00:07 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
   "usage": [],
   "packages": [
    {
     "binary": "wpprobe",
-    "desc": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 12:04:23 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
+    "desc": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 23:00:07 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
     "install": "wpprobe",
-    "size": "12.66 MB"
+    "size": "13.10 MB"
    }
   ]
  },
@@ -10381,7 +10280,7 @@
     "binary": "wpscan",
     "desc": "Black box WordPress vulnerability scanner WPScan scans remote WordPress installations to find security issues. WordPress Security Scanner",
     "install": "wpscan",
-    "size": "397 KB"
+    "size": "695 KB"
    }
   ]
  },
@@ -10407,7 +10306,7 @@
     "binary": "freerdp-sdl",
     "desc": "RDP client for Windows Terminal Services (SDL client) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the SDL based client.",
     "install": "freerdp-sdl",
-    "size": "864 KB"
+    "size": "872 KB"
    },
    {
     "binary": "freerdp-shadow-x11",
@@ -10425,55 +10324,55 @@
     "binary": "freerdp-x11",
     "desc": "RDP client for Windows Terminal Services (X11 client) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the X11 based client.",
     "install": "freerdp-x11",
-    "size": "784 KB"
+    "size": "780 KB"
    },
    {
     "binary": "freerdp3-dev",
     "desc": "Free Remote Desktop Protocol library (development files) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the FreeRDP development files.",
     "install": "freerdp3-dev",
-    "size": "1.18 MB"
+    "size": "1.25 MB"
    },
    {
     "binary": "freerdp3-proxy",
     "desc": "FreeRDP proxy server (transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-proxy (freerdp-proxy3 binary) to freerdp-proxy (freerdp-proxy binary).",
     "install": "freerdp3-proxy",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "freerdp3-proxy-modules",
     "desc": "FreeRDP Remote Desktop Protocol proxy module libraries (transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package is used to transition from freerdp3-proxy-modules to freerdp-proxy-modules.",
     "install": "freerdp3-proxy-modules",
-    "size": "172 KB"
+    "size": "179 KB"
    },
    {
     "binary": "freerdp3-sdl",
     "desc": "RDP client for Windows Terminal Services (SDL client transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-sdl (sdl-freerdp3 binary) to freerdp-sdl (sdl-freerdp binary).",
     "install": "freerdp3-sdl",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "freerdp3-shadow-x11",
     "desc": "FreeRDP x11 shadowing server (transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-shadow-x11 (freerdp-shadow-cli3 binary) to freerdp-shadow-x11 (freerdp-shadow-cli binary).",
     "install": "freerdp3-shadow-x11",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "freerdp3-wayland",
     "desc": "RDP client for Windows Terminal Services (wayland client transitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-wayland (wlfreerdp3 binary) to freerdp-wayland (wlfreerdp binary).",
     "install": "freerdp3-wayland",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "freerdp3-x11",
     "desc": "RDP client for Windows Terminal Services (X11 client tramsitional package) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package provides compatibility links for transition from freerdp3-x11 (xfreerdp3 binary) to freerdp-x11 (xfreerdp binary).",
     "install": "freerdp3-x11",
-    "size": "177 KB"
+    "size": "184 KB"
    },
    {
     "binary": "libfreerdp-client3-3",
     "desc": "Free Remote Desktop Protocol library (client library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library for common client functionality.",
     "install": "libfreerdp-client3-3",
-    "size": "810 KB"
+    "size": "819 KB"
    },
    {
     "binary": "libfreerdp-server-proxy3-3",
@@ -10485,7 +10384,7 @@
     "binary": "libfreerdp-server3-3",
     "desc": "Free Remote Desktop Protocol library (server library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library with common server functionality.",
     "install": "libfreerdp-server3-3",
-    "size": "288 KB"
+    "size": "312 KB"
    },
    {
     "binary": "libfreerdp-shadow-subsystem3-3",
@@ -10503,7 +10402,7 @@
     "binary": "libfreerdp3-3",
     "desc": "Free Remote Desktop Protocol library (core library) FreeRDP is a libre client/server implementation of the Remote Desktop Protocol (RDP). This package contains the shared library with all core functionality.",
     "install": "libfreerdp3-3",
-    "size": "2.15 MB"
+    "size": "2.20 MB"
    },
    {
     "binary": "libwinpr-tools3-3",
@@ -10595,7 +10494,7 @@
     "binary": "libyara10",
     "desc": "YARA shared library YARA is a tool aimed at helping malware researchers to identify and classify malware samples. With YARA, it is possible to create descriptions of malware families based on textual or binary patterns contained in samples of those families. Each description consists of a set of strings and a Boolean expression which determines its logic. Complex and powerful rules can be created by using binary strings with wild-cards, case-insensitive text strings, special operators, regular expressions and many other features.",
     "install": "libyara10",
-    "size": "599 KB"
+    "size": "603 KB"
    },
    {
     "binary": "yara",
@@ -10621,7 +10520,7 @@
     "binary": "yersinia",
     "desc": "Network vulnerabilities check software Yersinia is a framework for performing layer 2 attacks. It is designed to take advantage of some weakeness in different network protocols. It pretends to be a solid framework for analyzing and testing the deployed networks and systems. Attacks for the following network protocols are implemented in this particular release:",
     "install": "yersinia",
-    "size": "417 KB"
+    "size": "415 KB"
    }
   ]
  },

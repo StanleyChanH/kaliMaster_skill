@@ -28,62 +28,6 @@
   ],
   "attack_category": "Discovery"
  },
- "atk6-thcping6": {
-  "tool": "atk6-thcping6",
-  "title": "atk6-thcping6",
-  "description": "The Hacker Choice’s IPv6 Attack Toolkit Attack toolkit for testing IPv6 and ICMPv6 protocol weaknesses. Some of the tools included:",
-  "usage": [
-   {
-    "binary": "address6",
-    "parts": [
-     [
-      "p",
-      "Convert an IPv6 address to a MAC address and vice-versa:"
-     ],
-     [
-      "code",
-      "root@kali:~# address6 fe80::76d4:35ff:fe4e:39c8\n74:d4:35:4e:39:c8\nroot@kali:~# address6 74:d4:35:4e:39:c8\nfe80::76d4:35ff:fe4e:39c8"
-     ]
-    ]
-   },
-   {
-    "binary": "alive6",
-    "parts": [
-     [
-      "code",
-      "root@kali:~# alive6 eth0\nAlive: fd77:7c68:420a:1:426c:8fff:fe1b:cb90 [ICMP parameter problem]\nAlive: fd77:7c68:420a:1:20c:29ff:fee5:5bf4 [ICMP echo-reply]\nAlive: fd77:7c68:420a:1:75d9:4f39:a46a:6f83 [ICMP echo-reply]\nAlive: fd77:7c68:420a:1:6912:8e80:e02f:1969 [ICMP echo-reply]\nAlive: fd77:7c68:420a:1:201:6cff:fe6f:ddd1 [ICMP echo-reply]"
-     ]
-    ]
-   },
-   {
-    "binary": "detect-new-ip6",
-    "parts": [
-     [
-      "code",
-      "root@kali:~# detect-new-ip6 eth0\nStarted ICMP6 DAD detection (Press Control-C to end) ...\nDetected new ip6 address: fe80::85d:9879:9251:853a"
-     ]
-    ]
-   },
-   {
-    "binary": "dnsdict6",
-    "parts": [
-     [
-      "code",
-      "root@kali:~# dnsdict6 example.com\nStarting DNS enumeration work on example.com. ...\nStarting enumerating example.com. - creating 8 threads for 798 words...\nEstimated time to completion: 1 to 2 minutes\nwww.example.com. => 2606:2800:220:6d:26bf:1447:1097:aa7"
-     ]
-    ]
-   }
-  ],
-  "packages": [
-   {
-    "binary": "thc-ipv6",
-    "desc": "The Hacker Choice’s IPv6 Attack Toolkit Attack toolkit for testing IPv6 and ICMPv6 protocol weaknesses. Some of the tools included:",
-    "install": "thc-ipv6",
-    "size": "3.68 MB"
-   }
-  ],
-  "attack_category": "Discovery"
- },
  "autorecon": {
   "tool": "autorecon",
   "title": "autorecon",
@@ -123,7 +67,7 @@
     "binary": "braa",
     "desc": "Mass SNMP scanner Braa is a mass snmp scanner. The intended usage of such a tool is of course making SNMP queries - but unlike snmpget or snmpwalk from net-snmp, it is able to query dozens or hundreds of hosts simultaneously, and in a single process. Thus, it consumes very few system resources and does the scanning VERY fast. Braa implements its OWN snmp stack, so it does NOT need any SNMP libraries like net-snmp. The implementation is very dirty, supports only several data types, and in any case cannot be stated ‘standard-conforming’! It was designed to be fast, and it is fast. For this reaso",
     "install": "braa",
-    "size": "62 KB"
+    "size": "66 KB"
    }
   ],
   "attack_category": "Discovery"
@@ -474,7 +418,7 @@
  "sidguess": {
   "tool": "sidguess",
   "title": "sidguess",
-  "description": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) Updated on: 2026-Mar-02",
+  "description": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) -h Show usage and exit -v Increase verbosity Updated on: 2026-Aug-25",
   "usage": [
    {
     "binary": "sidguess",
@@ -493,7 +437,7 @@
   "packages": [
    {
     "binary": "sidguesser",
-    "desc": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) Updated on: 2026-Mar-02",
+    "desc": "Guesses sids against an Oracle database Guesses sids/instances against an Oracle database according to a predefined dictionary file. The speed is slow (80-100 guesses per second) but it does the job. root@kali:~# sidguess -h SIDGuesser v1.0.5 by [email protected] ------------------------------------- sidguess -i <ip> -d <dictionary> [options] options: -p <portnr> Use specific port (default 1521) -r <report> Report to file -m <mode> findfirst OR findall(default) -h Show usage and exit -v Increase verbosity Updated on: 2026-Aug-25",
     "install": "sidguesser",
     "size": "25 KB"
    }
