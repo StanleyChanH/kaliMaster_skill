@@ -24,7 +24,7 @@
     "binary": "chisel-common-binaries",
     "desc": "Prebuilt binaries for chisel This package contains a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.",
     "install": "chisel-common-binaries",
-    "size": "107.75 MB"
+    "size": "118.22 MB"
    }
   ],
   "attack_category": "Command and Control"
@@ -39,7 +39,7 @@
     "binary": "chisel",
     "desc": "Fast TCP/UDP tunnel over HTTP (program) This package contains a fast TCP/UDP tunnel, transported over HTTP, secured via SSH. Single executable including both client and server. Chisel is mainly useful for passing through firewalls, though it can also be used to provide a secure endpoint into your network.",
     "install": "chisel",
-    "size": "10.12 MB"
+    "size": "10.40 MB"
    }
   ],
   "attack_category": "Command and Control"
@@ -179,14 +179,14 @@
  "goshs": {
   "tool": "goshs",
   "title": "goshs",
-  "description": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.0 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
+  "description": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.6 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
   "usage": [],
   "packages": [
    {
     "binary": "goshs",
-    "desc": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.0 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
+    "desc": "SimpleHTTPServer written in Go This tool provides a SimpleHTTPServer written in Go, enhanced with features and security. This package contains a simple http server like the Python SimpleHTTPServer but enhanced with a lot of helpful features and security in mind. root@kali:~# goshs -h goshs v2.1.6 Usage: goshs [options] Web server options: -i, --ip IP or Interface to listen on (default: 0.0.0.0) -p, --port The port to listen on (default: 8000) -d, --dir The web root directory (default: current working path) -w, --webdav Also serve using webdav protocol (default: false) -wp, --webdav-port The po",
     "install": "goshs",
-    "size": "22.01 MB"
+    "size": "22.84 MB"
    }
   ],
   "attack_category": "Exfiltration"
@@ -216,7 +216,7 @@
     "binary": "ligolo-ng",
     "desc": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
     "install": "ligolo-ng",
-    "size": "25.74 MB"
+    "size": "26.49 MB"
    }
   ],
   "attack_category": "Command and Control"
@@ -231,7 +231,7 @@
     "binary": "ligolo-ng",
     "desc": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
     "install": "ligolo-ng",
-    "size": "25.74 MB"
+    "size": "26.49 MB"
    }
   ],
   "attack_category": "Command and Control"
@@ -261,7 +261,7 @@
     "binary": "ligolo-ng-common-binaries",
     "desc": "Prebuilt binaries for Advanced ligolo-ng Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
     "install": "ligolo-ng-common-binaries",
-    "size": "158.13 MB"
+    "size": "158.37 MB"
    }
   ],
   "attack_category": "Command and Control"
@@ -276,7 +276,7 @@
     "binary": "ligolo-ng",
     "desc": "Advanced, yet simple, tunneling/pivoting tool that uses a TUN interface Ligolo-ng is a simple, lightweight and fast tool that allows pentesters to establish tunnels from a reverse TCP/TLS connection using a tun interface (without the need of SOCKS).",
     "install": "ligolo-ng",
-    "size": "25.74 MB"
+    "size": "26.49 MB"
    }
   ],
   "attack_category": "Command and Control"
@@ -284,14 +284,14 @@
  "minicom": {
   "tool": "minicom",
   "title": "minicom",
-  "description": "Friendly menu driven serial communication program Minicom is a clone of the MS-DOS “Telix” communication program. It emulates ANSI and VT102 terminals, has a dialing directory and auto zmodem download. Upload/download files using the ASCII protocol",
+  "description": "Menu-driven serial communication program Minicom is a text-mode serial communications program modelled on the MS-DOS program Telix. It drives modems and serial consoles through a full-screen, menu-driven interface and emulates ANSI and VT102 terminals. A dialling directory with auto-redial, a scripting language for automating log-ins and other exchanges, capture-to-file logging, remappable key bindings and a configurable status line are included. File transfers rely on external X-, Y- and ZMODEM helpers such as those in the lrzsz package.",
   "usage": [],
   "packages": [
    {
     "binary": "minicom",
-    "desc": "Friendly menu driven serial communication program Minicom is a clone of the MS-DOS “Telix” communication program. It emulates ANSI and VT102 terminals, has a dialing directory and auto zmodem download. Upload/download files using the ASCII protocol",
+    "desc": "Menu-driven serial communication program Minicom is a text-mode serial communications program modelled on the MS-DOS program Telix. It drives modems and serial consoles through a full-screen, menu-driven interface and emulates ANSI and VT102 terminals. A dialling directory with auto-redial, a scripting language for automating log-ins and other exchanges, capture-to-file logging, remappable key bindings and a configurable status line are included. File transfers rely on external X-, Y- and ZMODEM helpers such as those in the lrzsz package.",
     "install": "minicom",
-    "size": "1.09 MB"
+    "size": "1.10 MB"
    }
   ],
   "attack_category": "Command and Control"
@@ -427,14 +427,14 @@
  "penelope": {
   "tool": "penelope",
   "title": "penelope",
-  "description": "Powerful shell handler Penelope is a powerful shell handler built as a modern netcat replacement for RCE exploitation, aiming to simplify, accelerate, and optimize post-exploitation workflows. root@kali:~# penelope -h usage: penelope [-p PORTS] [-i ] [-c ] [-j ] [-a] [-l] [-h] [-L] [-T] [-CT] [-m ] [-M] [-S] [-C] [-U] [-O] [-s] [-prefix ] [-N ] [-v] [-d] [-dd] [-cu] [args ...] Penelope Shell Handler positional arguments: args Arguments for -s/--serve and SSH reverse shell modes options: -p, --ports PORTS Ports (comma separated) to listen/connect/serve, depending on -i/-c/-s options (Default: 4",
+  "description": "Advanced shell handler for penetration testing and CTFs Penelope is a modern shell handler designed for penetration testers and CTF players. It provides a highly capable alternative to basic netcat listeners, streamlining reverse and bind shell management during post-exploitation. It operates entirely using the Python standard library, requiring no external dependencies.",
   "usage": [],
   "packages": [
    {
     "binary": "penelope",
-    "desc": "Powerful shell handler Penelope is a powerful shell handler built as a modern netcat replacement for RCE exploitation, aiming to simplify, accelerate, and optimize post-exploitation workflows. root@kali:~# penelope -h usage: penelope [-p PORTS] [-i ] [-c ] [-j ] [-a] [-l] [-h] [-L] [-T] [-CT] [-m ] [-M] [-S] [-C] [-U] [-O] [-s] [-prefix ] [-N ] [-v] [-d] [-dd] [-cu] [args ...] Penelope Shell Handler positional arguments: args Arguments for -s/--serve and SSH reverse shell modes options: -p, --ports PORTS Ports (comma separated) to listen/connect/serve, depending on -i/-c/-s options (Default: 4",
+    "desc": "Advanced shell handler for penetration testing and CTFs Penelope is a modern shell handler designed for penetration testers and CTF players. It provides a highly capable alternative to basic netcat listeners, streamlining reverse and bind shell management during post-exploitation. It operates entirely using the Python standard library, requiring no external dependencies.",
     "install": "penelope",
-    "size": "210 KB"
+    "size": "228 KB"
    }
   ],
   "attack_category": "Command and Control"
@@ -613,7 +613,7 @@
     "binary": "sslh",
     "desc": "Applicative protocol multiplexer sslh lets one accept HTTPS, SSH, OpenVPN, tinc and XMPP connections on the same port. This makes it possible to connect to any of these servers on port 443 (e.g. from inside a corporate firewall, which almost never block port 443) while still serving HTTPS on that port. Protocol demultiplexer",
     "install": "sslh",
-    "size": "513 KB"
+    "size": "844 KB"
    }
   ],
   "attack_category": "Command and Control"

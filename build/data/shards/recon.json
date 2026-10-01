@@ -9,7 +9,7 @@
     "binary": "amass",
     "desc": "In-depth DNS Enumeration and Network Mapping This package contains a tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery using open source information gathering and active reconnaissance techniques. Information Gathering Techniques Used: - DNS: Basic enumeration, Brute forcing (upon request), Reverse DNS sweeping, Subdomain name alterations/permutations, Zone transfers (upon request) - Scraping: Ask, Baidu, Bing, DNSDumpster, DNSTable, Dogpile, Exalead, Google, HackerOne, IPv4Info, Netcraft, PTRArchive, Riddler, SiteDo",
     "install": "amass",
-    "size": "50.54 MB"
+    "size": "50.57 MB"
    }
   ],
   "attack_category": "Discovery"
@@ -32,14 +32,14 @@
  "caido-cli": {
   "tool": "caido-cli",
   "title": "caido-cli",
-  "description": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Enable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cache",
+  "description": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Disable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cach",
   "usage": [],
   "packages": [
    {
     "binary": "caido-cli",
-    "desc": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Enable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cache",
+    "desc": "Security auditing toolkit (CLI) This package contains caido CLI, a security auditing toolkit. root@kali:~# caido-cli -h A lightweight web security auditing toolkit Usage: caido-cli [OPTIONS] Options: -l, --listen <ADDR:PORT> Listening address --invisible Enable invisible mode for all listeners --no-sync Disable sync with sync server --proxy-listen <ADDR:PORT> Proxy listening addresses --ui-listen <ADDR:PORT> UI listening addresses --ui-domain <UI_DOMAIN> Allowed domains for UI --no-open Do not open the UI a browser tab --debug Record and display debug logs --reset-cache Reset the instance cach",
     "install": "caido-cli",
-    "size": "151.57 MB"
+    "size": "118.41 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -47,14 +47,14 @@
  "caido": {
   "tool": "caido",
   "title": "caido",
-  "description": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Jun-17",
+  "description": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Aug-25",
   "usage": [],
   "packages": [
    {
     "binary": "caido",
-    "desc": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Jun-17",
+    "desc": "Security auditing toolkit (desktop) This package contains caido desktop, a security auditing toolkit. Updated on: 2026-Aug-25",
     "install": "caido",
-    "size": "477.53 MB"
+    "size": "468.86 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -183,7 +183,7 @@
     "binary": "dnsrecon",
     "desc": "Powerful DNS enumeration script DNSRecon is a Python script that provides the ability to perform: DNS Enumeration and Scanning Tool",
     "install": "dnsrecon",
-    "size": "1.45 MB"
+    "size": "1.51 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -212,7 +212,7 @@
     "binary": "dnstracer",
     "desc": "Trace DNS queries to the source dnstracer determines where a given Domain Name Server (DNS) gets its information from for a given hostname, and follows the chain of DNS servers back to the authoritative answer. Trace a chain of DNS servers to the source",
     "install": "dnstracer",
-    "size": "59 KB"
+    "size": "63 KB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -342,14 +342,14 @@
  "gospider": {
   "tool": "gospider",
   "title": "gospider",
-  "description": "Fast web spider written in Go This package contains a Fast web spider written in Go. The features are: - Fast web crawling - Brute force and parse sitemap.xml - Parse robots.txt - Generate and verify link from JavaScript files - Link Finder - Find AWS-S3 from response source - Find subdomains from response source - Get URLs from Wayback Machine, Common Crawl, Virus Total, Alien Vault - Format output easy to Grep - Support Burp input - Crawl multiple sites in parallel - Random mobile/web User-AgentShowcases root@kali:~# gospider -h A Simple Web Spider - v1.1.0 by @theblackturtle Usage: gospider",
+  "description": "Fast web spider written in Go This package contains a Fast web spider written in Go. The features are: - Fast web crawling - Brute force and parse sitemap.xml - Parse robots.txt - Generate and verify link from JavaScript files - Link Finder - Find AWS-S3 from response source - Find subdomains from response source - Get URLs from Wayback Machine, Common Crawl, Virus Total, Alien Vault - Format output easy to Grep - Support Burp input - Crawl multiple sites in parallel - Random mobile/web User-AgentShowcases root@kali:~# gospider -h Fast web spider written in Go - v1.1.6 by @thebl4ckturtle & @j3",
   "usage": [],
   "packages": [
    {
     "binary": "gospider",
-    "desc": "Fast web spider written in Go This package contains a Fast web spider written in Go. The features are: - Fast web crawling - Brute force and parse sitemap.xml - Parse robots.txt - Generate and verify link from JavaScript files - Link Finder - Find AWS-S3 from response source - Find subdomains from response source - Get URLs from Wayback Machine, Common Crawl, Virus Total, Alien Vault - Format output easy to Grep - Support Burp input - Crawl multiple sites in parallel - Random mobile/web User-AgentShowcases root@kali:~# gospider -h A Simple Web Spider - v1.1.0 by @theblackturtle Usage: gospider",
+    "desc": "Fast web spider written in Go This package contains a Fast web spider written in Go. The features are: - Fast web crawling - Brute force and parse sitemap.xml - Parse robots.txt - Generate and verify link from JavaScript files - Link Finder - Find AWS-S3 from response source - Find subdomains from response source - Get URLs from Wayback Machine, Common Crawl, Virus Total, Alien Vault - Format output easy to Grep - Support Burp input - Crawl multiple sites in parallel - Random mobile/web User-AgentShowcases root@kali:~# gospider -h Fast web spider written in Go - v1.1.6 by @thebl4ckturtle & @j3",
     "install": "gospider",
-    "size": "11.18 MB"
+    "size": "14.67 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -423,7 +423,7 @@
     "binary": "maltego",
     "desc": "Open source intelligence and forensics application Maltego is an open source intelligence and forensics application. It will offer you timous mining and gathering of information as well as the representation of this information in a easy to understand format. This package replaces previous packages matlegoce and casefile.",
     "install": "maltego",
-    "size": "299.66 MB"
+    "size": "301.19 MB"
    }
   ],
   "attack_category": "Services and Other Tools"
@@ -570,7 +570,7 @@
     "binary": "sherlock",
     "desc": "Find usernames across social networks Sherlock relies on the site’s designers providing a unique URL for a registered username. To determine if a username is available, Sherlock queries that URL, and uses to response to understand if there is a claimed username already there. Currently, the tool is capable of locating users on more than 300 social networks: Apple Developer, Arduino, Docker Hub, GitHub, GitLab, Facebook, BitCoinForum, CNET, IFTTT, Instagram, PlayStore PyPI, Scribd, Telegram, TikTok, Tinder etc.",
     "install": "sherlock",
-    "size": "188 KB"
+    "size": "187 KB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -615,7 +615,7 @@
     "binary": "subfinder",
     "desc": "Subdomain discovery tool This package contains a subdomain discovery tool that discovers valid subdomains for websites by using passive online sources. It has a simple modular architecture and is optimized for speed. subfinder is built for doing one thing only - passive subdomain enumeration, and it does that very well. root@kali:~# subfinder -h Subfinder is a subdomain discovery tool that discovers subdomains for websites by using passive online sources. Usage: subfinder [flags] Flags: INPUT: -d, -domain string[] domains to find subdomains for -dL, -list string file containing list of domains",
     "install": "subfinder",
-    "size": "31.01 MB"
+    "size": "28.46 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -659,7 +659,7 @@
     "binary": "theharvester",
     "desc": "Tool for gathering e-mail accounts and subdomain names from public sources The package contains a tool for gathering subdomain names, e-mail addresses, virtual hosts, open ports/ banners, and employee names from different public sources (search engines, pgp key servers).",
     "install": "theharvester",
-    "size": "2.24 MB"
+    "size": "2.26 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -711,7 +711,7 @@
  "urlcrazy": {
   "tool": "urlcrazy",
   "title": "urlcrazy",
-  "description": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h URLCrazy dependencies are not installed. To install the dependencies, copy and paste the following command, or check the Installation section of the README.md file. `$ bundle install` Updated on: 2026-Mar-02",
+  "description": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h Warning. File descriptor limit may be too low. Check with `ulimit -a` and change with `ulimit -n 10000` Updated on: 2026-Aug-25",
   "usage": [
    {
     "binary": "urlcrazy",
@@ -730,7 +730,7 @@
   "packages": [
    {
     "binary": "urlcrazy",
-    "desc": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h URLCrazy dependencies are not installed. To install the dependencies, copy and paste the following command, or check the Installation section of the README.md file. `$ bundle install` Updated on: 2026-Mar-02",
+    "desc": "Domain typo generator Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage. root@kali:~# urlcrazy -h Warning. File descriptor limit may be too low. Check with `ulimit -a` and change with `ulimit -n 10000` Updated on: 2026-Aug-25",
     "install": "urlcrazy",
     "size": "1.31 MB"
    }
@@ -755,14 +755,14 @@
  "wpprobe": {
   "tool": "wpprobe",
   "title": "wpprobe",
-  "description": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 12:04:23 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
+  "description": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 20:14:41 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
   "usage": [],
   "packages": [
    {
     "binary": "wpprobe",
-    "desc": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 12:04:23 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
+    "desc": "Fast WordPress plugin enumeration tool A fast WordPress plugin scanner that detects installed plugins via REST API enumeration and maps them to known vulnerabilities. Over 3000 plugins detectable without brute-force, thousands more with it. root@kali:~# wpprobe -h __ __ ___ ___ _ / / /\\ \\ \\/ _ \\/ _ \\_ __ ___ | |__ ___ \\ \\/ \\/ / /_)/ /_)/ '__/ _ \\| '_ \\ / _ \\ \\ /\\ / ___/ ___/| | | (_) | |_) | __/ \\/ \\/\\/ \\/ |_| \\___/|_.__/ \\___| dev [kali] Stealthy WordPress Plugin Scanner - By @Chocapikk 20:14:41 [WARNING] Vulnerability database not found. Run: wpprobe update-db WPProbe is a high-speed WordPre",
     "install": "wpprobe",
-    "size": "12.66 MB"
+    "size": "14.43 MB"
    }
   ],
   "attack_category": "Reconnaissance"

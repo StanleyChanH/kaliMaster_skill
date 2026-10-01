@@ -9,7 +9,7 @@
     "binary": "peass",
     "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
     "install": "peass",
-    "size": "88.07 MB"
+    "size": "89.77 MB"
    }
   ],
   "attack_category": "Privilege Escalation"
@@ -53,7 +53,7 @@
     "binary": "peass",
     "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
     "install": "peass",
-    "size": "88.07 MB"
+    "size": "89.77 MB"
    }
   ],
   "attack_category": "Privilege Escalation"
@@ -108,7 +108,7 @@
     "binary": "unix-privesc-check",
     "desc": "Script to check for simple privilege escalation vectors Unix-privesc-checker is a script that runs on Unix systems (tested on Solaris 9, HPUX 11, Various Linuxes, FreeBSD 6.2). It tries to find misconfigurations that could allow local unprivileged users to escalate privileges to other users or to access local apps (e.g. databases). It is written as a single shell script so it can be easily uploaded and run (as opposed to un-tarred, compiled and installed). It can run either as a normal user or as root (obviously it does a better job when running as root because it can read more files).",
     "install": "unix-privesc-check",
-    "size": "85 KB"
+    "size": "112 KB"
    }
   ],
   "attack_category": "Privilege Escalation"
@@ -123,7 +123,7 @@
     "binary": "peass",
     "desc": "Privilege Escalation Awesome Scripts SUITE Privilege escalation tools for Windows and Linux/Unix* and MacOS. These tools search for possible local privilege escalation paths that you could exploit and print them to you with nice colors so you can recognize the misconfigurations easily.",
     "install": "peass",
-    "size": "88.07 MB"
+    "size": "89.77 MB"
    }
   ],
   "attack_category": "Privilege Escalation"
