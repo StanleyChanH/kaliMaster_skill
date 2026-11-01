@@ -74,7 +74,7 @@
     "binary": "burpsuite",
     "desc": "Platform for security testing of web applications Burp Suite is an integrated platform for performing security testing of web applications. Its various tools work seamlessly together to support the entire testing process, from initial mapping and analysis of an application’s attack surface, through to finding and exploiting security vulnerabilities. Burp gives you full control, letting you combine advanced manual techniques with state-of-the-art automation, to make your work faster, more effective, and more fun.",
     "install": "burpsuite",
-    "size": "319.85 MB"
+    "size": "344.68 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -232,7 +232,7 @@
     "binary": "ffuf",
     "desc": "Fast web fuzzer written in Go (program) ffuf is a fast web fuzzer written in Go that allows typical directory discovery, virtual host discovery (without DNS records) and GET and POST parameter fuzzing. This program is useful for pentesters, ethical hackers and forensics experts. It also can be used for security tests.",
     "install": "ffuf",
-    "size": "9.42 MB"
+    "size": "9.48 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -284,14 +284,14 @@
  "jsql": {
   "tool": "jsql",
   "title": "jsql",
-  "description": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-06-17 11:01:59,599 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-06-17 11:02:00,298 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Jun-17",
+  "description": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-09-29 18:21:33,568 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-09-29 18:21:35,196 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Sep-30",
   "usage": [],
   "packages": [
    {
     "binary": "jsql-injection",
-    "desc": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-06-17 11:01:59,599 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-06-17 11:02:00,298 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Jun-17",
+    "desc": "Java tool for automatic database injection jSQL Injection is a lightweight application used to find database information from a distant server. jSQL is free, open source and cross-platform (Windows, Linux, Mac OS X, Solaris). root@kali:~# jsql -h 2026-09-29 18:21:33,568 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead jsql-injection root@kali:~# jsql-injection -h 2026-09-29 18:21:35,196 ERROR [main] jsql.MainApp (MainApp.java:30) - Headless runtime not supported, use default Java runtime instead Updated on: 2026-Sep-30",
     "install": "jsql-injection",
-    "size": "12.48 MB"
+    "size": "12.51 MB"
    }
   ],
   "attack_category": "Initial Access"
@@ -316,7 +316,7 @@
     "binary": "nikto",
     "desc": "Web server security scanner Nikto is a pluggable web server and CGI scanner written in Perl, using rfp’s LibWhisker to perform fast security or informational checks. Features:",
     "install": "nikto",
-    "size": "2.12 MB"
+    "size": "2.15 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -331,7 +331,7 @@
     "binary": "nuclei",
     "desc": "Fast and customizable vulnerability scanner based on simple YAML based DSL This package contains a fast tool for configurable targeted scanning based on templates offering massive extensibility and ease of use. Nuclei is used to send requests across targets based on a template leading to zero false positives and providing fast scanning on large number of hosts. Nuclei offers scanning for a variety of protocols including TCP, DNS, HTTP, File, etc. With powerful and flexible templating, all kinds of security checks can be modelled with Nuclei.",
     "install": "nuclei",
-    "size": "119.32 MB"
+    "size": "136.31 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -404,7 +404,7 @@
     "binary": "sqlmap",
     "desc": "Automatic SQL injection tool sqlmap goal is to detect and take advantage of SQL injection vulnerabilities in web applications. Once it detects one or more SQL injections on the target host, the user can choose among a variety of options to perform an extensive back-end database management system fingerprint, retrieve DBMS session user and database, enumerate users, password hashes, privileges, databases, dump entire or user’s specific DBMS tables/columns, run his own SQL statement, read specific files on the file system and more. Automatic SQL injection tool",
     "install": "sqlmap",
-    "size": "10.36 MB"
+    "size": "13.00 MB"
    }
   ],
   "attack_category": "Initial Access"
@@ -412,7 +412,7 @@
  "sqlninja": {
   "tool": "sqlninja",
   "title": "sqlninja",
-  "description": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.40.1. Usage: s",
+  "description": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.42.3. Usage: s",
   "usage": [
    {
     "binary": "sqlninja",
@@ -431,7 +431,7 @@
   "packages": [
    {
     "binary": "sqlninja",
-    "desc": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.40.1. Usage: s",
+    "desc": "SQL server injection and takeover tool Fancy going from a SQL Injection on Microsoft SQL Server to a full GUI access on the DB? Take a few new SQL Injection tricks, add a couple of remote shots in the registry to disable Data Execution Prevention, mix with a little Perl that automatically generates a debug script, put all this in a shaker with a Metasploit wrapper, shake well and you have just one of the attack modules of sqlninja! root@kali:~# sqlninja --help /usr/bin/sqlninja version [unknown] calling Getopt::Std::getopts (version 1.14 [paranoid]), running under Perl version 5.42.3. Usage: s",
     "install": "sqlninja",
     "size": "1.00 MB"
    }
@@ -474,14 +474,14 @@
  "sstimap": {
   "tool": "sstimap",
   "title": "sstimap",
-  "description": "Automatic SSTI detection tool with interactive interface SSTImap is a penetration testing software that can check websites for Code Injection and Server-Side Template Injection vulnerabilities and exploit them, giving access to the operating system itself. root@kali:~# sstimap -h usage: sstimap.py [-h] [-V] [--module MODULE] [--config CONFIG] [--no-color] [-u URL] [-i] [--load-urls LOAD_URLS] [--load-forms LOAD_FORMS] [-M MARKER] [-P INJECTION_POINTS] [-d DATA] [--data-type DATA_TYPE] [--data-params KEY=VALUE] [-H HEADER] [-C COOKIE] [-m METHOD] [-a USER_AGENT] [-A] [--delay DELAY] [-p PROXY] ",
+  "description": "Automatic SSTI detection tool with interactive interface SSTImap is a penetration testing software that can check websites for Code Injection and Server-Side Template Injection vulnerabilities and exploit them, giving access to the operating system itself. root@kali:~# sstimap -h usage: sstimap.py [-h] [-V] [--module MODULE] [--config CONFIG] [--no-color] [-u URL] [-i] [--load-urls LOAD_URLS] [--load-forms LOAD_FORMS] [--load-vuln LOAD_VULN] [--save-vuln SAVE_VULN] [-M MARKER] [-P INJECTION_POINTS] [-d DATA] [--data-type DATA_TYPE] [--data-params KEY=VALUE] [-H HEADER] [-C COOKIE] [-m METHOD] ",
   "usage": [],
   "packages": [
    {
     "binary": "sstimap",
-    "desc": "Automatic SSTI detection tool with interactive interface SSTImap is a penetration testing software that can check websites for Code Injection and Server-Side Template Injection vulnerabilities and exploit them, giving access to the operating system itself. root@kali:~# sstimap -h usage: sstimap.py [-h] [-V] [--module MODULE] [--config CONFIG] [--no-color] [-u URL] [-i] [--load-urls LOAD_URLS] [--load-forms LOAD_FORMS] [-M MARKER] [-P INJECTION_POINTS] [-d DATA] [--data-type DATA_TYPE] [--data-params KEY=VALUE] [-H HEADER] [-C COOKIE] [-m METHOD] [-a USER_AGENT] [-A] [--delay DELAY] [-p PROXY] ",
+    "desc": "Automatic SSTI detection tool with interactive interface SSTImap is a penetration testing software that can check websites for Code Injection and Server-Side Template Injection vulnerabilities and exploit them, giving access to the operating system itself. root@kali:~# sstimap -h usage: sstimap.py [-h] [-V] [--module MODULE] [--config CONFIG] [--no-color] [-u URL] [-i] [--load-urls LOAD_URLS] [--load-forms LOAD_FORMS] [--load-vuln LOAD_VULN] [--save-vuln SAVE_VULN] [-M MARKER] [-P INJECTION_POINTS] [-d DATA] [--data-type DATA_TYPE] [--data-params KEY=VALUE] [-H HEADER] [-C COOKIE] [-m METHOD] ",
     "install": "sstimap",
-    "size": "426 KB"
+    "size": "454 KB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -549,14 +549,14 @@
  "webscarab": {
   "tool": "webscarab",
   "title": "webscarab",
-  "description": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2025-Dec-09",
+  "description": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2026-Aug-25",
   "usage": [],
   "packages": [
    {
     "binary": "webscarab",
-    "desc": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2025-Dec-09",
+    "desc": "Web application review tool WebScarab is designed to be a tool for anyone who needs to expose the workings of an HTTP(S) based application, whether to allow the developer to debug otherwise difficult problems, or to allow a security specialist to identify vulnerabilities in the way that the application has been designed or implemented. Updated on: 2026-Aug-25",
     "install": "webscarab",
-    "size": "11.27 MB"
+    "size": "11.26 MB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -625,7 +625,7 @@
     "binary": "wpscan",
     "desc": "Black box WordPress vulnerability scanner WPScan scans remote WordPress installations to find security issues. WordPress Security Scanner",
     "install": "wpscan",
-    "size": "397 KB"
+    "size": "695 KB"
    }
   ],
   "attack_category": "Reconnaissance"

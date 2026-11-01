@@ -9,7 +9,7 @@
     "binary": "arsenal-ng",
     "desc": "Go-based command library equipped with 200+ cybersecurity cheat-sheets Inspired by arsenal, rewritten from scratch with a focus on simplicity, speed and developer experience. The classic launcher, evolved. Fast, Go-based command library equipped with 200+ cybersecurity cheat-sheets. Just install and start hacking.",
     "install": "arsenal-ng",
-    "size": "5.81 MB"
+    "size": "5.85 MB"
    }
   ],
   "attack_category": "Services and Other Tools"
@@ -73,6 +73,21 @@
   ],
   "attack_category": "Services and Other Tools"
  },
+ "defectdojo-stop": {
+  "tool": "defectdojo-stop",
+  "title": "defectdojo-stop",
+  "description": "Security orchestration and vulnerability management platform This package contains a security orchestration and vulnerability management platform. DefectDojo allows you to manage your application security program, maintain product and application information, triage vulnerabilities and push findings to systems like JIRA and Slack. DefectDojo enriches and refines vulnerability data using a number of heuristic algorithms that improve with the more you use the platform. root@kali:~# defectdojo -h ┏━(Message from Kali developers) ┃ ┃ The command defectdojo is deprecated. Please use defectdojo-star",
+  "usage": [],
+  "packages": [
+   {
+    "binary": "defectdojo",
+    "desc": "Security orchestration and vulnerability management platform This package contains a security orchestration and vulnerability management platform. DefectDojo allows you to manage your application security program, maintain product and application information, triage vulnerabilities and push findings to systems like JIRA and Slack. DefectDojo enriches and refines vulnerability data using a number of heuristic algorithms that improve with the more you use the platform. root@kali:~# defectdojo -h ┏━(Message from Kali developers) ┃ ┃ The command defectdojo is deprecated. Please use defectdojo-star",
+    "install": "defectdojo",
+    "size": "107.69 MB"
+   }
+  ],
+  "attack_category": ""
+ },
  "dradis-start": {
   "tool": "dradis-start",
   "title": "dradis-start",
@@ -83,7 +98,7 @@
     "binary": "dradis",
     "desc": "Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. Dradis is an open-source project released in 2007 that has been refined for over a decade by security professionals around the world.",
     "install": "dradis",
-    "size": "153.94 MB"
+    "size": "238.07 MB"
    }
   ],
   "attack_category": "Services and Other Tools"
@@ -98,7 +113,7 @@
     "binary": "dradis",
     "desc": "Collaboration tools for penetration testing Dradis is a tool to help you simplify reporting and collaboration. Dradis is an open-source project released in 2007 that has been refined for over a decade by security professionals around the world.",
     "install": "dradis",
-    "size": "153.94 MB"
+    "size": "238.07 MB"
    }
   ],
   "attack_category": "Services and Other Tools"
@@ -158,7 +173,7 @@
     "binary": "gemini-cli",
     "desc": "Open-source AI agent This package contains an open-source AI agent that brings the power of Gemini directly into your terminal. It provides lightweight access to Gemini, giving you the most direct path from your prompt to the model. root@kali:~# gemini-cli -h Usage: gemini [options] [command] Gemini CLI - Defaults to interactive mode. Use -p/--prompt for non-interactive (headless) mode. Commands: gemini mcp Manage MCP servers gemini extensions <command> Manage Gemini CLI extensions. [aliases: extension] gemini skills <command> Manage agent skills. [aliases: skill] gemini hooks <command> Manage",
     "install": "gemini-cli",
-    "size": "45.55 MB"
+    "size": "47.73 MB"
    }
   ],
   "attack_category": "Services and Other Tools"
@@ -292,7 +307,7 @@
     "binary": "recordmydesktop",
     "desc": "Captures audio-video data of a Linux desktop session The application produces an ogg-encapsulated theora-vorbis file. recordMyDesktop tries to be as unobstrusive as possible by proccessing only regions of the screen that have changed Record desktop sessions to an Ogg Theora video file with Vorbis audio",
     "install": "recordmydesktop",
-    "size": "128 KB"
+    "size": "126 KB"
    }
   ],
   "attack_category": "Services and Other Tools"

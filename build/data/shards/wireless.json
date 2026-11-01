@@ -117,7 +117,7 @@
     "binary": "airgeddon",
     "desc": "Multi-use bash script for Linux systems to audit wireless networks airgeddon is a menu driven 3rd party tools wrapper to audit wireless networks with many features.",
     "install": "airgeddon",
-    "size": "5.06 MB"
+    "size": "5.40 MB"
    }
   ],
   "attack_category": "Credential Access"
@@ -146,7 +146,7 @@
     "binary": "asleap",
     "desc": "A tool for exploiting Cisco LEAP networks Demonstrates a serious deficiency in proprietary Cisco LEAP networks.",
     "install": "asleap",
-    "size": "235 KB"
+    "size": "83 KB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -375,7 +375,7 @@
     "binary": "gnuradio",
     "desc": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
     "install": "gnuradio",
-    "size": "24.26 MB"
+    "size": "24.31 MB"
    },
    {
     "binary": "gnuradio-dev",
@@ -489,7 +489,7 @@
     "binary": "libgnuradio-trellis3.10.12",
     "desc": "Gnuradio trellis modulation functions Library for trellis coding modulation, including the Viterbi Algorithm, Concatenated Coding and Turbo Decoding based upon finite state machine (FSM) class. Part of the main gnuradio build.",
     "install": "libgnuradio-trellis3.10.12",
-    "size": "969 KB"
+    "size": "965 KB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -504,7 +504,7 @@
     "binary": "gnuradio",
     "desc": "GNU Radio Software Radio Toolkit GNU Radio provides signal processing blocks to implement software radios. It can be used with readily-available low-cost external RF hardware to create software-defined radios, or without hardware in a simulation-like environment. It is widely used in hobbyist, academic and commercial environments to support both wireless communications research and real-world radio systems. GNU Radio applications are primarily written using the Python programming language, while the supplied performance-critical signal processing path is implemented in C++ using processor floa",
     "install": "gnuradio",
-    "size": "24.26 MB"
+    "size": "24.31 MB"
    },
    {
     "binary": "gnuradio-dev",
@@ -618,7 +618,7 @@
     "binary": "libgnuradio-trellis3.10.12",
     "desc": "Gnuradio trellis modulation functions Library for trellis coding modulation, including the Viterbi Algorithm, Concatenated Coding and Turbo Decoding based upon finite state machine (FSM) class. Part of the main gnuradio build.",
     "install": "libgnuradio-trellis3.10.12",
-    "size": "969 KB"
+    "size": "965 KB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -927,7 +927,7 @@
     "binary": "rfcat",
     "desc": "Swiss army knife of sub-GHz radio Rfcat is a sub GHz analysis tool. The goals of the project are to reduce the time for security researchers to create needed tools for analyzing unknown targets, to aid in reverse-engineering of hardware. (unknown subject)",
     "install": "rfcat",
-    "size": "443 KB"
+    "size": "441 KB"
    }
   ],
   "attack_category": "Reconnaissance"
@@ -986,31 +986,31 @@
     "binary": "libubertooth-dev",
     "desc": "Shared library for Bluetooth experimentation - development files Project Ubertooth is an open source wireless development platform suitable for Bluetooth experimentation. Ubertooth ships with a capable BLE (Bluetooth Smart) sniffer and can sniff some data from Basic Rate (BR) Bluetooth Classic connections. This package provides the development files for using the ubertooth library.",
     "install": "libubertooth-dev",
-    "size": "53 KB"
+    "size": "52 KB"
    },
    {
     "binary": "libubertooth1",
     "desc": "Shared library for Bluetooth experimentation Project Ubertooth is an open source wireless development platform suitable for Bluetooth experimentation. Ubertooth ships with a capable BLE (Bluetooth Smart) sniffer and can sniff some data from Basic Rate (BR) Bluetooth Classic connections. This package provides the shared library needed by Ubertooth.",
     "install": "libubertooth1",
-    "size": "88 KB"
+    "size": "87 KB"
    },
    {
     "binary": "ubertooth",
     "desc": "2.4 GHz wireless development platform for Bluetooth experimentation Project Ubertooth is an open source wireless development platform suitable for Bluetooth experimentation. This package contains everything necessary to use the hardware dongle. Ubertooth is capable of sniffing BLE (Bluetooth Smart) connections and it also has some ability to sniff some data from Basic Rate (BR) Bluetooth Classic connections.",
     "install": "ubertooth",
-    "size": "339 KB"
+    "size": "333 KB"
    },
    {
     "binary": "ubertooth-firmware",
     "desc": "Firmware for Ubertooth The Ubertooth hardware needs some firmware to run. The firmware is built with arm-none-eabi-gcc. This package contains a number of firmware images that may be programmed into the Ubertooth hardware using the ‘ubertooth-dfu’ command. The firmware images are installed in /usr/share/ubertooth/firmware/",
     "install": "ubertooth-firmware",
-    "size": "88 KB"
+    "size": "79 KB"
    },
    {
     "binary": "ubertooth-firmware-source",
     "desc": "Source code for the Ubertooth firmware The Ubertooth hardware needs some firmware to run. The firmware is built with arm-none-eabi-gcc. This package contains the source code for the firmware that is found in the ubertooth-firmware package. The firmware source may be found in /usr/src/ubertooth-firmware-source.tar.gz after installing this package.",
     "install": "ubertooth-firmware-source",
-    "size": "252 KB"
+    "size": "251 KB"
    }
   ],
   "attack_category": "Reconnaissance"
