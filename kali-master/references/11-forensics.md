@@ -1,44 +1,46 @@
-# 数字取证与隐写(Digital Forensics & Steganography)
+# Digital Forensics & Steganography
 
-> **何时读本文件**:需要对磁盘/分区做取证镜像(dc3dd/guymager)、恢复丢失分区或删除文件(testdisk/photorec/foremost/extundelete)、用 Sleuth Kit 分析镜像与时间线、检测 rootkit、破解图片/文本隐写(steghide/outguess/stegsnow)、做哈希基线对比或恶意样本特征匹配(yara)时;CTF 取证题(附件分析、内嵌文件提取、元数据、隐写)也读本文件。
+**English** · [简体中文](11-forensics.zh-CN.md)
 
-## 快速决策表
+> **When to read this file**: When you need to take forensic images of disks/partitions (dc3dd/guymager), recover lost partitions or deleted files (testdisk/photorec/foremost/extundelete), analyze images and timelines with Sleuth Kit, detect rootkits, crack image/text steganography (steghide/outguess/stegsnow), or perform hash baseline comparison and malicious sample signature matching (yara); also read it for CTF forensics challenges (attachment analysis, embedded file extraction, metadata, steganography).
 
-| 任务场景 | 首选工具 | 备选 | 关键区别 |
+## Quick Decision Table
+
+| Task Scenario | Preferred Tool | Alternatives | Key Differences |
 |---|---|---|---|
-| 命令行取证镜像(边做边算哈希) | dc3dd | dcfldd | dc3dd 支持 hashlog/piecewise;dcfldd 支持分割输出与状态显示 |
-| GUI 快速镜像(E01/AFF/多线程压缩) | guymager | — | Qt 界面,并行压缩最快,适合大批量取证获取 |
-| 坏盘/坏扇区抢救镜像 | dd_rescue | myrescue / safecopy / recoverdm | dd_rescue 遇 I/O 错误不中断;myrescue 先读好区域后回头补坏区 |
-| 恢复丢失分区表 | testdisk | scrounge-ntfs | testdisk 交互式重建分区表;scrounge-ntfs 专攻 NTFS 文件树 |
-| 按文件头雕刻恢复(不分文件系统) | foremost | scalpel / magicrescue / photorec | foremost 上手最快;scalpel 可配 conf 更快;photorec 支持类型最多 |
-| ext3/ext4 删除文件恢复 | extundelete | ext4magic / ext3grep | extundelete 按 journal 恢复单文件;ext4magic 利用多版本 journal 更强 |
-| 镜像内文件系统分析(NTFS/FAT/ext) | Sleuth Kit(mmls/fls/icat) | autopsy(GUI) | TSK 命令行可脚本化;autopsy 是 TSK 的图形/时间线前端 |
-| 全镜像时间线(body → CSV) | fls -m + mactime | tsk_gettimes | fls -m 生成 body 文件,mactime 转可读时间线 |
-| 不解析文件系统直接抽证据(邮箱/URL/信用卡) | bulk_extractor | — | 特征文件+直方图,适合大镜像快速过一遍 |
-| rootkit 检测 | chkrootkit | rkhunter / unhide | chkrootkit 快;rkhunter 有基线属性库;unhide 找隐藏进程/端口 |
-| JPEG/BMP/WAV 隐写(密码保护) | steghide | outguess | steghide 支持 bmp/jpeg/wav/au + 加密;outguess 支持 JPEG/PPM/PNM |
-| 纯文本隐写(行尾空白) | stegsnow | — | 追加空格/tab 藏消息,可带 ICE 加密 |
-| 镜像/目录哈希基线与审计 | hashdeep | ssdeep | hashdeep 精确哈希+审计模式;ssdeep 模糊哈希找"相似"文件 |
-| 恶意样本特征规则匹配 | yara | — | 规则语法事实标准,可递归扫目录 |
-| PDF 可疑特征检测(JS/OpenAction) | pdfid | pdf-parser | pdfid 只数关键词;pdf-parser 可深入对象与流 |
-| Windows 注册表取证 | regripper | reglookup | regripper 插件化输出解读;reglookup 更轻、含删除键恢复 |
-| 回收站取证(INFO2 / $I 文件) | rifiuti2 | rifiuti | rifiuti2 支持 Vista+ $I 文件和 INFO2 双格式 |
-| PE 文件结构分析 | readpe | missidentify | readpe 解析 PE 头;missidentify 专找无扩展名可执行文件 |
-| 邮件存储转换(PST/DBX) | readpst | undbx | readpst 转 PST;undbx 处理 Outlook Express .dbx |
-| pcap 中应用数据还原(邮件/HTTP/VoIP) | xplico | — | NFAT 流量解码,输出 Web UI 查看 |
-| CTF 附件/固件内嵌文件提取 | binwalk | foremost | binwalk 识别签名+可提取;foremost 按类型雕刻 |
+| CLI forensic imaging (hashing on the fly) | dc3dd | dcfldd | dc3dd supports hashlog/piecewise; dcfldd supports split output and status display |
+| Fast GUI imaging (E01/AFF/multithreaded compression) | guymager | — | Qt interface, fastest parallel compression, ideal for high-volume forensic acquisition |
+| Rescue imaging of failing disks/bad sectors | dd_rescue | myrescue / safecopy / recoverdm | dd_rescue does not abort on I/O errors; myrescue reads good areas first, then goes back for the bad ones |
+| Recovering a lost partition table | testdisk | scrounge-ntfs | testdisk interactively rebuilds the partition table; scrounge-ntfs specializes in NTFS file trees |
+| Carving by file header (filesystem-agnostic) | foremost | scalpel / magicrescue / photorec | foremost is the fastest to pick up; scalpel is faster with a tuned conf; photorec supports the most types |
+| ext3/ext4 deleted file recovery | extundelete | ext4magic / ext3grep | extundelete restores single files from the journal; ext4magic leverages multiple journal versions for stronger recovery |
+| Filesystem analysis inside images (NTFS/FAT/ext) | Sleuth Kit(mmls/fls/icat) | autopsy(GUI) | TSK is scriptable from the command line; autopsy is TSK's graphical/timeline front end |
+| Full-image timeline (body → CSV) | fls -m + mactime | tsk_gettimes | fls -m generates the body file, mactime turns it into a readable timeline |
+| Pulling evidence without parsing the filesystem (emails/URLs/credit cards) | bulk_extractor | — | Feature files + histograms, ideal for a quick pass over large images |
+| Rootkit detection | chkrootkit | rkhunter / unhide | chkrootkit is fast; rkhunter ships a baseline attribute database; unhide finds hidden processes/ports |
+| JPEG/BMP/WAV steganography (password protected) | steghide | outguess | steghide supports bmp/jpeg/wav/au + encryption; outguess supports JPEG/PPM/PNM |
+| Plain-text steganography (trailing whitespace) | stegsnow | — | Hides messages in appended spaces/tabs, with optional ICE encryption |
+| Image/directory hash baselines and audits | hashdeep | ssdeep | hashdeep does exact hashing + audit mode; ssdeep uses fuzzy hashing to find "similar" files |
+| Malicious sample signature rule matching | yara | — | De-facto-standard rule syntax, recursive directory scanning |
+| Suspicious PDF feature detection (JS/OpenAction) | pdfid | pdf-parser | pdfid only counts keywords; pdf-parser drills into objects and streams |
+| Windows registry forensics | regripper | reglookup | regripper interprets output through plugins; reglookup is lighter and includes deleted-key recovery |
+| Recycle Bin forensics (INFO2 / $I files) | rifiuti2 | rifiuti | rifiuti2 supports both Vista+ $I files and the INFO2 format |
+| PE file structure analysis | readpe | missidentify | readpe parses PE headers; missidentify specializes in finding extensionless executables |
+| Mail store conversion (PST/DBX) | readpst | undbx | readpst converts PST; undbx handles Outlook Express .dbx |
+| Reconstructing application data from pcap (mail/HTTP/VoIP) | xplico | — | NFAT traffic decoding, output viewed in a Web UI |
+| Extracting embedded files from CTF attachments/firmware | binwalk | foremost | binwalk identifies signatures and extracts; foremost carves by type |
 
-## 取证工作流黄金规则
+## Golden Rules of Forensic Workflow
 
-1. **永远不直接分析原始证据**:先 `dc3dd`/`guymager` 做镜像并同步计算哈希,后续全部操作针对镜像副本。
-2. **获取时同步算哈希**:`dc3dd ... hash=sha256 hashlog=... log=...` 一条命令完成获取+校验+日志(证据链)。
-3. **Sleuth Kit 分析路径**:`mmls` 看分区偏移 → `fls -o <offset>` 列文件 → `icat`/`tsk_recover` 提取 → `mactime` 出时间线。
-4. **删除文件恢复前提**:目标分区必须先卸载(或只对镜像操作),否则恢复操作本身会覆盖待恢复数据。
-5. **rootkit 检测交叉验证**:chkrootkit 与 rkhunter 都有误报,单一工具报"INFECTED"不能下结论,需第二工具+基线对比。
+1. **Never analyze original evidence directly**: first image with `dc3dd`/`guymager` while computing hashes in parallel, then run all subsequent operations against the image copy.
+2. **Hash while acquiring**: `dc3dd ... hash=sha256 hashlog=... log=...` completes acquisition + verification + logging (chain of custody) in one command.
+3. **Sleuth Kit analysis path**: `mmls` for partition offsets → `fls -o <offset>` to list files → `icat`/`tsk_recover` to extract → `mactime` for the timeline.
+4. **Prerequisite for deleted file recovery**: the target partition must be unmounted first (or operate on an image only); otherwise the recovery operation itself overwrites the data being recovered.
+5. **Cross-validate rootkit detection**: both chkrootkit and rkhunter produce false positives; a single tool reporting "INFECTED" is not conclusive — a second tool plus baseline comparison is required.
 
-## CTF 取证快速通道
+## CTF Forensics Fast Track
 
-拿到一个未知附件(图片/PDF/压缩包/固件)的标准首查流水线:
+The standard first-pass pipeline when you receive an unknown attachment (image/PDF/archive/firmware):
 
 ```bash
 file <file>                        # 文件真实类型(扩展名可能伪造)
@@ -49,7 +51,7 @@ binwalk -e <file>                  # 自动提取到 <file>.extracted/ 目录
 foremost -i <file> -o carved -t jpg,png,pdf,zip  # binwalk 无果时按类型雕刻
 ```
 
-隐写排查顺序(按载体类型):
+Steganography triage order (by carrier type):
 
 ```bash
 # JPEG/BMP/WAV → steghide(有密码先试空/题目提示词)
@@ -63,13 +65,13 @@ binwalk -e <file>
 stegsnow -C <file> out.txt
 ```
 
-## 核心工具详解
+## Core Tools in Depth
 
-### binwalk — 固件/二进制内嵌文件识别与提取(CTF 高频)
+### binwalk — Embedded file identification and extraction in firmware/binaries (frequent in CTF)
 
-**用途**:基于 libmagic 签名(含自定义固件签名库:压缩包、固件头、Linux 内核、bootloader、squashfs 等)扫描二进制中嵌入的文件和代码,可自动提取、做熵分析。
-**安装**:Kali 默认已装(`sudo apt install binwalk`);Python 库形式为 `python3-binwalk`。
-**使用场景**:固件分析第一步;CTF 中任何"文件里套文件"(PNG 尾部藏 zip、固件藏 squashfs)的场景首选。
+**Purpose**: Scans binaries for embedded files and code using libmagic signatures (including a custom firmware signature library: archives, firmware headers, Linux kernels, bootloaders, squashfs, etc.); supports automatic extraction and entropy analysis.
+**Install**: Preinstalled on Kali (`sudo apt install binwalk`); the Python library form is `python3-binwalk`.
+**Use cases**: The first step of firmware analysis; the go-to for any CTF "file inside a file" scenario (a zip hidden after a PNG, squashfs hidden in firmware).
 
 ```bash
 # 官方示例:签名扫描固件(默认即签名扫描,-B 显式指定)
@@ -85,17 +87,17 @@ binwalk -Me <firmware.bin>
 binwalk -E <file>
 ```
 
-**实战要点**:
-- 提取 squashfs(cramfs 等变体)需要 `sudo apt install sasquatch`,否则提取失败或解包报错。
-- `binwalk -e` 识别出的压缩流会尝试解压,解不出来时记下偏移用 `dd if=<file> of=chunk.bin bs=1 skip=<offset>` 手工截取再处理。
-- 新版 Rust 重写为 `binwalk3`(见速查表),命令行为有差异;Kali 主命令仍是 `binwalk`。
-- 与 `strings`/`file` 配合:binwalk 找"结构",strings 找"内容",file 验证提取产物真实类型。
+**Practical tips**:
+- Extracting squashfs (and variants such as cramfs) requires `sudo apt install sasquatch`; otherwise extraction fails or unpacking errors out.
+- `binwalk -e` tries to decompress the compressed streams it identifies; when decompression fails, note the offset and carve it manually with `dd if=<file> of=chunk.bin bs=1 skip=<offset>` for further processing.
+- The new-generation Rust rewrite is `binwalk3` (see quick reference); its command-line behavior differs, and Kali's primary command remains `binwalk`.
+- Combine with `strings`/`file`: binwalk finds "structure", strings finds "content", file verifies the real type of extracted artifacts.
 
-### dc3dd — 取证增强版 dd(镜像获取+同步哈希)
+### dc3dd — Forensically enhanced dd (image acquisition + concurrent hashing)
 
-**用途**:美国国防部网络犯罪中心(DC3)修补版 GNU dd,镜像获取时同步计算哈希、写审计日志、支持多路输出、分段哈希(piecewise hashing)。
-**安装**:`sudo apt install dc3dd`
-**使用场景**:任何需要对磁盘/分区/文件做可复现取证获取的场合;比裸 `dd` 的优势是哈希与日志一体化,满足证据链要求。
+**Purpose**: A GNU dd patched by the US Department of Defense Cyber Crime Center (DC3); computes hashes during acquisition, writes audit logs, and supports multi-output and piecewise hashing.
+**Install**: `sudo apt install dc3dd`
+**Use cases**: Any situation requiring reproducible forensic acquisition of a disk/partition/file; its edge over bare `dd` is integrated hashing and logging that satisfies chain-of-custody requirements.
 
 ```bash
 # 官方示例:复制文件并计算 SHA512
@@ -111,32 +113,32 @@ dc3dd if=/dev/sdc of=/evidence/sdc.raw of=/vault/sdc-copy.raw hash=sha256 log=/e
 dc3dd if=<image.dd> hash=md5 hashwindow=64k hashlog=/evidence/piecewise.txt
 ```
 
-**实战要点**:
-- `hashlog=` 与 `log=` 分开:前者只记哈希,后者记完整操作审计(含起止时间、命令行)。
-- 源设备用写阻断器(write blocker)或确保只读挂载;输出目录必须有足够空间(镜像=整盘大小)。
-- 需要分割大镜像或实时进度显示可用 `dcfldd`(速查表);需要 E01 格式用 `guymager`。
+**Practical tips**:
+- `hashlog=` and `log=` are separate: the former records hashes only, the latter a full operation audit (including start/end times and the command line).
+- Use a write blocker on the source device or make sure it is mounted read-only; the output directory must have enough space (the image equals the full disk size).
+- Use `dcfldd` (see quick reference) when you need to split large images or get live progress display; use `guymager` for E01 format.
 
-### guymager — 高速 GUI 取证成像工具
+### guymager — High-speed GUI forensic imager
 
-**用途**:基于 Qt 的取证获取程序,支持 EWF(E01)、AFF、raw 多种镜像格式,多线程并行压缩,成像过程中同步计算 MD5/SHA1/SHA256。
-**安装**:`sudo apt install guymager`
-**使用场景**:需要 E01 格式(商业工具链兼容)、批量对多块盘同时成像、或不想背命令行参数的现场获取。
+**Purpose**: A Qt-based forensic acquisition program supporting EWF (E01), AFF, and raw image formats, with multithreaded parallel compression and on-the-fly MD5/SHA1/SHA256 hashing during imaging.
+**Install**: `sudo apt install guymager`
+**Use cases**: When you need E01 format (commercial toolchain compatibility), bulk imaging of many disks at once, or on-site acquisition without memorizing command-line arguments.
 
 ```bash
 # 启动 GUI(root 权限):设备列表右键 → Acquire Image → 选格式/压缩/哈希
 sudo guymager
 ```
 
-**实战要点**:
-- 并行压缩使其在多核机器上成像速度通常优于 dc3dd/dcfldd 的单流写入。
-- 可同时输出 E01 + 副本 + 多算法哈希,一步满足证据链要求。
-- 无 CLI 参数化成像;自动化流水线请用 dc3dd。
+**Practical tips**:
+- Parallel compression usually makes it faster than dc3dd/dcfldd's single-stream writes on multi-core machines.
+- Can output E01 + a duplicate copy + multi-algorithm hashes at the same time, satisfying chain-of-custody requirements in one step.
+- No parameterized CLI imaging; use dc3dd for automated pipelines.
 
-### dd_rescue — 坏盘数据抢救(遇错不中断)
+### dd_rescue — Data rescue from failing disks (does not abort on errors)
 
-**用途**:把数据从损坏介质复制出来;标准工具(cp/dd)遇到 I/O 错误即中止,dd_rescue 会缩小块重试、支持反向复制、稀疏复制,可用于坏硬盘/光盘抢救与多次覆写安全擦除。
-**安装**:`sudo apt install ddrescue`(注意:该包提供的二进制是 `dd_rescue`,与 GNU ddrescue 的 `ddrescue` 是两个不同项目)。
-**使用场景**:源盘有坏道、读取报错时做镜像;健康盘直接用 dc3dd。
+**Purpose**: Copies data off damaged media; standard tools (cp/dd) abort on the first I/O error, while dd_rescue retries with smaller blocks and supports reverse copying and sparse copying — usable for rescuing failing hard disks/optical discs and for secure multi-pass overwrite erasure.
+**Install**: `sudo apt install ddrescue` (note: the binary provided by this package is `dd_rescue`, a different project from GNU ddrescue's `ddrescue`).
+**Use cases**: Imaging source disks with bad sectors or read errors; use dc3dd directly for healthy disks.
 
 ```bash
 # 官方示例:从输入文件位置 100 开始,写到输出文件位置 0
@@ -146,15 +148,15 @@ dd_rescue -s 100 /var/log/messages -S 0 /tmp/ddrescue-out
 dd_rescue /dev/sdb /recovery/sdb.img
 ```
 
-**实战要点**:
-- `-s <pos>` 指定输入起始位置,`-S <pos>` 指定输出起始位置,可分段接力复制。
-- 同类选择:myrescue 先跳过坏区抢救健康区域后回头补读;safecopy 面向 CD/软盘等光磁介质;recoverdm 恢复时对无法读取的扇区写空扇区占位(均见速查表)。
+**Practical tips**:
+- `-s <pos>` sets the input start position and `-S <pos>` the output start position, enabling segmented relay copying.
+- Similar options: myrescue skips bad areas to rescue healthy regions first and comes back for them later; safecopy targets optical/magnetic media such as CDs and floppies; recoverdm writes placeholder empty sectors for unreadable sectors during recovery (all in the quick reference).
 
-### testdisk — 分区扫描与恢复
+### testdisk — Partition scanning and recovery
 
-**用途**:检查磁盘分区表与引导扇区,恢复丢失分区、修复分区表、从备份引导扇区还原 NTFS/FAT 引导区,支持众多文件系统。
-**安装**:`sudo apt install testdisk`(同一包提供 photorec)。
-**使用场景**:分区表损坏/被删、误克隆导致分区丢失、可启动盘引导损坏的分析与修复。
+**Purpose**: Examines disk partition tables and boot sectors, recovers lost partitions, repairs partition tables, and restores NTFS/FAT boot areas from backup boot sectors; supports numerous filesystems.
+**Install**: `sudo apt install testdisk` (the same package provides photorec).
+**Use cases**: Analyzing and repairing damaged/deleted partition tables, partitions lost to mistaken cloning, and broken boot sectors on bootable disks.
 
 ```bash
 # 交互式分析:Create log → 选磁盘 → 选分区表类型 → Analyse → Quick Search
@@ -162,16 +164,16 @@ sudo testdisk <image.dd>
 sudo testdisk /dev/sdc
 ```
 
-**实战要点**:
-- 全交互式菜单驱动,典型路径:`Analyse` → `Quick Search` → `Deeper Search` → 选中找到的分区 → `Write` 恢复分区表(写操作前确认目标正确)。
-- 先对整盘做镜像、在镜像上跑 testdisk,避免对原始证据直接写入。
-- 找回分区后若文件系统也损坏,转 photorec 直接按签名雕刻文件。
+**Practical tips**:
+- Fully interactive menu-driven; the typical path is `Analyse` → `Quick Search` → `Deeper Search` → select the found partitions → `Write` to restore the partition table (confirm the target is correct before writing).
+- Image the whole disk first and run testdisk on the image, avoiding direct writes to original evidence.
+- If the filesystem is also damaged after partitions are found, switch to photorec and carve files directly by signature.
 
-### photorec — 文件签名雕刻恢复(文件系统无关)
+### photorec — Signature-based file carving recovery (filesystem-agnostic)
 
-**用途**:TestDisk 套件的文件数据恢复软件,按文件头/内部结构签名雕刻丢失文件,不依赖文件系统,支持照片、文档、压缩包等大量格式。
-**安装**:`sudo apt install testdisk`
-**使用场景**:文件系统已损坏/被格式化、删除文件太多不适合按 journal 恢复、或只需要"把能恢复的都恢复出来"。
+**Purpose**: The file data recovery software of the TestDisk suite; carves lost files by file-header/internal-structure signatures without depending on the filesystem, supporting a large number of formats such as photos, documents, and archives.
+**Install**: `sudo apt install testdisk`
+**Use cases**: When the filesystem is damaged/reformatted, too many deleted files make journal-based recovery impractical, or you simply need to "recover everything recoverable".
 
 ```bash
 # 交互式:选介质 → 选分区 → 选文件系统类型 → 选恢复目录 → Search
@@ -179,16 +181,16 @@ sudo photorec <image.dd>
 sudo photorec /dev/sdb
 ```
 
-**实战要点**:
-- 恢复按签名进行,**不保留原文件名与目录结构**,输出为 recup_dir.* 目录下的编号文件,需按内容二次整理。
-- 菜单 `File Opt` 可只勾选需要的类型(如只要 JPG/PDF),大幅减少垃圾输出。
-- 与 foremost/scalpel 的取舍:photorec 类型库最全且带内部结构校验;foremost 更轻、命令行参数化适合脚本;scalpel 配置文件可自定义头尾对。
+**Practical tips**:
+- Recovery is signature-based and **does not preserve original filenames or directory structure**; output is numbered files under recup_dir.* directories that require secondary sorting by content.
+- The `File Opt` menu lets you check only the types you need (e.g. JPG/PDF only), greatly reducing junk output.
+- Choosing between photorec/foremost/scalpel: photorec has the most complete type library with internal-structure validation; foremost is lighter and its command-line parameters suit scripting; scalpel's configuration file allows custom header/footer pairs.
 
-### foremost — 基于头/尾/结构的文件雕刻
+### foremost — Header/footer/structure-based file carving
 
-**用途**:依据文件头、尾与内部数据结构从镜像(dd/Safeback/EnCase 生成)或直接从驱动器恢复丢失文件,内置类型按数据结构校验,恢复更可靠。
-**安装**:`sudo apt install foremost`
-**使用场景**:已知要找哪几类文件(doc/jpg/pdf/xls/zip 等)时,指定类型雕刻比全量扫描快且噪音小;CTF 中提取图片尾部附加的压缩包。
+**Purpose**: Recovers lost files from images (produced by dd/Safeback/EnCase) or directly from drives based on file headers, footers, and internal data structures; built-in types are validated against data structures, making recovery more reliable.
+**Install**: `sudo apt install foremost`
+**Use cases**: When you know which file types you are after (doc/jpg/pdf/xls/zip etc.), carving with specified types is faster and less noisy than a full scan; extracting archives appended to images in CTF.
 
 ```bash
 # 官方示例:在镜像中雕刻 doc、jpg、pdf、xls 四类文件
@@ -198,16 +200,16 @@ foremost -t doc,jpg,pdf,xls -i image.dd
 foremost -t jpg,png,zip,pdf -i <image.dd> -o carved_out
 ```
 
-**实战要点**:
-- 结果目录含 `audit.txt` 审计文件,记录每个恢复文件的偏移与大小,可作证据附件。
-- `-t` 支持类型见 `foremost -h`(如 avi,bmp,exe,gif,jpg,mov,mpg,pdf,png,rar,txt,wav,zip);`-t all` 全类型。
-- 同类更快的替代是 scalpel(见下),自定义头尾规则写入 `/etc/scalpel/scalpel.conf`。
+**Practical tips**:
+- The output directory contains an `audit.txt` audit file recording the offset and size of every recovered file, usable as an evidence attachment.
+- Supported `-t` types are listed in `foremost -h` (e.g. avi,bmp,exe,gif,jpg,mov,mpg,pdf,png,rar,txt,wav,zip); `-t all` covers all types.
+- A faster alternative is scalpel (see below); custom header/footer rules go into `/etc/scalpel/scalpel.conf`.
 
-### scalpel — 快速文件系统无关雕刻(可配置规则)
+### scalpel — Fast filesystem-agnostic carving (configurable rules)
 
-**用途**:读取头/尾定义数据库,从一组镜像或裸设备中提取匹配文件;文件系统无关,FAT/exFAT/NTFS/ext2-4/JFS/XFS/ReiserFS/裸分区均可。
-**安装**:`sudo apt install scalpel`
-**使用场景**:需要自定义 carving 规则(特定 magic 头尾)、或 foremost 速度不够时。
+**Purpose**: Reads a header/footer definition database and extracts matching files from a set of images or raw devices; filesystem-agnostic — FAT/exFAT/NTFS/ext2-4/JFS/XFS/ReiserFS/raw partitions all work.
+**Install**: `sudo apt install scalpel`
+**Use cases**: When you need custom carving rules (specific magic headers/footers) or foremost is not fast enough.
 
 ```bash
 # 从镜像雕刻到输出目录(目录须为空/不存在)
@@ -217,15 +219,15 @@ scalpel <image.dd> -o carved_out
 sudo vim /etc/scalpel/scalpel.conf
 ```
 
-**实战要点**:
-- 默认配置中大多数规则被注释,按需取消注释,否则什么都雕不出来(常见坑)。
-- 输出同样带审计文件;大镜像上比 foremost 更快、内存占用更低。
+**Practical tips**:
+- Most rules are commented out in the default configuration; uncomment them as needed, otherwise nothing gets carved (a common pitfall).
+- Output likewise includes an audit file; faster than foremost on large images with lower memory usage.
 
-### extundelete — ext3/ext4 删除文件恢复(按 journal)
+### extundelete — ext3/ext4 deleted file recovery (journal-based)
 
-**用途**:利用 ext3/ext4 分区 journal 中保留的元数据尝试恢复被删除文件(不保证成功)。
-**安装**:`sudo apt install extundelete`
-**使用场景**:已知被删文件路径、目标为 ext3/ext4 文件系统时的第一选择;NTFS 用别的工具。
+**Purpose**: Attempts to recover deleted files using metadata preserved in the ext3/ext4 partition journal (success not guaranteed).
+**Install**: `sudo apt install extundelete`
+**Use cases**: The first choice when the deleted file's path is known and the target is an ext3/ext4 filesystem; use other tools for NTFS.
 
 ```bash
 # 官方示例:从分区恢复指定文件(相对分区根的路径,不带开头 /)
@@ -239,16 +241,16 @@ extundelete <image.img> --restore-all
 extundelete <image.img> --inode <inode_num>
 ```
 
-**实战要点**:
-- **目标分区必须已卸载**(或直接对镜像操作),继续挂载写入会覆盖待恢复数据——工具自身也会如此警告。
-- 恢复结果写入当前目录 `RECOVERED_FILES/`;不支持恢复扩展属性(xattr)。
-- 删除时间较久 journal 已轮转覆盖时,改用 ext4magic(利用多个 journal 历史版本,恢复率更高)。
+**Practical tips**:
+- **The target partition must already be unmounted** (or operate directly on an image); continued mounted writes overwrite the data being recovered — the tool itself warns of this.
+- Recovered results are written to `RECOVERED_FILES/` in the current directory; recovery of extended attributes (xattr) is not supported.
+- When the deletion is old enough that the journal has rotated and been overwritten, switch to ext4magic (leverages multiple historical journal versions for a higher recovery rate).
 
-### ext4magic — 从 ext3/ext4 journal 深度恢复
+### ext4magic — Deep recovery from the ext3/ext4 journal
 
-**用途**:ext3/ext4 文件雕刻/恢复工具:删除文件后 inode 块指针被清零,但 journal 中往往还留有旧版本元数据,ext4magic 据此恢复大量"不可能恢复"的文件。
-**安装**:`sudo apt install ext4magic`
-**使用场景**:extundelete 失败后的第二道防线;灾难恢复与取证。
+**Purpose**: An ext3/ext4 file carving/recovery tool: after a file is deleted its inode block pointers are zeroed, but older versions of the metadata often remain in the journal; ext4magic uses them to recover many "unrecoverable" files.
+**Install**: `sudo apt install ext4magic`
+**Use cases**: The second line of defense after extundelete fails; disaster recovery and forensics.
 
 ```bash
 # 快速模式:恢复最近删除的文件
@@ -261,16 +263,16 @@ ext4magic <image.img> -m -d recovered/
 ext4magic <image.img> -f path/to/dir -d recovered/
 ```
 
-**实战要点**:
-- `-r` 用最新 journal 状态(快),`-m` 用全部历史 journal(慢但更全)。
-- 同样要求分区已卸载/只对镜像操作;恢复输出由 `-d` 指定。
-- ext3 老文件系统还可试 `ext3grep --restore-all`(速查表)。
+**Practical tips**:
+- `-r` uses the latest journal state (fast); `-m` uses all historical journals (slow but more complete).
+- Likewise requires the partition to be unmounted/operating on an image only; recovery output is specified with `-d`.
+- For legacy ext3 filesystems you can also try `ext3grep --restore-all` (see quick reference).
 
-### mmls — Sleuth Kit 入口:查看镜像分区布局
+### mmls — Sleuth Kit entry point: inspect the image partition layout
 
-**用途**:显示磁盘镜像的卷系统(分区表)布局,列出各分区的起始偏移(Offset)、长度、类型——该偏移是后续所有 TSK 文件系统工具的 `-o` 参数来源。
-**安装**:`sudo apt install sleuthkit`
-**使用场景**:Sleuth Kit 分析流程第一步;拿到镜像先 mmls 确定分区结构。
+**Purpose**: Displays the volume system (partition table) layout of a disk image, listing each partition's start offset, length, and type — that offset is the source of the `-o` argument for all subsequent TSK filesystem tools.
+**Install**: `sudo apt install sleuthkit`
+**Use cases**: The first step of the Sleuth Kit analysis workflow; run mmls on a new image first to determine the partition layout.
 
 ```bash
 # 列出镜像分区表:关注 Offset 列(单位:扇区)
@@ -280,16 +282,16 @@ mmls <image.dd>
 mmls -o <offset> <image.dd>
 ```
 
-**实战要点**:
-- 输出中 "000: Meta" 或 "Unallocated" 是卷系统自身/未分配区域,文件系统分区通常标 "NTFS / ext* / Linux filesystem"。
-- 后续命令统一用 `fls -o <Offset列的值> <image.dd>`;`-o` 接受 `2048` 或 `2048s`(扇区)两种写法。
-- mmls 认不出分区表时,用 `mmstat`(看卷系统类型)或 testdisk 先修复/识别。
+**Practical tips**:
+- In the output, "000: Meta" or "Unallocated" is the volume system itself/unallocated space; filesystem partitions are usually labeled "NTFS / ext* / Linux filesystem".
+- Subsequent commands uniformly take the form `fls -o <value from the Offset column> <image.dd>`; `-o` accepts both `2048` and `2048s` (sectors) notations.
+- When mmls cannot recognize the partition table, use `mmstat` (to check the volume system type) or testdisk to repair/identify it first.
 
-### fls — Sleuth Kit:列出镜像文件系统内容(含已删除)
+### fls — Sleuth Kit: list filesystem contents of an image (including deleted)
 
-**用途**:列出镜像内文件与目录,不依赖宿主 OS 解析文件系统,可显示已删除与隐藏条目;`-m` 输出 body 格式供 mactime 做时间线。
-**安装**:`sudo apt install sleuthkit`
-**使用场景**:确定"当时存在哪些文件、哪些已被删除",是取证文件清单的基础命令。
+**Purpose**: Lists files and directories inside an image without relying on the host OS to parse the filesystem; can show deleted and hidden entries; `-m` outputs body format for mactime timelines.
+**Install**: `sudo apt install sleuthkit`
+**Use cases**: Determining "which files existed at the time and which had been deleted"; the foundational command for a forensic file inventory.
 
 ```bash
 # 列出分区(o 偏移来自 mmls)全部条目
@@ -305,16 +307,16 @@ fls -d -r -p -o <offset> <image.dd>
 fls -m / -r -p -o <offset> <image.dd> > body.txt
 ```
 
-**实战要点**:
-- 输出格式:`r/r * 1234-1234-5: path/to/file`,`*` 表示已删除,`r/r` 是文件类型/元数据类型,数字串是 inode(NTFS 为 inode-seqid)。
-- `*` 标记条目的 inode 可直接交给 `icat` 提取内容、`istat` 查时间属性。
-- 已删除条目 inode 后带 `-seqid` 的镜像(NTFS)在 icat 时要带完整 inode-seqid。
+**Practical tips**:
+- Output format: `r/r * 1234-1234-5: path/to/file`, where `*` marks a deleted entry, `r/r` is the file type/metadata type, and the digit string is the inode (inode-seqid on NTFS).
+- The inode of a `*`-marked entry can be handed directly to `icat` to extract content or to `istat` to inspect time attributes.
+- On images (NTFS) where deleted entries carry `-seqid` after the inode, pass the full inode-seqid to icat.
 
-### icat — Sleuth Kit:按 inode 提取文件内容
+### icat — Sleuth Kit: extract file content by inode
 
-**用途**:按 inode 号从镜像中直接输出文件数据,支持恢复已删除文件的内容(`-r`),不需要文件名仍然有效。
-**安装**:`sudo apt install sleuthkit`
-**使用场景**:fls 找到目标 inode 后把文件内容"抠"出来;文件名已被抹除/覆盖但 inode 仍在时尤其有用。
+**Purpose**: Outputs file data straight from the image by inode number; supports recovering the content of deleted files (`-r`) and does not need the filename to still be valid.
+**Install**: `sudo apt install sleuthkit`
+**Use cases**: Pulling out file content once fls has located the target inode; especially useful when the filename has been wiped/overwritten but the inode survives.
 
 ```bash
 # 提取指定 inode 的文件内容
@@ -324,31 +326,31 @@ icat -o <offset> <image.dd> <inode> > recovered_file
 icat -r -o <offset> <image.dd> <inode> > recovered_file
 ```
 
-**实战要点**:
-- inode 参数用 fls/ils 输出的原始值;NTFS 记账形式 `inode-seqid` 原样传入。
-- 内容取回后立即 `file recovered_file` 验证真实类型;哈希后入库(hashdeep)。
-- 与 tsk_recover 的取舍:icat 是"点名提取",tsk_recover 是"批量导出"。
+**Practical tips**:
+- Pass the raw inode value from fls/ils output as the inode argument; for NTFS pass the `inode-seqid` form verbatim.
+- Run `file recovered_file` immediately after retrieving content to verify its real type; hash it and record it (hashdeep).
+- icat vs tsk_recover: icat is targeted extraction, tsk_recover is bulk export.
 
-### fsstat — Sleuth Kit:文件系统整体信息
+### fsstat — Sleuth Kit: overall filesystem information
 
-**用途**:显示镜像中某文件系统的详细结构信息:类型、块/扇区大小、inode 范围、挂载时间、卷标、NTFS 序列号等。
-**安装**:`sudo apt install sleuthkit`
-**使用场景**:确认 `-o` 偏移处的文件系统类型与参数;报告中的"卷信息"一节素材。
+**Purpose**: Displays detailed structural information about a filesystem in an image: type, block/sector size, inode range, mount times, volume label, NTFS serial number, etc.
+**Install**: `sudo apt install sleuthkit`
+**Use cases**: Confirming the filesystem type and parameters at an `-o` offset; source material for the "volume information" section of a report.
 
 ```bash
 # 查看分区文件系统详情
 fsstat -o <offset> <image.dd>
 ```
 
-**实战要点**:
-- 输出包含 Last Mounted、最后写入时间等时间元素,可交叉验证系统时钟篡改。
-- 看到报错 "Cannot determine file system type" 说明偏移不对,回 mmls 核对。
+**Practical tips**:
+- The output includes time elements such as Last Mounted and last-write time, useful for cross-checking system clock tampering.
+- An error like "Cannot determine file system type" means the offset is wrong; go back to mmls and verify.
 
-### tsk_recover — Sleuth Kit:批量导出镜像中的文件
+### tsk_recover — Sleuth Kit: bulk export of files from an image
 
-**用途**:从镜像批量恢复文件到目录,可只导已分配文件或全部(含已删除)。
-**安装**:`sudo apt install sleuthkit`
-**使用场景**:需要把镜像内容整体导出后用常规工具(grep/杀毒/审阅)处理,而不是逐 inode 提取。
+**Purpose**: Recovers files from an image into a directory in bulk; can export only allocated files or everything (including deleted).
+**Install**: `sudo apt install sleuthkit`
+**Use cases**: When you need to export image contents wholesale and process them with conventional tools (grep/AV/review) instead of extracting inode by inode.
 
 ```bash
 # 导出全部文件(已分配 + 已删除)
@@ -358,15 +360,15 @@ tsk_recover -e -o <offset> <image.dd> /out/recovered/
 tsk_recover -a -o <offset> <image.dd> /out/allocated/
 ```
 
-**实战要点**:
-- 已删除文件恢复出的内容不保证完整(块可能被重用),用 `file`/打开验证。
-- 输出目录需已存在;大量小文件导出较慢,只要少量文件时 icat 更快。
+**Practical tips**:
+- Content recovered for deleted files is not guaranteed to be complete (blocks may have been reused); verify with `file`/by opening it.
+- The output directory must already exist; exporting large numbers of small files is slow — icat is faster when you only need a few files.
 
-### mactime — 时间线生成(body 文件 → CSV)
+### mactime — Timeline generation (body file → CSV)
 
-**用途**:读取 TSK body 格式文件(fl -m / ils -m / tsk_gettimes 生成),按时间排序输出文件系统时间线(macb:modified/accessed/changed/born)。
-**安装**:`sudo apt install sleuthkit`
-**使用场景**:入侵时间线还原:结合日志时间点,定位"某时刻前后哪些文件被创建/修改/删除"。
+**Purpose**: Reads TSK body-format files (generated by fl -m / ils -m / tsk_gettimes) and outputs a time-sorted filesystem timeline (macb: modified/accessed/changed/born).
+**Install**: `sudo apt install sleuthkit`
+**Use cases**: Intrusion timeline reconstruction: combined with log timestamps, locate "which files were created/modified/deleted around a given moment".
 
 ```bash
 # 标准 pipeline:fls 生成 body,mactime 转 CSV(-d 逗号分隔,可直接进表格)
@@ -374,16 +376,16 @@ fls -m / -r -p -o <offset> <image.dd> > body.txt
 mactime -b body.txt -d > timeline.csv
 ```
 
-**实战要点**:
-- 输出列 `MACB` 中字母表示该时间字段非零(M=修改 A=访问 C=inode 变更 B=创建);`*` 表示时间戳早于 1970 或可疑。
-- NTFS 的"出生时间"(B)对定位攻击者落地文件非常有用;EXT 文件系统无 B 时间。
-- 大批量镜像可先 `tsk_gettimes <image>` 生成 body(速查表)再统一 mactime。
+**Practical tips**:
+- In the `MACB` output column, a letter means that time field is non-zero (M=modified, A=accessed, C=inode change, B=created); `*` marks timestamps earlier than 1970 or otherwise suspicious.
+- NTFS "birth time" (B) is very useful for pinpointing attacker-dropped files; EXT filesystems have no B time.
+- For large batches of images, first generate body files with `tsk_gettimes <image>` (see quick reference), then run mactime across them uniformly.
 
-### autopsy — Sleuth Kit 图形化取证浏览器
+### autopsy — Graphical forensic browser for Sleuth Kit
 
-**用途**:The Sleuth Kit 的 GUI 前端,提供 NTFS/FAT/ext 等文件系统分析、关键词搜索、时间线、哈希过滤等,近似商业取证工具的免费替代。
-**安装**:`sudo apt install autopsy`
-**使用场景**:不想逐条敲 TSK 命令、需要交互式浏览镜像文件/已删除内容/时间线做案件分析。
+**Purpose**: A GUI front end for The Sleuth Kit providing filesystem analysis for NTFS/FAT/ext and more, keyword search, timelines, and hash filtering — a free near-replacement for commercial forensic tools.
+**Install**: `sudo apt install autopsy`
+**Use cases**: When you would rather not type TSK commands one by one and need to interactively browse an image's files/deleted content/timelines for case analysis.
 
 ```bash
 # Kali 仓库为 legacy 2.x 版本:启动内置 Web 服务,按提示用浏览器打开
@@ -391,16 +393,16 @@ sudo autopsy
 # 浏览器访问: http://localhost:9999/autopsy
 ```
 
-**实战要点**:
-- 2.x 为 Web 界面流程(New Case → Add Image → Analyze),底层就是 fls/icat/mactime 那套,学会 CLI 后 GUI 只是加速器。
-- 需要现代 Autopsy 4.x 的完整功能(_ingest 插件、视频等)需到 Windows 平台运行官方版。
-- 无头/自动化场景直接用 Sleuth Kit 命令行,不要依赖 autopsy。
+**Practical tips**:
+- 2.x uses a web interface flow (New Case → Add Image → Analyze); underneath it is the same fls/icat/mactime toolchain, so once you know the CLI the GUI is just an accelerator.
+- Full modern Autopsy 4.x features (_ingest plugins, video, etc.) require running the official version on Windows.
+- For headless/automated scenarios use the Sleuth Kit command line directly; do not depend on autopsy.
 
-### bulk_extractor — 不解析文件系统的全量证据抽取
+### bulk_extractor — Whole-image evidence extraction without filesystem parsing
 
-**用途**:C++ 扫描器,对磁盘镜像/文件/目录提取有用信息(email、URL、域名、IP、信用卡号、EXIF、电话等)而不解析文件系统,结果写入特征文件并生成直方图。
-**安装**:`sudo apt install bulk-extractor`
-**使用场景**:大镜像快速"过筛":不关心文件结构,只关心里面出现过哪些邮箱/网址/加密线索(如 TrueCrypt 头)。
+**Purpose**: A C++ scanner that extracts useful information (emails, URLs, domains, IPs, credit card numbers, EXIF, phone numbers, etc.) from disk images/files/directories without parsing the filesystem; results are written to feature files and histograms are generated.
+**Install**: `sudo apt install bulk-extractor`
+**Use cases**: A quick sift through large images: you do not care about file structure, only about which emails/URLs/encryption clues (e.g. TrueCrypt headers) appear inside.
 
 ```bash
 # 官方示例:分析镜像并输出到目录
@@ -410,16 +412,16 @@ bulk_extractor -o bulk-out xp-laptop-2005-07-04-1430.img
 bulk_extractor -o /evidence/be-out <image.dd>
 ```
 
-**实战要点**:
-- 输出目录每个特征文件一个类别;`*_histogram.txt` 是频次排序,"高频即重要"。
-- 信用卡特征(ccn.txt)涉及敏感数据,处理与留存需符合案件授权范围。
-- 提示 CPU bound 时加 `-j <线程数>` 提速(多核机器)。
+**Practical tips**:
+- Each feature file in the output directory covers one category; `*_histogram.txt` files are frequency-sorted — "high frequency means important".
+- Credit card features (ccn.txt) involve sensitive data; processing and retention must stay within the case's authorized scope.
+- When it reports being CPU bound, add `-j <number of threads>` to speed it up (on multi-core machines).
 
-### chkrootkit — rootkit 特征扫描
+### chkrootkit — Rootkit signature scanning
 
-**用途**:在系统中搜索 70+ 种 rootkit 感染迹象(签名比对、隐藏文件、网络接口 promisc 检测、wtmp/lastlog 篡改等)。
-**安装**:`sudo apt install chkrootkit`
-**使用场景**:主机入侵排查第一轮快扫;与 rkhunter 交叉验证。
+**Purpose**: Searches the system for signs of 70+ rootkits (signature comparison, hidden files, network interface promiscuous-mode detection, wtmp/lastlog tampering, etc.).
+**Install**: `sudo apt install chkrootkit`
+**Use cases**: The first quick scan in host intrusion triage; cross-validated with rkhunter.
 
 ```bash
 # 全量扫描(主要输出:每项检测结果 + 可能的 INFECTED 提示)
@@ -429,16 +431,16 @@ sudo chkrootkit
 sudo chkrootkit -x
 ```
 
-**实战要点**:
-- 单独一条 "INFECTED" 常是误报(如包升级导致二进制与包装器不一致),需结合 rkhunter、文件哈希基线二次确认。
-- 扫描应使用可信环境:严重 rootkit 会感染扫描工具自身,必要时从只读介质运行。
-- 检查项含 `sniffer` 检测(网卡混杂模式),可作为流量窃听线索。
+**Practical tips**:
+- A lone "INFECTED" line is often a false positive (e.g. a package upgrade leaving the binary inconsistent with its wrapper); confirm with rkhunter and a file hash baseline before drawing conclusions.
+- Scanning should happen from a trusted environment: severe rootkits can infect the scanner itself; run from read-only media if necessary.
+- Checks include `sniffer` detection (NIC promiscuous mode), which can be a clue to traffic eavesdropping.
 
-### rkhunter — Rootkit Hunter(rootkit/后门/嗅探器扫描)
+### rkhunter — Rootkit Hunter (rootkit/backdoor/sniffer scanning)
 
-**用途**:扫描已知/未知 rootkit、后门、嗅探器与漏洞利用痕迹:文件哈希比对、隐藏文件、可疑权限、内核模块、启动项等。
-**安装**:`sudo apt install rkhunter`
-**使用场景**:需要可维护的基线属性数据库(减少误报)与日志输出的常态化 rootkit 检查。
+**Purpose**: Scans for known/unknown rootkits, backdoors, sniffers, and exploit traces: file hash comparison, hidden files, suspicious permissions, kernel modules, startup items, etc.
+**Install**: `sudo apt install rkhunter`
+**Use cases**: Routine rootkit checks that need a maintainable baseline attribute database (fewer false positives) and log output.
 
 ```bash
 # 先更新特征库
@@ -454,16 +456,16 @@ sudo rkhunter --propupd
 less /var/log/rkhunter.log
 ```
 
-**实战要点**:
-- Warning 不等于感染:常见于包更新后哈希漂移,复核后 `--propupd` 刷新基线。
-- 日志在 `/var/log/rkhunter.log`,事件响应时保留原始日志再处理。
-- 与 chkrootkit/unhide 三件套组合使用:签名比对 + 属性基线 + 隐藏进程检测互补。
+**Practical tips**:
+- A warning does not mean infection: it commonly follows hash drift after package updates; re-verify, then refresh the baseline with `--propupd`.
+- Logs are in `/var/log/rkhunter.log`; in incident response, preserve the original log before processing.
+- Use alongside chkrootkit/unhide as a trio: signature comparison + attribute baselines + hidden process detection complement one another.
 
-### steghide — BMP/JPEG/WAV/AU 隐写(带加密)
+### steghide — BMP/JPEG/WAV/AU steganography (with encryption)
 
-**用途**:把数据文件藏入载体文件最低有效位,存在性不可见不可证明;支持 bmp/jpeg/wav/au,Blowfish 加密、MD5 口令散列,支持压缩嵌入。
-**安装**:`sudo apt install steghide`
-**使用场景**:CTF 图片/音频隐写第一猜;授权演练中的隐写演示与检测训练。
+**Purpose**: Hides data files in the least significant bits of carrier files, making the presence of the embedded data invisible and hard to prove; supports bmp/jpeg/wav/au, Blowfish encryption, MD5 password hashing, and compressed embedding.
+**Install**: `sudo apt install steghide`
+**Use cases**: The first guess for CTF image/audio steganography; steganography demos and detection training in authorized exercises.
 
 ```bash
 # 嵌入:把 secret.txt 藏进 cover.jpg(-p 口令,可省略则交互输入)
@@ -477,16 +479,16 @@ steghide extract -sf stego.jpg -p <password>
 steghide extract -sf stego.jpg -p <password> -xf out.bin
 ```
 
-**实战要点**:
-- 只支持 bmp/jpeg/wav/au;PNG 用别的思路(附加数据/LSB)。
-- CTF 无口令提示时先试空口令、题目名、文件名;批量猜口令可用 `stegseek`(Kali 仓库)挂字典跑 steghide 短语。
-- 提取出二进制后接 `file`+`binwalk` 二次分析,常是嵌套题目。
+**Practical tips**:
+- Only supports bmp/jpeg/wav/au; for PNG take a different approach (appended data/LSB).
+- In CTF, when there is no password hint, try the empty password, the challenge title, and the filename first; for bulk password guessing, use `stegseek` (in the Kali repository) to run a dictionary against steghide passphrases.
+- After extracting a binary, follow up with `file`+`binwalk` for second-stage analysis; these are often nested challenges.
 
-### outguess — JPEG/PPM/PNM 通用隐写(统计抗检测)
+### outguess — JPEG/PPM/PNM general steganography (statistically resistant to detection)
 
-**用途**:通用隐写工具,把信息嵌入数据源的冗余位,依赖格式 handler(支持 JPEG、PPM、PNM),因做统计修正而较抗隐写分析。
-**安装**:`sudo apt install outguess`
-**使用场景**:steghide 无果时的 JPEG 第二猜;题目给出的是 jpg 且 steghide 提示无嵌入数据时。
+**Purpose**: A general steganography tool that embeds information into the redundant bits of a data source and relies on format handlers (supports JPEG, PPM, PNM); its statistical correction makes it relatively resistant to steganalysis.
+**Install**: `sudo apt install outguess`
+**Use cases**: The second guess for JPEG when steghide comes up empty; when the challenge provides a jpg and steghide reports no embedded data.
 
 ```bash
 # 嵌入:-k 密钥,-d 要藏的数据文件
@@ -499,15 +501,15 @@ outguess -r -k <key> stego.jpg output.txt
 outguess -r stego.jpg output.txt
 ```
 
-**实战要点**:
-- 嵌入后可 `outguess -k <key> -r ... ` 自校验;提取成功会显示 "Reading ... done" 与隐写帧统计。
-- 与 steghide 的载体偏重不同:outguess 只吃 JPEG/PPM/PNM,两者互为补充而非替代。
+**Practical tips**:
+- After embedding, self-verify with `outguess -k <key> -r ... `; successful extraction displays "Reading ... done" plus stego frame statistics.
+- Carrier focus differs from steghide: outguess only takes JPEG/PPM/PNM; the two complement rather than replace each other.
 
-### stegsnow — 文本隐写(行尾空白 + ICE 加密)
+### stegsnow — Text steganography (trailing whitespace + ICE encryption)
 
-**用途**:把消息藏在 ASCII 文本每行末尾追加的空格/tab 中——文本查看器里不可见;内置加密后即使被发现也无法读取。
-**安装**:`sudo apt install stegsnow`
-**使用场景**:CTF 中纯 .txt/.log 附件、`cat` 看内容"正常"但题目暗示隐写;检测文本尾部空白隐写。
+**Purpose**: Hides messages in spaces/tabs appended to the end of each line of ASCII text — invisible in text viewers; with built-in encryption, the message cannot be read even if discovered.
+**Install**: `sudo apt install stegsnow`
+**Use cases**: Plain .txt/.log attachments in CTF that look "normal" under `cat` while the challenge hints at steganography; detecting trailing-whitespace steganography in text.
 
 ```bash
 # 提取(不带 -p 则用默认口令;先试无口令再试题目提示词)
@@ -520,15 +522,15 @@ stegsnow -C -p <password> stego.txt out.txt
 stegsnow -C -p <password> -f secret.txt cover.txt stego.txt
 ```
 
-**实战要点**:
-- 快速判断是否用了空白隐写:`cat -A stego.txt` 行尾出现大量 ` `/$ 前空格即可疑。
-- `-C` 表示启用压缩(嵌入与提取需一致);加密口令未知时输出为乱码。
+**Practical tips**:
+- Quick check for whitespace steganography: if `cat -A stego.txt` shows many ` ` before $ at line ends, it is suspicious.
+- `-C` enables compression (embedding and extraction must match); with an unknown encryption password the output is gibberish.
 
-### yara — 恶意样本模式识别与分类
+### yara — Malicious sample pattern identification and classification
 
-**用途**:用文本/二进制模式描述(字符串集合+布尔条件)识别与分类恶意样本;规则语法是行业事实标准,可递归扫描目录。
-**安装**:`sudo apt install yara`(库 `libyara-dev`、文档 `yara-doc` 同源)。
-**使用场景**:批量样本家族归类、IOC 落地扫描、事件响应中快速筛选可疑文件。
+**Purpose**: Identifies and classifies malicious samples using text/binary pattern descriptions (sets of strings + boolean conditions); the rule syntax is the industry de facto standard and supports recursive directory scanning.
+**Install**: `sudo apt install yara` (the library `libyara-dev` and docs `yara-doc` come from the same source).
+**Use cases**: Bulk sample family classification, IOC sweep scans, and fast triage of suspicious files in incident response.
 
 ```bash
 # 用规则文件扫单个文件
@@ -552,16 +554,16 @@ EOF
 yara suspicious.yar <file>
 ```
 
-**实战要点**:
-- 编译规则加速:`yarac <rules.yar> compiled.yarc` 后把编译文件作为第一参数使用。
-- 规则来源:社区规则库(YARA 官方仓库、Florian Roth signature-base)可直接下载使用,注意时效性。
-- 命中只说明特征匹配,定性仍需动态/人工分析;`-s` 可打印命中字符串位置辅助研判。
+**Practical tips**:
+- Compile rules for speed: after `yarac <rules.yar> compiled.yarc`, use the compiled file as the first argument.
+- Rule sources: community rule repositories (the official YARA repository, Florian Roth's signature-base) can be downloaded and used directly; mind their freshness.
+- A hit only means a signature matched; classification still requires dynamic/manual analysis; `-s` prints the positions of matched strings to aid analysis.
 
-### hashdeep — 递归哈希计算与审计模式
+### hashdeep — Recursive hash computation and audit mode
 
-**用途**:递归计算 MD5/SHA1/SHA256/Tiger/Whirlpool 哈希;支持分段哈希(piecewise)、审计模式(与已知哈希集合比对增删改)。
-**安装**:`sudo apt install hashdeep`
-**使用场景**:证据完整性基线、镜像/目录前后对比(是否被篡改、新增哪些文件)、合规审计。
+**Purpose**: Recursively computes MD5/SHA1/SHA256/Tiger/Whirlpool hashes; supports piecewise hashing and audit mode (comparison against a known hash set for additions, deletions, and modifications).
+**Install**: `sudo apt install hashdeep`
+**Use cases**: Evidence integrity baselines, before/after comparison of images/directories (whether tampered, which files are new), and compliance audits.
 
 ```bash
 # 递归计算目录 SHA256 基线
@@ -574,16 +576,16 @@ hashdeep -c sha256 -r -a -k baseline.txt /evidence
 hashdeep -c sha256 -r -x -k baseline.txt /evidence
 ```
 
-**实战要点**:
-- 审计前后哈希算法必须一致(同 `-c` 参数),否则全部 mismatch。
-- 大文件分段哈希(piecewise)适合网络传输中断点续传校验场景;`-l` 输出相对路径便于迁移。
-- 找"相似但不同"的文件(如恶意样本变种)用 ssdeep,不用 hashdeep。
+**Practical tips**:
+- The hash algorithm must be identical before and after auditing (same `-c` argument), otherwise everything mismatches.
+- Piecewise hashing of large files suits resumed-transfer verification scenarios; `-l` outputs relative paths for easier migration.
+- Use ssdeep, not hashdeep, to find "similar but not identical" files (e.g. malware variants).
 
-### ssdeep — 模糊哈希(相似文件匹配)
+### ssdeep — Fuzzy hashing (similar file matching)
 
-**用途**:上下文触发的分段哈希(CTPH/模糊哈希):不仅像 md5sum 那样比对完全相同文件,还能按相似度百分比匹配有少量差异的文件。
-**安装**:`sudo apt install ssdeep`
-**使用场景**:恶意样本变种聚类、同一木马多版本归并、重复文档溯源。
+**Purpose**: Context-triggered piecewise hashing (CTPH/fuzzy hashing): beyond matching fully identical files the way md5sum does, it also matches files with small differences by similarity percentage.
+**Install**: `sudo apt install ssdeep`
+**Use cases**: Clustering malware variants, consolidating multiple versions of the same trojan, and tracing duplicate documents.
 
 ```bash
 # 递归生成目录模糊哈希集合
@@ -596,15 +598,15 @@ ssdeep -m hashes.txt -r /new_samples
 ssdeep file1.bin file2.bin
 ```
 
-**实战要点**:
-- 输出的百分比是相似度不是置信度,>90% 基本同源,<50% 需人工复核。
-- 模糊哈希对"整体相似"有效,对加壳/加密样本失真——先脱壳再比。
+**Practical tips**:
+- The output percentage is similarity, not confidence: >90% essentially means the same origin; <50% requires manual review.
+- Fuzzy hashing works for "broadly similar" files but is distorted by packed/encrypted samples — unpack first, then compare.
 
-### pdfid — PDF 可疑关键词快速筛查
+### pdfid — Quick screening of suspicious PDF keywords
 
-**用途**:不解析 PDF,只统计文件中 PDF 关键词出现次数(如 /JS、/JavaScript、/OpenAction、/Launch、/AA),并处理名称混淆,快速识别含脚本或自动动作的 PDF。
-**安装**:`sudo apt install pdfid`
-**使用场景**:批量 PDF 首轮风险筛查、CTF PDF 题第一步。
+**Purpose**: Does not parse the PDF; it only counts occurrences of PDF keywords in the file (e.g. /JS, /JavaScript, /OpenAction, /Launch, /AA) and handles name obfuscation, quickly identifying PDFs that contain scripts or automatic actions.
+**Install**: `sudo apt install pdfid`
+**Use cases**: First-round risk screening of PDF batches; the first step of CTF PDF challenges.
 
 ```bash
 # 官方示例:统计关键词计数
@@ -614,16 +616,16 @@ pdfid /usr/share/doc/texmf/fonts/lm/lm-info.pdf
 pdfid <file.pdf>
 ```
 
-**实战要点**:
-- `/JS`、`/JavaScript`、`/OpenAction`、`/Launch`、`/AA`、`/AcroForm` 任一非 0 都值得深挖(可能是嵌 JS 或打开即触发动作)。
-- 名称混淆(如 `/J#61vaScript`)pdfid 会归一化处理,不易被绕过。
-- 计数异常后转 pdf-parser 定位具体对象。
+**Practical tips**:
+- Any non-zero count for `/JS`, `/JavaScript`, `/OpenAction`, `/Launch`, `/AA`, or `/AcroForm` is worth digging into (possibly embedded JS or an action triggered on open).
+- pdfid normalizes name obfuscation (e.g. `/J#61vaScript`), so it is not easily bypassed.
+- Once a count looks abnormal, move to pdf-parser to locate the specific objects.
 
-### pdf-parser — PDF 结构解析与对象提取
+### pdf-parser — PDF structure parsing and object extraction
 
-**用途**:解析 PDF 文档基本元素(对象、流、xref、trailer)并按需提取/解压,不做渲染。
-**安装**:`sudo apt install pdf-parser`
-**使用场景**:pdfid 报可疑后定位到具体对象;提取内嵌文件流;分析 JS 与恶意 payload。
+**Purpose**: Parses the basic elements of a PDF document (objects, streams, xref, trailer) and extracts/decompresses them on demand; no rendering.
+**Install**: `sudo apt install pdf-parser`
+**Use cases**: Locating specific objects after pdfid flags a PDF; extracting embedded file streams; analyzing JS and malicious payloads.
 
 ```bash
 # 官方示例:统计文档元素(间接对象数等)
@@ -637,16 +639,16 @@ pdf-parser -o <obj_id> <file.pdf>
 pdf-parser -o <obj_id> -f -d stream.bin <file.pdf>
 ```
 
-**实战要点**:
-- `-a` 的统计先看 indirect object 总数与 stream 数,再决定挖哪个对象。
-- 流解压(-f)后 dump 出来的常是 zlib 解压后的 JS 或嵌入文件,直接接 `file`/文本搜索。
-- 对象流(ObjStm)内的对象需用 pdf-parser 解开后逐层查,不要只看表面 xref。
+**Practical tips**:
+- With `-a` statistics, look at the total number of indirect objects and streams first, then decide which object to dig into.
+- After stream decompression (-f), what gets dumped is often zlib-decompressed JS or an embedded file — feed it directly to `file`/text search.
+- Objects inside object streams (ObjStm) must be unwrapped with pdf-parser and inspected layer by layer; do not look only at the surface xref.
 
-### regripper — Windows 注册表取证插件框架
+### regripper — Windows registry forensics plugin framework
 
-**用途**:用 Perl 插件从注册表 hive(SAM/SYSTEM/SOFTWARE/NTUSER.DAT)中"外科手术式"提取、翻译并展示数据;可按插件或 profile(插件列表)运行,结果到 STDOUT。
-**安装**:`sudo apt install regripper`
-**使用场景**:从 Windows 镜像提取用户痕迹、自启动项、USB 历史、网络配置等取证要点。
+**Purpose**: Uses Perl plugins to "surgically" extract, translate, and present data from registry hives (SAM/SYSTEM/SOFTWARE/NTUSER.DAT); can run per plugin or per profile (a plugin list), with results to STDOUT.
+**Install**: `sudo apt install regripper`
+**Use cases**: Extracting user traces, autostart entries, USB history, network configuration, and other forensically relevant points from Windows images.
 
 ```bash
 # 单插件运行(-r hive,-p 插件)
@@ -660,67 +662,67 @@ regripper -r <SOFTWARE> -p run
 regripper -r <SYSTEM> -p usbstor
 ```
 
-**实战要点**:
-- 先从镜像中把 hive 文件取出来(通常在 `/Windows/System32/config/` 与用户目录 `NTUSER.DAT`),不要在挂载的系统上直接跑。
-- `-p` 与 `-f` 二选一;插件名/概览可查看随包插件目录(`/usr/share/regripper`)。
-- hive 脏(未正常关机)时配 `reglookup-recover`(速查表)读删除键与残留数据。
+**Practical tips**:
+- Pull the hive files out of the image first (usually under `/Windows/System32/config/` and the user profile's `NTUSER.DAT`); do not run directly against a mounted system.
+- Choose either `-p` or `-f`; plugin names/overview are in the bundled plugin directory (`/usr/share/regripper`).
+- For dirty hives (no clean shutdown), pair with `reglookup-recover` (see quick reference) to read deleted keys and leftover data.
 
-## 其余工具速查
+## Remaining Tools — Quick Reference
 
-| 工具 | 一句话用途 | 安装包 | 最常用命令 |
+| Tool | One-line Purpose | Package | Most Common Command |
 |---|---|---|---|
-| binwalk3 | binwalk 新一代 Rust 重写,单二进制扫描/提取内嵌文件 | binwalk3 | `binwalk3 <file>` |
-| blkcalc | TSK:磁盘块地址与文件系统块地址换算 | sleuthkit | `blkcalc -o <offset> <image> <block>` |
-| blkcat | TSK:按数据块号 dump 块内容 | sleuthkit | `blkcat -o <offset> <image> <block>` |
-| blkls | TSK:导出未分配空间(供 carving) | sleuthkit | `blkls -o <offset> <image> > unalloc.bin` |
-| blkstat | TSK:查询数据块分配状态与时间 | sleuthkit | `blkstat -o <offset> <image> <block>` |
-| dcfldd | 美国防部实验室增强 dd(哈希/分割/进度) | dcfldd | `dcfldd if=/dev/sdc of=disk.img hash=sha256 hashlog=hash.txt` |
-| ext3grep | ext3 文件系统删除文件恢复 | ext3grep | `ext3grep <image.img> --restore-all` |
-| ffind | TSK:由 inode 反查文件名(含已删除) | sleuthkit | `ffind -o <offset> <image> <inode>` |
-| galleta | 解析 IE Cookie 文件为分隔字段表 | galleta | `galleta -d";" <cookie.txt>` |
-| grokevt-addlog | 向 grokevt 数据库追加 Windows 事件日志 | grokevt | `grokevt-addlog <db-dir> <log.evt>` |
-| grokevt-builddb | 从挂载的 Windows 分区构建事件日志数据库 | grokevt | `grokevt-builddb /mnt/windows /tmp/grokevt-db` |
-| grokevt-findlogs | 在挂载分区中搜寻 Windows 事件日志文件 | grokevt | `grokevt-findlogs /mnt/windows` |
-| grokevt-parselog | 将事件日志解析为人类可读格式 | grokevt | `grokevt-parselog <db-dir> System`(`-l <db-dir>` 列出可用日志名) |
-| grokevt-ripdll | 从 PE DLL 提取事件消息模板 | grokevt | `grokevt-ripdll <msgdll.dll>` |
-| hexwalk | GUI 十六进制编辑/分析器(集成 binwalk/哈希/字符串) | hexwalk | `hexwalk`(GUI) |
-| hfind | TSK:哈希数据库索引与查询 | sleuthkit | `hfind -i sha1sum <hashdb.txt>`(建索引后 `hfind <hashdb.txt> <hash>`) |
-| ifind | TSK:按块号/文件名反查 inode | sleuthkit | `ifind -o <offset> -d <block> <image>` |
-| ils | TSK:列出 inode 元数据结构 | sleuthkit | `ils -o <offset> <image>` |
-| img_cat | TSK:输出镜像原始数据流 | sleuthkit | `img_cat <image>` |
-| img_stat | TSK:显示镜像格式信息 | sleuthkit | `img_stat <image>` |
-| istat | TSK:inode 详细元数据(时间戳/块列表) | sleuthkit | `istat -o <offset> <image> <inode>` |
-| jcat | TSK:读取文件系统日志(NTFS $Log/ext journal)块 | sleuthkit | `jcat -o <offset> <image> <journal_block>` |
-| jls | TSK:列出文件系统日志条目 | sleuthkit | `jls -o <offset> <image>` |
-| magicrescue | 按魔数+recipe 从设备/镜像抢救文件 | magicrescue | `magicrescue -r jpeg-exif -d /out /dev/sdb1` |
-| missidentify | 找无扩展名的 win32 PE 可执行文件 | missidentify | `missidentify -a <dir>` |
-| mmcat | TSK:导出分区(volume)原始数据 | sleuthkit | `mmcat <image> <vol_id> > part.raw` |
-| mmstat | TSK:显示卷系统类型信息 | sleuthkit | `mmstat <image>` |
-| myrescue | 损坏介质数据抢救(先好区后坏区) | myrescue | `myrescue /dev/sdb1 /out/sdb1.img` |
-| pasco | 解析 IE index.dat 缓存记录 | pasco | `pasco <index.dat>` |
-| readpe | 解析 Windows PE 头/节/导入导出 | readpe | `readpe <file.exe>` |
-| readpst | Outlook PST 转 mbox/eml | pst-utils | `readpst -o <outdir> <file.pst>` |
-| recoverdm | 坏扇区介质恢复(不可读扇区置空续跑) | recoverdm | `recoverdm -h`(参数较复杂,按提示用) |
-| recoverjpeg | 从设备/镜像恢复 JPEG/MOV(附 recovermov、remove-duplicates、sort-pictures) | recoverjpeg | `recoverjpeg -o <outdir> /dev/sdb1` |
-| reglookup | Windows 注册表命令行读取/路径查询 | reglookup | `reglookup -p /Microsoft/Windows/CurrentVersion/Run <SOFTWARE>` |
-| rifiuti | 旧版 Windows 回收站 INFO2 分析 | rifiuti | `rifiuti <INFO2>` |
-| rifiuti2 | 回收站分析(INFO2 + Vista+ $I 文件,输出删除时间/原路径) | rifiuti2 | `rifiuti2 <recycle_dir>` |
-| safecopy | 坏媒体(CD/软盘/硬盘)数据恢复 | safecopy | `safecopy /dev/sr0 cd.img` |
-| scrounge-ntfs | NTFS 分区文件树恢复 | scrounge-ntfs | `scrounge-ntfs -d <outdir> /dev/sda1` |
-| sigfind | 按十六进制签名搜索镜像中的偏移 | sleuthkit | `sigfind <hex_signature> <image>` |
-| sorter | TSK:按文件类型分类整理镜像内容并扩展名校验 | sleuthkit | `sorter -o <offset> -d <outdir> <image>` |
-| srch_strings | TSK:镜像字符串提取(等价 strings) | sleuthkit | `srch_strings -t d <image>` |
-| stegosuite | GUI 图片隐写(BMP/GIF/JPG/PNG,AES 加密) | stegosuite | `stegosuite`(GUI) |
-| tailscale | WireGuard 安全组网(取证团队远程接入/证据传输) | tailscale | `tailscale up` |
-| tsk_comparedir | TSK:镜像与本地目录内容差异比对 | sleuthkit | `tsk_comparedir -o <offset> <image> <dir>` |
-| tsk_gettimes | TSK:直接生成 body 文件(时间线输入) | sleuthkit | `tsk_gettimes -o <offset> <image> > body.txt` |
-| tsk_loaddb | TSK:镜像元数据导入 SQLite 便于 SQL 查询 | sleuthkit | `tsk_loaddb -d <db.sqlite> <image>` |
-| undbx | Outlook Express .dbx 邮件提取/恢复/反删除 | undbx | `undbx <dbx文件或目录> <outdir>` |
-| unhide | 检测被 rootkit/LKM 隐藏的进程与 TCP/UDP 端口 | unhide | `sudo unhide brute; sudo unhide-tcp` |
-| vinetto | 解析 Windows Thumbs.db 缩略图及元数据 | vinetto | `vinetto -o ./thumbs_out <Thumbs.db>` |
-| xplico-webui-start | 启动 Xplico 网络取证(pcap 应用数据还原)Web 服务 | xplico | `sudo xplico-webui-start` |
-| xplico-webui-stop | 停止 Xplico 服务 | xplico | `sudo xplico-webui-stop` |
+| binwalk3 | New-generation Rust rewrite of binwalk; scans/extracts embedded files as a single binary | binwalk3 | `binwalk3 <file>` |
+| blkcalc | TSK: converts between disk block addresses and filesystem block addresses | sleuthkit | `blkcalc -o <offset> <image> <block>` |
+| blkcat | TSK: dumps block content by data block number | sleuthkit | `blkcat -o <offset> <image> <block>` |
+| blkls | TSK: exports unallocated space (for carving) | sleuthkit | `blkls -o <offset> <image> > unalloc.bin` |
+| blkstat | TSK: queries data block allocation status and times | sleuthkit | `blkstat -o <offset> <image> <block>` |
+| dcfldd | US DoD lab-enhanced dd (hashing/splitting/progress) | dcfldd | `dcfldd if=/dev/sdc of=disk.img hash=sha256 hashlog=hash.txt` |
+| ext3grep | Deleted file recovery for ext3 filesystems | ext3grep | `ext3grep <image.img> --restore-all` |
+| ffind | TSK: reverse-looks-up filenames from inodes (including deleted) | sleuthkit | `ffind -o <offset> <image> <inode>` |
+| galleta | Parses IE cookie files into delimited field tables | galleta | `galleta -d";" <cookie.txt>` |
+| grokevt-addlog | Appends Windows event logs to a grokevt database | grokevt | `grokevt-addlog <db-dir> <log.evt>` |
+| grokevt-builddb | Builds an event log database from a mounted Windows partition | grokevt | `grokevt-builddb /mnt/windows /tmp/grokevt-db` |
+| grokevt-findlogs | Searches mounted partitions for Windows event log files | grokevt | `grokevt-findlogs /mnt/windows` |
+| grokevt-parselog | Parses event logs into human-readable format | grokevt | `grokevt-parselog <db-dir> System` (`-l <db-dir>` lists available log names) |
+| grokevt-ripdll | Extracts event message templates from PE DLLs | grokevt | `grokevt-ripdll <msgdll.dll>` |
+| hexwalk | GUI hex editor/analyzer (integrates binwalk/hashing/strings) | hexwalk | `hexwalk` (GUI) |
+| hfind | TSK: hash database indexing and lookup | sleuthkit | `hfind -i sha1sum <hashdb.txt>` (`hfind <hashdb.txt> <hash>` after indexing) |
+| ifind | TSK: reverse-looks-up inodes by block number/filename | sleuthkit | `ifind -o <offset> -d <block> <image>` |
+| ils | TSK: lists inode metadata structures | sleuthkit | `ils -o <offset> <image>` |
+| img_cat | TSK: outputs the image raw data stream | sleuthkit | `img_cat <image>` |
+| img_stat | TSK: shows image format information | sleuthkit | `img_stat <image>` |
+| istat | TSK: detailed inode metadata (timestamps/block lists) | sleuthkit | `istat -o <offset> <image> <inode>` |
+| jcat | TSK: reads filesystem journal (NTFS $Log/ext journal) blocks | sleuthkit | `jcat -o <offset> <image> <journal_block>` |
+| jls | TSK: lists filesystem journal entries | sleuthkit | `jls -o <offset> <image>` |
+| magicrescue | Rescues files from devices/images by magic bytes + recipes | magicrescue | `magicrescue -r jpeg-exif -d /out /dev/sdb1` |
+| missidentify | Finds extensionless win32 PE executables | missidentify | `missidentify -a <dir>` |
+| mmcat | TSK: exports partition (volume) raw data | sleuthkit | `mmcat <image> <vol_id> > part.raw` |
+| mmstat | TSK: shows volume system type information | sleuthkit | `mmstat <image>` |
+| myrescue | Data rescue from damaged media (good areas first, then bad) | myrescue | `myrescue /dev/sdb1 /out/sdb1.img` |
+| pasco | Parses IE index.dat cache records | pasco | `pasco <index.dat>` |
+| readpe | Parses Windows PE headers/sections/imports/exports | readpe | `readpe <file.exe>` |
+| readpst | Converts Outlook PST to mbox/eml | pst-utils | `readpst -o <outdir> <file.pst>` |
+| recoverdm | Bad-sector media recovery (fills unreadable sectors with zeros and continues) | recoverdm | `recoverdm -h` (parameters are complex; follow the prompts) |
+| recoverjpeg | Recovers JPEG/MOV from devices/images (ships with recovermov, remove-duplicates, sort-pictures) | recoverjpeg | `recoverjpeg -o <outdir> /dev/sdb1` |
+| reglookup | Windows registry command-line reading/path queries | reglookup | `reglookup -p /Microsoft/Windows/CurrentVersion/Run <SOFTWARE>` |
+| rifiuti | INFO2 analysis for legacy Windows Recycle Bins | rifiuti | `rifiuti <INFO2>` |
+| rifiuti2 | Recycle Bin analysis (INFO2 + Vista+ $I files; outputs deletion times/original paths) | rifiuti2 | `rifiuti2 <recycle_dir>` |
+| safecopy | Data recovery from damaged media (CD/floppy/HDD) | safecopy | `safecopy /dev/sr0 cd.img` |
+| scrounge-ntfs | NTFS partition file tree recovery | scrounge-ntfs | `scrounge-ntfs -d <outdir> /dev/sda1` |
+| sigfind | Searches an image for offsets matching a hexadecimal signature | sleuthkit | `sigfind <hex_signature> <image>` |
+| sorter | TSK: sorts image contents by file type with extension validation | sleuthkit | `sorter -o <offset> -d <outdir> <image>` |
+| srch_strings | TSK: string extraction from images (equivalent to strings) | sleuthkit | `srch_strings -t d <image>` |
+| stegosuite | GUI image steganography (BMP/GIF/JPG/PNG, AES encryption) | stegosuite | `stegosuite` (GUI) |
+| tailscale | WireGuard secure networking (remote access/evidence transfer for forensic teams) | tailscale | `tailscale up` |
+| tsk_comparedir | TSK: diffs image contents against a local directory | sleuthkit | `tsk_comparedir -o <offset> <image> <dir>` |
+| tsk_gettimes | TSK: generates body files directly (timeline input) | sleuthkit | `tsk_gettimes -o <offset> <image> > body.txt` |
+| tsk_loaddb | TSK: loads image metadata into SQLite for SQL queries | sleuthkit | `tsk_loaddb -d <db.sqlite> <image>` |
+| undbx | Outlook Express .dbx mail extraction/recovery/un-deletion | undbx | `undbx <dbx file or directory> <outdir>` |
+| unhide | Detects processes and TCP/UDP ports hidden by rootkits/LKMs | unhide | `sudo unhide brute; sudo unhide-tcp` |
+| vinetto | Parses Windows Thumbs.db thumbnails and metadata | vinetto | `vinetto -o ./thumbs_out <Thumbs.db>` |
+| xplico-webui-start | Starts the Xplico network forensics (pcap application data reconstruction) web service | xplico | `sudo xplico-webui-start` |
+| xplico-webui-stop | Stops the Xplico service | xplico | `sudo xplico-webui-stop` |
 
 ---
 
-仅用于已获得书面授权的渗透测试、CTF 竞赛与安全教育场景。
+Use only in penetration testing, CTF competitions, and security education scenarios that have written authorization.

