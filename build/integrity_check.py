@@ -70,11 +70,25 @@ print('[4] code fences:', 'OK' if not unclosed else unclosed)
 if unclosed: issues.append(f'unclosed fences: {unclosed}')
 
 # ===== 5. reference docs structure =====
+ZH = ('## 快速决策表', '## 核心工具详解', '## 其余工具速查')
+EN = ('## Quick Decision Table', '## Core Tools in Depth', '## Remaining Tools — Quick Reference')
 struct = []
 for p in sorted(list(SRC.glob('references/0*.md')) + list(SRC.glob('references/1*.md'))):
+    if p.name.endswith('.zh-CN.md'):
+        continue  # language variant, checked via its primary file below
     t = p.read_text(encoding='utf-8')
-    missing = [s for s in ('## 快速决策表', '## 核心工具详解', '## 其余工具速查') if s not in t]
-    if missing: struct.append(f'{p.name} missing {missing}')
+    has_zh = all(s in t for s in ZH)
+    has_en = all(s in t for s in EN)
+    if not (has_zh or has_en):
+        struct.append(f'{p.name} missing section trio (zh or en)')
+        continue
+    zh_variant = p.with_name(p.stem + '.zh-CN.md')
+    if has_en and not has_zh:
+        # English-primary file: the Chinese original must live in the .zh-CN.md sibling
+        if not zh_variant.exists():
+            struct.append(f'{p.name} is English but {zh_variant.name} is missing')
+        elif not all(s in zh_variant.read_text(encoding='utf-8') for s in ZH):
+            struct.append(f'{zh_variant.name} missing Chinese section trio')
 print('[5] 3-section structure of 13 reference docs:', 'OK' if not struct else struct)
 issues.extend(struct)
 
