@@ -1,37 +1,39 @@
-# Web 应用测试(Web Application Testing)
+# Web Application Testing
 
-> **何时读本文件**:任务涉及 Web 应用渗透测试 —— 目录/参数/端点发现、SQL 注入、OS 命令注入、XSS、SSTI/CRLF 注入、CMS(WordPress/Joomla)识别与漏洞扫描、通用 Web 漏洞扫描、拦截代理审计等,且需要给出真实可执行的 Kali 工具命令时。
+**English** · [简体中文](03-web-testing.zh-CN.md)
 
-## 快速决策表
+> **When to read this file**: when the task involves web application penetration testing - directory/parameter/endpoint discovery, SQL injection, OS command injection, XSS, SSTI/CRLF injection, CMS (WordPress/Joomla) fingerprinting and vulnerability scanning, generic web vulnerability scanning, intercepting-proxy auditing, and the like - and you need to provide real, executable Kali tool commands.
 
-| 任务场景(OWASP 映射) | 首选工具 | 备选 | 关键区别 |
+## Quick Decision Table
+
+| Scenario (OWASP mapping) | First choice | Alternatives | Key difference |
 |---|---|---|---|
-| 目录/文件爆破(信息收集) | ffuf | gobuster / feroxbuster / dirsearch | ffuf 的 FUZZ 关键字可放任意位置且过滤条件最灵活;feroxbuster 默认递归;gobuster 一工具多模式(dir/dns/vhost/fuzz) |
-| 隐藏参数发现 | arjun | ffuf(参数位 fuzz) | arjun 专为参数发现设计,自动判断 GET/POST/JSON 有效参数 |
-| SQL 注入检测与利用(A03) | sqlmap | jsql-injection / sqlsus / sqlninja | sqlmap 全能全 DBMS;sqlninja 专 MSSQL 接管;sqlsus 专 MySQL 控制台式利用 |
-| OS 命令注入(A03) | commix | 手工 + Burp/ZAP Repeater | commix 自动测经典/盲注/伪终端并给出 os_shell |
-| XSS 自动检测(A03) | xsser | ffuf + XSS payload 字典 | xsser 内置绕过编码与多种注入技术 |
-| XSS 利用/浏览器控制(A03) | beef-xss | - | BeEF 需将 hook.js 注入到真实浏览器才能发挥威力 |
-| Web 指纹/技术栈识别 | whatweb | wapiti(附带) | whatweb 900+ 插件,输出 CMS/框架/服务器/JS 库 |
-| WordPress 专项扫描(A06) | wpscan | nikto | wpscan 需 WPScan API token 才能比对漏洞库 |
-| Joomla 专项扫描(A06) | joomscan | nuclei | joomscan 自动出 HTML/TXT 报告 |
-| 通用已知漏洞扫描(A06) | nuclei | nikto / wapiti / zaproxy | nuclei 模板化、误报低、速度快;nikto 偏服务器配置类问题;wapiti 偏应用逻辑黑盒注入 |
-| 拦截代理/手动审计 | burpsuite | zaproxy / paros / webscarab / watobo | Burp 社区版手动测试体验最佳;ZAP 开源且自带主动扫描、支持 daemon/命令行 |
-| SSTI 检测与利用(A03) | sstimap | tinja | sstimap 可利用并进交互 shell;tinja 覆盖 44 种模板引擎 |
-| CRLF/响应头注入(A03) | crlfuzz | - | Go 编写,支持单 URL 与批量文件 |
-| WebDAV 上传利用(A05) | davtest | - | 自动测 PUT 上传与脚本执行 |
-| 子域接管(A05/A01) | subjack | nuclei(tags takeover) | subjack 并发扫描 CNAME 指向已释放资源 |
-| WebDAV/老牌全站爬扫 | - | skipfish / dirb / dirbuster | 备用与补充手段 |
+| Directory/file brute forcing (information gathering) | ffuf | gobuster / feroxbuster / dirsearch | ffuf's FUZZ keyword can sit anywhere and its filtering is the most flexible; feroxbuster recurses by default; gobuster bundles multiple modes in one tool (dir/dns/vhost/fuzz) |
+| Hidden parameter discovery | arjun | ffuf (parameter-position fuzzing) | arjun is purpose-built for parameter discovery and automatically identifies valid GET/POST/JSON parameters |
+| SQL injection detection & exploitation (A03) | sqlmap | jsql-injection / sqlsus / sqlninja | sqlmap is all-purpose across every DBMS; sqlninja specializes in MSSQL takeover; sqlsus is a MySQL-focused console-style exploitation tool |
+| OS command injection (A03) | commix | manual + Burp/ZAP Repeater | commix automatically tests classic/blind/pseudo-terminal injection and hands you an os_shell |
+| Automated XSS detection (A03) | xsser | ffuf + XSS payload wordlist | xsser ships with bypass encodings and multiple injection techniques built in |
+| XSS exploitation/browser control (A03) | beef-xss | - | BeEF shows its full power only after hook.js is injected into a real browser |
+| Web fingerprinting/tech stack identification | whatweb | wapiti (as a side capability) | whatweb has 900+ plugins and reports the CMS/framework/server/JS library |
+| WordPress-specific scanning (A06) | wpscan | nikto | wpscan needs a WPScan API token to match findings against the vulnerability database |
+| Joomla-specific scanning (A06) | joomscan | nuclei | joomscan automatically produces HTML/TXT reports |
+| Generic known-vulnerability scanning (A06) | nuclei | nikto / wapiti / zaproxy | nuclei is template-driven with few false positives and high speed; nikto leans toward server-configuration issues; wapiti leans toward black-box injection into application logic |
+| Intercepting proxy/manual auditing | burpsuite | zaproxy / paros / webscarab / watobo | Burp Community has the best manual-testing experience; ZAP is open source with a built-in active scanner and daemon/CLI support |
+| SSTI detection & exploitation (A03) | sstimap | tinja | sstimap can exploit findings and drop into an interactive shell; tinja covers 44 template engines |
+| CRLF/response header injection (A03) | crlfuzz | - | Written in Go; supports a single URL and batch files |
+| WebDAV upload exploitation (A05) | davtest | - | Automatically tests PUT uploads and script execution |
+| Subdomain takeover (A05/A01) | subjack | nuclei (tags takeover) | subjack concurrently scans for CNAMEs pointing at released resources |
+| WebDAV/veteran whole-site crawl & scan | - | skipfish / dirb / dirbuster | Backup and supplementary options |
 
-**典型链路**:`whatweb` 指纹 → `nuclei`/`nikto` 已知漏洞 → `ffuf`/`gobuster` 目录与端点 → `arjun` 隐藏参数 → `sqlmap`/`commix` 注入利用 → `burpsuite`/`zaproxy` 手动深入。CMS 站点直接 `wpscan`/`joomscan` 优先。
+**Typical chain**: `whatweb` fingerprinting → `nuclei`/`nikto` known vulnerabilities → `ffuf`/`gobuster` directories and endpoints → `arjun` hidden parameters → `sqlmap`/`commix` injection exploitation → `burpsuite`/`zaproxy` manual deep dive. On CMS sites, go straight to `wpscan`/`joomscan` first.
 
-## 核心工具详解
+## Core Tools in Depth
 
-### ffuf — 最常用的快速 Web Fuzzer(Go)
+### ffuf — The most commonly used fast web fuzzer (Go)
 
-**用途**:目录/文件发现、虚拟主机发现、GET/POST 参数 fuzz;FUZZ 关键字可置于 URL 路径、查询串、请求头、POST 体任意位置。
-**安装**:`sudo apt install ffuf`(Kali 默认已装)
-**使用场景**:需要精细控制过滤(状态码/字节数/行数/正则)、需要挂代理观察流量、或做参数/主机头 fuzz 时选它;单纯递归扫目录可用 feroxbuster 省事。
+**Purpose**: Directory/file discovery, virtual host discovery, GET/POST parameter fuzzing; the FUZZ keyword can be placed anywhere in the URL path, query string, headers, or POST body.
+**Installation**: `sudo apt install ffuf` (installed on Kali by default)
+**When to use**: Choose it when you need fine-grained filter control (status code/bytes/lines/regex), need to route traffic through a proxy for observation, or are fuzzing parameters/the Host header; for plain recursive directory scanning, feroxbuster saves effort.
 
 ```bash
 # 基础目录爆破(FUZZ 关键字会被替换为字典词)
@@ -56,16 +58,16 @@ ffuf -w <wordlist> -u http://<target>/FUZZ -o results.json -of json
 ffuf -w <wordlist> -u http://<target>/FUZZ -x http://127.0.0.1:8080
 ```
 
-**实战要点**:
-- `-ac` 自动校准可消除大量软 404 误报;自定义错误页用 `-fs`/`-mr <regex>` 过滤。
-- Kali 常用字典:`/usr/share/wordlists/dirb/common.txt`;更全的装 `sudo apt install seclists`(位于 `/usr/share/seclists/`)。
-- 目录结果要交叉验证 `FUZZ` 与 `FUZZ/`(目录)以及 `.bak/.old/.zip` 备份扩展。
+**Practical tips**:
+- `-ac` auto-calibration eliminates many soft-404 false positives; filter custom error pages with `-fs`/`-mr <regex>`.
+- Common Kali wordlist: `/usr/share/wordlists/dirb/common.txt`; for a fuller one, install `sudo apt install seclists` (located at `/usr/share/seclists/`).
+- Cross-check directory findings with `FUZZ` vs `FUZZ/` (directories) plus `.bak/.old/.zip` backup extensions.
 
-### gobuster — 多模式目录/DNS/vHost 爆破器(Go)
+### gobuster — Multi-mode directory/DNS/vHost brute forcer (Go)
 
-**用途**:子命令式工具,一个二进制覆盖 `dir`(目录)、`dns`(子域)、`vhost`(虚拟主机)、`fuzz`(任意位置)四种爆破。
-**安装**:`sudo apt install gobuster`(Kali 默认已装)
-**使用场景**:需要 DNS 子域枚举或不想记多个工具时;速度与 ffuf 同级,但过滤能力弱于 ffuf。
+**Purpose**: A subcommand-style tool where one binary covers four brute-forcing modes: `dir` (directories), `dns` (subdomains), `vhost` (virtual hosts), and `fuzz` (any position).
+**Installation**: `sudo apt install gobuster` (installed on Kali by default)
+**When to use**: When you need DNS subdomain enumeration or do not want to memorize several tools; speed is on par with ffuf, but filtering is weaker than ffuf's.
 
 ```bash
 # 目录爆破 + 扩展名
@@ -84,16 +86,16 @@ gobuster vhost -u http://<target> -w /usr/share/seclists/Discovery/DNS/subdomain
 gobuster fuzz -u http://<target>/FUZZ -w <wordlist>
 ```
 
-**实战要点**:
-- `dir` 模式默认黑名单排除 404(status-codes-blacklist 默认 404),其余状态码均报告;`-s` 白名单 / `-b` 黑名单可自定义;`-k` 跳过 TLS 证书校验。
-- `dns` 模式先测通配符解析(自动提示 wildcard),通配符域会全量误报,需换字典或后处理。
-- 与 ffuf 分工:gobuster 管 DNS 子域和快速目录,ffuf 管参数/vhost/复杂过滤。
+**Practical tips**:
+- In `dir` mode, 404 is excluded by the default blacklist (status-codes-blacklist defaults to 404) and every other status code is reported; `-s` whitelist / `-b` blacklist are customizable; `-k` skips TLS certificate verification.
+- `dns` mode first tests for wildcard DNS (it warns about wildcards automatically); wildcard domains produce across-the-board false positives, so switch wordlists or post-process.
+- Division of labor with ffuf: gobuster handles DNS subdomains and quick directory scans, ffuf handles parameters/vhosts/complex filtering.
 
-### arjun — HTTP 隐藏参数发现套件(Python)
+### arjun — HTTP hidden parameter discovery suite (Python)
 
-**用途**:探测 URL 端点(GET/POST/JSON/XML)中存在但前端未暴露的参数;隐藏参数常是 SQL 注入/越权入口。
-**安装**:`sudo apt install arjun`
-**使用场景**:目录扫完后、进入 sqlmap/commix 前,先用 arjun 找全参数面;ffuf 参数名爆破只测"参数名存在响应差异",arjun 还会带真实值做多轮确认,准确率更高。
+**Purpose**: Probes URL endpoints (GET/POST/JSON/XML) for parameters that exist but are not exposed by the front end; hidden parameters are often the entry point for SQL injection/broken access control.
+**Installation**: `sudo apt install arjun`
+**When to use**: After directory scanning and before moving on to sqlmap/commix, use arjun first to map the full parameter surface; ffuf parameter-name brute forcing only detects "response differences when a parameter name exists", while arjun also confirms with real values over multiple rounds, giving higher accuracy.
 
 ```bash
 # 探测 GET 参数
@@ -108,16 +110,16 @@ arjun -i <file> -oT params.txt
 arjun -u <url> --stable -c 5
 ```
 
-**实战要点**:
-- 发现的参数直接喂给后续利用:`sqlmap -u "<url>?<param>=1"`、`commix -u "<url>?<param>=test"`。
-- `--stable` 用低并发+单线程,适合有 WAF 或易 502 的目标。
-- 输出的参数同样适用于 Burp Repeater 手工测试。
+**Practical tips**:
+- Feed discovered parameters straight into later exploitation: `sqlmap -u "<url>?<param>=1"`, `commix -u "<url>?<param>=test"`.
+- `--stable` uses low concurrency + a single thread, suitable for targets behind a WAF or prone to 502s.
+- The output parameters are equally useful for manual testing in Burp Repeater.
 
-### feroxbuster — 递归内容发现(Rust)
+### feroxbuster — Recursive content discovery (Rust)
 
-**用途**:强制浏览(Forced Browsing),递归爆破未链接目录/文件,默认即递归;Rust 实现,速度极快。
-**安装**:`sudo apt install feroxbuster`
-**使用场景**:想"一条命令扫到底"的深递归目录发现;比 ffuf+`-recursion` 更省配置,还支持从页面提取链接再 fuzz。
+**Purpose**: Forced browsing: recursively brute forces unlinked directories/files and recurses by default; implemented in Rust and extremely fast.
+**Installation**: `sudo apt install feroxbuster`
+**When to use**: Deep recursive directory discovery where you want to "scan to the bottom in one command"; less configuration than ffuf + `-recursion`, and it can also extract links from pages and then fuzz them.
 
 ```bash
 # 基础递归扫描
@@ -130,16 +132,16 @@ feroxbuster -u http://<target>/ -w <wordlist> --extensions php,bak,zip --extract
 feroxbuster -u http://<target>/ -w <wordlist> -k -o found.txt --proxy http://127.0.0.1:8080
 ```
 
-**实战要点**:
-- 默认深度 4,大站注意控制 `-d` 和 `-t` 避免打挂目标或触发 WAF。
-- `--filter-size <bytes>` 过滤统一错误页,与 ffuf 的 `-fs` 等价。
-- 适合作为 ffuf 的"懒人版"替代,尤其在需要大量扩展名组合时。
+**Practical tips**:
+- The default depth is 4; on large sites control `-d` and `-t` to avoid knocking the target over or triggering a WAF.
+- `--filter-size <bytes>` filters uniform error pages, equivalent to ffuf's `-fs`.
+- Works well as the "lazy" alternative to ffuf, especially when many extension combinations are needed.
 
-### dirsearch — 功能型 Web 路径扫描器(Python)
+### dirsearch — Feature-packed web path scanner (Python)
 
-**用途**:命令行目录/文件爆破,自带默认字典与扩展名逻辑,递归、多协议、批量目标。
-**安装**:`sudo apt install dirsearch`
-**使用场景**:需要按扩展名组合快速扫描、或从 URL 列表批量跑;比 ffuf 慢但默认配置更"开箱即用"。
+**Purpose**: Command-line directory/file brute forcing with built-in default wordlists and extension logic; supports recursion, multiple protocols, and batch targets.
+**Installation**: `sudo apt install dirsearch`
+**When to use**: Quick scans grouped by extension, or batch runs from a URL list; slower than ffuf but its defaults are more "out of the box".
 
 ```bash
 # 基础扫描(指定扩展名)
@@ -152,16 +154,16 @@ dirsearch -u http://<target>/ -w /usr/share/seclists/Discovery/Web-Content/raft-
 dirsearch -l urls.txt -e php -x 403,404 --random-agent
 ```
 
-**实战要点**:
-- `-r` 开递归、`-R 2` 限递归深度,防扫描爆炸。
-- 结果默认写 `reports/` 目录,便于留档。
-- 与 ffuf 并用:dirsearch 快速过一遍默认配置,可疑路径再用 ffuf 精细 fuzz。
+**Practical tips**:
+- `-r` enables recursion and `-R 2` caps the recursion depth to prevent scan explosions.
+- Results are written to the `reports/` directory by default, convenient for record keeping.
+- Combine with ffuf: run dirsearch quickly over the defaults first, then fine-grained-fuzz suspicious paths with ffuf.
 
-### wfuzz — 经典 Web 应用暴力 Fuzzer(Python)
+### wfuzz — Classic web application brute-forcing fuzzer (Python)
 
-**用途**:对未链接资源、GET/POST 参数、表单做暴力枚举,可测 SQL/XSS/LDAP 等注入向量;FUZZ 关键字机制的老前辈。
-**安装**:`sudo apt install wfuzz`(Kali 默认已装)
-**使用场景**:需要 Python 生态、多重 payload 组合(`-z` 可叠多段 FUZZ、FUZ2Z)或按响应行/字/字符多维过滤时。
+**Purpose**: Brute-force enumeration of unlinked resources, GET/POST parameters, and forms; can test SQL/XSS/LDAP and other injection vectors; the veteran ancestor of the FUZZ-keyword mechanism.
+**Installation**: `sudo apt install wfuzz` (installed on Kali by default)
+**When to use**: When you need the Python ecosystem, multi-payload combinations (`-z` can stack FUZZ and FUZ2Z segments), or multi-dimensional filtering by response lines/words/characters.
 
 ```bash
 # 目录爆破:彩色输出 + 字典 payload + 隐藏 404(官网示例)
@@ -177,16 +179,16 @@ wfuzz -c -z file,<wordlist> -d "user=FUZZ&pass=test" --hc 401 http://<target>/lo
 wfuzz -c -z file,<wordlist> -H "X-Forwarded-For: FUZZ" --hc 404 http://<target>/
 ```
 
-**实战要点**:
-- 官方字典位于 `/usr/share/wfuzz/wordlist/`,分 general/ 技术栈/ 参数名等目录。
-- 双 payload 用 `FUZ2Z` 第二关键字:`-z file,a.txt -z file,b.txt url/FUZZFUZ2Z`。
-- 现代 Kali 中多数场景被 ffuf 取代,但多维过滤语法仍适合精细任务。
+**Practical tips**:
+- Official wordlists live at `/usr/share/wfuzz/wordlist/`, split into directories such as general/, tech stacks, and parameter names.
+- For dual payloads use the second keyword `FUZ2Z`: `-z file,a.txt -z file,b.txt url/FUZZFUZ2Z`.
+- On modern Kali it has been replaced by ffuf for most scenarios, but its multi-dimensional filtering syntax still suits fine-grained tasks.
 
-### sqlmap — 自动 SQL 注入检测与利用(重点工具)
+### sqlmap — Automated SQL injection detection & exploitation (key tool)
 
-**用途**:检测并利用 SQL 注入:DBMS 指纹、枚举库/表/列、脱库、破解口令哈希、文件读写、OS shell、支持绕 WAF 的 tamper 脚本。
-**安装**:`sudo apt install sqlmap`(Kali 默认已装)
-**使用场景**:发现可疑参数(尤其配合 arjun/Burp)后进行自动化注入验证与数据提取;命令注入请用 commix,别用 sqlmap。
+**Purpose**: Detects and exploits SQL injection: DBMS fingerprinting, enumerating databases/tables/columns, dumping databases, cracking password hashes, file read/write, OS shell, plus tamper scripts for WAF bypass.
+**Installation**: `sudo apt install sqlmap` (installed on Kali by default)
+**When to use**: Automated injection verification and data extraction after finding a suspicious parameter (especially together with arjun/Burp); for command injection use commix, not sqlmap.
 
 ```bash
 # 基础检测 + 枚举数据库(官网示例模式,--batch 自动回答交互)
@@ -244,19 +246,19 @@ sqlmap -u "http://<target>/" --crawl=3 --batch   # 爬取站点自动测全部�
 -v 6                      # 最高详细度,可看到完整 payload(调试用)
 ```
 
-**常用 tamper 速查**:`space2comment`(空格→`/**/`,绕空格过滤)、`between`(比较符→BETWEEN,绕 `<`/`>` 过滤)、`randomcase`(随机大小写)、`charencode`/`charunicodeencode`(编码)、`equaltolike`(=→LIKE)、`apostrophenullencode`/`unmagicquotes`(绕引号转义/magic_quotes)、`space2plus`(空格→`+`)、`percentage`(IIS/ASP+WAF)、`halfversionedmorekeywords`、`modsecurityversioning`(MySQL 绕 ModSecurity)。
+**Common tamper quick reference**: `space2comment` (spaces→`/**/`, bypasses space filtering), `between` (comparison operators→BETWEEN, bypasses `<`/`>` filtering), `randomcase` (random casing), `charencode`/`charunicodeencode` (encoding), `equaltolike` (=→LIKE), `apostrophenullencode`/`unmagicquotes` (bypass quote escaping/magic_quotes), `space2plus` (spaces→`+`), `percentage` (IIS/ASP+WAF), `halfversionedmorekeywords`, `modsecurityversioning` (MySQL ModSecurity bypass).
 
-**实战要点**:
-- 自动化必加 `--batch`;复测同一 URL 默认读缓存,换 payload 前加 `--flush-session`。
-- 时间盲注(`--technique=T` 或自动命中)时严禁高 `--threads`,否则时间误差导致大量误报。
-- `--os-shell` 依赖堆叠注入或文件写权限;MySQL 下常见路径是 `--file-write` webshell 再走 Web 访问。
-- 脱库密码哈希会自动调 john/hashcat 尝试破解(需已安装);`--passwords` 直接取 DBMS 账户口令。
+**Practical tips**:
+- Always add `--batch` for automation; re-testing the same URL reads cached results by default, so add `--flush-session` before switching payloads.
+- With time-based blind injection (`--technique=T` or auto-detected) high `--threads` is strictly forbidden, otherwise timing jitter causes mass false positives.
+- `--os-shell` depends on stacked injection or file-write privileges; on MySQL the common path is `--file-write` a webshell and then reach it over the web.
+- Dumped password hashes are automatically handed to john/hashcat for cracking (they must be installed); `--passwords` pulls DBMS account passwords directly.
 
-### commix — 自动 OS 命令注入检测与利用
+### commix — Automated OS command injection detection & exploitation
 
-**用途**:自动化检测经典(回显)、盲(时间)、文件写入等命令注入技术,成功后进入 Pseudo-Terminal(os_shell)。
-**安装**:`sudo apt install commix`
-**使用场景**:参数被拼进系统命令(ping、文件名处理、压缩/导出等场景)时;与 sqlmap 是姊妹工具,一个管 SQL 一个管 shell 命令。
+**Purpose**: Automatically detects classic (echo-based), blind (time-based), file-write and other command injection techniques, then drops into a pseudo-terminal (os_shell) on success.
+**Installation**: `sudo apt install commix`
+**When to use**: When a parameter is concatenated into a system command (ping, filename handling, compression/export and similar scenarios); a sister tool to sqlmap: one handles SQL, the other shell commands.
 
 ```bash
 # 基础检测 GET 参数
@@ -277,16 +279,16 @@ commix -u "<url>?cmd=inject" --os-cmd=whoami
 commix -u "<url>" --tamper=base64encode --batch
 ```
 
-**实战要点**:
-- os_shell 内置 `reverse_tcp`/`bind_tcp` 子命令,可直接升级反弹 shell(需本地监听)。
-- 默认注入点检测完后按回车默认值即可;全自动化加 `--batch`。
-- 检测不到时提高 `--level`(会覆盖更多注入位置:cookie、UA、Referer),再手工用 Burp Repeater 验证。
+**Practical tips**:
+- os_shell has built-in `reverse_tcp`/`bind_tcp` subcommands and can upgrade directly to a reverse shell (a local listener is required).
+- Once the default injection points are tested, just press Enter to accept the defaults; add `--batch` for full automation.
+- When detection fails, raise `--level` (it covers more injection spots: cookies, UA, Referer), then verify manually in Burp Repeater.
 
-### beef-xss — 浏览器利用框架(BeEF)
+### beef-xss — Browser exploitation framework (BeEF)
 
-**用途**:通过 hook.js 控制被 XSS 感染的浏览器,对被钩住(hooked)的浏览器执行社会工程、信息收集、内网探测等模块。
-**安装**:`sudo apt install beef-xss`
-**使用场景**:已找到存储型/反射型 XSS 且能在授权环境内让真实浏览器加载 hook 脚本时,评估客户端侧实际风险;xsser 负责找洞,BeEF 负责利用洞。
+**Purpose**: Controls browsers infected via XSS through hook.js, running social-engineering, information-gathering, intranet-probing and other modules against hooked browsers.
+**Installation**: `sudo apt install beef-xss`
+**When to use**: After finding stored/reflected XSS and being able to make a real browser load the hook script within the authorized environment, to assess the actual client-side risk; xsser finds the bug, BeEF exploits the bug.
 
 ```bash
 # 启动 BeEF 服务并打开控制台(Kali 包装脚本)
@@ -298,16 +300,16 @@ sudo beef-xss
 sudo beef-xss-stop
 ```
 
-**实战要点**:
-- 控制台凭据在安装时设置,配置文件为 `/etc/beef-xss/config.yaml`(可改监听 IP/端口、扩展模块)。
-- 把 Hook URL 当作 XSS payload 注入目标页面;浏览器一旦加载 hook.js,即出现在 Online Browsers 列表。
-- 目标与 BeEF 不同源时会受同源策略限制,优先选存储型注入点;内网测试可让 BeEF 监听 0.0.0.0。
+**Practical tips**:
+- Console credentials are set at install time; the config file is `/etc/beef-xss/config.yaml` (listening IP/port and extension modules can be changed there).
+- Inject the Hook URL into the target page as the XSS payload; as soon as a browser loads hook.js, it shows up in the Online Browsers list.
+- When the target and BeEF are on different origins the same-origin policy restricts you, so prefer stored injection points; for intranet testing BeEF can listen on 0.0.0.0.
 
-### xsser — XSS 自动检测框架
+### xsser — Automated XSS detection framework
 
-**用途**:自动化检测、利用、绕过过滤的 XSS 框架,内置多套 payload 与编码/混淆技巧,支持输出报告与 GUI 向导。
-**安装**:`sudo apt install xsser`
-**使用场景**:需要对大量 URL/参数批量撒 XSS payload、或需要自动尝试过滤绕过时;比 ffuf+字典更"懂 XSS"。
+**Purpose**: An XSS framework for automated detection, exploitation, and filter bypass; ships multiple payload sets plus encoding/obfuscation tricks, and supports report output and a GUI wizard.
+**Installation**: `sudo apt install xsser`
+**When to use**: Spraying XSS payloads across many URLs/parameters in bulk, or auto-trying filter bypasses; it "understands XSS" better than ffuf + a wordlist.
 
 ```bash
 # 对目标 URL 自动检测
@@ -320,16 +322,16 @@ xsser -u "http://<target>/search.php?q=XSS" --Fp "<script>alert(1)</script>"
 xsser --gtk
 ```
 
-**实战要点**:
-- 确认注入后,把 payload 换成 BeEF hook 地址形成完整利用链。
-- `--auto` 只做检测不"打"浏览器;写报告/取证再考虑手动 payload。
-- 现代复杂前端(SPA、CSP)下自动化命中率有限,兜底手段仍是 Burp 手工注入。
+**Practical tips**:
+- Once injection is confirmed, swap the payload for the BeEF hook URL to complete the exploitation chain.
+- `--auto` only detects, it does not "attack" the browser; consider manual payloads when writing reports/collecting evidence.
+- On modern complex front ends (SPA, CSP) automated hit rates are limited; the fallback remains manual injection with Burp.
 
-### whatweb — Web 技术栈指纹识别(Ruby)
+### whatweb — Web tech stack fingerprinting (Ruby)
 
-**用途**:识别 CMS、博客平台、统计包、JS 库、Web 服务器、嵌入式设备等 900+ 插件,还能提取版本号、邮箱、SQL 报错等。
-**安装**:`sudo apt install whatweb`(Kali 默认已装)
-**使用场景**:任何 Web 测试的第一步;确定 CMS/框架后决定走 wpscan/joomscan、nuclei 指定标签,还是通用漏扫。
+**Purpose**: 900+ plugins identifying CMSes, blog platforms, analytics packages, JS libraries, web servers, embedded devices and more; also extracts version numbers, email addresses, SQL errors and the like.
+**Installation**: `sudo apt install whatweb` (installed on Kali by default)
+**When to use**: The first step of any web test; once the CMS/framework is known, decide between wpscan/joomscan, nuclei with specific tags, or a generic vulnerability scan.
 
 ```bash
 # 激进模式详细报告(官网示例)
@@ -344,16 +346,16 @@ whatweb -a 3 -U "Mozilla/5.0" <target>
 whatweb -a 3 --log-json=whatweb.json <target>
 ```
 
-**实战要点**:
-- `-a` 激进度 1(默认,一次请求)到 3+(主动探测目录如 /admin、README);做隐蔽评估时保持 1。
-- 输出的版本号直接喂给 `searchsploit <产品> <版本>` 查公开漏洞。
-- 对 WAF/CDN 站点,记得带上真实业务路径(如 `/wordpress/`)再识别。
+**Practical tips**:
+- `-a` aggression runs from 1 (default, one request) to 3+ (actively probes directories such as /admin and README); keep it at 1 for stealthy assessments.
+- Feed the reported version numbers straight into `searchsploit <product> <version>` to look up public vulnerabilities.
+- For sites behind a WAF/CDN, remember to fingerprint with a real business path included (e.g. `/wordpress/`).
 
-### wpscan — WordPress 黑盒漏洞扫描器
+### wpscan — WordPress black-box vulnerability scanner
 
-**用途**:扫描远程 WordPress:主题/插件枚举、版本比对、用户枚举、配置备份泄露、弱口令爆破;接入 WPVulnDB API 出漏洞情报。
-**安装**:`sudo apt install wpscan`
-**使用场景**:whatweb 确认 WordPress 后的必做步骤;用户枚举+`wp-login.php` 爆破是最常见入口。
+**Purpose**: Scans remote WordPress installations: theme/plugin enumeration, version comparison, user enumeration, config backup leaks, weak-password brute forcing; plugs into the WPVulnDB API for vulnerability intelligence.
+**Installation**: `sudo apt install wpscan`
+**When to use**: A mandatory step after whatweb confirms WordPress; user enumeration + `wp-login.php` brute forcing is the most common entry point.
 
 ```bash
 # 枚举热门插件/主题/用户(基础)
@@ -369,16 +371,16 @@ wpscan --url http://<target>/ --enumerate vp,vt --api-token <token>
 wpscan --url http://<target>/ --usernames admin --passwords /usr/share/wordlists/rockyou.txt
 ```
 
-**实战要点**:
-- 无 API token 时只列版本/组件不出 CVE 比对,务必注册免费 token。
-- `--enumerate u` 走 `?author=1` 枚举,若被防护改用 XML-RPC(`system.multicall`)或 wpscan 用户名字典。
-- 发现 `xmlrpc.php` 开放时可配合爆破;发现过时插件先用 nuclei(`-tags wordpress`)验证已知漏洞。
+**Practical tips**:
+- Without an API token it only lists versions/components without CVE matching, so be sure to register the free token.
+- `--enumerate u` enumerates via `?author=1`; if that is blocked, switch to XML-RPC (`system.multicall`) or wpscan's username wordlist.
+- An open `xmlrpc.php` can assist brute forcing; for outdated plugins, first verify known vulnerabilities with nuclei (`-tags wordpress`).
 
-### joomscan — OWASP Joomla 漏洞扫描器
+### joomscan — OWASP Joomla vulnerability scanner
 
-**用途**:检测 Joomla CMS 版本、核心漏洞、目录列表、敏感文件、admin 后台位置、备份/日志文件等,自动生成报告。
-**安装**:`sudo apt install joomscan`
-**使用场景**:whatweb 确认 Joomla 后一键体检;输出即报告,适合交付。
+**Purpose**: Detects the Joomla CMS version, core vulnerabilities, directory listing, sensitive files, admin panel location, backup/log files and more, and generates a report automatically.
+**Installation**: `sudo apt install joomscan`
+**When to use**: A one-shot health check after whatweb confirms Joomla; the output is the report, well suited for delivery.
 
 ```bash
 # 扫描 Joomla 站点(官网示例)
@@ -391,16 +393,16 @@ joomscan -u http://<target>/joomla/
 joomscan -u http://<target>/ -ec
 ```
 
-**实战要点**:
-- 报告输出在 `/usr/share/joomscan/report/<host>/`(HTML+TXT 双格式,注意目录名为单数 report)。
-- 检出的"core not vulnerable"只针对核心版本,第三方组件才是 Joomla 被打穿的主因,`-ec` 枚举后逐个查 CVE。
-- directory listing 结果(如 `/images/banners`)常直接泄露敏感文件,优先人工翻。
+**Practical tips**:
+- Reports land in `/usr/share/joomscan/report/<host>/` (HTML+TXT dual formats; note the directory name is the singular "report").
+- A "core not vulnerable" finding only covers the core version; third-party components are the main way Joomla gets breached - after `-ec` enumeration, check each one for CVEs.
+- Directory listing results (e.g. `/images/banners`) often leak sensitive files directly; browse them manually first.
 
-### nikto — 经典 Web 服务器安全扫描器(Perl)
+### nikto — Classic web server security scanner (Perl)
 
-**用途**:对 Web 服务器做 6700+ 检查项:危险文件/CGI、版本过时、配置问题、HTTP 头安全缺失等。
-**安装**:`sudo apt install nikto`(Kali 默认已装)
-**使用场景**:对服务器层面的配置类问题做快速体检(与 nuclei 的已知 CVE 漏洞互补);不支持 JS 渲染,SPA 站点效果差。
+**Purpose**: Runs 6700+ checks against a web server: dangerous files/CGI, outdated versions, configuration issues, missing HTTP security headers and more.
+**Installation**: `sudo apt install nikto` (installed on Kali by default)
+**When to use**: A quick health check for server-level configuration issues (complementary to nuclei's known-CVE scanning); no JS rendering support, so it performs poorly on SPA sites.
 
 ```bash
 # 官网示例:HTML 报告 + 指定 Tuning 类别 + 过滤输出
@@ -417,16 +419,16 @@ nikto -h <target> -Tuning x 6 -useproxy http://127.0.0.1:8080
 nikto -h <target> -id <user>:<pass> -maxtime 30m
 ```
 
-**实战要点**:
-- Tuning 数字类别:1 有趣文件 2 配置错误 3 信息泄露 4 注入类 6 DoS(建议排除) b 软件识别 d WebService e 管理控制台(Administrative Console) 0 文件上传(File Upload);`x` 表示取反排除。
-- 输出噪音大,重点看:过时组件版本、备份文件、`/server-status` 等信息泄露、HTTP 方法。
-- 和 nuclei 并跑:nikto 管服务器配置,nuclei(`-tags cve,misconfig`)管精确漏洞。
+**Practical tips**:
+- Tuning numeric categories: 1 interesting files, 2 misconfiguration, 3 information disclosure, 4 injection, 6 DoS (recommended to exclude), b software identification, d WebService, e Administrative Console, 0 File Upload; `x` means negated exclusion.
+- Output is noisy; focus on outdated component versions, backup files, information leaks such as `/server-status`, and HTTP methods.
+- Run it alongside nuclei: nikto covers server configuration, nuclei (`-tags cve,misconfig`) covers precise vulnerabilities.
 
-### nuclei — 模板驱动的漏洞扫描器(Go)
+### nuclei — Template-driven vulnerability scanner (Go)
 
-**用途**:基于 YAML 模板对已知 CVE、配置错误、信息泄露、默认凭据等做精确匹配验证;支持 HTTP/DNS/TCP/文件多协议,误报极低。
-**安装**:`sudo apt install nuclei`(Kali 默认已装)
-**使用场景**:任何目标的第一轮已知漏洞扫描;大规模资产用 URL 列表批量;配合自写模板可做定制化检测。
+**Purpose**: Precisely matches and verifies known CVEs, misconfigurations, information disclosure, default credentials and more using YAML templates; supports HTTP/DNS/TCP/file protocols with extremely low false positives.
+**Installation**: `sudo apt install nuclei` (installed on Kali by default)
+**When to use**: The first round of known-vulnerability scanning for any target; batch large-scale assets from a URL list; custom templates enable tailored detection.
 
 ```bash
 # 单目标全模板扫描(默认已含 cve/misconfig/exposure 等)
@@ -447,16 +449,16 @@ nuclei -update-templates
 nuclei -u http://<target> -silent -severity critical,high
 ```
 
-**实战要点**:
-- Kali 模板位于 `/usr/share/nuclei-templates/`(或 `~/nuclei-templates`),可用 `-t <dir>` 只跑子集。
-- `-severity` 与 `-tags` 组合是控噪主力;对内网资产 `-tags exposure,token` 常直接翻出密钥泄露。
-- 扫描结果中 `[critical]`/`[high]` 优先验证再写报告;nuclei 命中即可信度高但仍需人工复核 payload 是否真实生效。
+**Practical tips**:
+- Kali templates live at `/usr/share/nuclei-templates/` (or `~/nuclei-templates`); use `-t <dir>` to run only a subset.
+- Combining `-severity` with `-tags` is the main noise-control lever; against intranet assets `-tags exposure,token` often turns up leaked keys directly.
+- Verify `[critical]`/`[high]` findings first before writing the report; nuclei hits are highly credible but still need manual review of whether the payload actually works.
 
-### wapiti — 黑盒 Web 应用漏洞扫描器(Python)
+### wapiti — Black-box web application vulnerability scanner (Python)
 
-**用途**:爬取站点后像 fuzzer 一样注入 payload,检测 XSS、SQL/盲注、命令执行、SSRF、XXE、CSRF、重定向、文件泄露等。
-**安装**:`sudo apt install wapiti`
-**使用场景**:需要"爬取+注入"一体化的黑盒扫描并出报告;对不需要登录的应用零配置即跑,SPA 支持弱于 ZAP。
+**Purpose**: Crawls a site and then injects payloads like a fuzzer, detecting XSS, SQL/blind injection, command execution, SSRF, XXE, CSRF, redirects, file disclosure and more.
+**Installation**: `sudo apt install wapiti`
+**When to use**: When you need an all-in-one "crawl + inject" black-box scan with a report; runs with zero configuration on apps that require no login, but its SPA support is weaker than ZAP's.
 
 ```bash
 # 基础扫描
@@ -474,16 +476,16 @@ wapiti -u http://<target>/ -m "-exec"   # 禁用命令执行模块(防止危害�
 wapiti -u http://<target>/ -c "<cookie-string>"
 ```
 
-**实战要点**:
-- `--scope url|page|folder|domain` 控制爬取边界,授权范围外的子域务必限定。
-- 结果在输出目录 `index.html`,按漏洞类别分页,含请求/响应证据。
-- 与 nuclei 分工:nuclei 是签名级已知漏洞,wapiti 是注入级黑盒测试,两者互补。
+**Practical tips**:
+- `--scope url|page|folder|domain` controls the crawl boundary; always restrict subdomains that fall outside the authorized scope.
+- Results are in `index.html` under the output directory, paginated by vulnerability class, with request/response evidence.
+- Division of labor with nuclei: nuclei does signature-level known vulnerabilities, wapiti does injection-level black-box testing; the two complement each other.
 
-### zaproxy — OWASP ZAP 全能 Web 渗透代理
+### zaproxy — OWASP ZAP all-round web pentest proxy
 
-**用途**:拦截代理 + 爬虫 + 主动/被动扫描器 + Fuzzer 一体;开源免费,支持 GUI、daemon 无头模式与命令行快速扫描。
-**安装**:`sudo apt install zaproxy`(Kali 默认已装)
-**使用场景**:Burp 社区版没有主动扫描器,ZAP 免费自带;需要 CI/CD 集成或 headless 扫描时选 ZAP。
+**Purpose**: An intercepting proxy + spider + active/passive scanner + fuzzer in one; free and open source, supporting GUI, headless daemon mode, and command-line quick scans.
+**Installation**: `sudo apt install zaproxy` (installed on Kali by default)
+**When to use**: Burp Community has no active scanner while ZAP ships one for free; choose ZAP when you need CI/CD integration or headless scanning.
 
 ```bash
 # GUI 启动(默认代理 127.0.0.1:8080)
@@ -496,16 +498,16 @@ zaproxy -daemon -port 8081 -host 127.0.0.1
 zaproxy -cmd -quickurl http://<target>/ -quickout zap-report.html
 ```
 
-**实战要点**:
-- 浏览器代理指向 ZAP 后先手动浏览,spider + Active Scan 的覆盖率取决于先爬到的 URL 质量。
-- `-daemon` 模式配合 REST API(`/JSON`)可自动化集成;`-cmd -quickurl` 适合批量粗扫。
-- 与 Burp 二选一时的取舍:ZAP 扫描强且免费,Burp 插件生态与手动体验强;可同时挂(级联代理)。
+**Practical tips**:
+- After pointing the browser proxy at ZAP, browse manually first - spider + Active Scan coverage depends on the quality of the URLs crawled beforehand.
+- `-daemon` mode combined with the REST API (`/JSON`) enables automation integration; `-cmd -quickurl` suits bulk rough scans.
+- Choosing between Burp and ZAP: ZAP scans harder and is free, Burp has the stronger plugin ecosystem and manual experience; you can also run both chained (cascading proxies).
 
-### burpsuite — Web 安全测试集成平台(社区版)
+### burpsuite — Web security testing integrated platform (Community Edition)
 
-**用途**:拦截/修改请求、爬虫、Repeater/Decoder/Comparer 手动工具集;Kali 仓库版为免费社区版(无主动扫描器、Intruder 受限)。
-**安装**:`sudo apt install burpsuite`(Kali 默认已装,社区版)
-**使用场景**:所有需要手工验证的环节:分析参数、重放修改请求、验证注入 payload、测试越权;是半自动化工具(sqlmap/commix/ffuf)的指挥中心。
+**Purpose**: Intercepts/modifies requests, plus a spider and the Repeater/Decoder/Comparer manual toolset; the Kali repository edition is the free Community edition (no active scanner, restricted Intruder).
+**Installation**: `sudo apt install burpsuite` (installed on Kali by default, Community edition)
+**When to use**: Every step that needs manual verification: analyzing parameters, replaying modified requests, verifying injection payloads, testing broken access control; the command center for the semi-automated tools (sqlmap/commix/ffuf).
 
 ```bash
 # 启动 GUI(内置监听 127.0.0.1:8080)
@@ -516,16 +518,16 @@ sqlmap -r request.txt --proxy=http://127.0.0.1:8080 --batch
 ffuf -w <wordlist> -u http://<target>/FUZZ -x http://127.0.0.1:8080
 ```
 
-**实战要点**:
-- 在 Proxy→HTTP history 里右键 "Save items" 得到的请求文件可直接 `sqlmap -r` 使用,免去手工拼参数。
-- 证书:浏览器访问 `http://burpsuite` 下载 CA 证书后才能拦截 HTTPS。
-- 社区版做不了主动扫描,批量扫描交给 nuclei/wapiti/zaproxy,Burp 专注手工验证与利用。
+**Practical tips**:
+- Request files obtained via right-click "Save items" in Proxy→HTTP history can be used directly with `sqlmap -r`, sparing you manual parameter assembly.
+- Certificate: visit `http://burpsuite` in the browser and download the CA certificate before HTTPS can be intercepted.
+- The Community edition cannot do active scanning - leave bulk scanning to nuclei/wapiti/zaproxy and keep Burp focused on manual verification and exploitation.
 
-### davtest — WebDAV 服务器利用测试
+### davtest — WebDAV server exploitation testing
 
-**用途**:测试 WebDAV 服务:能否 MKCOL 建目录、PUT 上传各类扩展名文件、上传的脚本是否可执行,快速判断 DAV 是否可利用。
-**安装**:`sudo apt install davtest`
-**使用场景**:nuclei/nikto 报告 `PUT`/WebDAV 方法启用、或目录爆破发现 WebDAV 目录时。
+**Purpose**: Tests WebDAV services: whether MKCOL can create directories, whether PUT can upload files of various extensions, and whether uploaded scripts execute; quickly judges whether the DAV service is exploitable.
+**Installation**: `sudo apt install davtest`
+**When to use**: When nuclei/nikto report `PUT`/WebDAV methods enabled, or directory brute forcing uncovers a WebDAV directory.
 
 ```bash
 # 官网示例:扫描 WebDAV 服务器
@@ -538,16 +540,16 @@ davtest -url http://<target>/webdav/ -auth <user>:<pass> -cleanup
 davtest -url http://<target>/ -directory <dir>
 ```
 
-**实战要点**:
-- 输出里只有 `PUT SUCCEED` 且 `EXEC SUCCEED` 的扩展名才可利用(常见 txt/html 能传但 php/asp 被拦)。
-- 上传成功但执行失败时,尝试改后缀大小写、双扩展(`shell.php.txt`)或 MOVE 到可执行目录。
-- 用完务必 `-cleanup` 或手工删除 DavTestDir 目录,避免留痕。
+**Practical tips**:
+- Only extensions showing both `PUT SUCCEED` and `EXEC SUCCEED` in the output are exploitable (commonly txt/html upload fine while php/asp are blocked).
+- When upload succeeds but execution fails, try changing the extension case, double extensions (`shell.php.txt`), or MOVE into an executable directory.
+- Always run `-cleanup` afterward or manually delete the DavTestDir directory to avoid leaving traces.
 
-### sstimap — SSTI/代码注入自动检测与利用
+### sstimap — Automated SSTI/code injection detection & exploitation
 
-**用途**:检测并利用服务端模板注入(SSTI)与代码注入,可交互执行系统命令;支持 URL/表单/请求头多注入点。
-**安装**:`sudo apt install sstimap`
-**使用场景**:目标使用 Jinja2/Twig/Freemarker/Velocity 等模板引擎、参数回显模板语法时;`${7*7}` 回显 49 即命中。
+**Purpose**: Detects and exploits server-side template injection (SSTI) and code injection, and can execute system commands interactively; supports multiple injection points across URLs/forms/headers.
+**Installation**: `sudo apt install sstimap`
+**When to use**: When the target uses a template engine such as Jinja2/Twig/Freemarker/Velocity and a parameter echoes template syntax back; if `${7*7}` echoes 49, it is a hit.
 
 ```bash
 # 基础检测
@@ -562,16 +564,16 @@ sstimap --load-urls urls.txt
 sstimap -i
 ```
 
-**实战要点**:
-- 检测成功后进入交互 shell 可直接执行系统命令(`--os-cmd` 类似);确认后建议手工构造稳定 payload。
-- 与 tinja 分工:sstimap 检测+利用一体,tinja 引擎覆盖更广适合确认"是哪家模板引擎"。
-- SSTI 高危(Jinja2/Twig 常直接 RCE),命中后立即评估影响并截图取证。
+**Practical tips**:
+- After detection succeeds, the interactive shell can execute system commands directly (similar to `--os-cmd`); once confirmed, build a stable payload by hand.
+- Division of labor with tinja: sstimap combines detection + exploitation, while tinja's wider engine coverage suits confirming "which template engine it is".
+- SSTI is high-risk (Jinja2/Twig often mean direct RCE); on a hit, assess the impact immediately and take screenshots for evidence.
 
-### tinja — 模板注入测试 CLI(Go)
+### tinja — Template injection testing CLI (Go)
 
-**用途**:对网页做模板注入检测,覆盖 8 种语言 44 个主流模板引擎,自动识别引擎类型。
-**安装**:`sudo apt install tinja`
-**使用场景**:需要快速判断注入点是否为 SSTI、是哪一家模板引擎;与 sstimap 交叉验证。
+**Purpose**: Performs template injection detection against web pages, covering 44 mainstream template engines across 8 languages, and automatically identifies the engine type.
+**Installation**: `sudo apt install tinja`
+**When to use**: When you need to quickly tell whether an injection point is SSTI and which template engine it is; cross-validate with sstimap.
 
 ```bash
 # 检测 URL(自动遍历 payload 与引擎)
@@ -584,16 +586,16 @@ tinja url -u "http://<target>/api" -X POST -d "name=test"
 tinja file -f urls.txt
 ```
 
-**实战要点**:
-- 命中后按提示的引擎类型去查对应 RCE payload(不同引擎语法差异大)。
-- 引擎识别失败但疑似存在时,手工用 `${7*7}`、`{{7*7}}`、`#set($x=7*7)${x}` 三连测。
-- Go 实现、速度快,适合大列表初筛后再用 sstimap 精细利用。
+**Practical tips**:
+- After a hit, look up the matching RCE payload for the reported engine type (syntax differs greatly between engines).
+- If engine identification fails but SSTI is suspected, manually run the triple probe `${7*7}`, `{{7*7}}`, `#set($x=7*7)${x}`.
+- Implemented in Go and fast; good for first-pass screening of large lists before fine-grained exploitation with sstimap.
 
-### crlfuzz — CRLF 注入快速扫描(Go)
+### crlfuzz — Fast CRLF injection scanning (Go)
 
-**用途**:检测 URL 中 CRLF(`%0d%0a`)注入,可导致响应头注入(set-cookie/XSS)、缓存投毒、请求走私。
-**安装**:`sudo apt install crlfuzz`
-**使用场景**:URL 参数被拼进 Location/Set-Cookie 等响应头、或重定向参数可控时。
+**Purpose**: Detects CRLF (`%0d%0a`) injection in URLs, which can lead to response header injection (Set-Cookie/XSS), cache poisoning, and request smuggling.
+**Installation**: `sudo apt install crlfuzz`
+**When to use**: When URL parameters are concatenated into response headers such as Location/Set-Cookie, or when a redirect parameter is controllable.
 
 ```bash
 # 单 URL 检测
@@ -606,16 +608,16 @@ crlfuzz -l urls.txt
 crlfuzz -u "<url>" -X POST
 ```
 
-**实战要点**:
-- 管道方式:`cat urls.txt | crlfuzz` 亦可(stdin 输入)。
-- 命中后手工验证:注入 `%0d%0aSet-Cookie:xsstrue=1` 观察响应头是否分裂。
-- CRLF 常与开放重定向同现,结合缓存层可升级为缓存投毒,报告时要写清影响链。
+**Practical tips**:
+- Pipe style: `cat urls.txt | crlfuzz` also works (stdin input).
+- Verify manually after a hit: inject `%0d%0aSet-Cookie:xsstrue=1` and watch whether the response header splits.
+- CRLF often co-occurs with open redirects; combined with a caching layer it can escalate into cache poisoning, so spell out the impact chain in the report.
 
-### subjack — 子域接管检测(Go)
+### subjack — Subdomain takeover detection (Go)
 
-**用途**:并发扫描子域列表,识别 CNAME 指向已释放/可注册资源(Heroku、GitHub Pages、AWS S3 等)导致的接管风险。
-**安装**:`sudo apt install subjack`
-**使用场景**:资产收集(gobuster dns/subfinder)拿到子域清单后做接管筛查。
+**Purpose**: Scans subdomain lists concurrently, flagging takeover risk where CNAMEs point at released/registrable resources (Heroku, GitHub Pages, AWS S3, etc.).
+**Installation**: `sudo apt install subjack`
+**When to use**: Takeover screening after asset collection (gobuster dns/subfinder) produces a subdomain list.
 
 ```bash
 # 基础扫描(线程 100 + HTTPS + 详细输出)
@@ -625,27 +627,27 @@ subjack -w subdomains.txt -t 100 -ssl -v
 subjack -w subdomains.txt -c fingerprints.json -t 100
 ```
 
-**实战要点**:
-- 工具明确提示:结果务必人工复核排除误报(部分服务有防接管处理)。
-- 先 DNS 解析确认 CNAME(如 `dig <sub>.<domain> CNAME`),再判断指向服务是否可注册。
-- 发现可接管子域 = 可钓鱼/签发证书,属高危发现,报告需附证明截图。
+**Practical tips**:
+- The tool itself warns: always manually review results to rule out false positives (some services apply anti-takeover handling).
+- Resolve DNS first to confirm the CNAME (e.g. `dig <sub>.<domain> CNAME`), then judge whether the pointed-to service is registrable.
+- A takeable subdomain enables phishing/certificate issuance; it is a high-risk finding, and the report must include proof screenshots.
 
-## 其余工具速查
+## Remaining Tools — Quick Reference
 
-| 工具 | 一句话用途 | 安装包 | 最常用命令 |
+| Tool | One-line purpose | Package | Most common command |
 |---|---|---|---|
-| beef-xss-start | BeEF 服务启动包装脚本 | beef-xss | `sudo beef-xss-start` |
-| beef-xss-stop | BeEF 服务停止脚本 | beef-xss | `sudo beef-xss-stop` |
-| dirb | 经典字典式 Web 内容扫描(官网示例) | dirb(Kali 默认已装) | `dirb http://<target>/ /usr/share/wordlists/dirb/common.txt` |
-| dirbuster | Java GUI 多线程目录爆破器 | dirbuster | `dirbuster` |
-| jsql-injection | Java GUI 自动 SQL 注入工具 | jsql-injection | `jsql-injection`(仅 GUI,不支持 headless) |
-| sqlninja | MSSQL 注入与接管(xp_cmdshell/提权/Metasploit 联动) | sqlninja | `sqlninja -m t -f sqlninja.conf`(先 `-g` 或编辑配置) |
-| sqlsus | MySQL 注入与控制台式利用(Perl) | sqlsus | `sqlsus -g sqlsus.cfg`(编辑后)`sqlsus sqlsus.cfg` 交互输入 `start` |
-| paros | 老牌轻量 Web 应用测试代理(Java) | paros | `paros`(CLI: `java -jar /usr/share/paros/paros.jar -newsession <file> -spider -seed <url> -scan`) |
-| skipfish | 全自动主动式 Web 应用侦察(Z系,出交互式 sitemap 报告) | skipfish | `skipfish -o <outdir> http://<target>/`(官网示例模式) |
-| watobo | 半自动化 Web 应用审计代理(GUI) | watobo | `watobo` |
-| webscarab | HTTP(S) 应用分析代理(老牌,GUI) | webscarab | `webscarab` |
+| beef-xss-start | Wrapper script that starts the BeEF service | beef-xss | `sudo beef-xss-start` |
+| beef-xss-stop | Script that stops the BeEF service | beef-xss | `sudo beef-xss-stop` |
+| dirb | Classic dictionary-based web content scanner (official site example) | dirb (installed on Kali by default) | `dirb http://<target>/ /usr/share/wordlists/dirb/common.txt` |
+| dirbuster | Java GUI multi-threaded directory brute forcer | dirbuster | `dirbuster` |
+| jsql-injection | Java GUI automated SQL injection tool | jsql-injection | `jsql-injection` (GUI only, no headless support) |
+| sqlninja | MSSQL injection and takeover (xp_cmdshell/privilege escalation/Metasploit integration) | sqlninja | `sqlninja -m t -f sqlninja.conf` (run `-g` first or edit the config) |
+| sqlsus | MySQL injection and console-style exploitation (Perl) | sqlsus | `sqlsus -g sqlsus.cfg` (edit it, then) `sqlsus sqlsus.cfg`, interactively type `start` |
+| paros | Veteran lightweight web application testing proxy (Java) | paros | `paros` (CLI: `java -jar /usr/share/paros/paros.jar -newsession <file> -spider -seed <url> -scan`) |
+| skipfish | Fully automated active web application recon (Z family, produces an interactive sitemap report) | skipfish | `skipfish -o <outdir> http://<target>/` (official site example pattern) |
+| watobo | Semi-automated web application audit proxy (GUI) | watobo | `watobo` |
+| webscarab | HTTP(S) application analysis proxy (veteran, GUI) | webscarab | `webscarab` |
 
 ---
 
-仅用于已获得书面授权的渗透测试、CTF 竞赛与安全教育场景;未经授权对系统进行测试属于违法行为。
+For penetration testing with written authorization, CTF competitions, and security education only; testing systems without authorization is illegal.

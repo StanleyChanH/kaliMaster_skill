@@ -1,54 +1,56 @@
-# 网络与漏洞扫描(Network & Vulnerability Scanning)
+# Network & Vulnerability Scanning
 
-> **何时读本文件**:已确定目标范围后,需要做主机发现、端口/服务扫描(nmap/masscan)、自动化侦察(autorecon)、服务枚举(SMB/SNMP/SMTP)、SSL/TLS 审计或系统性漏洞扫描(GVM/OpenVAS)时读本文件;扫描结果如何导向利用见"扫描结果 → 下一步利用衔接"一节。基于模板的 Web 漏洞扫描(nuclei)见 `03-web-testing.md`。
+**English** · [简体中文](02-scanning.zh-CN.md)
 
-## 快速决策表
+> **When to read this file**: Read this file after the target scope has been determined and you need host discovery, port/service scanning (nmap/masscan), automated reconnaissance (autorecon), service enumeration (SMB/SNMP/SMTP), SSL/TLS auditing, or systematic vulnerability scanning (GVM/OpenVAS); for how scan results lead into exploitation, see the "Scan Results → Handoff to Exploitation" section. Template-based web vulnerability scanning (nuclei) is covered in `03-web-testing.md`.
 
-| 任务场景 | 首选工具 | 备选 | 关键区别 |
+## Quick Decision Table
+
+| Task scenario | First choice | Alternatives | Key difference |
 |---|---|---|---|
-| 全端口高速扫描 | masscan | nmap `-T5`、unicornscan | masscan 速率最高;nmap 结果信息最全 |
-| 单目标深度识别(版本/OS/NSE) | nmap `-sV -A` | autorecon | nmap 手动精细控制;autorecon 一键全套 |
-| 大网段"先找端口再精查" | masscan + nmap 分工 | autorecon -t <file> | masscan 找开放端口,nmap -sV 只扫命中端口 |
-| CTF/OSCP 单机全流程枚举 | autorecon | legion(GUI) | autorecon 输出结构化目录,CLI 可复现 |
-| Windows/Samba 信息枚举 | enum4linux-ng | enum4linux、nbtscan | ng 支持 JSON 输出/凭证/Kerberos |
-| SNMP 枚举 | snmp-check | onesixtyone(猜社区串)、braa(大规模) | snmp-check 输出最可读 |
-| SMTP 用户枚举 | smtp-user-enum | swaks(交互测试)、mxcheck(面检) | smtp-user-enum 批量 VRFY/EXPN |
-| SSL/TLS 配置审计 | sslscan | sslyze、tlssled | sslscan 快;sslyze 报告细;tlssled 老牌封装 |
-| WAF 识别 | wafw00f | nmap `--script http-waf-fingerprint` | wafw00f 指纹库专门化 |
-| 系统性 CVE 漏洞扫描 | gvm(Greenbone/OpenVAS) | nmap `--script vuln` | GVM 走完整漏洞库;nmap 快速点名 |
-| IPsec VPN(IKE)发现 | ike-scan | nmap -sU -p 500,4500 | ike-scan 可指纹厂商 + 抓 PSK 哈希 |
-| Oracle TNS(1521)枚举 | tnscmd10g | sidguess、oscanner | tnscmd10g 探版本/sidguess 猜 SID/oscanner 测口令 |
-| Apache 用户目录枚举 | apache-users | nmap `--script http-userdir-enum` | 同类功能,NSE 更易集成 |
-| IPv6 主机发现 | thc-ipv6 套件(alive6) | nmap -6 | alive6 利用 ICMPv6 发现链路本地存活 |
-| SCTP 扫描 | sctpscan | nmap -sY | SCTP 为电信/信令场景专用协议 |
-| 扫描结果周期对比 | ndiff | grep -oG 输出 | ndiff 专门对比 nmap XML |
+| High-speed full-port scan | masscan | nmap `-T5`, unicornscan | masscan has the highest rate; nmap yields the most complete results |
+| In-depth single-target identification (version/OS/NSE) | nmap `-sV -A` | autorecon | nmap gives manual fine-grained control; autorecon runs the full suite in one shot |
+| Large network range, "find ports first, then examine closely" | masscan + nmap split | autorecon -t <file> | masscan finds open ports; nmap -sV scans only the hits |
+| Full-workflow enumeration of a single host (CTF/OSCP) | autorecon | legion (GUI) | autorecon outputs structured directories and is reproducible from the CLI |
+| Windows/Samba information enumeration | enum4linux-ng | enum4linux, nbtscan | ng supports JSON output/credentials/Kerberos |
+| SNMP enumeration | snmp-check | onesixtyone (community string guessing), braa (large scale) | snmp-check has the most readable output |
+| SMTP user enumeration | smtp-user-enum | swaks (interactive testing), mxcheck (surface check) | smtp-user-enum does batch VRFY/EXPN |
+| SSL/TLS configuration audit | sslscan | sslyze, tlssled | sslscan is fast; sslyze gives detailed reports; tlssled is a long-standing wrapper |
+| WAF identification | wafw00f | nmap `--script http-waf-fingerprint` | wafw00f has a specialized fingerprint database |
+| Systematic CVE vulnerability scanning | gvm (Greenbone/OpenVAS) | nmap `--script vuln` | GVM works from a full vulnerability database; nmap does rapid spot checks |
+| IPsec VPN (IKE) discovery | ike-scan | nmap -sU -p 500,4500 | ike-scan fingerprints vendors and captures PSK hashes |
+| Oracle TNS (1521) enumeration | tnscmd10g | sidguess, oscanner | tnscmd10g probes versions/sidguess guesses SIDs/oscanner tests passwords |
+| Apache user directory enumeration | apache-users | nmap `--script http-userdir-enum` | Same functionality; the NSE route integrates more easily |
+| IPv6 host discovery | thc-ipv6 suite (alive6) | nmap -6 | alive6 leverages ICMPv6 for link-local alive checks |
+| SCTP scanning | sctpscan | nmap -sY | SCTP is a protocol specific to telecom/signaling scenarios |
+| Periodic comparison of scan results | ndiff | grep -oG output | ndiff is purpose-built for diffing nmap XML |
 
-## 扫描结果 → 下一步利用衔接
+## Scan Results → Handoff to Exploitation
 
-扫描阶段的产出(开放端口、服务版本、用户名列表、SNMP 社区串、PSK 哈希、CVE 列表)是后续利用的直接输入:
+The outputs of the scanning phase (open ports, service versions, username lists, SNMP community strings, PSK hashes, CVE lists) are direct inputs to subsequent exploitation:
 
-| 扫描发现 | 指向的下一步 |
+| Scan finding | Resulting next step |
 |---|---|
-| `nmap -sV` 的产品与版本 | `searchsploit <product> <version>`、MSF `search` 查公开漏洞,命中后转对应利用分册 |
-| 445/tcp open 且 `smb-vuln-ms17-010` 命中 | MS17-010(永恒之蓝)利用链 |
-| SMB 空会话可枚举(enum4linux) | 用户列表/共享列表 → `smbclient` 深挖共享内容、用户名列表做凭证喷洒 |
-| SNMP 有效社区串 | `snmp-check` 全量枚举 → 路由表/接口/进程还原内网拓扑与运行服务 |
-| SMTP VRFY/EXPN 命中用户 | 用户名列表 → 密码喷洒、钓鱼前期情报 |
-| sslscan/sslyze 报 heartbleed/弱套件/旧协议 | 跑对应公开 PoC 验证;证书 CN/SAN 并入子域名资产清单 |
-| 1521/tcp TNS 开放 | tnscmd10g status → sidguess 猜 SID → oscanner/sqlplus(数据库分册) |
-| 500/4500/udp IKE 响应 Aggressive Mode | `ike-scan -A -P` 抓 PSK 哈希 → `psk-crack` 离线破解 → 接入 VPN |
-| GVM 报告的 CVE | 优先验证有公开 exploit 的条目;注意扫描器误报需人工确认 |
-| `wafw00f` 检出 WAF | 调整 Web 攻击策略(编码混淆/分块传输/直连源站) |
-| autorecon 的 results 目录 | 逐个 scans/ 输出按对应分册深挖(HTTP/SQL/SMB 等) |
-| nmap `-oA` 留档的 XML | `ndiff` 周期对比发现新增端口,导入其他工具复用 |
+| Products and versions from `nmap -sV` | `searchsploit <product> <version>`, MSF `search` for public exploits; on a hit, move to the matching exploitation volume |
+| 445/tcp open with a `smb-vuln-ms17-010` hit | MS17-010 (EternalBlue) exploitation chain |
+| SMB null session enumeration possible (enum4linux) | user/share lists → `smbclient` to dig into share contents; username list for credential spraying |
+| Valid SNMP community string | `snmp-check` full enumeration → routing table/interfaces/processes to reconstruct internal network topology and running services |
+| SMTP VRFY/EXPN confirms users | username list → password spraying and pre-phishing intelligence |
+| sslscan/sslyze reports heartbleed/weak ciphers/old protocols | run the matching public PoCs to verify; merge certificate CN/SAN into the subdomain asset inventory |
+| 1521/tcp TNS open | tnscmd10g status → sidguess to guess the SID → oscanner/sqlplus (database volume) |
+| 500/4500/udp IKE answers in Aggressive Mode | `ike-scan -A -P` captures the PSK hash → `psk-crack` offline cracking → gain VPN access |
+| CVEs reported by GVM | prioritize verifying entries that have public exploits; note that scanner false positives require manual confirmation |
+| WAF detected by `wafw00f` | adjust the web attack strategy (encoding obfuscation/chunked transfer/direct-to-origin) |
+| autorecon's results directory | dig into each scans/ output following the matching volume (HTTP/SQL/SMB, etc.) |
+| XML archived by nmap `-oA` | `ndiff` periodic comparison to catch new ports; import into other tools for reuse |
 
-## 核心工具详解
+## Core Tools in Depth
 
-### nmap — 网络扫描事实标准:主机发现、端口扫描、版本/OS 识别、NSE 脚本
+### nmap — the de facto standard for network scanning: host discovery, port scanning, version/OS detection, NSE scripts
 
-**用途**:主机存活探测、十几种端口扫描技术(SYN/Connect/UDP/ACK 等)、服务版本探测(`-sV`)、OS 指纹(`-O`)、NSE 脚本引擎(vuln/auth/brute/exploit 等分类,数百个脚本)。渗透测试中使用频率最高的扫描器。
-**安装**:Kali 默认已装(`nmap` 包,含 ncat/nping/ndiff)。
-**使用场景**:任何需要"知道目标开了什么、跑的什么版本、有什么已知漏洞"的场景;精确控制扫描行为(时序/分片/诱饵)时不可替代。
+**Purpose**: Host alive checks, a dozen-plus port scanning techniques (SYN/Connect/UDP/ACK, etc.), service version detection (`-sV`), OS fingerprinting (`-O`), and the NSE script engine (categories such as vuln/auth/brute/exploit, hundreds of scripts). The most frequently used scanner in penetration testing.
+**Installation**: Preinstalled on Kali by default (`nmap` package, includes ncat/nping/ndiff).
+**When to use**: Any situation where you need to "know what the target has open, what versions are running, and which known vulnerabilities exist"; irreplaceable when you need precise control over scan behavior (timing/fragmentation/decoys).
 
 ```bash
 # 官网模式:详细输出 + OS/版本/NSE/traceroute 全开
@@ -73,7 +75,7 @@ sudo nmap -sV -O -sC -p <ports> <target>
 nmap -iL <target-file> --exclude <ip>
 ```
 
-NSE 脚本引擎(常用模式):
+The NSE script engine (common patterns):
 
 ```bash
 # SMB 经典漏洞点名(MS17-010 等)
@@ -101,7 +103,7 @@ nmap --script ssh-brute --script-args userdb=<userlist>,passdb=<wordlist> -p 22 
 nmap --script-updatedb
 ```
 
-时序模板 `-T0` ~ `-T5`:
+Timing templates `-T0` ~ `-T5`:
 
 ```bash
 # -T0 paranoid 极慢(IDS 规避) | -T1 sneaky 慢速隐蔽
@@ -110,7 +112,7 @@ nmap --script-updatedb
 nmap -T4 -sV -p <ports> <target>
 ```
 
-输出格式:
+Output formats:
 
 ```bash
 # 三种格式同时输出:txt(XML 给 ndiff/工具导入,greppable 给 grep)
@@ -120,17 +122,17 @@ nmap -sV -p <ports> -oA <output-prefix> <target>
 nmap -p- --open -oG - <target> | grep "/open/"
 ```
 
-**实战要点**:
-- 标准节奏三步走:先 `-sn` 确认存活 → 再 `-p-` 全端口 → 最后对开放端口 `-sV -sC` 精查;比直接 `-A` 全端口快一个量级
-- `filtered` 状态多为防火墙拦截;`-Pn` 可跳过主机发现强扫(目标禁 ping 时必加)
-- `-sV` 的版本号是 `searchsploit` 的直接输入,版本探测越准(`--version-intensity` 调高),后续利用越准
-- 务必 `-oA` 留档:XML 供 `ndiff` 与自动化工具复用;`-v` 实时观察发现,避免长时间黑盒等待
+**Practical tips**:
+- Standard three-step rhythm: `-sn` first to confirm alive hosts → then `-p-` for all ports → finally `-sV -sC` for close inspection of the open ports; an order of magnitude faster than running `-A` across all ports directly
+- A `filtered` state mostly means firewall interception; `-Pn` skips host discovery and forces the scan (a must when the target blocks ping)
+- Version numbers from `-sV` are direct input to `searchsploit`; the more accurate version detection is (raise `--version-intensity`), the more accurate the later exploitation
+- Always archive with `-oA`: the XML feeds `ndiff` and automation tools; `-v` surfaces findings in real time and avoids long blind waits
 
-### masscan — 异步 SYN 大规模端口扫描器
+### masscan — asynchronous SYN mass port scanner
 
-**用途**:以极高发包速率(可内网数万 packets/s)扫描大地址段,输出类似 nmap 的开放端口结果。适合全端口/大网段首扫。
-**安装**:`sudo apt install masscan`。
-**使用场景**:目标数量多或需要 65535 全端口时,先用 masscan 找开放端口,再交给 nmap 做版本识别;单目标小范围直接用 nmap 即可。
+**Purpose**: Scans large address ranges at extremely high packet rates (tens of thousands of packets/s on internal networks), producing nmap-like open port results. Suited to full-port/first-pass scans of large ranges.
+**Installation**: `sudo apt install masscan`.
+**When to use**: With many targets or when all 65535 ports are needed, run masscan first to find open ports, then hand them to nmap for version identification; for a single small-scope target, just use nmap directly.
 
 ```bash
 # 官网模式:子网多端口 SYN 扫描
@@ -150,17 +152,17 @@ sudo masscan -p80 <target> --rate=1000 --echo > <conf-file>
 sudo masscan --conf <conf-file>
 ```
 
-**实战要点**:
-- `--rate` 按带宽定:千兆内网约 10000 起步,公式约为 带宽/8/64;超速丢包会产生漏报
-- masscan 只回答"端口开没开",不做服务识别;命中后把端口列表交给 `nmap -sV -p<ports> --open` 深挖
-- `--banners` 只对部分协议有效,且显著降速;需要完整指纹时仍交给 nmap
-- 参数风格刻意兼容 nmap(`-p`、`--open-only`、`--exclude` 等),便于管道式分工
+**Practical tips**:
+- Set `--rate` by bandwidth: on gigabit internal networks start around 10000; the rule of thumb is bandwidth/8/64; exceeding it drops packets and causes false negatives
+- masscan only answers "is the port open" and does no service identification; on a hit, pass the port list to `nmap -sV -p<ports> --open` for deeper digging
+- `--banners` works only for some protocols and slows scanning noticeably; for complete fingerprints, still hand off to nmap
+- Its option style deliberately stays nmap-compatible (`-p`, `--open-only`, `--exclude`, etc.), easing pipeline-style division of labor
 
-### unicornscan — 用户态异步 TCP/IP 信息收集引擎
+### unicornscan — userspace asynchronous TCP/IP information gathering engine
 
-**用途**:用户态分布式 TCP/IP 栈,异步发包 + 关联引擎,高速端口/协议扫描。
-**安装**:`sudo apt install unicornscan`。
-**使用场景**:与 masscan 同类的异步高速扫描器;需要精细控制模式标记与速率时的备选。
+**Purpose**: A userspace distributed TCP/IP stack, asynchronous packet sending + a correlation engine, for high-speed port/protocol scanning.
+**Installation**: `sudo apt install unicornscan`.
+**When to use**: An asynchronous high-speed scanner in the same class as masscan; the alternative when you need fine control over mode flags and rates.
 
 ```bash
 # 官网模式:TCP SYN+FIN 标记扫描全部 65535 端口,1000 packets/s
@@ -170,16 +172,16 @@ sudo unicornscan -mTsf -Iv -r 1000 <target>:a
 sudo unicornscan -mU -p 161,500 <target>
 ```
 
-**实战要点**:
-- 语法要点:`:a` = 全部 65535 端口;`-r 1000` = 每秒 1000 包;`-Iv` = 结果立即打印
-- `-mT` 为 TCP 扫描模式,后接标志位字母组合(如 `sf` = SYN+FIN)
-- 定位与 masscan 重叠:负责"快找开放端口",服务识别仍交 `nmap -sV`
+**Practical tips**:
+- Syntax essentials: `:a` = all 65535 ports; `-r 1000` = 1000 packets per second; `-Iv` = print results immediately
+- `-mT` is TCP scan mode, followed by flag letter combinations (e.g., `sf` = SYN+FIN)
+- Its role overlaps with masscan: it handles "quickly finding open ports", while service identification still goes to `nmap -sV`
 
-### autorecon — 多线程自动化网络侦察(CTF/OSCP 首选)
+### autorecon — multithreaded automated network reconnaissance (first choice for CTF/OSCP)
 
-**用途**:对目标自动跑端口扫描 + 按服务类型并发执行大量枚举插件(HTTP/SMB/SNMP/SMTP 等),输出结构化结果目录。
-**安装**:`sudo apt install autorecon`。
-**使用场景**:单台/少量目标(CTF、OSCP 考试、授权单机评估)想"挂机铺面"时;大规模网段更适合 masscan + 脚本分工。
+**Purpose**: Automatically runs port scans against the target plus large numbers of enumeration plugins concurrently by service type (HTTP/SMB/SNMP/SMTP, etc.), outputting a structured results directory.
+**Installation**: `sudo apt install autorecon`.
+**When to use**: When you want to "set it running unattended for broad surface coverage" against one or a few targets (CTF, the OSCP exam, authorized single-host assessments); large-scale network ranges suit masscan plus scripted division of labor better.
 
 ```bash
 # 单目标全自动侦察(需 root 跑全部插件)
@@ -198,17 +200,17 @@ sudo autorecon <ip> --tags discovery -m 4
 sudo autorecon <ip> --exclude-tags dos
 ```
 
-**实战要点**:
-- 结果默认写入 `./results/<ip>/`:`scans/` 下每个插件一个输出文件,`_commands.log` 记录全部执行的命令(可直接抽出来手动复现、改参重跑)
-- 用法是"先 autorecon 铺面,再对可疑服务手动深挖",不要只看它的汇总
-- `-m`(最大并发扫描)/`-mp`(端口扫描并发)控制负载;目标多时下调避免打挂脆弱服务
-- 对每类服务它调用的就是本分册这些工具(nmap/enum4linux/snmpcheck 等),输出格式互相一致
+**Practical tips**:
+- Results are written to `./results/<ip>/` by default: one output file per plugin under `scans/`, and `_commands.log` records every executed command (pull them out directly for manual replay or parameter-tweaked re-runs)
+- The usage pattern is "autorecon for broad coverage first, then manual deep dives into suspicious services"; do not rely only on its summary
+- `-m` (max concurrent scans)/`-mp` (port scan concurrency) control the load; lower them when targets are numerous to avoid knocking over fragile services
+- For each service type it calls exactly the tools covered in this volume (nmap/enum4linux/snmpcheck, etc.), so output formats stay mutually consistent
 
-### gvm — Greenbone 漏洞管理平台(前称 OpenVAS)
+### gvm — the Greenbone vulnerability management platform (formerly OpenVAS)
 
-**用途**:企业级漏洞扫描框架,基于完整 CVE/NVT/SCAP 数据库做认证与非认证扫描,产出结构化漏洞报告。
-**安装**:`sudo apt install gvm`(Kali 非默认)。
-**使用场景**:需要系统性 CVE 扫描与报告(而不是 nmap 脚本式快速点名)时;Web UI 建任务,CLI 做自动化。
+**Purpose**: An enterprise-grade vulnerability scanning framework that runs authenticated and unauthenticated scans against complete CVE/NVT/SCAP databases and produces structured vulnerability reports.
+**Installation**: `sudo apt install gvm` (not a Kali default).
+**When to use**: When you need systematic CVE scanning and reporting (rather than nmap script-style quick spot checks); create tasks in the web UI, automate through the CLI.
 
 ```bash
 # 首次初始化:下载 NVT/SCAP/GVM 漏洞库(耗时较长)
@@ -228,17 +230,17 @@ sudo gvm-feed-update
 gvm-cli tls --hostname 127.0.0.1 --port 9390 --username admin --password <password> --xml "<get_version/>"
 ```
 
-**实战要点**:
-- 服务起来后浏览器访问 Greenbone Security Assistant:`https://127.0.0.1:9392`(自签证书,忽略告警);admin 初始密码看 `gvm-setup` 输出
-- 建任务流程:Configuration → Targets(可带凭证做认证扫描)→ Scan Configs 选 "Full and fast" → Tasks 新建并启动
-- 扫描器有误报:报告中的 CVE 优先人工核对版本,再 `searchsploit`/MSF 验证有公开利用的条目
-- 与 nmap `--script vuln` 互补:GVM 覆盖全、出报告;nmap 快、可嵌入侦察流程
+**Practical tips**:
+- Once the service is up, open the Greenbone Security Assistant in a browser: `https://127.0.0.1:9392` (self-signed certificate, ignore the warning); the initial admin password is in the `gvm-setup` output
+- Task creation flow: Configuration → Targets (can carry credentials for authenticated scans) → Scan Configs, pick "Full and fast" → Tasks, create and launch
+- The scanner produces false positives: manually verify the versions behind reported CVEs first, then validate entries with public exploits through `searchsploit`/MSF
+- Complements nmap `--script vuln`: GVM covers broadly and produces reports; nmap is fast and embeds into recon workflows
 
-### enum4linux — Windows/Samba 信息枚举(经典版)
+### enum4linux — Windows/Samba information enumeration (the classic)
 
-**用途**:封装 smbclient/rpcclient/net/nmblookup,枚举 Windows/Samba 的用户、组、共享、密码策略、OS 信息。
-**安装**:`sudo apt install enum4linux`。
-**使用场景**:目标开放 139/445 且允许空会话时的第一轮 SMB 信息收集;老环境(Samba 3/XP/2003)效果最好。
+**Purpose**: Wraps smbclient/rpcclient/net/nmblookup to enumerate Windows/Samba users, groups, shares, password policy, and OS information.
+**Installation**: `sudo apt install enum4linux`.
+**When to use**: The first round of SMB information gathering when the target exposes 139/445 and allows null sessions; works best on legacy environments (Samba 3/XP/2003).
 
 ```bash
 # 官网模式:枚举用户列表 + OS 信息
@@ -251,17 +253,17 @@ enum4linux -a <ip>
 enum4linux -a -u <user> -p <pass> <ip>
 ```
 
-**实战要点**:
-- `-P` 密码策略输出(锁定阈值/最短长度)直接决定后续凭证喷洒的节奏参数
-- 共享列表 → `smbclient` 逐个深挖可写共享;用户列表 → 凭证攻击分册
-- 对现代 Windows(SMBv3/签名强制)常枚举失败(RPC_S_ACCESS_DENIED),换 enum4linux-ng 或带凭证重试
-- 输出冗长,重点看 `[+] Got domain/workgroup name`、用户列表和 share 枚举三段
+**Practical tips**:
+- The `-P` password policy output (lockout threshold/minimum length) directly sets the pacing parameters for later credential spraying
+- Share list → dig through writable shares one by one with `smbclient`; user list → the credential attacks volume
+- Frequently fails against modern Windows (SMBv3/signing enforced) with RPC_S_ACCESS_DENIED; switch to enum4linux-ng or retry with credentials
+- The output is verbose; focus on the three parts: `[+] Got domain/workgroup name`, the user list, and the share enumeration
 
-### enum4linux-ng — 新一代 Windows/Samba 枚举(推荐)
+### enum4linux-ng — next-generation Windows/Samba enumeration (recommended)
 
-**用途**:enum4linux 重写版,增加 JSON/YAML 导出、Kerberos 票据/NTLM 认证、逐项成功标记。
-**安装**:`sudo apt install enum4linux-ng`。
-**使用场景**:默认优先用 ng;需要机器可读输出或域环境凭证枚举时必用。
+**Purpose**: A rewrite of enum4linux that adds JSON/YAML export, Kerberos ticket/NTLM authentication, and per-item success markers.
+**Installation**: `sudo apt install enum4linux-ng`.
+**When to use**: Prefer ng by default; it is a must when you need machine-readable output or enumeration with credentials in domain environments.
 
 ```bash
 # 全量枚举(-A 等价旧版全套)
@@ -278,16 +280,16 @@ enum4linux-ng -A -K <ticket-file> <ip>
 enum4linux-ng -A -H <nthash> <ip>
 ```
 
-**实战要点**:
-- 输出对每个枚举项标注成功/失败原因(如 "5xx ACCESS_DENIED"),比旧版更易判断被哪层挡住
-- `-oJ` 的 JSON 可直接被自动化流水线消费;用户+组+密码策略三件套是凭证攻击的直接输入
-- 域环境下优先用域凭证(不加 `--local-auth`);本地账户才加
+**Practical tips**:
+- The output marks each enumeration item with its success/failure reason (e.g., "5xx ACCESS_DENIED"), making it easier than the classic version to tell which layer blocked you
+- The `-oJ` JSON can be consumed directly by automation pipelines; the user+group+password policy trio is direct input to credential attacks
+- In domain environments prefer domain credentials (omit `--local-auth`); add it only for local accounts
 
-### nbtscan — NetBIOS 名称表网段扫描
+### nbtscan — NetBIOS name table subnet scanner
 
-**用途**:向 IP 段发 NetBIOS 状态查询,返回 IP、NetBIOS 计算机名、登录用户名、MAC。
-**安装**:`sudo apt install nbtscan`。
-**使用场景**:内网快速圈出 Windows 主机与当前登录用户;比完整 SMB 枚举轻量得多。
+**Purpose**: Sends NetBIOS status queries across an IP range, returning IP, NetBIOS computer name, logged-on username, and MAC.
+**Installation**: `sudo apt install nbtscan`.
+**When to use**: Quickly mapping out Windows hosts and currently logged-on users on an internal network; far lighter than full SMB enumeration.
 
 ```bash
 # 扫描整个网段的 NetBIOS 名称表
@@ -297,16 +299,16 @@ sudo nbtscan -r 192.168.1.0/24
 nbtscan -v <ip>
 ```
 
-**实战要点**:
-- 名称后缀含义:`<03>` 消息服务(常暴露当前登录用户名),`<20>` 文件共享服务(值得 enum4linux 深挖),`<1B>` 域控制器
-- 输出直接给"主机名 → 用户名"映射,是内网横向移动的定位输入
-- 仅依赖 NetBIOS(UDP 137),现代 Windows 若禁用 NetBIOS over TCP/IP 则无响应
+**Practical tips**:
+- Name suffix meanings: `<03>` messenger service (often exposes the current logged-on username), `<20>` file sharing service (worth an enum4linux deep dive), `<1B>` domain controller
+- The output directly yields a "hostname → username" mapping — targeting input for internal lateral movement
+- Relies solely on NetBIOS (UDP 137); modern Windows with NetBIOS over TCP/IP disabled gives no response
 
-### snmp-check — SNMP 设备枚举(人类可读输出)
+### snmp-check — SNMP device enumeration (human-readable output)
 
-**用途**:类似 snmpwalk 但输出分节格式化:系统信息、网络接口、IP、路由表、TCP/UDP 监听端口、进程、挂载点、软件等。
-**安装**:`sudo apt install snmpcheck`(二进制命令名 snmp-check)。
-**使用场景**:已确认 161/udp 开放且拿到社区串后的全量信息提取;输出可直接进报告。
+**Purpose**: Similar to snmpwalk but with output formatted into sections: system information, network interfaces, IPs, routing table, TCP/UDP listening ports, processes, mount points, software, and more.
+**Installation**: `sudo apt install snmpcheck` (binary command name snmp-check).
+**When to use**: Full information extraction once 161/udp is confirmed open and a community string is in hand; the output can go straight into a report.
 
 ```bash
 # 官网模式:public 社区串枚举
@@ -316,16 +318,16 @@ snmp-check <ip> -c public
 snmp-check <ip> -c <community> -w
 ```
 
-**实战要点**:
-- 路由表和接口表是还原内网拓扑的第一手材料;进程列表常暴露运行的安全软件(绕过依据)
-- `-w` 若报可写:旧设备可改配置甚至触发 RCE,属高危发现
-- 输出包含系统描述(sysDescr)即 OS/内核版本 → 转 `searchsploit`
+**Practical tips**:
+- The routing table and interface table are first-hand material for reconstructing the internal topology; the process list often exposes running security software (a basis for bypass planning)
+- If `-w` reports writable: on legacy devices you can change configuration or even trigger RCE — a high-severity finding
+- The output contains the system description (sysDescr), i.e., the OS/kernel version → pass it to `searchsploit`
 
-### onesixtyone — 极快的 SNMP 社区串猜解器
+### onesixtyone — extremely fast SNMP community string guesser
 
-**用途**:异步发送 SNMPv1/2c 请求猜解社区串,整 C 段扫完只要几秒。
-**安装**:`sudo apt install onesixtyone`。
-**使用场景**:161/udp 开放但不知道社区串时;命中后再用 snmp-check/snmpwalk 深挖。
+**Purpose**: Sends SNMPv1/2c requests asynchronously to guess community strings; an entire class-C range takes only seconds.
+**Installation**: `sudo apt install onesixtyone`.
+**When to use**: When 161/udp is open but the community string is unknown; on a hit, dig deeper with snmp-check/snmpwalk.
 
 ```bash
 # 字典爆破社区串(主机列表 + 社区串列表)
@@ -335,16 +337,16 @@ onesixtyone -c <community-wordlist> -i <target-file>
 onesixtyone -c <community-wordlist> <ip>
 ```
 
-**实战要点**:
-- 候选词表优先放 public/private/cisco/管理名等常见默认值;Seclists 的 SNMP 目录有现成字典
-- 对网段跑前先确认授权与阈值:高速 UDP 包对老设备可能有压力
-- 命中输出形如 `192.168.1.2 [public] Linux ...`,把社区串记入文档供后续所有 SNMP 操作复用
+**Practical tips**:
+- Put the common defaults first in the candidate wordlist: public/private/cisco/management names; the Seclists SNMP directory ships ready-made wordlists
+- Confirm authorization and thresholds before running against a range: high-rate UDP packets can strain legacy devices
+- A hit prints like `192.168.1.2 [public] Linux ...`; record the community string in your documentation for reuse in every later SNMP operation
 
-### braa — 单进程大规模 SNMP 扫描器
+### braa — single-process mass SNMP scanner
 
-**用途**:自带 SNMP 协议栈(不依赖 net-snmp),单进程同时查询数十上百台主机,批量验证社区串或抓取指定 OID。
-**安装**:`sudo apt install braa`。
-**使用场景**:已经掌握社区串、想对整个网段批量取同一 OID(sysName/接口表等)时;单目标深挖仍用 snmp-check。
+**Purpose**: Ships its own SNMP stack (no net-snmp dependency) and queries dozens to hundreds of hosts concurrently in a single process, for batch-validating community strings or fetching specified OIDs.
+**Installation**: `sudo apt install braa`.
+**When to use**: When you already hold a community string and want to batch-query the same OID (sysName/interface table, etc.) across a whole range; keep using snmp-check for single-target deep dives.
 
 ```bash
 # 官网模式:单目标遍历 .1.3.6 整棵树
@@ -354,16 +356,16 @@ braa public@<ip>:.1.3.6.*
 braa <community>@<start-ip>-<end-ip>:.1.3.6.1.2.1.1.5.0
 ```
 
-**实战要点**:
-- 语法 `[community@]host[:oid]`,通配 `*` 做 walk,地址段用 `-` 连接(不支持 CIDR 写法)
-- 输出格式 `host:耗时:oid:value`,非常适合 grep/管道二次处理
-- 协议实现"非标准",个别设备可能不响应;异常时回退 snmpwalk
+**Practical tips**:
+- Syntax is `[community@]host[:oid]`; the `*` wildcard performs a walk; address ranges are joined with `-` (CIDR notation is not supported)
+- Output format is `host:elapsed:oid:value`, well suited to grep/pipeline post-processing
+- The protocol implementation is "non-standard" and individual devices may not respond; fall back to snmpwalk when things go wrong
 
-### smtp-user-enum — SMTP 用户名枚举(VRFY/EXPN/RCPT)
+### smtp-user-enum — SMTP username enumeration (VRFY/EXPN/RCPT)
 
-**用途**:利用 SMTP 的 VRFY、EXPN、RCPT TO 三种方式猜测/验证用户名是否存在。
-**安装**:`sudo apt install smtp-user-enum`。
-**使用场景**:25/587 端口开放且 MTA 未禁用这些命令时,快速产出有效用户名列表。
+**Purpose**: Leverages the three SMTP mechanisms VRFY, EXPN, and RCPT TO to guess/verify whether usernames exist.
+**Installation**: `sudo apt install smtp-user-enum`.
+**When to use**: When 25/587 are open and the MTA has not disabled these commands, quickly producing a valid username list.
 
 ```bash
 # 官网模式:VRFY 验证单用户
@@ -379,16 +381,16 @@ smtp-user-enum -M RCPT -U <userlist> -t <ip> -f <from-addr>
 smtp-user-enum -M VRFY -U <userlist> -t <ip> -p 587
 ```
 
-**实战要点**:
-- 命中输出 `192.168.1.25: root exists`;注意区分 "exists"(存在)与被拒(不存在/被禁)
-- 产出用户名列表 → 密码喷洒与钓鱼前置;先与 mxcheck 的 VRFY 泄露检测互相印证
-- 现代 MTA 常限速或对 VRFY 一律返回 252;失败先换 EXPN 再换 RCPT,全禁则转 Web 侧枚举
+**Practical tips**:
+- A hit prints `192.168.1.25: root exists`; distinguish "exists" (the user is present) from a rejection (not present/disabled)
+- The username list feeds password spraying and phishing groundwork; cross-check it first against mxcheck's VRFY disclosure detection
+- Modern MTAs often rate-limit or return 252 for every VRFY; on failure switch to EXPN, then RCPT; if all are disabled, move to web-side enumeration
 
-### swaks — SMTP 的瑞士军刀(交互式命令行测试)
+### swaks — the Swiss Army knife for SMTP (interactive command-line testing)
 
-**用途**:命令行构造完整 SMTP 对话,支持 STARTTLS 与多种 AUTH(PLAIN/LOGIN/CRAM-MD5 等),可在任意阶段中断。
-**安装**:`sudo apt install swaks`。
-**使用场景**:验证 open relay、测试认证、中继规则、逐阶段排查 SMTP 防护;替代反复手敲 `telnet <host> 25`。
+**Purpose**: Builds a complete SMTP conversation from the command line, supports STARTTLS and several AUTH methods (PLAIN/LOGIN/CRAM-MD5, etc.), and can break off at any stage.
+**Installation**: `sudo apt install swaks`.
+**When to use**: Verifying open relay, testing authentication and relay rules, and working through SMTP protections stage by stage; replaces typing `telnet <host> 25` over and over.
 
 ```bash
 # 基本发送测试
@@ -404,32 +406,32 @@ swaks --tls --auth PLAIN --auth-user <user> --auth-password <pass> --to <addr> -
 swaks --to <addr> --server <smtp-host> --header "Subject: test" --body "test"
 ```
 
-**实战要点**:
-- 中继判定看最后 RCPT 是否返回 250(accept):accept 即开放中继,高危
-- `--quit-after <stage>`(HELO/MAIL/RCPT/DATA 等)精确定位哪个阶段开始被拒,顺带摸清防护设备行为
-- 与 smtp-user-enum 衔接:枚举出的用户名用 swaks 逐个验证 RCPT 与认证
+**Practical tips**:
+- For the relay verdict, check whether the final RCPT returns 250 (accept): an accept means an open relay — high severity
+- `--quit-after <stage>` (HELO/MAIL/RCPT/DATA, etc.) pinpoints the stage where rejection begins, and along the way profiles the protection devices' behavior
+- Chained with smtp-user-enum: verify RCPT and authentication for each enumerated username with swaks
 
-### mxcheck — 邮件服务器信息与安全体检
+### mxcheck — mail server information and security checkup
 
-**用途**:一站式检查邮件域名:A/MX/PTR/SPF/MTA-STS/DKIM/DMARC、ASN、StartTLS 与证书、25/465/587 端口、黑名单、VRFY 信息泄露、开放中继。
-**安装**:`sudo apt install mxcheck`。
-**使用场景**:面向域名做邮件基础设施面检,快速产出邮件安全概览。
+**Purpose**: One-stop checks for a mail domain: A/MX/PTR/SPF/MTA-STS/DKIM/DMARC, ASN, StartTLS and certificates, ports 25/465/587, blacklists, VRFY information disclosure, and open relay.
+**Installation**: `sudo apt install mxcheck`.
+**When to use**: A surface check of a domain's mail infrastructure, quickly producing a mail security overview.
 
 ```bash
 # 域名邮件安全体检(自动解析 MX 后逐项检查)
 mxcheck --domain <domain>
 ```
 
-**实战要点**:
-- 一次跑齐 DNS 记录合规性、TLS 配置与黑名单,适合报告中的邮件章节骨架
-- 指出的 VRFY 泄露/open relay 再用 swaks 交互验证,避免单工具误判
-- SPF `+all`/DMARC `p=none` 属可写进报告的配置缺陷
+**Practical tips**:
+- Runs DNS record compliance, TLS configuration, and blacklist checks in one pass; a ready skeleton for the mail section of a report
+- Re-verify any flagged VRFY disclosure/open relay interactively with swaks to avoid single-tool misjudgment
+- SPF `+all`/DMARC `p=none` are configuration flaws that can go straight into the report
 
-### sslscan — SSL/TLS 套件与证书快速探测
+### sslscan — fast SSL/TLS cipher and certificate probing
 
-**用途**:探测目标支持的协议版本、加密套件、密钥交换、签名算法与证书详情,标出弱点,可输出 XML。
-**安装**:`sudo apt install sslscan`。
-**使用场景**:对 HTTPS/SMTPS 等任意 TLS 服务做快速配置审计;批量检查首选。
+**Purpose**: Probes the protocol versions, cipher suites, key exchange, signature algorithms, and certificate details a target supports, flags weaknesses, and can output XML.
+**Installation**: `sudo apt install sslscan`.
+**When to use**: Fast configuration audits of any TLS service such as HTTPS/SMTPS; the first choice for batch checks.
 
 ```bash
 # 目标 TLS 全套件探测
@@ -445,16 +447,16 @@ sslscan --no-failed --xml=<file> <host>:443
 sslscan --starttls=smtp <host>:25
 ```
 
-**实战要点**:
-- 输出直接标红弃用协议(SSLv2/v3、TLS 1.0/1.1)与弱套件(NULL/EXPORT/RC4/3DES),按行写报告即可
-- 证书 CN/SAN 字段顺手并入子域名资产清单
-- 只做配置层面检测;heartbleed 等需握手深交互的漏洞用 nmap NSE 或 sslyze 补
+**Practical tips**:
+- The output directly highlights deprecated protocols (SSLv2/v3, TLS 1.0/1.1) and weak suites (NULL/EXPORT/RC4/3DES) in red; just write them into the report line by line
+- Fold the certificate CN/SAN fields into the subdomain asset inventory along the way
+- It only checks the configuration layer; for vulnerabilities requiring deep handshake interaction such as heartbleed, supplement with nmap NSE or sslyze
 
-### sslyze — 快速且全面的 SSL/TLS 扫描器
+### sslyze — fast and comprehensive SSL/TLS scanner
 
-**用途**:插件化分析服务端 SSL 配置:证书链校验、压缩(CRIME)、重协商(CVE-2009-3555)、会话恢复、各协议套件矩阵,支持 JSON 输出。
-**安装**:`sudo apt install sslyze`。
-**使用场景**:需要比 sslscan 更细的报告(证书链/重协商/会话)或自动化比对时。
+**Purpose**: Plugin-based analysis of server SSL configuration: certificate chain validation, compression (CRIME), renegotiation (CVE-2009-3555), session resumption, per-protocol cipher suite matrices, with JSON output support.
+**Installation**: `sudo apt install sslyze`.
+**When to use**: When you need finer reports than sslscan (certificate chain/renegotiation/session) or automated comparison.
 
 ```bash
 # 常规全项扫描:直接指定目标即默认全扫
@@ -467,31 +469,31 @@ sslyze --starttls=smtp <host>:25
 sslyze --json_out=<file> <host>:443
 ```
 
-**实战要点**:
-- 检出 "client-initiated renegotiation" 即重协商漏洞,可配合 DoS 攻击面评估
-- `--json_out` 便于流水线周期扫描与差异告警
-- 与 sslscan 二选一即可覆盖常规 TLS 审计;深挖单个漏洞(heartbleed 等)再加 nmap `--script ssl-heartbleed`
+**Practical tips**:
+- Detecting "client-initiated renegotiation" means the renegotiation vulnerability, which can feed a DoS attack-surface assessment
+- `--json_out` makes pipeline-based periodic scanning and differential alerting easy
+- Either sslyze or sslscan covers routine TLS auditing; add nmap `--script ssl-heartbleed` to dig into an individual vulnerability (heartbleed, etc.)
 
-### tlssled — SSL/TLS 服务器安全评估封装脚本
+### tlssled — SSL/TLS server security assessment wrapper script
 
-**用途**:基于 sslscan 与 `openssl s_client` 的 shell 封装:检查 SSLv2、NULL 密码、40/56 位弱密码、MD5 证书、重协商,并自动生成报告目录。
-**安装**:`sudo apt install tlssled`。
-**使用场景**:老牌一键评估;新项目建议直接用 sslscan/sslyze。
+**Purpose**: A shell wrapper around sslscan and `openssl s_client`: checks SSLv2, NULL ciphers, weak 40/56-bit ciphers, MD5 certificates, and renegotiation, and auto-generates a report directory.
+**Installation**: `sudo apt install tlssled`.
+**When to use**: A long-standing one-shot assessment; for new projects, go straight to sslscan/sslyze.
 
 ```bash
 # 官网模式:评估目标 SSL/TLS
 tlssled <ip> 443
 ```
 
-**实战要点**:
-- 自动把输出落到 `TLSSLed_<ver>_<ip>_<port>_<timestamp>/` 目录,便于归档
-- 检测项偏老(SSLv2/MD5 证书时代),现代目标基本全绿,仅作快速过筛
+**Practical tips**:
+- Automatically writes output into a `TLSSLed_<ver>_<ip>_<port>_<timestamp>/` directory for easy archiving
+- The checks skew old (the SSLv2/MD5-certificate era); modern targets come back almost entirely green, so use it only as a quick screen
 
-### ncat — nmap 套件的 netcat 实现(连接/监听/转发)
+### ncat — the nmap suite's netcat implementation (connect/listen/forward)
 
-**用途**:netcat 重实现,新增 IPv6、SSL、访问控制(`--allow/--deny`)、连接后保持(`--keep-open`)与 `--exec` 执行命令。
-**安装**:Kali 默认已装(随 nmap 包)。
-**使用场景**:端口连通性验证、简易文件传输、监听反弹 shell、加密通道;后利用阶段常用。
+**Purpose**: A netcat reimplementation that adds IPv6, SSL, access control (`--allow/--deny`), staying open across connections (`--keep-open`), and `--exec` command execution.
+**Installation**: Preinstalled on Kali by default (ships with the nmap package).
+**When to use**: Port connectivity verification, simple file transfer, listening reverse shells, and encrypted channels; common in post-exploitation.
 
 ```bash
 # 官网模式:仅允许指定 IP 连接的 bash 监听,断开保持监听
@@ -508,16 +510,16 @@ ncat --send-only <ip> 9999 < <file>
 ncat --ssl -l 4444
 ```
 
-**实战要点**:
-- `--allow <ip>`/`--deny <ip>` 做白名单,比裸 netcat 监听更可控;`--keep-open` 支持多连接复用同一监听
-- `--exec`/`--sh-exec` 的监听即简易 shell 服务,配合 `--ssl` 变加密通道
-- 日常连通排查:`ncat -vz <ip> <port>` 快速判断端口可达(vz 组合与 netcat 习惯一致)
+**Practical tips**:
+- `--allow <ip>`/`--deny <ip>` act as a whitelist, more controllable than a bare netcat listener; `--keep-open` lets multiple connections reuse one listener
+- A listener with `--exec`/`--sh-exec` is a minimal shell service; add `--ssl` and it becomes an encrypted channel
+- Day-to-day connectivity troubleshooting: `ncat -vz <ip> <port>` quickly tells whether a port is reachable (the vz pair matches netcat habits)
 
-### nping — nmap 套件的可控发包工具(ping 升级版)
+### nping — the nmap suite's controllable packet generator (ping, upgraded)
 
-**用途**:生成 ARP/TCP/UDP/ICMP/以太网帧并逐包显示 SENT/RCVD,可控制标志位、TTL、速率、计数。
-**安装**:Kali 默认已装(随 nmap 包)。
-**使用场景**:精确探测防火墙放行规则、TTL 裁剪、丢包率;协议级排错。
+**Purpose**: Generates ARP/TCP/UDP/ICMP/Ethernet frames and displays SENT/RCVD per packet, with control over flags, TTL, rate, and count.
+**Installation**: Preinstalled on Kali by default (ships with the nmap package).
+**When to use**: Precisely probing firewall allow rules, TTL trimming, and packet loss; protocol-level troubleshooting.
 
 ```bash
 # 官网模式:SYN 探测 22 端口,TTL 设为 2(观测路径截断)
@@ -533,16 +535,16 @@ nping --udp -p 53 <ip>
 nping --icmp --rate 100 -c 100 <ip>
 ```
 
-**实战要点**:
-- 逐包 SENT/RCVD 对照能直接看出"发出无回应"(被丢)与"收到 RST/ICMP 不可达"(被显式拒绝)的区别,这是判断防火墙策略的依据
-- `--ttl` 递增可粗略定位过滤设备所在跳数
-- 探活优先级:nmap -sn → 不行再 nping 精细控制
+**Practical tips**:
+- Comparing SENT/RCVD packet by packet directly shows the difference between "sent, no reply" (dropped) and "RST/ICMP unreachable received" (explicitly denied) — the basis for judging firewall policy
+- Incrementing `--ttl` roughly locates the hop where the filtering device sits
+- Alive check priority: nmap -sn → if that fails, nping for fine-grained control
 
-### ndiff — nmap 扫描结果对比工具
+### ndiff — nmap scan result comparison tool
 
-**用途**:对比两个 nmap XML 输出,标出主机上下线、端口开闭变化。
-**安装**:Kali 默认已装(随 nmap 包)。
-**使用场景**:周期性扫描监控、入侵应急时快速发现新增服务。
+**Purpose**: Compares two nmap XML outputs, flagging hosts going up/down and ports opening/closing.
+**Installation**: Preinstalled on Kali by default (ships with the nmap package).
+**When to use**: Periodic scan monitoring and quickly spotting new services during incident response.
 
 ```bash
 # 官网模式:对比两次扫描
@@ -552,31 +554,31 @@ ndiff <old-scan>.xml <new-scan>.xml
 ndiff --xml <old-scan>.xml <new-scan>.xml
 ```
 
-**实战要点**:
-- 输入必须是 `nmap -oX`/`-oA` 产生的 XML;`-` 可代标准输入
-- `-`/`+` 前缀分别表示消失/新增;新增 open 端口优先核查
-- 建议基线扫描用 `-oA` 留档,事件后同参数重扫再 diff
+**Practical tips**:
+- Input must be XML produced by `nmap -oX`/`-oA`; `-` can substitute for standard input
+- The `-`/`+` prefixes mark gone/newly added respectively; newly open ports get priority review
+- Archive baseline scans with `-oA`; after an incident, rescan with the same parameters and diff
 
-### zenmap — nmap 官方 GUI 前端
+### zenmap — the official nmap GUI frontend
 
-**用途**:图形化 nmap:预置扫描 profile、结果对比、拓扑图。
-**安装**:`sudo apt install zenmap`(Kali 非默认)。
-**使用场景**:偏好 GUI 的初学者或需要拓扑可视化的汇报场景;命令行自动化仍以 nmap 为主。
+**Purpose**: A graphical nmap: preset scan profiles, result comparison, and topology graphs.
+**Installation**: `sudo apt install zenmap` (not a Kali default).
+**When to use**: GUI-leaning beginners or reporting scenarios that need topology visualization; command-line automation still revolves around nmap.
 
 ```bash
 sudo zenmap
 ```
 
-**实战要点**:
-- 预置 profile(Intense scan/Quick scan 等)本质是 nmap 参数模板,界面里可查看并复制成命令行
-- Topology 视图基于 traceroute 结果,适合给非技术干系人讲网络路径
-- Results 里搜索/过滤开放端口,比翻终端滚动条直观
+**Practical tips**:
+- Preset profiles (Intense scan/Quick scan, etc.) are essentially nmap argument templates; view them in the UI and copy them out as command lines
+- The Topology view builds on traceroute results, good for walking non-technical stakeholders through network paths
+- Search/filter open ports in Results — more intuitive than scrolling back through a terminal
 
-### ike-scan — IKE(IPsec VPN)发现与指纹工具
+### ike-scan — IKE (IPsec VPN) discovery and fingerprinting tool
 
-**用途**:发现 IPsec VPN 服务端(UDP 500/4500),通过响应与重传模式指纹厂商版本;Aggressive Mode 下可抓取可离线破解的 PSK 哈希。
-**安装**:`sudo apt install ike-scan`。
-**使用场景**:边界测试发现 500/udp 开放时的必跑工具。
+**Purpose**: Discovers IPsec VPN servers (UDP 500/4500) and fingerprints vendor versions from response and retransmission patterns; in Aggressive Mode it can capture PSK hashes that can be cracked offline.
+**Installation**: `sudo apt install ike-scan`.
+**When to use**: A must-run tool when perimeter testing finds 500/udp open.
 
 ```bash
 # 发现 + 指纹(主模式,-M 多行显示单个握手)
@@ -592,16 +594,16 @@ psk-crack -d <wordlist> <psk-file>
 sudo ike-scan --showbackoff <ip>
 ```
 
-**实战要点**:
-- 响应中的 Vendor ID 字符串可识别厂商/版本(如 Cisco/StrongSwan),据此查已知漏洞
-- Aggressive Mode 本身就是发现(XAUTH/PSK 明文哈希可抓),配合 `psk-crack` 字典破解;命中即获 VPN 接入凭证
-- `-P` 抓到的文件格式需 ike-scan 套件自带 psk-crack 处理(非普通 hashcat 格式)
+**Practical tips**:
+- Vendor ID strings in responses identify the vendor/version (e.g., Cisco/StrongSwan); look up known vulnerabilities from there
+- Aggressive Mode is itself a finding (XAUTH/PSK hashes travel in plaintext and can be captured); pair it with `psk-crack` dictionary cracking; a hit yields VPN access credentials
+- The file captured by `-P` must be processed by psk-crack shipped with the ike-scan suite (not an ordinary hashcat format)
 
-### wafw00f — Web 应用防火墙识别与指纹
+### wafw00f — web application firewall detection and fingerprinting
 
-**用途**:发送恶意特征载荷并观察响应/行为指纹,识别目标前面的 WAF 产品(Cloudflare、ModSecurity、F5 等)。
-**安装**:`sudo apt install wafw00f`。
-**使用场景**:Web 渗透前置步骤:先确认 WAF 存在与其类型,再决定利用策略。
+**Purpose**: Sends malicious-signature payloads and observes response/behavior fingerprints to identify the WAF product sitting in front of the target (Cloudflare, ModSecurity, F5, etc.).
+**Installation**: `sudo apt install wafw00f`.
+**When to use**: A preliminary step in web penetration testing: first confirm whether a WAF exists and which type, then decide the exploitation strategy.
 
 ```bash
 # 识别 WAF
@@ -614,16 +616,16 @@ wafw00f -a https://<domain>
 wafw00f https://<domain1> https://<domain2>
 ```
 
-**实战要点**:
-- 输出 `is behind WAF` 即命中并给出产品名;无 WAF 时也输出 best-guess 供参考
-- 检出 WAF 后调整策略:载荷编码/大小写混淆/分块传输/慢速测试,或寻找源站直连 IP
-- 与 nmap `--script http-waf-fingerprint` 互相印证,避免单一指纹误判
+**Practical tips**:
+- Output of `is behind WAF` means a hit and names the product; when there is no WAF it still prints a best-guess for reference
+- Once a WAF is detected, adjust strategy: payload encoding/case obfuscation/chunked transfer/slow testing, or look for a direct-to-origin IP
+- Cross-check with nmap `--script http-waf-fingerprint` to avoid single-fingerprint misjudgment
 
-### tnscmd10g — Oracle TNS 监听器探测工具
+### tnscmd10g — Oracle TNS listener probing tool
 
-**用途**:向 1521/tcp 的 Oracle TNS 监听器发送命令(ping/version/status),获取版本、运行平台、监听端点等信息。
-**安装**:`sudo apt install tnscmd10g`。
-**使用场景**:发现 1521 端口开放后的第一步信息收集。
+**Purpose**: Sends commands (ping/version/status) to the Oracle TNS listener on 1521/tcp to obtain the version, running platform, listening endpoints, and other information.
+**Installation**: `sudo apt install tnscmd10g`.
+**When to use**: First-step information gathering after finding port 1521 open.
 
 ```bash
 # 官网模式:读监听器版本(含平台信息)
@@ -636,16 +638,16 @@ tnscmd10g status -h <ip>
 tnscmd10g version -h <ip> -p <port>
 ```
 
-**实战要点**:
-- `version` 输出直接给 Oracle 与 TNS 版本号 → 查监听器已知漏洞(如 TNS poisoning)
-- `status` 的输出包含日志文件路径与服务句柄,是配置信息泄露点
-- 下一步衔接:sidguess 猜 SID → oscanner 测默认口令 → sqlplus(数据库分册)
+**Practical tips**:
+- The `version` output directly gives the Oracle and TNS version numbers → look up known listener vulnerabilities (e.g., TNS poisoning)
+- The `status` output contains log file paths and service handles — a configuration information disclosure point
+- Next-step handoff: sidguess to guess the SID → oscanner to test default passwords → sqlplus (database volume)
 
-### sidguess — Oracle SID 字典猜解
+### sidguess — Oracle SID dictionary guessing
 
-**用途**:按字典对 Oracle 实例名(SID)做枚举,速度约 80-100 次/秒。
-**安装**:`sudo apt install sidguesser`(命令名 sidguess)。
-**使用场景**:拿到 TNS 版本后,连接数据库前必须先知道有效 SID。
+**Purpose**: Enumerates Oracle instance names (SIDs) against a dictionary at roughly 80-100 guesses per second.
+**Installation**: `sudo apt install sidguesser` (command name sidguess).
+**When to use**: After obtaining the TNS version, a valid SID must be known before connecting to the database.
 
 ```bash
 # 官网模式:字典猜 SID
@@ -655,32 +657,32 @@ sidguess -i <ip> -d <wordlist>
 sidguess -i <ip> -p <port> -d <wordlist> -r <report> -m findfirst
 ```
 
-**实战要点**:
-- 常见 SID 候选:orcl、xe、prod、与公司/项目名相关的词;Seclists 有 Oracle SID 专用字典
-- 命中 SID 是 oscanner/sqlplus 连接的前置条件;多个 SID 时逐个带入后续工具
-- 速度慢是协议特性,大字典需耐心或并行多实例分段
+**Practical tips**:
+- Common SID candidates: orcl, xe, prod, and words related to company/project names; Seclists has dedicated Oracle SID wordlists
+- A hit SID is a prerequisite for connecting with oscanner/sqlplus; with multiple SIDs, feed each into the subsequent tools
+- The low speed is a protocol trait; large wordlists need patience or parallel multi-instance runs split into segments
 
-### oscanner — Oracle 评估框架
+### oscanner — Oracle assessment framework
 
-**用途**:Java 编写的 Oracle 评估框架:枚举 SID、尝试默认口令,结果以树形呈现。
-**安装**:`sudo apt install oscanner`。
-**使用场景**:拿到 SID 后对 Oracle 做一轮默认凭证与基础评估。
+**Purpose**: An Oracle assessment framework written in Java: enumerates SIDs, tries default passwords, and presents results as a tree.
+**Installation**: `sudo apt install oscanner`.
+**When to use**: A round of default-credential and baseline assessment against Oracle once a SID is in hand.
 
 ```bash
 # 官网模式:指定主机与端口评估
 oscanner -s <ip> -P <port>
 ```
 
-**实战要点**:
-- 优先输入 sidguess 命中的 SID 提高命中率;它也会自行尝试常见 SID
-- 发现的有效凭证 → `sqlplus <user>/<pass>@<ip>:<port>/<sid>` 深入(数据库分册)
-- 较老工具,新版 Oracle 常失败;失败时换专用 Oracle 攻击套件思路(手动枚举)
+**Practical tips**:
+- Feed in SIDs hit by sidguess first to raise the hit rate; it also tries common SIDs on its own
+- Valid credentials found → `sqlplus <user>/<pass>@<ip>:<port>/<sid>` to go deeper (database volume)
+- A rather old tool that often fails against recent Oracle versions; on failure, switch to a dedicated Oracle attack toolkit approach (manual enumeration)
 
-### apache-users — Apache UserDir 用户名枚举
+### apache-users — Apache UserDir username enumeration
 
-**用途**:利用 Apache UserDir 模块(~user 形式的个人目录)与字典枚举系统用户名。
-**安装**:`sudo apt install apache-users`。
-**使用场景**:目标 Web 服务启用 mod_userdir(`https://<host>/~<user>/`)时的用户名收集。
+**Purpose**: Enumerates system usernames via the Apache UserDir module (personal directories in ~user form) and a dictionary.
+**Installation**: `sudo apt install apache-users`.
+**When to use**: Username collection when the target web service enables mod_userdir (`https://<host>/~<user>/`).
 
 ```bash
 # 官网模式:字典枚举用户名(HTTP、403 判定不存在、10 线程)
@@ -690,19 +692,19 @@ apache-users -h <ip> -l /usr/share/wordlists/metasploit/unix_users.txt -p 80 -s 
 apache-users -h <ip> -l <userlist> -p 443 -s 1 -e 404 -t 10
 ```
 
-**实战要点**:
-- 判定逻辑:请求 `/~<user>/` 返回码与 `-e` 指定值不同即视为存在;错误码按目标实际响应选 403 或 404
-- 产出用户名列表 → SSH/FTP/SMB 凭证爆破与喷洒的输入
-- 等价替代:`nmap --script http-userdir-enum -p 80 <ip>`,更易并入统一扫描流程
+**Practical tips**:
+- Decision logic: a `/~<user>/` request whose return code differs from the value specified by `-e` is treated as existing; choose 403 or 404 as the error code according to the target's actual responses
+- The username list feeds SSH/FTP/SMB credential brute forcing and spraying
+- Equivalent alternative: `nmap --script http-userdir-enum -p 80 <ip>`, easier to fold into a unified scanning workflow
 
-## 其余工具速查
+## Remaining Tools — Quick Reference
 
-| 工具 | 一句话用途 | 安装包 | 最常用命令 |
+| Tool | One-line purpose | Package | Most common commands |
 |---|---|---|---|
-| atk6-thcping6(thc-ipv6 套件) | IPv6/ICMPv6 攻击与发现套件 | thc-ipv6 | `atk6-alive6 eth0`(发现存活 IPv6);`atk6-address6 fe80::...`(IPv6 与 MAC 互转);`atk6-detect-new-ip6 eth0`(DAD 检测新地址);`atk6-dnsdict6 <domain>`(IPv6 子域枚举)。注意:Kali 打包的 thc-ipv6 二进制均带 `atk6-` 前缀 |
-| sctpscan | SCTP 协议发现与安全扫描 | sctpscan | `sctpscan -s -F -r 192.168.1.*` |
-| mdb-sql(mdbtools) | 读取/导出 JET 与 MS Access .mdb 数据库 | mdbtools | `mdb-tables <file.mdb>`(列表);`mdb-export <file.mdb> <table>`(导出 CSV);`mdb-sql <file.mdb>`(SQL 查询) |
-| sqlitebrowser | SQLite 数据库 GUI 浏览/编辑/导出 | sqlitebrowser | `sqlitebrowser <file>.sqlite` |
-| legion | 半自动化网络渗透 GUI(扫描+枚举+利用入口,SPARTA 分支) | legion | `sudo legion` |
+| atk6-thcping6 (thc-ipv6 suite) | IPv6/ICMPv6 attack and discovery suite | thc-ipv6 | `atk6-alive6 eth0` (discover alive IPv6 hosts); `atk6-address6 fe80::...` (IPv6/MAC conversion); `atk6-detect-new-ip6 eth0` (detect new addresses via DAD); `atk6-dnsdict6 <domain>` (IPv6 subdomain enumeration). Note: the thc-ipv6 binaries packaged in Kali all carry the `atk6-` prefix |
+| sctpscan | SCTP protocol discovery and security scanning | sctpscan | `sctpscan -s -F -r 192.168.1.*` |
+| mdb-sql (mdbtools) | Read/export JET and MS Access .mdb databases | mdbtools | `mdb-tables <file.mdb>` (list tables); `mdb-export <file.mdb> <table>` (export CSV); `mdb-sql <file.mdb>` (SQL queries) |
+| sqlitebrowser | GUI browse/edit/export for SQLite databases | sqlitebrowser | `sqlitebrowser <file>.sqlite` |
+| legion | Semi-automated network penetration GUI (scanning + enumeration + exploitation entry, a SPARTA fork) | legion | `sudo legion` |
 
-> 本文件仅用于已获得书面授权的渗透测试、CTF 竞赛与安全教育场景,严禁用于未授权测试。
+> This file is for penetration testing with written authorization, CTF competitions, and security education only; unauthorized testing is strictly prohibited.
